@@ -44,6 +44,24 @@
         { "name": "fanSpeed", "label": "Fan speed setpoint", "topic": "automation-sim/fan/state/speed", "commandTopic": "automation-sim/fan/cmd/speed", "dataType": "number", "unit": "%", "writable": true },
         { "name": "fanRpm", "label": "Fan RPM", "topic": "automation-sim/fan/state/rpm", "dataType": "number", "unit": "rpm" }
       ]
+    },
+    {
+      "type": "s7",
+      "id": "press1",
+      "label": "Hydraulic press (S7)",
+      "host": "127.0.0.1",
+      "port": 9102,
+      "rack": 0,
+      "slot": 1,
+      "pollMs": 100,
+      "tags": [
+        { "name": "ramPosition", "label": "Ram position", "address": "DB1,REAL0", "dataType": "number", "unit": "mm" },
+        { "name": "pressure", "label": "Hydraulic pressure", "address": "DB1,REAL4", "dataType": "number", "unit": "bar" },
+        { "name": "cycleActive", "label": "Cycle active", "address": "DB1,X8.0", "dataType": "boolean" },
+        { "name": "cycleCount", "label": "Cycle count", "address": "DB1,INT10", "dataType": "number" },
+        { "name": "runCmd", "label": "Run command", "address": "DB1,X12.0", "dataType": "boolean", "writable": true },
+        { "name": "targetPressure", "label": "Target pressure", "address": "DB1,REAL14", "dataType": "number", "unit": "bar", "writable": true }
+      ]
     }
   ]
 }

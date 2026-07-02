@@ -1,0 +1,2 @@
+/root/automation_sim/CLAUDE.md
+/root/automation_sim/README.md

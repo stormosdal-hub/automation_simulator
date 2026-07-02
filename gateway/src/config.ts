@@ -3,12 +3,14 @@ import { fileURLToPath } from 'node:url';
 import type { ModbusAdapterConfig } from './adapters/modbus';
 import type { MqttAdapterConfig } from './adapters/mqtt';
 import type { OpcUaAdapterConfig } from './adapters/opcua';
+import type { S7AdapterConfig } from './adapters/s7';
 
 export type AdapterConfigEntry =
   | { type: 'simulator'; id?: string }
   | ({ type: 'modbus' } & ModbusAdapterConfig)
   | ({ type: 'opcua' } & OpcUaAdapterConfig)
-  | ({ type: 'mqtt' } & MqttAdapterConfig);
+  | ({ type: 'mqtt' } & MqttAdapterConfig)
+  | ({ type: 's7' } & S7AdapterConfig);
 
 export interface GatewayConfig {
   adapters: AdapterConfigEntry[];

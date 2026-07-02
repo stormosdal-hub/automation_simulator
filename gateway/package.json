@@ -10,6 +10,7 @@
     "plc-sim": "node scripts/modbus-plc-sim.mjs",
     "opcua-sim": "node scripts/opcua-server-sim.mjs",
     "mqtt-sim": "node scripts/mqtt-device-sim.mjs",
+    "s7-sim": "node scripts/s7-plc-sim.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,11 +18,13 @@
     "modbus-serial": "^8.0.25",
     "mqtt": "^5.15.1",
     "node-opcua": "^2.174.0",
+    "nodes7": "^0.3.18",
     "ws": "^8.18.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
     "@types/ws": "^8.18.0",
+    "node-snap7": "^1.0.9",
     "tsx": "^4.19.0",
     "typescript": "~5.9.0"
   }

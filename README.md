@@ -5,13 +5,18 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: polish phase done** — connections panel (adapter + LWT device
-health), alarm rules with a live active-alarms panel, record & replay of the
-tag stream (transport controls; live data suppressed during replay), widget
-staleness dimming, and bindings that restore the node's original pose when
-removed.
+**Current state: S7 done** — the gateway now also speaks Siemens S7comm
+(ISO-on-TCP) via the pure-JS `nodes7` client: polled DB items (REAL / INT /
+X bits), bit and register writes, reconnect + online tag. A fake hydraulic
+press (`s7-sim`, snap7 server on port 9102 — real PLCs use 102) provides a
+real S7 stack to develop against. Note: offline detection takes ~10 s
+(nodes7 surfaces dead sockets via read timeouts), slower than Modbus's ~2 s.
 
-The gateway speaks four protocols, all declared in
+Previously: connections panel (adapter + LWT device health), alarm rules with
+a live active-alarms panel, record & replay of the tag stream, widget
+staleness dimming, binding baseline restore.
+
+The gateway speaks five protocols, all declared in
 `gateway/config.json`: the built-in simulator, **Modbus TCP** (polling,
 scale/offset, writes, reconnect), **OPC UA** (true subscriptions via monitored
 items, typed writes, heartbeat), and **MQTT** (topic→tag mapping with optional
@@ -40,6 +45,8 @@ Connections are declared in `gateway/config.json` — adapter types:
   subscription, writes use the server's resolved data type
 - `mqtt` — url (+credentials) + tag map (topic, optional commandTopic for
   writes, optional jsonPath into JSON payloads, dataType, writable, retain)
+- `s7` — host/port/rack/slot/pollMs + tag map (nodes7 address like
+  `DB1,REAL0` / `DB1,X8.0`, dataType, writable)
 
 What you should see: a two-link robot arm swinging (driven by `sim.armAngle` /
 `sim.forearmAngle`), a status lamp that glows green while `sim.running` is true
@@ -76,6 +83,8 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
 8. ~~Polish: widget staleness, connections panel, alarms (rules + active list),
    record/replay with live suppression, binding baseline restore, MQTT
    last-will device liveness~~
-9. Backlog: S7, Raspberry Pi GPIO agent, in-app connection manager (edit
-   gateway config from the browser), browser-direct MQTT, alarm
-   acknowledge/history, 32-bit Modbus registers, OPC UA Sign&Encrypt
+9. ~~S7 adapter (nodes7 client, snap7-server press sim, writes, reconnect)~~
+10. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
+    gateway config from the browser), browser-direct MQTT, alarm
+    acknowledge/history, 32-bit Modbus registers, OPC UA Sign&Encrypt,
+    faster S7 offline detection

@@ -2,6 +2,7 @@ import { DEFAULT_GATEWAY_PORT } from '@sim/shared';
 import { ModbusAdapter } from './adapters/modbus';
 import { MqttAdapter } from './adapters/mqtt';
 import { OpcUaAdapter } from './adapters/opcua';
+import { S7Adapter } from './adapters/s7';
 import { SimulatorAdapter } from './adapters/simulator';
 import { TagBus } from './bus';
 import { loadConfig } from './config';
@@ -23,6 +24,9 @@ for (const entry of loadConfig().adapters) {
       break;
     case 'mqtt':
       bus.register(new MqttAdapter(entry));
+      break;
+    case 's7':
+      bus.register(new S7Adapter(entry));
       break;
     default:
       console.warn(`[gateway] unknown adapter type in config: ${JSON.stringify(entry)}`);

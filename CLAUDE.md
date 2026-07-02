@@ -14,6 +14,7 @@ npm run probe -w @sim/gateway    # gateway smoke test (hello + updates)
 npm run plc-sim -w @sim/gateway    # fake conveyor PLC, Modbus TCP on 5020
 npm run opcua-sim -w @sim/gateway  # fake mixer skid, OPC UA on 4850 (first run generates certs, ~5s)
 npm run mqtt-sim -w @sim/gateway   # fake ESP32 fan node — needs the system mosquitto on 1883
+npm run s7-sim -w @sim/gateway     # fake hydraulic press, S7comm (snap7 server) on 9102
 ```
 
 ## Architecture
@@ -51,6 +52,14 @@ npm run mqtt-sim -w @sim/gateway   # fake ESP32 fan node — needs the system mo
   header) — uses the system mosquitto on 1883; topics namespaced
   `automation-sim/`. Do NOT restart mosquitto (shared service; permission
   classifier blocks it).
+- `gateway/src/adapters/s7.ts` — Siemens S7comm via pure-JS nodes7 (typings
+  in `src/types/nodes7.d.ts` — no @types package). Polled like Modbus;
+  nodes7 converts REAL/INT/X-bit types. Fresh NodeS7 instance per connect
+  (internal state unreliable after connection loss). Offline detection ~10 s
+  (3 strikes × nodes7 read timeout). Test server:
+  `gateway/scripts/s7-plc-sim.mjs` (snap7 server, native dev-dep node-snap7;
+  DB map in header; first connect after server start can transiently fail —
+  the retry loop absorbs it).
 - `frontend/src/bindings/` — types.ts (Binding/TransformSpec/Project +
   applyTransform), engine.ts (per-frame applier; per-node euler state so
   multi-axis rotation bindings compose; problems surfaced via getProblem).
