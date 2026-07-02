@@ -1,0 +1,28 @@
+{
+  "name": "@sim/gateway",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "probe": "node scripts/probe.mjs",
+    "plc-sim": "node scripts/modbus-plc-sim.mjs",
+    "opcua-sim": "node scripts/opcua-server-sim.mjs",
+    "mqtt-sim": "node scripts/mqtt-device-sim.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sim/shared": "*",
+    "modbus-serial": "^8.0.25",
+    "mqtt": "^5.15.1",
+    "node-opcua": "^2.174.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/ws": "^8.18.0",
+    "tsx": "^4.19.0",
+    "typescript": "~5.9.0"
+  }
+}

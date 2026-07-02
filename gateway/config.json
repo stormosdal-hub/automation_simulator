@@ -1,0 +1,49 @@
+{
+  "adapters": [
+    { "type": "simulator" },
+    {
+      "type": "modbus",
+      "id": "plc1",
+      "label": "Conveyor PLC (Modbus TCP)",
+      "host": "127.0.0.1",
+      "port": 5020,
+      "unitId": 1,
+      "pollMs": 100,
+      "tags": [
+        { "name": "motorRun", "label": "Motor run command", "kind": "coil", "address": 0, "writable": true },
+        { "name": "running", "label": "Motor running", "kind": "discrete", "address": 0 },
+        { "name": "speedSetpoint", "label": "Speed setpoint", "kind": "holding", "address": 0, "scale": 0.1, "unit": "%", "writable": true },
+        { "name": "beltSpeed", "label": "Belt speed", "kind": "input", "address": 0, "scale": 0.1, "unit": "%" },
+        { "name": "motorCurrent", "label": "Motor current", "kind": "input", "address": 1, "scale": 0.01, "unit": "A" }
+      ]
+    },
+    {
+      "type": "opcua",
+      "id": "mixer1",
+      "label": "Mixer skid (OPC UA)",
+      "endpoint": "opc.tcp://127.0.0.1:4850/UA/MixerSim",
+      "publishingIntervalMs": 100,
+      "tags": [
+        { "name": "agitatorOn", "label": "Agitator on", "nodeId": "ns=1;s=Mixer.AgitatorOn", "dataType": "boolean", "writable": true },
+        { "name": "agitatorSpeed", "label": "Agitator speed", "nodeId": "ns=1;s=Mixer.AgitatorSpeed", "dataType": "number", "unit": "rpm", "writable": true },
+        { "name": "tankLevel", "label": "Tank level", "nodeId": "ns=1;s=Mixer.TankLevel", "dataType": "number", "unit": "%" },
+        { "name": "motorTemp", "label": "Motor temperature", "nodeId": "ns=1;s=Mixer.MotorTemp", "dataType": "number", "unit": "degC" },
+        { "name": "batchCount", "label": "Batch count", "nodeId": "ns=1;s=Mixer.BatchCount", "dataType": "number" }
+      ]
+    },
+    {
+      "type": "mqtt",
+      "id": "esp1",
+      "label": "ESP32 fan node (MQTT)",
+      "url": "mqtt://127.0.0.1:1883",
+      "availabilityTopic": "automation-sim/fan/status",
+      "tags": [
+        { "name": "temperature", "label": "Room temperature", "topic": "automation-sim/env/temperature", "dataType": "number", "jsonPath": "value", "unit": "degC" },
+        { "name": "humidity", "label": "Room humidity", "topic": "automation-sim/env/humidity", "dataType": "number", "jsonPath": "value", "unit": "%" },
+        { "name": "fanOn", "label": "Fan on", "topic": "automation-sim/fan/state/on", "commandTopic": "automation-sim/fan/cmd/on", "dataType": "boolean", "writable": true },
+        { "name": "fanSpeed", "label": "Fan speed setpoint", "topic": "automation-sim/fan/state/speed", "commandTopic": "automation-sim/fan/cmd/speed", "dataType": "number", "unit": "%", "writable": true },
+        { "name": "fanRpm", "label": "Fan RPM", "topic": "automation-sim/fan/state/rpm", "dataType": "number", "unit": "rpm" }
+      ]
+    }
+  ]
+}

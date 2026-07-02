@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/root/automation_sim/.mcp/server.js"
+      ]
+    }
+  }
+}

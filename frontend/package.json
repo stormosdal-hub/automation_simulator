@@ -1,0 +1,21 @@
+{
+  "name": "@sim/frontend",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^8.0.0",
+    "@babylonjs/loaders": "^8.0.0",
+    "@sim/shared": "*"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.0",
+    "vite": "^7.0.0"
+  }
+}
