@@ -5,7 +5,16 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: press + mixer machine models** — the hydraulic press and
+**Current state: TIA runtime speaks Modbus TCP too** — the sibling TIA Web
+Practice PLC runtime (`plc_server.py`) can now also serve standard Modbus TCP
+(`--modbus-port`), so this gateway's existing generic **`modbus`** adapter can
+talk to it directly — no new adapter code needed, and any other SCADA/HMI can
+connect the same way. Addresses map onto the runtime's S7-style `%I/%Q/%M`
+memory (`GET /api/modbus-map` on the runtime lists the derived
+coil/discrete/holding/input address for every tag); see
+`TIA_Portal_Web-app/README.md` → "Modbus TCP server mode".
+
+Previously: **press + mixer machine models** — the hydraulic press and
 mixer skid behaviors now also live on the bus as machine-model adapters
 (`press`, `mixer` in config.json), ported from their protocol sims with the
 same dynamics plus the sensors a ladder program wants: the press adds
@@ -148,8 +157,11 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     machine-model adapter, `tia-loop-probe` end-to-end smoke test~~
 12. ~~Press + mixer machine models (bus-adapter ports of the protocol sims,
     PLC-friendly sensors, `machines-probe` smoke test)~~
-13. Backlog: Modbus-server mode in the TIA runtime (then any SCADA can
-    connect), Raspberry Pi GPIO agent, in-app connection manager (edit
+13. ~~Modbus-server mode in the TIA runtime (`plc_server.py --modbus-port`,
+    `/api/modbus-map`) — any SCADA can connect, and this gateway's own
+    `modbus` adapter works against it unchanged~~
+14. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
     gateway config from the browser), browser-direct MQTT, alarm
-    acknowledge/history, 32-bit Modbus registers, OPC UA Sign&Encrypt,
+    acknowledge/history, 32-bit Modbus registers (client-side register-pair
+    combining in the gateway's own `modbus` adapter), OPC UA Sign&Encrypt,
     faster S7 offline detection

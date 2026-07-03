@@ -66,7 +66,13 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   Unknown tag names are warned once (usually "program not downloaded yet").
   E2E smoke test: `scripts/tiaweb-probe.mjs` (downloads a seal-in + CTU
   program, drives it through the gateway WS, checks writeError + offline;
-  `offline` arg asserts the down state after killing the runtime).
+  `offline` arg asserts the down state after killing the runtime). The
+  runtime can *also* be reached with this gateway's plain `modbus` adapter
+  type — `plc_server.py --modbus-port <port>` serves standard Modbus TCP
+  over the same S7-style `%I/%Q/%M` memory (see
+  `TIA_Portal_Web-app/README.md` → "Modbus TCP server mode" for the
+  coil/discrete/holding/input address mapping); no gateway code changes
+  needed for that path.
 - `gateway/src/links.ts` — tag-link bridge (`config.links`): routes one
   adapter's published tag into another's write. Change-driven (adapters
   republish every poll — forwarding those would hammer targets), values are

@@ -80,8 +80,8 @@
     "semantic_hash": "af4024f5a17a713d0c5d1d6b221aa536"
   },
   "README.md": {
-    "mtime": 1783092159.656778,
-    "ast_hash": "5b2239093119baa4439c01ebbf71f93c",
+    "mtime": 1783033058.2699053,
+    "ast_hash": "5457aafff4ecd53ffa2146294c4728e2",
     "semantic_hash": ""
   },
   "frontend/index.html": {
@@ -120,8 +120,8 @@
     "semantic_hash": "a569e60d45f1a1f87821cff15a3ea616"
   },
   "CLAUDE.md": {
-    "mtime": 1783092168.52877,
-    "ast_hash": "715ab5f523f8e0b286b5e3fbf4884d96",
+    "mtime": 1783033065.1678996,
+    "ast_hash": "14730394452ba42b7444f0deae1d7733",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
