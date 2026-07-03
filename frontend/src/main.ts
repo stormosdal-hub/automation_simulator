@@ -32,9 +32,13 @@ const gatewayUrl = `ws://${location.hostname}:${DEFAULT_GATEWAY_PORT}`;
 const hud = new Hud(gatewayUrl);
 
 let wsStatus: WsStatus = 'connecting';
+const conn = connectGateway(gatewayUrl, store, (status) => {
+  wsStatus = status;
+  hud.setStatus(status);
+});
 
 const connectionsPanel = createPanel('Connections');
-new ConnectionsPanel(connectionsPanel.body, store, () => wsStatus);
+new ConnectionsPanel(connectionsPanel.body, store, () => wsStatus, conn);
 
 const tagsPanel = createPanel('Live tags');
 new TagTable(tagsPanel.body, store);
@@ -52,10 +56,6 @@ const bindingPanel = new BindingPanel(bindingsPanel.body, {
   nodeNames: () => sceneTree.names(),
 });
 
-const conn = connectGateway(gatewayUrl, store, (status) => {
-  wsStatus = status;
-  hud.setStatus(status);
-});
 new ControlPanels(right, { projectStore, store, conn });
 
 const alarmsPanel = new AlarmsPanel(createPanel('Alarms'), projectStore, store);

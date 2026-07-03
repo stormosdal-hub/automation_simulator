@@ -5,15 +5,22 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: zero-JSON setup** — the `tiaweb` adapter now **discovers its
-tags automatically**: leave `tags` out of its `config.json` entry (just
+**Current state: live tag refresh, no restart** — edit, add, or remove tags in
+the TIA app, then click the **⟳** button next to the `tia` adapter in the
+Connections panel: the gateway re-imports the tag list on the spot and every
+connected browser updates immediately — no gateway restart, no page reload.
+New tags appear, edited ones (renamed/retyped/re-commented) update in place,
+and removed ones simply stop updating (a write against one then correctly
+fails as "unknown tag"). The refresh button only shows up for adapters that
+support it (`AdapterMeta.canRefreshTags`) — currently just `tiaweb` when it's
+running in auto-discovery mode (no explicit `tags` array in config.json).
+
+Previously: **zero-JSON setup** — the `tiaweb` adapter discovers its tags
+automatically: leave `tags` out of its `config.json` entry (just
 `type`/`id`/`url`/`pollMs`) and it fetches `GET /api/tags` from the TIA
-runtime once at startup and publishes every declared project tag, writable,
-with no hand-typed tag list to keep in sync. An explicit `tags` array still
-works if you want to curate a subset — the runtime's own tag names always
-win either way. Adding tags to the ladder program after the gateway started
-still needs a gateway restart to pick them up, same as every other adapter's
-config-driven, boot-time tag list. The frontend also gained a **File menu**
+runtime and publishes every declared project tag, writable, with no
+hand-typed tag list to keep in sync. An explicit `tags` array still works if
+you want to curate a subset instead. The frontend also gained a **File menu**
 (top-left): New / Open / Save project as JSON — projects were localStorage-only
 before; Save downloads the current project, Open loads one back in (both New
 and Open replace the project and reload the page so every panel re-initializes
@@ -114,7 +121,10 @@ Connections are declared in `gateway/config.json` — adapter types:
   and published writable (forcing is unconditional on the runtime's side
   anyway), so panel widgets and machine models can feed sensors with no
   config.json tag list to maintain. Pass `tags` explicitly to curate a subset
-  instead.
+  instead (this also disables the refresh button below). In discovery mode,
+  the Connections panel's **⟳** button re-runs discovery live — edit the
+  ladder program, click refresh, and the new/edited/removed tags apply
+  immediately across every connected browser with no restart.
 - `conveyor` — machine model (no external device): beltLength/eyeAt/maxSpeed/
   minSpeed/autoFeedS/partSlots; writable `motorCmd`/`speedCmd`/`feed`, read
   `photoEye`, `beltSpeed`, `partsOnBelt`, `partsDone`, `part1Pos…partNPos`
@@ -183,9 +193,13 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
 14. ~~Tag auto-discovery (`tiaweb` adapter reads `GET /api/tags`, no
     config.json tag list required) + frontend File menu (New/Open/Save
     project as JSON, in addition to localStorage)~~
-15. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
+15. ~~Live tag refresh: a bus-level `refreshAdapterTags()` reconciles one
+    adapter's tag set at runtime (add/edit/remove), a WS `refreshTags` request
+    + `tagsChanged` broadcast carry it to every connected browser, and a
+    per-adapter **⟳** button in the Connections panel triggers it — no
+    gateway restart, no page reload~~
+16. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
     gateway config from the browser), browser-direct MQTT, alarm
     acknowledge/history, 32-bit Modbus registers (client-side register-pair
     combining in the gateway's own `modbus` adapter), OPC UA Sign&Encrypt,
-    faster S7 offline detection, live (non-restart) tag re-discovery when the
-    ladder program changes
+    faster S7 offline detection

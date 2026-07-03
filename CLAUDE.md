@@ -24,15 +24,24 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
 
 ## Architecture
 
-- `shared/src/index.ts` — the message schema (hello / tagUpdate). Change here
-  first; both sides import `@sim/shared` (TS source, no build step).
+- `shared/src/index.ts` — the message schema (hello / tagUpdate / refreshTags
+  / tagsChanged). Change here first; both sides import `@sim/shared` (TS
+  source, no build step).
 - `gateway/src/bus.ts` — TagBus: adapters publish in, subscribers fan out;
-  keeps latest value per tag for hello snapshots.
+  keeps latest value per tag for hello snapshots. `register()` fixes an
+  adapter's tag set once, at startup (`tagIndex` built from `adapter.tags`).
+  `refreshAdapterTags(id)` is the one exception: it calls the adapter's
+  optional `refreshTags()`, then reconciles that adapter's *slice* of
+  `tagIndex` live (add/update/remove) — a write against a since-removed tag
+  then correctly fails as "unknown tag". Nothing else mutates `tagIndex` after
+  registration.
 - `gateway/src/adapter.ts` — Adapter contract. New data sources (OPC UA,
   MQTT, …) implement this; instances are declared in `gateway/config.json`
   and constructed in `gateway/src/index.ts`. Tag ids are `<adapterId>.<name>`,
   unique per gateway. Convention: every network adapter publishes
-  `<adapterId>.online` (boolean) as a bindable health tag.
+  `<adapterId>.online` (boolean) as a bindable health tag. Optional
+  `refreshTags(): Promise<TagMeta[]>` opts an adapter into live re-discovery
+  (advertise it via `meta.canRefreshTags` so the frontend shows a button).
 - `gateway/src/adapters/modbus.ts` — Modbus TCP: per-kind span-batched polls,
   raw↔engineering via scale/offset (+signed int16), writes to coils/holding
   registers, offline after 3 failed polls with a 2 s reconnect loop. All
@@ -70,8 +79,16 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   tag (writable, since `/api/force` already forces anything unconditionally)
   when `tags` is omitted; `index.ts`'s adapter loop awaits `create()` before
   `bus.register()` because `TagBus` fixes an adapter's tag set at register
-  time — there's no live add/remove, so a program's tags added after the
-  gateway started need a restart to be (re-)discovered. E2E smoke test:
+  time. `tags` is a **getter** computed from the adapter's private
+  `tagConfigs` (not a frozen field) specifically so `refreshTags()` — which
+  re-runs `GET /api/tags` and replaces `tagConfigs` wholesale — is reflected
+  immediately; `meta.canRefreshTags` is `true` unless `config.tags` was given
+  explicitly (nothing to discover, so refresh is a no-op returning the
+  current tags). `TagBus.refreshAdapterTags()` calls this, reconciles the bus,
+  and `server.ts` broadcasts the result as `tagsChanged` to every client —
+  driven by the Connections panel's **⟳** button
+  (`ConnectionsPanel` → `GatewayConnection.refreshTags()` → WS `refreshTags`
+  request), no gateway restart or page reload needed. E2E smoke test:
   `scripts/tiaweb-probe.mjs` (downloads a seal-in + CTU program, drives it
   through the gateway WS, checks writeError + offline; `offline` arg asserts
   the down state after killing the runtime). The runtime can *also* be
@@ -140,7 +157,10 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   momentary button, knob, LED, gauge) and the panel manager (per-panel ✎ edit
   mode, widgets stored in `project.panels`).
 - Polish-phase modules: `connectionsPanel.ts` (adapter health, LWT device
-  dots), `alarmsPanel.ts` (rules live in `project.alarms`, evaluated
+  dots; a per-adapter **⟳** button when `adapter.canRefreshTags` calls
+  `conn.refreshTags(id)` and tracks its own busy/error state per adapter,
+  independent of the panel's 500 ms poll-driven re-render), `alarmsPanel.ts`
+  (rules live in `project.alarms`, evaluated
   client-side at 300 ms), `replayPanel.ts` (recorder hooks `store.onApply`;
   replay sets `store.livePaused` so wsClient drops live messages), `ui.ts`
   (shared DOM builders). Binding engine captures per-property baselines and

@@ -143,11 +143,16 @@ declared project tag from `GET /api/tags` the moment it connects:
 For a real Pi, change only the `url`: `"url": "http://192.168.x.x:8000"` — the
 Pi's own address on your network.
 
-Discovery runs once, at gateway startup — add tags to the ladder program later
-and restart the gateway to pick them up (same as every other adapter's
-config-driven, boot-time tag list). Want to curate a subset instead of
-publishing everything? Add an explicit `"tags": [...]` array (`{name,
-dataType: "boolean"|"number", writable}` per tag) and discovery is skipped.
+Discovery runs once at gateway startup — but you don't need to restart
+anything to pick up later edits. Add, rename, retype, or delete tags in the
+TIA app, download the updated program, then click the **⟳** button next to
+the `tia` row in the **Connections** panel (frontend, top-right by default):
+the gateway re-imports the tag list on the spot and every connected browser
+updates immediately. New tags appear, edited ones (name/type/comment) update
+in place, and removed ones simply stop updating — no gateway restart, no page
+reload. Want to curate a subset instead of publishing everything? Add an
+explicit `"tags": [...]` array (`{name, dataType: "boolean"|"number",
+writable}` per tag) — discovery (and the refresh button) is then skipped.
 
 ### Two ways to reach it — pick one per tag set
 
@@ -260,8 +265,9 @@ hand to someone else, on top of the autosave that already runs on every edit.
 | Symptom | Likely cause / fix |
 |---|---|
 | `tia.online` stays false | Wrong `url` in config.json, runtime not started yet, or a firewall between gateway and Pi. The adapter fails safe — it keeps polling and flips online after 3 failures, no restart needed once fixed. |
-| Gateway logs "tag discovery failed" and only publishes `tia.online`/`tia.running` | The runtime wasn't reachable *yet* when the gateway started (discovery only runs once, at startup) — start `plc_server.py` first, or restart the gateway once it's up. |
-| Bindings reference a `tia.*` tag that never appears | New tags added to the ladder program after the gateway started aren't picked up live — restart the gateway to re-run discovery. |
+| Gateway logs "tag discovery failed" and only publishes `tia.online`/`tia.running` | The runtime wasn't reachable *yet* when the gateway started (discovery only runs automatically once, at startup) — start `plc_server.py`, then click **⟳** in the Connections panel to discover on demand, no restart needed. |
+| Bindings reference a `tia.*` tag that never appears | You edited the ladder program after the gateway last discovered tags — click **⟳** next to the `tia` row in the Connections panel to re-import live. |
+| **⟳** button doesn't appear next to an adapter | It only shows for adapters with `canRefreshTags` — for `tiaweb` that means auto-discovery mode; if `config.json` gives it an explicit `tags` array, refresh is skipped (nothing to discover). |
 | Gateway logs "unknown tag name" (explicit `tags` config only) | A tag in config.json doesn't exist in the downloaded program yet (common right after startup, before you've hit Download → PLC), or a name typo — tag names are exact-match. |
 | Port 8082 already in use | `DEFAULT_GATEWAY_PORT` in `shared` is 8082 (8081 is often taken by unrelated Java processes) — override with `GATEWAY_PORT=<port>`. |
 | Pi: `gpiozero` import errors | Pi 5 needs the `lgpio` pin factory, not RPi.GPIO — `sudo apt install python3-gpiozero` pulls the right backend; `--mock` always works regardless of hardware. |

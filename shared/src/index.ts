@@ -2,6 +2,8 @@ export interface AdapterMeta {
   id: string;
   label: string;
   type: 'simulator' | 'modbus' | 'opcua' | 'mqtt' | 'custom';
+  /** Supports re-discovering its tag set live via a 'refreshTags' request (see TiaWebAdapter). */
+  canRefreshTags?: boolean;
 }
 
 export interface TagMeta {
@@ -41,7 +43,30 @@ export interface WriteErrorMessage {
   reason: string;
 }
 
-export type GatewayMessage = HelloMessage | TagUpdateMessage | WriteErrorMessage;
+/**
+ * Broadcast after a successful 'refreshTags' request: the adapter's complete,
+ * current tag set (added/edited/removed reconciled — not just a diff).
+ * Clients upsert by id and drop this adapter's ids that are no longer present.
+ */
+export interface TagsChangedMessage {
+  type: 'tagsChanged';
+  adapterId: string;
+  tags: TagMeta[];
+}
+
+/** Sent when a 'refreshTags' request fails (adapter unreachable, or doesn't support it). */
+export interface TagsRefreshErrorMessage {
+  type: 'tagsRefreshError';
+  adapterId: string;
+  reason: string;
+}
+
+export type GatewayMessage =
+  | HelloMessage
+  | TagUpdateMessage
+  | WriteErrorMessage
+  | TagsChangedMessage
+  | TagsRefreshErrorMessage;
 
 /** Client → gateway: write a value to a writable tag. */
 export interface WriteMessage {
@@ -50,7 +75,13 @@ export interface WriteMessage {
   value: number | boolean;
 }
 
-export type ClientMessage = WriteMessage;
+/** Client → gateway: re-discover an adapter's tags live (see AdapterMeta.canRefreshTags). */
+export interface RefreshTagsMessage {
+  type: 'refreshTags';
+  adapterId: string;
+}
+
+export type ClientMessage = WriteMessage | RefreshTagsMessage;
 
 /** 8081 is commonly taken; keep this in one place so gateway and frontend agree. */
 export const DEFAULT_GATEWAY_PORT = 8082;

@@ -54,6 +54,34 @@ export class TagBus {
     await adapter.write(tagId, value);
   }
 
+  /**
+   * Re-run one adapter's tag discovery and reconcile the result into the bus:
+   * added tags become visible, edited ones (same id, changed meta) update in
+   * place, and ids no longer reported are dropped — a write against a
+   * since-removed tag then correctly fails as "unknown tag", same as if it
+   * had never existed. Unlike register(), this can run any time the bus is live.
+   */
+  async refreshAdapterTags(adapterId: string): Promise<TagMeta[]> {
+    const adapter = this.registered.find((a) => a.meta.id === adapterId);
+    if (!adapter) throw new Error(`unknown adapter '${adapterId}'`);
+    if (!adapter.refreshTags) throw new Error(`adapter '${adapterId}' does not support tag refresh`);
+    const tags = await adapter.refreshTags();
+    for (const tag of tags) {
+      if (tag.adapterId !== adapterId) {
+        throw new Error(`tag '${tag.id}' declares adapterId '${tag.adapterId}' but belongs to '${adapterId}'`);
+      }
+    }
+    const keepIds = new Set(tags.map((t) => t.id));
+    for (const [id, meta] of this.tagIndex) {
+      if (meta.adapterId === adapterId && !keepIds.has(id)) {
+        this.tagIndex.delete(id);
+        this.latest.delete(id);
+      }
+    }
+    for (const t of tags) this.tagIndex.set(t.id, t);
+    return tags;
+  }
+
   /** Returns an unsubscribe function. */
   subscribe(listener: BusListener): () => void {
     this.listeners.add(listener);

@@ -17,4 +17,11 @@ export interface Adapter {
    * Adapters for read-only sources may omit this.
    */
   write?(tagId: string, value: number | boolean): Promise<void>;
+  /**
+   * Re-discover this adapter's tag set live (e.g. tiaweb re-reading
+   * /api/tags) and return the complete, current TagMeta[]. Adapters with a
+   * fixed, config-declared tag set omit this; set
+   * `meta.canRefreshTags` to advertise support.
+   */
+  refreshTags?(): Promise<TagMeta[]>;
 }

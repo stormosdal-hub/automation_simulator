@@ -79,7 +79,6 @@ async function discoverTags(url: string, timeoutMs: number): Promise<TiaWebTagCo
  */
 export class TiaWebAdapter implements Adapter {
   readonly meta: AdapterMeta;
-  readonly tags: TagMeta[];
 
   private publish: PublishFn | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
@@ -92,14 +91,18 @@ export class TiaWebAdapter implements Adapter {
   private readonly url: string;
   private readonly pollMs: number;
   private readonly timeoutMs: number;
-  private readonly tagConfigs: TiaWebTagConfig[];
+  /** Mutable: refreshTags() replaces this wholesale (add/edit/remove reconciled by the caller). */
+  private tagConfigs: TiaWebTagConfig[];
+  /** True when config.tags was given explicitly — refreshTags() is then a no-op (nothing to discover). */
+  private readonly explicitTags: boolean;
 
   /** Discovers tags from /api/tags when config.tags is omitted, then constructs. */
   static async create(config: TiaWebAdapterConfig): Promise<TiaWebAdapter> {
     const url = config.url.replace(/\/+$/, '');
     const timeoutMs = Math.max(500, Math.min((config.pollMs ?? 100) * 3, 2000));
-    let tags = config.tags;
-    if (!tags || tags.length === 0) {
+    const explicitTags = !!config.tags && config.tags.length > 0;
+    let tags: TiaWebTagConfig[] = config.tags ?? [];
+    if (!explicitTags) {
       try {
         tags = await discoverTags(url, timeoutMs);
         console.log(`[tiaweb:${config.id}] discovered ${tags.length} tag(s) from ${url}/api/tags`);
@@ -107,48 +110,53 @@ export class TiaWebAdapter implements Adapter {
         const reason = err instanceof Error ? err.message : String(err);
         console.warn(
           `[tiaweb:${config.id}] tag discovery failed (${reason}) — starting with no tags; ` +
-            'restart the gateway once the runtime is reachable, or declare "tags" in config.json',
+            'refresh once the runtime is reachable, or declare "tags" in config.json',
         );
         tags = [];
       }
     }
-    return new TiaWebAdapter(config, tags);
+    return new TiaWebAdapter(config, tags, explicitTags);
   }
 
-  private constructor(config: TiaWebAdapterConfig, tags: TiaWebTagConfig[]) {
+  private constructor(config: TiaWebAdapterConfig, tags: TiaWebTagConfig[], explicitTags: boolean) {
     this.url = config.url.replace(/\/+$/, '');
     this.pollMs = config.pollMs ?? 100;
     this.timeoutMs = Math.max(500, Math.min(this.pollMs * 3, 2000));
     this.tagConfigs = tags;
+    this.explicitTags = explicitTags;
     this.meta = {
       id: config.id,
       label: config.label ?? `TIA Web PLC (${this.url})`,
       type: 'custom',
+      canRefreshTags: !explicitTags,
     };
-    this.tags = [
-      {
-        id: `${config.id}.online`,
-        label: 'Connection online',
-        dataType: 'boolean',
-        adapterId: config.id,
-      },
-      {
-        id: `${config.id}.running`,
-        label: 'PLC running',
-        dataType: 'boolean',
-        adapterId: config.id,
-      },
-      ...tags.map(
+  }
+
+  /** Computed from tagConfigs so a refreshTags() call is immediately reflected. */
+  get tags(): TagMeta[] {
+    const id = this.meta.id;
+    return [
+      { id: `${id}.online`, label: 'Connection online', dataType: 'boolean', adapterId: id },
+      { id: `${id}.running`, label: 'PLC running', dataType: 'boolean', adapterId: id },
+      ...this.tagConfigs.map(
         (t): TagMeta => ({
-          id: `${config.id}.${t.name}`,
+          id: `${id}.${t.name}`,
           label: t.label ?? t.name,
           dataType: t.dataType,
           unit: t.unit,
-          adapterId: config.id,
+          adapterId: id,
           writable: t.writable === true,
         }),
       ),
     ];
+  }
+
+  /** Re-run discovery and adopt the result; a no-op returning the current tags if config.tags was explicit. */
+  async refreshTags(): Promise<TagMeta[]> {
+    if (this.explicitTags) return this.tags;
+    this.tagConfigs = await discoverTags(this.url, this.timeoutMs);
+    this.warnedMissing.clear();
+    return this.tags;
   }
 
   start(publish: PublishFn): void {

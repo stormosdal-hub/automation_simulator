@@ -28,6 +28,22 @@ export class TagStore {
     this.apply(msg.snapshot);
   }
 
+  /**
+   * Reconcile one adapter's tag set after a live refresh: `tags` is that
+   * adapter's complete, current list (not a diff) — added ids appear, edited
+   * ids (same id, changed meta) update in place, and ids no longer present
+   * are dropped (their last value just stops updating elsewhere until then).
+   */
+  applyTagsChanged(adapterId: string, tags: TagMeta[]): void {
+    const otherIds = this.order.filter((id) => this.metaById.get(id)?.adapterId !== adapterId);
+    const keepIds = new Set(tags.map((t) => t.id));
+    for (const [id, meta] of this.metaById) {
+      if (meta.adapterId === adapterId && !keepIds.has(id)) this.metaById.delete(id);
+    }
+    for (const t of tags) this.metaById.set(t.id, t);
+    this.order = [...otherIds, ...tags.map((t) => t.id)];
+  }
+
   apply(updates: TagUpdate[]): void {
     const now = Date.now();
     for (const u of updates) {
