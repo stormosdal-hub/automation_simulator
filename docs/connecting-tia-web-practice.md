@@ -68,11 +68,9 @@ the gateway's built-in `tia` adapter entry out of the box:
 | `Part_Count` | Int | read-only — CTU on Part_Sensor |
 | `Conveyor_PWM` | Real 0–1 | read-only — NORM_X duty, drives conveyor speed |
 
-Writing your own program instead? Just make sure the tag names you want the
-gateway to see match a `tags` entry you'll add under the `tia` adapter in
-`gateway/config.json` (§4) — the runtime exposes *every* declared tag over
-`/api/state` regardless; the config just decides which ones the gateway
-subscribes to.
+Writing your own program instead? Nothing to configure — the gateway
+**discovers every declared tag automatically** (§4), so whatever you name
+your tags is what shows up as `tia.<name>` on the bus.
 
 > **Two different ways to open the app matter here.** Double-clicking
 > `index.html` gives you a pure offline simulator with no server behind it —
@@ -135,25 +133,21 @@ like the simulation path.
 ## 4. Point the gateway at the runtime
 
 Edit `automation_sim/gateway/config.json`. It already ships a `tia` entry for
-the mock path; for a real Pi, change only the `url`:
+the mock path — no tag list to maintain, since the adapter discovers every
+declared project tag from `GET /api/tags` the moment it connects:
 
 ```json
-{ "type": "tiaweb", "id": "tia", "url": "http://127.0.0.1:8000", "pollMs": 100,
-  "tags": [
-    { "name": "Start_PB",    "dataType": "boolean", "writable": true },
-    { "name": "Stop_PB",     "dataType": "boolean", "writable": true },
-    { "name": "Part_Sensor", "dataType": "boolean", "writable": true },
-    { "name": "Motor",       "dataType": "boolean" },
-    { "name": "Run_Lamp",    "dataType": "boolean" },
-    { "name": "Count_Done",  "dataType": "boolean" },
-    { "name": "Part_Count",  "dataType": "number"  },
-    { "name": "Conveyor_PWM","dataType": "number"  }
-  ]
-}
+{ "type": "tiaweb", "id": "tia", "url": "http://127.0.0.1:8000", "pollMs": 100 }
 ```
 
-For the Pi path, that's `"url": "http://192.168.x.x:8000"` — the Pi's own
-address on your network.
+For a real Pi, change only the `url`: `"url": "http://192.168.x.x:8000"` — the
+Pi's own address on your network.
+
+Discovery runs once, at gateway startup — add tags to the ladder program later
+and restart the gateway to pick them up (same as every other adapter's
+config-driven, boot-time tag list). Want to curate a subset instead of
+publishing everything? Add an explicit `"tags": [...]` array (`{name,
+dataType: "boolean"|"number", writable}` per tag) and discovery is skipped.
 
 ### Two ways to reach it — pick one per tag set
 
@@ -252,12 +246,23 @@ the real ladder logic — press the on-screen button, watch the seal-in rung go
 live in the TIA app. The full binding editor walkthrough lives in the main
 [`README.md`](../README.md).
 
+Once you've built up bindings, panels, and alarms, use the **File** menu
+(top-left) to save this scene's own project — a *different* file from the TIA
+ladder program: **Save project as…** downloads a JSON snapshot of the
+bindings/panels/alarms/model you just built, **Open project…** loads one back
+in, and **New project** clears the current one (the 3D model stays loaded).
+Both New and Open replace the project and reload the page. This was
+localStorage-only before — the File menu adds real files you can back up or
+hand to someone else, on top of the autosave that already runs on every edit.
+
 ## 9. Troubleshooting
 
 | Symptom | Likely cause / fix |
 |---|---|
 | `tia.online` stays false | Wrong `url` in config.json, runtime not started yet, or a firewall between gateway and Pi. The adapter fails safe — it keeps polling and flips online after 3 failures, no restart needed once fixed. |
-| Gateway logs "unknown tag name" | A tag in config.json doesn't exist in the downloaded program yet (common right after startup, before you've hit Download → PLC), or a name typo — tag names are exact-match. |
+| Gateway logs "tag discovery failed" and only publishes `tia.online`/`tia.running` | The runtime wasn't reachable *yet* when the gateway started (discovery only runs once, at startup) — start `plc_server.py` first, or restart the gateway once it's up. |
+| Bindings reference a `tia.*` tag that never appears | New tags added to the ladder program after the gateway started aren't picked up live — restart the gateway to re-run discovery. |
+| Gateway logs "unknown tag name" (explicit `tags` config only) | A tag in config.json doesn't exist in the downloaded program yet (common right after startup, before you've hit Download → PLC), or a name typo — tag names are exact-match. |
 | Port 8082 already in use | `DEFAULT_GATEWAY_PORT` in `shared` is 8082 (8081 is often taken by unrelated Java processes) — override with `GATEWAY_PORT=<port>`. |
 | Pi: `gpiozero` import errors | Pi 5 needs the `lgpio` pin factory, not RPi.GPIO — `sudo apt install python3-gpiozero` pulls the right backend; `--mock` always works regardless of hardware. |
 | Modbus client gets exception code 2 (illegal address) | Address is outside the 0–19999 coil/holding bank or the tag has no `%I/%Q/%M` address at all — check `/api/modbus-map`. |

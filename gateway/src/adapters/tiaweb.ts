@@ -22,7 +22,17 @@ export interface TiaWebAdapterConfig {
   /** Base URL of the TIA Web Practice runtime (plc_server.py), e.g. http://127.0.0.1:8000. */
   url: string;
   pollMs?: number;
-  tags: TiaWebTagConfig[];
+  /**
+   * Optional explicit tag list. When omitted (the default — no need to hand-edit
+   * config.json), `TiaWebAdapter.create()` discovers every declared project tag
+   * from `GET /api/tags` once at startup and publishes all of them, writable
+   * (the runtime's `/api/force` already forces any tag unconditionally, so this
+   * isn't a security boundary — just adapter bookkeeping). Tags added to the
+   * ladder program *after* the gateway started need a gateway restart to show
+   * up, same as every other adapter's config-driven, boot-time tag list. Supply
+   * `tags` explicitly to curate a subset instead.
+   */
+  tags?: TiaWebTagConfig[];
 }
 
 const MAX_POLL_FAILURES = 3;
@@ -31,6 +41,27 @@ const MAX_POLL_FAILURES = 3;
 interface TiaState {
   running?: boolean;
   mem?: Record<string, number | boolean>;
+}
+
+/** Shape of the fields we consume from GET /api/tags. */
+interface DiscoveredTag {
+  name: string;
+  dataType?: string;
+  comment?: string | null;
+}
+
+async function discoverTags(url: string, timeoutMs: number): Promise<TiaWebTagConfig[]> {
+  const res = await fetch(`${url}/api/tags`, { signal: AbortSignal.timeout(timeoutMs) });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const body = (await res.json()) as { tags?: DiscoveredTag[] };
+  return (body.tags ?? [])
+    .filter((t) => t.name)
+    .map((t) => ({
+      name: t.name,
+      label: t.comment || t.name,
+      dataType: t.dataType === 'Bool' ? ('boolean' as const) : ('number' as const),
+      writable: true,
+    }));
 }
 
 /**
@@ -63,11 +94,32 @@ export class TiaWebAdapter implements Adapter {
   private readonly timeoutMs: number;
   private readonly tagConfigs: TiaWebTagConfig[];
 
-  constructor(config: TiaWebAdapterConfig) {
+  /** Discovers tags from /api/tags when config.tags is omitted, then constructs. */
+  static async create(config: TiaWebAdapterConfig): Promise<TiaWebAdapter> {
+    const url = config.url.replace(/\/+$/, '');
+    const timeoutMs = Math.max(500, Math.min((config.pollMs ?? 100) * 3, 2000));
+    let tags = config.tags;
+    if (!tags || tags.length === 0) {
+      try {
+        tags = await discoverTags(url, timeoutMs);
+        console.log(`[tiaweb:${config.id}] discovered ${tags.length} tag(s) from ${url}/api/tags`);
+      } catch (err) {
+        const reason = err instanceof Error ? err.message : String(err);
+        console.warn(
+          `[tiaweb:${config.id}] tag discovery failed (${reason}) — starting with no tags; ` +
+            'restart the gateway once the runtime is reachable, or declare "tags" in config.json',
+        );
+        tags = [];
+      }
+    }
+    return new TiaWebAdapter(config, tags);
+  }
+
+  private constructor(config: TiaWebAdapterConfig, tags: TiaWebTagConfig[]) {
     this.url = config.url.replace(/\/+$/, '');
     this.pollMs = config.pollMs ?? 100;
     this.timeoutMs = Math.max(500, Math.min(this.pollMs * 3, 2000));
-    this.tagConfigs = config.tags;
+    this.tagConfigs = tags;
     this.meta = {
       id: config.id,
       label: config.label ?? `TIA Web PLC (${this.url})`,
@@ -86,7 +138,7 @@ export class TiaWebAdapter implements Adapter {
         dataType: 'boolean',
         adapterId: config.id,
       },
-      ...config.tags.map(
+      ...tags.map(
         (t): TagMeta => ({
           id: `${config.id}.${t.name}`,
           label: t.label ?? t.name,

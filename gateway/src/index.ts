@@ -35,7 +35,7 @@ for (const entry of config.adapters) {
       bus.register(new S7Adapter(entry));
       break;
     case 'tiaweb':
-      bus.register(new TiaWebAdapter(entry));
+      bus.register(await TiaWebAdapter.create(entry));
       break;
     case 'conveyor':
       bus.register(new ConveyorAdapter(entry));

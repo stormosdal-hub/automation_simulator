@@ -64,15 +64,22 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   the loop keeps polling and flips `<id>.online` after 3 failures.
   `<id>.running` mirrors PLC RUN/STOP and fails safe to false while offline.
   Unknown tag names are warned once (usually "program not downloaded yet").
-  E2E smoke test: `scripts/tiaweb-probe.mjs` (downloads a seal-in + CTU
-  program, drives it through the gateway WS, checks writeError + offline;
-  `offline` arg asserts the down state after killing the runtime). The
-  runtime can *also* be reached with this gateway's plain `modbus` adapter
-  type — `plc_server.py --modbus-port <port>` serves standard Modbus TCP
-  over the same S7-style `%I/%Q/%M` memory (see
-  `TIA_Portal_Web-app/README.md` → "Modbus TCP server mode" for the
-  coil/discrete/holding/input address mapping); no gateway code changes
-  needed for that path.
+  `TiaWebAdapterConfig.tags` is optional — the private constructor is only
+  reachable via the async `TiaWebAdapter.create()` factory, which fetches
+  `GET /api/tags` once and builds the tag list from every declared project
+  tag (writable, since `/api/force` already forces anything unconditionally)
+  when `tags` is omitted; `index.ts`'s adapter loop awaits `create()` before
+  `bus.register()` because `TagBus` fixes an adapter's tag set at register
+  time — there's no live add/remove, so a program's tags added after the
+  gateway started need a restart to be (re-)discovered. E2E smoke test:
+  `scripts/tiaweb-probe.mjs` (downloads a seal-in + CTU program, drives it
+  through the gateway WS, checks writeError + offline; `offline` arg asserts
+  the down state after killing the runtime). The runtime can *also* be
+  reached with this gateway's plain `modbus` adapter type —
+  `plc_server.py --modbus-port <port>` serves standard Modbus TCP over the
+  same S7-style `%I/%Q/%M` memory (see `TIA_Portal_Web-app/README.md` →
+  "Modbus TCP server mode" for the coil/discrete/holding/input address
+  mapping); no gateway code changes needed for that path.
 - `gateway/src/links.ts` — tag-link bridge (`config.links`): routes one
   adapter's published tag into another's write. Change-driven (adapters
   republish every poll — forwarding those would hammer targets), values are
@@ -108,9 +115,23 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   applyTransform), engine.ts (per-frame applier; per-node euler state so
   multi-axis rotation bindings compose; problems surfaced via getProblem).
 - `frontend/src/` — scene.ts (setup + GLB load only), projectStore.ts
-  (localStorage + defaults), bindingPanel.ts (editor UI), sceneTree.ts +
-  viewportSelection.ts (picking; engine needs `{ stencil: true }` for the
-  HighlightLayer), tagStore.ts, panel.ts, tagTable.ts, wsClient.ts.
+  (localStorage + defaults; `.export()`/`.replace()` back the File menu),
+  bindingPanel.ts (editor UI), sceneTree.ts + viewportSelection.ts (picking;
+  engine needs `{ stencil: true }` for the HighlightLayer), tagStore.ts,
+  panel.ts, tagTable.ts, wsClient.ts.
+- `frontend/src/fileMenu.ts` — the `#topbar` **File** dropdown: New / Open /
+  Save project as JSON, in addition to (not instead of) the localStorage
+  autosave every `ProjectStore` mutation already does. Save downloads
+  `ProjectStore.export()` via a Blob URL; Open reads a picked file, validates
+  its shape, then `ProjectStore.replace()`s it. Both New and Open confirm()
+  first (destructive — they replace the whole project) and `location.reload()`
+  after, because bindings react to project changes live but panels/widgets/
+  alarms don't — a bulk replace needs a fresh boot to render cleanly
+  everywhere. Elements carry `data-role` (`file-menu`, `file-menu-trigger`,
+  `file-new`/`file-open`/`file-save`) for headless testing. Gotcha: the
+  dropdown's `hidden` attribute only hides it if no author CSS sets `display`
+  on the same selector without a `[hidden]` override — see the
+  `.file-menu-dropdown[hidden]` rule in `index.html`.
 - Write path: browser sends `{type:'write', tagId, value}` → server →
   `bus.write` → owning adapter's `write()`; confirmed values return via the
   normal update stream, rejections via `writeError`. Tags opt in with

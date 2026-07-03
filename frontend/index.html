@@ -20,9 +20,64 @@
         outline: none;
         touch-action: none;
       }
+      #topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: rgba(10, 14, 20, 0.94);
+        border-bottom: 1px solid #2a3442;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        gap: 8px;
+        z-index: 100;
+      }
+      #topbar .brand {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #5c6b7d;
+        margin-right: 4px;
+      }
+      .file-menu {
+        position: relative;
+      }
+      .file-menu-dropdown {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        min-width: 190px;
+        background: #131a24;
+        border: 1px solid #2a3442;
+        border-radius: 6px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        z-index: 101;
+      }
+      .file-menu-dropdown[hidden] {
+        display: none;
+      }
+      .file-menu-item {
+        background: none;
+        border: none;
+        color: #dfe6ee;
+        text-align: left;
+        padding: 7px 10px;
+        font: inherit;
+        font-size: 12px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .file-menu-item:hover {
+        background: #1d2a3a;
+      }
       #hud {
         position: fixed;
-        top: 12px;
+        top: 52px;
         left: 12px;
         background: rgba(10, 14, 20, 0.78);
         border: 1px solid #2a3442;
@@ -51,7 +106,7 @@
       }
       #panels {
         position: fixed;
-        top: 12px;
+        top: 52px;
         right: 12px;
         width: 340px;
         display: flex;
@@ -120,13 +175,13 @@
       }
       #panels-left {
         position: fixed;
-        top: 76px;
+        top: 116px;
         left: 12px;
         width: 300px;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        max-height: calc(100vh - 92px);
+        max-height: calc(100vh - 132px);
         overflow-y: auto;
       }
       .tree-row {
@@ -493,6 +548,9 @@
   </head>
   <body>
     <canvas id="renderCanvas"></canvas>
+    <div id="topbar">
+      <span class="brand">Automation Sim</span>
+    </div>
     <div id="hud"></div>
     <div id="panels"></div>
     <div id="panels-left"></div>

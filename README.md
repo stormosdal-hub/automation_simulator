@@ -5,8 +5,22 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: TIA runtime speaks Modbus TCP too** — the sibling TIA Web
-Practice PLC runtime (`plc_server.py`) can now also serve standard Modbus TCP
+**Current state: zero-JSON setup** — the `tiaweb` adapter now **discovers its
+tags automatically**: leave `tags` out of its `config.json` entry (just
+`type`/`id`/`url`/`pollMs`) and it fetches `GET /api/tags` from the TIA
+runtime once at startup and publishes every declared project tag, writable,
+with no hand-typed tag list to keep in sync. An explicit `tags` array still
+works if you want to curate a subset — the runtime's own tag names always
+win either way. Adding tags to the ladder program after the gateway started
+still needs a gateway restart to pick them up, same as every other adapter's
+config-driven, boot-time tag list. The frontend also gained a **File menu**
+(top-left): New / Open / Save project as JSON — projects were localStorage-only
+before; Save downloads the current project, Open loads one back in (both New
+and Open replace the project and reload the page so every panel re-initializes
+cleanly).
+
+Previously: **TIA runtime speaks Modbus TCP too** — the sibling TIA Web
+Practice PLC runtime (`plc_server.py`) can also serve standard Modbus TCP
 (`--modbus-port`), so this gateway's existing generic **`modbus`** adapter can
 talk to it directly — no new adapter code needed, and any other SCADA/HMI can
 connect the same way. Addresses map onto the runtime's S7-style `%I/%Q/%M`
@@ -95,9 +109,12 @@ Connections are declared in `gateway/config.json` — adapter types:
   writes, optional jsonPath into JSON payloads, dataType, writable, retain)
 - `s7` — host/port/rack/slot/pollMs + tag map (nodes7 address like
   `DB1,REAL0` / `DB1,X8.0`, dataType, writable)
-- `tiaweb` — url (+pollMs) of a TIA Web Practice runtime + tag map (name =
-  the TIA tag name or address, dataType, writable); writable tags force PLC
-  inputs/memory, so panel widgets and machine models can feed sensors
+- `tiaweb` — url (+pollMs) of a TIA Web Practice runtime; `tags` is optional —
+  omit it and every declared project tag is discovered from `GET /api/tags`
+  and published writable (forcing is unconditional on the runtime's side
+  anyway), so panel widgets and machine models can feed sensors with no
+  config.json tag list to maintain. Pass `tags` explicitly to curate a subset
+  instead.
 - `conveyor` — machine model (no external device): beltLength/eyeAt/maxSpeed/
   minSpeed/autoFeedS/partSlots; writable `motorCmd`/`speedCmd`/`feed`, read
   `photoEye`, `beltSpeed`, `partsOnBelt`, `partsDone`, `part1Pos…partNPos`
@@ -163,8 +180,12 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
 13. ~~Modbus-server mode in the TIA runtime (`plc_server.py --modbus-port`,
     `/api/modbus-map`) — any SCADA can connect, and this gateway's own
     `modbus` adapter works against it unchanged~~
-14. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
+14. ~~Tag auto-discovery (`tiaweb` adapter reads `GET /api/tags`, no
+    config.json tag list required) + frontend File menu (New/Open/Save
+    project as JSON, in addition to localStorage)~~
+15. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
     gateway config from the browser), browser-direct MQTT, alarm
     acknowledge/history, 32-bit Modbus registers (client-side register-pair
     combining in the gateway's own `modbus` adapter), OPC UA Sign&Encrypt,
-    faster S7 offline detection
+    faster S7 offline detection, live (non-restart) tag re-discovery when the
+    ladder program changes

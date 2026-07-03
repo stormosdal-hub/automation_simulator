@@ -80,8 +80,8 @@
     "semantic_hash": "af4024f5a17a713d0c5d1d6b221aa536"
   },
   "README.md": {
-    "mtime": 1783092159.656778,
-    "ast_hash": "5b2239093119baa4439c01ebbf71f93c",
+    "mtime": 1783094008.398525,
+    "ast_hash": "c3d2e145b5e52e8856c337fc37b08a3c",
     "semantic_hash": ""
   },
   "frontend/index.html": {
@@ -302,6 +302,11 @@
   "gateway/src/adapters/press.ts": {
     "mtime": 1783032843.742086,
     "ast_hash": "7b187aa69c2e3e1e11400a708d3f3034",
+    "semantic_hash": ""
+  },
+  "docs/connecting-tia-web-practice.md": {
+    "mtime": 1783093991.7855325,
+    "ast_hash": "220feb95e1597c13964c7b1ef4f56a48",
     "semantic_hash": ""
   }
 }
