@@ -399,7 +399,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel",
-      "community": 30,
+      "community": 42,
       "norm_label": "alarmspanel"
     },
     {
@@ -409,7 +409,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_constructor",
-      "community": 30,
+      "community": 42,
       "norm_label": ".constructor()"
     },
     {
@@ -419,7 +419,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_tick",
-      "community": 30,
+      "community": 42,
       "norm_label": ".tick()"
     },
     {
@@ -429,7 +429,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_refreshdurations",
-      "community": 30,
+      "community": 42,
       "norm_label": ".refreshdurations()"
     },
     {
@@ -439,7 +439,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_render",
-      "community": 30,
+      "community": 42,
       "norm_label": ".render()"
     },
     {
@@ -449,7 +449,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_renderform",
-      "community": 30,
+      "community": 42,
       "norm_label": ".renderform()"
     },
     {
@@ -459,7 +459,7 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "src_alarmspanel_formatduration",
-      "community": 30,
+      "community": 42,
       "norm_label": "formatduration()"
     },
     {
@@ -709,7 +709,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "bindings_engine_bindingengine_constructor",
-      "community": 4,
+      "community": 39,
       "norm_label": ".constructor()"
     },
     {
@@ -749,7 +749,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "bindings_engine_bindingengine_tick",
-      "community": 4,
+      "community": 39,
       "norm_label": ".tick()"
     },
     {
@@ -889,7 +889,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "bindings_types_widget",
-      "community": 31,
+      "community": 2,
       "norm_label": "widget"
     },
     {
@@ -909,7 +909,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "bindings_types_alarmcondition",
-      "community": 2,
+      "community": 30,
       "norm_label": "alarmcondition"
     },
     {
@@ -919,7 +919,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "bindings_types_alarmrule",
-      "community": 31,
+      "community": 2,
       "norm_label": "alarmrule"
     },
     {
@@ -929,7 +929,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "bindings_types_project",
-      "community": 31,
+      "community": 2,
       "norm_label": "project"
     },
     {
@@ -939,7 +939,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "bindings_types_alarmactive",
-      "community": 30,
+      "community": 42,
       "norm_label": "alarmactive()"
     },
     {
@@ -999,7 +999,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_connectionspanel",
-      "community": 30,
+      "community": 41,
       "norm_label": "connectionspanel.ts"
     },
     {
@@ -1009,7 +1009,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel",
-      "community": 3,
+      "community": 44,
       "norm_label": "connectionspanel"
     },
     {
@@ -1019,7 +1019,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_constructor",
-      "community": 3,
+      "community": 44,
       "norm_label": ".constructor()"
     },
     {
@@ -1029,7 +1029,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_render",
-      "community": 3,
+      "community": 44,
       "norm_label": ".render()"
     },
     {
@@ -1169,7 +1169,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hud",
-      "community": 3,
+      "community": 41,
       "norm_label": "hud.ts"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_hud_hud",
-      "community": 3,
+      "community": 41,
       "norm_label": "hud"
     },
     {
@@ -1189,7 +1189,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_hud_hud_constructor",
-      "community": 3,
+      "community": 41,
       "norm_label": ".constructor()"
     },
     {
@@ -1199,7 +1199,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_hud_hud_setstatus",
-      "community": 3,
+      "community": 41,
       "norm_label": ".setstatus()"
     },
     {
@@ -1209,7 +1209,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_hud_hud_setscene",
-      "community": 3,
+      "community": 41,
       "norm_label": ".setscene()"
     },
     {
@@ -1219,7 +1219,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_hud_hud_render",
-      "community": 3,
+      "community": 41,
       "norm_label": ".render()"
     },
     {
@@ -1229,7 +1229,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 3,
+      "community": 31,
       "norm_label": "main.ts"
     },
     {
@@ -1239,7 +1239,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_main_canvas",
-      "community": 3,
+      "community": 31,
       "norm_label": "canvas"
     },
     {
@@ -1249,7 +1249,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_main_store",
-      "community": 3,
+      "community": 31,
       "norm_label": "store"
     },
     {
@@ -1259,7 +1259,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_main_projectstore",
-      "community": 3,
+      "community": 31,
       "norm_label": "projectstore"
     },
     {
@@ -1269,7 +1269,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_main_selection",
-      "community": 3,
+      "community": 31,
       "norm_label": "selection"
     },
     {
@@ -1279,7 +1279,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_main_bindingengine",
-      "community": 3,
+      "community": 31,
       "norm_label": "bindingengine"
     },
     {
@@ -1289,7 +1289,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_main_hud",
-      "community": 3,
+      "community": 31,
       "norm_label": "hud"
     },
     {
@@ -1299,7 +1299,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "src_main_connectionspanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "connectionspanel"
     },
     {
@@ -1309,7 +1309,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_main_tagspanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "tagspanel"
     },
     {
@@ -1319,7 +1319,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "src_main_treepanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "treepanel"
     },
     {
@@ -1329,7 +1329,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_main_scenetree",
-      "community": 3,
+      "community": 31,
       "norm_label": "scenetree"
     },
     {
@@ -1339,7 +1339,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_main_bindingspanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "bindingspanel"
     },
     {
@@ -1349,7 +1349,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_main_bindingpanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "bindingpanel"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_main_conn",
-      "community": 3,
+      "community": 31,
       "norm_label": "conn"
     },
     {
@@ -1369,7 +1369,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "src_main_alarmspanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "alarmspanel"
     },
     {
@@ -1379,7 +1379,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "src_main_replaypanel",
-      "community": 3,
+      "community": 31,
       "norm_label": "replaypanel"
     },
     {
@@ -1409,7 +1409,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_panel_createpanel",
-      "community": 4,
+      "community": 39,
       "norm_label": "createpanel()"
     },
     {
@@ -1419,7 +1419,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_projectstore",
-      "community": 31,
+      "community": 2,
       "norm_label": "projectstore.ts"
     },
     {
@@ -1429,7 +1429,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_projectstore_default_project",
-      "community": 31,
+      "community": 2,
       "norm_label": "default_project"
     },
     {
@@ -1439,7 +1439,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_projectstore_newbindingid",
-      "community": 4,
+      "community": 2,
       "norm_label": "newbindingid()"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "src_projectstore_projectstore",
-      "community": 31,
+      "community": 2,
       "norm_label": "projectstore"
     },
     {
@@ -1459,7 +1459,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_constructor",
-      "community": 31,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -1469,7 +1469,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_load",
-      "community": 31,
+      "community": 2,
       "norm_label": ".load()"
     },
     {
@@ -1479,7 +1479,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_onchange",
-      "community": 31,
+      "community": 2,
       "norm_label": ".onchange()"
     },
     {
@@ -1489,7 +1489,7 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_save",
-      "community": 31,
+      "community": 2,
       "norm_label": ".save()"
     },
     {
@@ -1499,7 +1499,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_upsertbinding",
-      "community": 31,
+      "community": 2,
       "norm_label": ".upsertbinding()"
     },
     {
@@ -1509,7 +1509,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removebinding",
-      "community": 31,
+      "community": 2,
       "norm_label": ".removebinding()"
     },
     {
@@ -1519,7 +1519,7 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_replace",
-      "community": 31,
+      "community": 2,
       "norm_label": ".replace()"
     },
     {
@@ -1529,7 +1529,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_upsertalarm",
-      "community": 31,
+      "community": 2,
       "norm_label": ".upsertalarm()"
     },
     {
@@ -1539,7 +1539,7 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removealarm",
-      "community": 31,
+      "community": 2,
       "norm_label": ".removealarm()"
     },
     {
@@ -1549,7 +1549,7 @@
       "source_location": "L158",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_addpanel",
-      "community": 31,
+      "community": 2,
       "norm_label": ".addpanel()"
     },
     {
@@ -1559,7 +1559,7 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removepanel",
-      "community": 31,
+      "community": 2,
       "norm_label": ".removepanel()"
     },
     {
@@ -1569,7 +1569,7 @@
       "source_location": "L170",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_upsertwidget",
-      "community": 31,
+      "community": 2,
       "norm_label": ".upsertwidget()"
     },
     {
@@ -1579,7 +1579,7 @@
       "source_location": "L179",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removewidget",
-      "community": 31,
+      "community": 2,
       "norm_label": ".removewidget()"
     },
     {
@@ -1589,7 +1589,7 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_reset",
-      "community": 31,
+      "community": 2,
       "norm_label": ".reset()"
     },
     {
@@ -1599,7 +1599,7 @@
       "source_location": "L191",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_export",
-      "community": 31,
+      "community": 2,
       "norm_label": ".export()"
     },
     {
@@ -1639,7 +1639,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel",
-      "community": 30,
+      "community": 40,
       "norm_label": "replaypanel"
     },
     {
@@ -1649,7 +1649,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_constructor",
-      "community": 30,
+      "community": 40,
       "norm_label": ".constructor()"
     },
     {
@@ -1659,7 +1659,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_duration",
-      "community": 30,
+      "community": 40,
       "norm_label": ".duration()"
     },
     {
@@ -1669,7 +1669,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_startrecording",
-      "community": 30,
+      "community": 40,
       "norm_label": ".startrecording()"
     },
     {
@@ -1679,7 +1679,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_stoprecording",
-      "community": 30,
+      "community": 40,
       "norm_label": ".stoprecording()"
     },
     {
@@ -1689,7 +1689,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_startreplay",
-      "community": 30,
+      "community": 40,
       "norm_label": ".startreplay()"
     },
     {
@@ -1699,7 +1699,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_pausereplay",
-      "community": 30,
+      "community": 40,
       "norm_label": ".pausereplay()"
     },
     {
@@ -1709,7 +1709,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_stopreplay",
-      "community": 30,
+      "community": 40,
       "norm_label": ".stopreplay()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_tickreplay",
-      "community": 30,
+      "community": 40,
       "norm_label": ".tickreplay()"
     },
     {
@@ -1729,7 +1729,7 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_download",
-      "community": 30,
+      "community": 40,
       "norm_label": ".download()"
     },
     {
@@ -1739,7 +1739,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_loadfile",
-      "community": 30,
+      "community": 40,
       "norm_label": ".loadfile()"
     },
     {
@@ -1749,7 +1749,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_updatestatus",
-      "community": 30,
+      "community": 40,
       "norm_label": ".updatestatus()"
     },
     {
@@ -1759,7 +1759,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_render",
-      "community": 30,
+      "community": 40,
       "norm_label": ".render()"
     },
     {
@@ -1769,7 +1769,7 @@
       "source_location": "L231",
       "_origin": "ast",
       "id": "src_replaypanel_formatms",
-      "community": 30,
+      "community": 40,
       "norm_label": "formatms()"
     },
     {
@@ -1779,7 +1779,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_scene",
-      "community": 3,
+      "community": 31,
       "norm_label": "scene.ts"
     },
     {
@@ -1789,7 +1789,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_scene_createscene",
-      "community": 3,
+      "community": 31,
       "norm_label": "createscene()"
     },
     {
@@ -1939,7 +1939,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagstore",
-      "community": 30,
+      "community": 41,
       "norm_label": "tagstore.ts"
     },
     {
@@ -1959,7 +1959,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_tagstore_tagrow",
-      "community": 30,
+      "community": 41,
       "norm_label": "tagrow"
     },
     {
@@ -1969,7 +1969,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_tagstore_tagstore",
-      "community": 4,
+      "community": 39,
       "norm_label": "tagstore"
     },
     {
@@ -1979,7 +1979,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_applyhello",
-      "community": 4,
+      "community": 39,
       "norm_label": ".applyhello()"
     },
     {
@@ -1989,7 +1989,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_apply",
-      "community": 4,
+      "community": 39,
       "norm_label": ".apply()"
     },
     {
@@ -1999,7 +1999,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_agems",
-      "community": 4,
+      "community": 39,
       "norm_label": ".agems()"
     },
     {
@@ -2009,7 +2009,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_raw",
-      "community": 4,
+      "community": 39,
       "norm_label": ".raw()"
     },
     {
@@ -2019,7 +2019,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_metafor",
-      "community": 4,
+      "community": 39,
       "norm_label": ".metafor()"
     },
     {
@@ -2029,7 +2029,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_num",
-      "community": 4,
+      "community": 39,
       "norm_label": ".num()"
     },
     {
@@ -2039,7 +2039,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_bool",
-      "community": 4,
+      "community": 39,
       "norm_label": ".bool()"
     },
     {
@@ -2049,7 +2049,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_rows",
-      "community": 4,
+      "community": 39,
       "norm_label": ".rows()"
     },
     {
@@ -2059,7 +2059,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagtable",
-      "community": 3,
+      "community": 39,
       "norm_label": "tagtable.ts"
     },
     {
@@ -2069,7 +2069,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_tagtable_tagtable",
-      "community": 3,
+      "community": 39,
       "norm_label": "tagtable"
     },
     {
@@ -2079,7 +2079,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_tagtable_tagtable_constructor",
-      "community": 3,
+      "community": 39,
       "norm_label": ".constructor()"
     },
     {
@@ -2089,7 +2089,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_tagtable_tagtable_refresh",
-      "community": 3,
+      "community": 39,
       "norm_label": ".refresh()"
     },
     {
@@ -2329,7 +2329,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_wsclient",
-      "community": 3,
+      "community": 41,
       "norm_label": "wsclient.ts"
     },
     {
@@ -2339,7 +2339,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_wsclient_wsstatus",
-      "community": 3,
+      "community": 41,
       "norm_label": "wsstatus"
     },
     {
@@ -2359,7 +2359,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_wsclient_connectgateway",
-      "community": 3,
+      "community": 41,
       "norm_label": "connectgateway()"
     },
     {
@@ -3609,7 +3609,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter",
-      "community": 38,
+      "community": 1,
       "norm_label": "mixeradapter"
     },
     {
@@ -3619,7 +3619,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_constructor",
-      "community": 38,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -3629,7 +3629,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_start",
-      "community": 38,
+      "community": 1,
       "norm_label": ".start()"
     },
     {
@@ -3639,7 +3639,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_stop",
-      "community": 38,
+      "community": 1,
       "norm_label": ".stop()"
     },
     {
@@ -3659,7 +3659,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_tick",
-      "community": 38,
+      "community": 1,
       "norm_label": ".tick()"
     },
     {
@@ -4109,7 +4109,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "adapters_press_pressadapter",
-      "community": 39,
+      "community": 38,
       "norm_label": "pressadapter"
     },
     {
@@ -4119,7 +4119,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "adapters_press_pressadapter_constructor",
-      "community": 39,
+      "community": 38,
       "norm_label": ".constructor()"
     },
     {
@@ -4129,7 +4129,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "adapters_press_pressadapter_start",
-      "community": 39,
+      "community": 38,
       "norm_label": ".start()"
     },
     {
@@ -4139,7 +4139,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "adapters_press_pressadapter_stop",
-      "community": 39,
+      "community": 38,
       "norm_label": ".stop()"
     },
     {
@@ -4159,7 +4159,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "adapters_press_pressadapter_tick",
-      "community": 39,
+      "community": 38,
       "norm_label": ".tick()"
     },
     {
@@ -4729,7 +4729,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_server",
-      "community": 3,
+      "community": 43,
       "norm_label": "server.ts"
     },
     {
@@ -4739,7 +4739,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_server_startwsserver",
-      "community": 3,
+      "community": 43,
       "norm_label": "startwsserver()"
     },
     {
@@ -5259,7 +5259,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shared_src_index_ts_src_index",
-      "community": 1,
+      "community": 43,
       "norm_label": "index.ts"
     },
     {
@@ -5299,7 +5299,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_index_hellomessage",
-      "community": 4,
+      "community": 39,
       "norm_label": "hellomessage"
     },
     {
@@ -5309,7 +5309,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_index_tagupdatemessage",
-      "community": 1,
+      "community": 43,
       "norm_label": "tagupdatemessage"
     },
     {
@@ -5319,7 +5319,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "src_index_writeerrormessage",
-      "community": 1,
+      "community": 43,
       "norm_label": "writeerrormessage"
     },
     {
@@ -5329,7 +5329,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_index_gatewaymessage",
-      "community": 3,
+      "community": 43,
       "norm_label": "gatewaymessage"
     },
     {
@@ -5339,7 +5339,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_index_writemessage",
-      "community": 1,
+      "community": 43,
       "norm_label": "writemessage"
     },
     {
@@ -5349,7 +5349,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_index_clientmessage",
-      "community": 3,
+      "community": 43,
       "norm_label": "clientmessage"
     },
     {
@@ -5426,7 +5426,7 @@
       "label": "Run",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L78",
       "_origin": "ast",
       "id": "readme_run",
       "community": 25,
@@ -5436,7 +5436,7 @@
       "label": "Layout",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L127",
+      "source_location": "L130",
       "_origin": "ast",
       "id": "readme_layout",
       "community": 25,
@@ -5446,11 +5446,171 @@
       "label": "Roadmap",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L140",
+      "source_location": "L143",
       "_origin": "ast",
       "id": "readme_roadmap",
       "community": 25,
       "norm_label": "roadmap"
+    },
+    {
+      "label": "connecting-tia-web-practice.md",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice",
+      "community": 25,
+      "norm_label": "connecting-tia-web-practice.md"
+    },
+    {
+      "label": "Connecting TIA Web Practice to Automation Sim",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "community": 25,
+      "norm_label": "connecting tia web practice to automation sim"
+    },
+    {
+      "label": "Contents",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_contents",
+      "community": 25,
+      "norm_label": "contents"
+    },
+    {
+      "label": "1. Prerequisites & repo layout",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_1_prerequisites_repo_layout",
+      "community": 25,
+      "norm_label": "1. prerequisites & repo layout"
+    },
+    {
+      "label": "2. Get a PLC program running",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_2_get_a_plc_program_running",
+      "community": 25,
+      "norm_label": "2. get a plc program running"
+    },
+    {
+      "label": "3. Choose a path",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_3_choose_a_path",
+      "community": 25,
+      "norm_label": "3. choose a path"
+    },
+    {
+      "label": "Simulation only (no hardware)",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_simulation_only_no_hardware",
+      "community": 25,
+      "norm_label": "simulation only (no hardware)"
+    },
+    {
+      "label": "Real Raspberry Pi (with hardware)",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_real_raspberry_pi_with_hardware",
+      "community": 25,
+      "norm_label": "real raspberry pi (with hardware)"
+    },
+    {
+      "label": "4. Point the gateway at the runtime",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L135",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
+      "community": 25,
+      "norm_label": "4. point the gateway at the runtime"
+    },
+    {
+      "label": "Two ways to reach it \u2014 pick one per tag set",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L158",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_two_ways_to_reach_it_pick_one_per_tag_set",
+      "community": 25,
+      "norm_label": "two ways to reach it \u2014 pick one per tag set"
+    },
+    {
+      "label": "5. Start everything",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L180",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_5_start_everything",
+      "community": 25,
+      "norm_label": "5. start everything"
+    },
+    {
+      "label": "6. Verify the link",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L197",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_6_verify_the_link",
+      "community": 25,
+      "norm_label": "6. verify the link"
+    },
+    {
+      "label": "7. Close the loop \u2014 no hardware, ever",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L218",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_7_close_the_loop_no_hardware_ever",
+      "community": 25,
+      "norm_label": "7. close the loop \u2014 no hardware, ever"
+    },
+    {
+      "label": "8. Bring it into the 3D scene",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L244",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_8_bring_it_into_the_3d_scene",
+      "community": 25,
+      "norm_label": "8. bring it into the 3d scene"
+    },
+    {
+      "label": "9. Troubleshooting",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L255",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_9_troubleshooting",
+      "community": 25,
+      "norm_label": "9. troubleshooting"
+    },
+    {
+      "label": "10. Command cheat-sheet",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L266",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_10_command_cheat_sheet",
+      "community": 25,
+      "norm_label": "10. command cheat-sheet"
     },
     {
       "label": "Automation Sim Project",
@@ -5760,7 +5920,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 0,
       "norm_label": "tag write path (browser \u2192 gateway \u2192 adapter)",
       "id": "concept_write_path"
     },
@@ -16308,6 +16468,16 @@
       "target": "claude_environment_notes"
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L253",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice",
+      "target": "readme",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -16346,6 +16516,156 @@
       "confidence_score": 1.0,
       "source": "readme_automation_sim",
       "target": "readme_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice",
+      "target": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L266",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_10_command_cheat_sheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_1_prerequisites_repo_layout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_2_get_a_plc_program_running",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_3_choose_a_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_5_start_everything",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L197",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_6_verify_the_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L218",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_7_close_the_loop_no_hardware_ever",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L244",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_8_bring_it_into_the_3d_scene",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L255",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_9_troubleshooting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_connecting_tia_web_practice_to_automation_sim",
+      "target": "docs_connecting_tia_web_practice_contents",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_3_choose_a_path",
+      "target": "docs_connecting_tia_web_practice_real_raspberry_pi_with_hardware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_3_choose_a_path",
+      "target": "docs_connecting_tia_web_practice_simulation_only_no_hardware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L158",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
+      "target": "docs_connecting_tia_web_practice_two_ways_to_reach_it_pick_one_per_tag_set",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -16697,5 +17017,5 @@
       "source_file": "CLAUDE.md"
     }
   ],
-  "built_at_commit": "cc1358a040f3887f3e0cef5e7d249dcd6608f804"
+  "built_at_commit": "ddbdbf19a5d7651f83672a649b243527d4fdbfe3"
 }

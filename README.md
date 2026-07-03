@@ -12,7 +12,10 @@ talk to it directly — no new adapter code needed, and any other SCADA/HMI can
 connect the same way. Addresses map onto the runtime's S7-style `%I/%Q/%M`
 memory (`GET /api/modbus-map` on the runtime lists the derived
 coil/discrete/holding/input address for every tag); see
-`TIA_Portal_Web-app/README.md` → "Modbus TCP server mode".
+`TIA_Portal_Web-app/README.md` → "Modbus TCP server mode". For a full,
+step-by-step walkthrough of wiring the two projects together (with or without
+real Raspberry Pi hardware), see
+[`docs/connecting-tia-web-practice.md`](docs/connecting-tia-web-practice.md).
 
 Previously: **press + mixer machine models** — the hydraulic press and
 mixer skid behaviors now also live on the bus as machine-model adapters
