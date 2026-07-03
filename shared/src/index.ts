@@ -4,6 +4,8 @@ export interface AdapterMeta {
   type: 'simulator' | 'modbus' | 'opcua' | 'mqtt' | 'custom';
   /** Supports re-discovering its tag set live via a 'refreshTags' request (see TiaWebAdapter). */
   canRefreshTags?: boolean;
+  /** Human-readable connection target (e.g. the TIA runtime's URL), where meaningful. */
+  url?: string;
 }
 
 export interface TagMeta {
@@ -44,13 +46,15 @@ export interface WriteErrorMessage {
 }
 
 /**
- * Broadcast after a successful 'refreshTags' request: the adapter's complete,
- * current tag set (added/edited/removed reconciled — not just a diff).
- * Clients upsert by id and drop this adapter's ids that are no longer present.
+ * Broadcast after a successful 'refreshTags' request OR a successful
+ * 'connectTia' (reconnecting counts as "this adapter's tags changed" too):
+ * the adapter's complete, current meta + tag set — not a diff. Clients
+ * upsert both by id and drop this adapter's tag ids no longer present.
  */
 export interface TagsChangedMessage {
   type: 'tagsChanged';
   adapterId: string;
+  meta: AdapterMeta;
   tags: TagMeta[];
 }
 
@@ -61,12 +65,38 @@ export interface TagsRefreshErrorMessage {
   reason: string;
 }
 
+/** Reply to 'testTia', to the requester only — does not change any connection. */
+export interface TiaTestResultMessage {
+  type: 'tiaTestResult';
+  requestId: string;
+  ok: boolean;
+  reason?: string;
+}
+
+/** Reply to a successful 'connectTia', to the requester only (tagsChanged also broadcasts to everyone). */
+export interface TiaConnectedMessage {
+  type: 'tiaConnected';
+  requestId: string;
+  meta: AdapterMeta;
+  tags: TagMeta[];
+}
+
+/** Reply to a failed 'connectTia', to the requester only — the prior connection is left untouched. */
+export interface TiaConnectErrorMessage {
+  type: 'tiaConnectError';
+  requestId: string;
+  reason: string;
+}
+
 export type GatewayMessage =
   | HelloMessage
   | TagUpdateMessage
   | WriteErrorMessage
   | TagsChangedMessage
-  | TagsRefreshErrorMessage;
+  | TagsRefreshErrorMessage
+  | TiaTestResultMessage
+  | TiaConnectedMessage
+  | TiaConnectErrorMessage;
 
 /** Client → gateway: write a value to a writable tag. */
 export interface WriteMessage {
@@ -81,7 +111,25 @@ export interface RefreshTagsMessage {
   adapterId: string;
 }
 
-export type ClientMessage = WriteMessage | RefreshTagsMessage;
+/** Client → gateway: check if a URL is a reachable TIA Web Practice runtime, without connecting. */
+export interface TestTiaMessage {
+  type: 'testTia';
+  requestId: string;
+  url: string;
+}
+
+/**
+ * Client → gateway: hot-swap the `tia` connection to this URL — works even
+ * if no `tiaweb` adapter exists yet (first connect). Probed server-side
+ * before anything is torn down, so a bad address never kills a working one.
+ */
+export interface ConnectTiaMessage {
+  type: 'connectTia';
+  requestId: string;
+  url: string;
+}
+
+export type ClientMessage = WriteMessage | RefreshTagsMessage | TestTiaMessage | ConnectTiaMessage;
 
 /** 8081 is commonly taken; keep this in one place so gateway and frontend agree. */
 export const DEFAULT_GATEWAY_PORT = 8082;

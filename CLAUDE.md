@@ -97,6 +97,20 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   same S7-style `%I/%Q/%M` memory (see `TIA_Portal_Web-app/README.md` →
   "Modbus TCP server mode" for the coil/discrete/holding/input address
   mapping); no gateway code changes needed for that path.
+- `gateway/src/tiaConnection.ts` — `TiaConnectionManager` owns the
+  live-swappable `tia` connection: `reconnect(url)` calls `probeTia(url)`
+  (`GET /api/info`, checked for the exact shape the runtime returns) *before*
+  touching anything, so a bad address is rejected without disturbing a
+  working connection; only on success does it `TiaWebAdapter.create()` a
+  fresh adapter and `bus.unregisterAdapter()` + `bus.register()` swap it in.
+  Works with **no prior `tiaweb` config.json entry** — `index.ts` calls
+  `tia.adopt(entry)` if one exists at startup, but `reconnect()` defaults to
+  `id:'tia'` if `this.config` is still null (first-time connect). Always
+  forces fresh discovery on reconnect, even if the original config.json entry
+  had an explicit `tags` list — a different target may have entirely
+  different tag names. Driven by the WS `testTia`/`connectTia` client
+  messages (`server.ts`) and the frontend's **Online ▾** menu
+  (`onlineMenu.ts`).
 - `gateway/src/links.ts` — tag-link bridge (`config.links`): routes one
   adapter's published tag into another's write. Change-driven (adapters
   republish every poll — forwarding those would hammer targets), values are
@@ -149,6 +163,14 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   dropdown's `hidden` attribute only hides it if no author CSS sets `display`
   on the same selector without a `[hidden]` override — see the
   `.file-menu-dropdown[hidden]` rule in `index.html`.
+- `frontend/src/onlineMenu.ts` — the `#topbar` **Online ▾** dropdown: shows
+  the current `tia` connection (`store.adapters` entry's `url` + the
+  `tia.online`/`tia.running` tags, polled every 500 ms like
+  `connectionsPanel.ts`), a host:port input, and **Test connection**
+  (`conn.testTia()`, doesn't touch anything) / **Connect**
+  (`conn.connectTia()`, hot-swaps live) buttons. `normalizeUrl()` prepends
+  `http://` if no scheme was typed. Same `.online-menu-dropdown[hidden]` CSS
+  gotcha as the File menu — see its note above.
 - Write path: browser sends `{type:'write', tagId, value}` → server →
   `bus.write` → owning adapter's `write()`; confirmed values return via the
   normal update stream, rejections via `writeError`. Tags opt in with

@@ -29,19 +29,26 @@ export class TagStore {
   }
 
   /**
-   * Reconcile one adapter's tag set after a live refresh: `tags` is that
-   * adapter's complete, current list (not a diff) — added ids appear, edited
-   * ids (same id, changed meta) update in place, and ids no longer present
-   * are dropped (their last value just stops updating elsewhere until then).
+   * Reconcile one adapter's tag set after a live refresh or reconnect:
+   * `tags` is that adapter's complete, current list (not a diff) — added ids
+   * appear, edited ids (same id, changed meta) update in place, and ids no
+   * longer present are dropped (their last value just stops updating
+   * elsewhere until then). `meta` upserts `adapters` too — a reconnect can
+   * change the adapter's url/label, or introduce it for the first time.
    */
-  applyTagsChanged(adapterId: string, tags: TagMeta[]): void {
+  applyTagsChanged(adapterId: string, tags: TagMeta[], meta?: AdapterMeta): void {
     const otherIds = this.order.filter((id) => this.metaById.get(id)?.adapterId !== adapterId);
     const keepIds = new Set(tags.map((t) => t.id));
-    for (const [id, meta] of this.metaById) {
-      if (meta.adapterId === adapterId && !keepIds.has(id)) this.metaById.delete(id);
+    for (const [id, m] of this.metaById) {
+      if (m.adapterId === adapterId && !keepIds.has(id)) this.metaById.delete(id);
     }
     for (const t of tags) this.metaById.set(t.id, t);
     this.order = [...otherIds, ...tags.map((t) => t.id)];
+    if (meta) {
+      const idx = this.adapters.findIndex((a) => a.id === adapterId);
+      if (idx >= 0) this.adapters[idx] = meta;
+      else this.adapters.push(meta);
+    }
   }
 
   apply(updates: TagUpdate[]): void {

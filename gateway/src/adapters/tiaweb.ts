@@ -129,6 +129,7 @@ export class TiaWebAdapter implements Adapter {
       label: config.label ?? `TIA Web PLC (${this.url})`,
       type: 'custom',
       canRefreshTags: !explicitTags,
+      url: this.url,
     };
   }
 

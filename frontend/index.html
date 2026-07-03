@@ -75,6 +75,43 @@
       .file-menu-item:hover {
         background: #1d2a3a;
       }
+      .online-menu {
+        position: relative;
+      }
+      .online-menu-dropdown {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        width: 260px;
+        background: #131a24;
+        border: 1px solid #2a3442;
+        border-radius: 6px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 101;
+      }
+      .online-menu-dropdown[hidden] {
+        display: none;
+      }
+      .online-status {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .online-actions {
+        display: flex;
+        gap: 6px;
+      }
+      .online-actions .btn {
+        flex: 1;
+      }
+      .online-result {
+        font-size: 11.5px;
+        color: #8fa3b8;
+        min-height: 1.4em;
+      }
       #hud {
         position: fixed;
         top: 52px;

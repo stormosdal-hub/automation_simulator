@@ -399,7 +399,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel",
-      "community": 30,
+      "community": 44,
       "norm_label": "alarmspanel"
     },
     {
@@ -409,7 +409,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_constructor",
-      "community": 30,
+      "community": 44,
       "norm_label": ".constructor()"
     },
     {
@@ -419,7 +419,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_tick",
-      "community": 30,
+      "community": 44,
       "norm_label": ".tick()"
     },
     {
@@ -429,7 +429,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_refreshdurations",
-      "community": 30,
+      "community": 44,
       "norm_label": ".refreshdurations()"
     },
     {
@@ -439,7 +439,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_render",
-      "community": 30,
+      "community": 44,
       "norm_label": ".render()"
     },
     {
@@ -449,7 +449,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_renderform",
-      "community": 30,
+      "community": 44,
       "norm_label": ".renderform()"
     },
     {
@@ -459,7 +459,7 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "src_alarmspanel_formatduration",
-      "community": 30,
+      "community": 44,
       "norm_label": "formatduration()"
     },
     {
@@ -749,7 +749,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "bindings_engine_bindingengine_tick",
-      "community": 4,
+      "community": 40,
       "norm_label": ".tick()"
     },
     {
@@ -799,7 +799,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bindings_types",
-      "community": 2,
+      "community": 31,
       "norm_label": "types.ts"
     },
     {
@@ -849,7 +849,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "bindings_types_thresholdstop",
-      "community": 2,
+      "community": 31,
       "norm_label": "thresholdstop"
     },
     {
@@ -869,7 +869,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "bindings_types_widgettype",
-      "community": 4,
+      "community": 31,
       "norm_label": "widgettype"
     },
     {
@@ -879,7 +879,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "bindings_types_widgetconfig",
-      "community": 2,
+      "community": 31,
       "norm_label": "widgetconfig"
     },
     {
@@ -899,7 +899,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "bindings_types_controlpaneldef",
-      "community": 4,
+      "community": 31,
       "norm_label": "controlpaneldef"
     },
     {
@@ -909,7 +909,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "bindings_types_alarmcondition",
-      "community": 2,
+      "community": 31,
       "norm_label": "alarmcondition"
     },
     {
@@ -939,7 +939,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "bindings_types_alarmactive",
-      "community": 30,
+      "community": 44,
       "norm_label": "alarmactive()"
     },
     {
@@ -949,7 +949,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "bindings_types_widgetacceptstag",
-      "community": 4,
+      "community": 31,
       "norm_label": "widgetacceptstag()"
     },
     {
@@ -999,7 +999,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_connectionspanel",
-      "community": 30,
+      "community": 41,
       "norm_label": "connectionspanel.ts"
     },
     {
@@ -1009,7 +1009,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_connectionspanel_refreshstate",
-      "community": 30,
+      "community": 41,
       "norm_label": "refreshstate"
     },
     {
@@ -1019,7 +1019,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel",
-      "community": 30,
+      "community": 46,
       "norm_label": "connectionspanel"
     },
     {
@@ -1029,7 +1029,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_constructor",
-      "community": 30,
+      "community": 46,
       "norm_label": ".constructor()"
     },
     {
@@ -1039,7 +1039,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_refresh",
-      "community": 30,
+      "community": 46,
       "norm_label": ".refresh()"
     },
     {
@@ -1049,7 +1049,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_render",
-      "community": 30,
+      "community": 46,
       "norm_label": ".render()"
     },
     {
@@ -1059,7 +1059,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_controlpanels",
-      "community": 4,
+      "community": 31,
       "norm_label": "controlpanels.ts"
     },
     {
@@ -1069,7 +1069,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_controlpanels_widget_types",
-      "community": 4,
+      "community": 31,
       "norm_label": "widget_types"
     },
     {
@@ -1079,7 +1079,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_controlpanels_deps",
-      "community": 30,
+      "community": 41,
       "norm_label": "deps"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_controlpanels_controlpanels",
-      "community": 4,
+      "community": 31,
       "norm_label": "controlpanels"
     },
     {
@@ -1099,7 +1099,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_controlpanels_controlpanels_constructor",
-      "community": 4,
+      "community": 31,
       "norm_label": ".constructor()"
     },
     {
@@ -1109,7 +1109,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "src_controlpanels_controlpanels_rebuild",
-      "community": 4,
+      "community": 31,
       "norm_label": ".rebuild()"
     },
     {
@@ -1119,7 +1119,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_controlpanels_controlpanels_refreshvalues",
-      "community": 4,
+      "community": 31,
       "norm_label": ".refreshvalues()"
     },
     {
@@ -1129,7 +1129,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_controlpanels_controlpanels_renderpanel",
-      "community": 4,
+      "community": 31,
       "norm_label": ".renderpanel()"
     },
     {
@@ -1139,7 +1139,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "src_controlpanels_controlpanels_rendereditor",
-      "community": 4,
+      "community": 31,
       "norm_label": ".rendereditor()"
     },
     {
@@ -1149,7 +1149,7 @@
       "source_location": "L214",
       "_origin": "ast",
       "id": "src_controlpanels_select",
-      "community": 4,
+      "community": 31,
       "norm_label": "select()"
     },
     {
@@ -1159,7 +1159,7 @@
       "source_location": "L226",
       "_origin": "ast",
       "id": "src_controlpanels_formrow",
-      "community": 4,
+      "community": 31,
       "norm_label": "formrow()"
     },
     {
@@ -1169,7 +1169,7 @@
       "source_location": "L235",
       "_origin": "ast",
       "id": "src_controlpanels_numberinput",
-      "community": 4,
+      "community": 31,
       "norm_label": "numberinput()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_location": "L244",
       "_origin": "ast",
       "id": "src_controlpanels_colorinput",
-      "community": 4,
+      "community": 31,
       "norm_label": "colorinput()"
     },
     {
@@ -1299,7 +1299,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hud",
-      "community": 3,
+      "community": 41,
       "norm_label": "hud.ts"
     },
     {
@@ -1309,7 +1309,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_hud_hud",
-      "community": 3,
+      "community": 41,
       "norm_label": "hud"
     },
     {
@@ -1319,7 +1319,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_hud_hud_constructor",
-      "community": 3,
+      "community": 41,
       "norm_label": ".constructor()"
     },
     {
@@ -1329,7 +1329,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_hud_hud_setstatus",
-      "community": 3,
+      "community": 41,
       "norm_label": ".setstatus()"
     },
     {
@@ -1339,7 +1339,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_hud_hud_setscene",
-      "community": 3,
+      "community": 41,
       "norm_label": ".setscene()"
     },
     {
@@ -1349,7 +1349,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_hud_hud_render",
-      "community": 3,
+      "community": 41,
       "norm_label": ".render()"
     },
     {
@@ -1359,158 +1359,238 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 3,
+      "community": 4,
       "norm_label": "main.ts"
     },
     {
       "label": "canvas",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L21",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "src_main_canvas",
-      "community": 3,
+      "community": 4,
       "norm_label": "canvas"
     },
     {
       "label": "store",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L22",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "src_main_store",
-      "community": 3,
+      "community": 4,
       "norm_label": "store"
     },
     {
       "label": "projectStore",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "src_main_projectstore",
-      "community": 3,
+      "community": 4,
       "norm_label": "projectstore"
     },
     {
       "label": "selection",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "src_main_selection",
-      "community": 3,
+      "community": 4,
       "norm_label": "selection"
     },
     {
       "label": "bindingEngine",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "src_main_bindingengine",
-      "community": 3,
+      "community": 4,
       "norm_label": "bindingengine"
     },
     {
       "label": "hud",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "src_main_hud",
-      "community": 3,
+      "community": 4,
       "norm_label": "hud"
     },
     {
       "label": "conn",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L35",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "src_main_conn",
-      "community": 3,
+      "community": 4,
       "norm_label": "conn"
     },
     {
       "label": "connectionsPanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "src_main_connectionspanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "connectionspanel"
     },
     {
       "label": "tagsPanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L43",
+      "source_location": "L45",
       "_origin": "ast",
       "id": "src_main_tagspanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "tagspanel"
     },
     {
       "label": "treePanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L48",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "src_main_treepanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "treepanel"
     },
     {
       "label": "sceneTree",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L49",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "src_main_scenetree",
-      "community": 3,
+      "community": 4,
       "norm_label": "scenetree"
     },
     {
       "label": "bindingsPanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L50",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "src_main_bindingspanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "bindingspanel"
     },
     {
       "label": "bindingPanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L51",
+      "source_location": "L53",
       "_origin": "ast",
       "id": "src_main_bindingpanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "bindingpanel"
     },
     {
       "label": "alarmsPanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L61",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "src_main_alarmspanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "alarmspanel"
     },
     {
       "label": "replayPanel",
       "file_type": "code",
       "source_file": "frontend/src/main.ts",
-      "source_location": "L62",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "src_main_replaypanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "replaypanel"
+    },
+    {
+      "label": "onlineMenu.ts",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_onlinemenu",
+      "community": 30,
+      "norm_label": "onlinemenu.ts"
+    },
+    {
+      "label": "normalizeUrl()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_onlinemenu_normalizeurl",
+      "community": 45,
+      "norm_label": "normalizeurl()"
+    },
+    {
+      "label": "OnlineMenu",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu",
+      "community": 45,
+      "norm_label": "onlinemenu"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_constructor",
+      "community": 45,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".setOpen()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_setopen",
+      "community": 45,
+      "norm_label": ".setopen()"
+    },
+    {
+      "label": ".renderStatus()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_renderstatus",
+      "community": 45,
+      "norm_label": ".renderstatus()"
+    },
+    {
+      "label": ".test()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_test",
+      "community": 45,
+      "norm_label": ".test()"
+    },
+    {
+      "label": ".connect()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_connect",
+      "community": 45,
+      "norm_label": ".connect()"
     },
     {
       "label": "panel.ts",
@@ -1539,7 +1619,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_panel_createpanel",
-      "community": 4,
+      "community": 40,
       "norm_label": "createpanel()"
     },
     {
@@ -1569,7 +1649,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_projectstore_newbindingid",
-      "community": 4,
+      "community": 31,
       "norm_label": "newbindingid()"
     },
     {
@@ -1769,7 +1849,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel",
-      "community": 30,
+      "community": 42,
       "norm_label": "replaypanel"
     },
     {
@@ -1779,7 +1859,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_constructor",
-      "community": 30,
+      "community": 42,
       "norm_label": ".constructor()"
     },
     {
@@ -1789,7 +1869,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_duration",
-      "community": 30,
+      "community": 42,
       "norm_label": ".duration()"
     },
     {
@@ -1799,7 +1879,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_startrecording",
-      "community": 30,
+      "community": 42,
       "norm_label": ".startrecording()"
     },
     {
@@ -1809,7 +1889,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_stoprecording",
-      "community": 30,
+      "community": 42,
       "norm_label": ".stoprecording()"
     },
     {
@@ -1819,7 +1899,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_startreplay",
-      "community": 30,
+      "community": 42,
       "norm_label": ".startreplay()"
     },
     {
@@ -1829,7 +1909,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_pausereplay",
-      "community": 30,
+      "community": 42,
       "norm_label": ".pausereplay()"
     },
     {
@@ -1839,7 +1919,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_stopreplay",
-      "community": 30,
+      "community": 42,
       "norm_label": ".stopreplay()"
     },
     {
@@ -1849,7 +1929,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_tickreplay",
-      "community": 30,
+      "community": 42,
       "norm_label": ".tickreplay()"
     },
     {
@@ -1859,7 +1939,7 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_download",
-      "community": 30,
+      "community": 42,
       "norm_label": ".download()"
     },
     {
@@ -1869,7 +1949,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_loadfile",
-      "community": 30,
+      "community": 42,
       "norm_label": ".loadfile()"
     },
     {
@@ -1879,7 +1959,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_updatestatus",
-      "community": 30,
+      "community": 42,
       "norm_label": ".updatestatus()"
     },
     {
@@ -1889,7 +1969,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_render",
-      "community": 30,
+      "community": 42,
       "norm_label": ".render()"
     },
     {
@@ -1899,7 +1979,7 @@
       "source_location": "L231",
       "_origin": "ast",
       "id": "src_replaypanel_formatms",
-      "community": 30,
+      "community": 42,
       "norm_label": "formatms()"
     },
     {
@@ -1909,7 +1989,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_scene",
-      "community": 3,
+      "community": 4,
       "norm_label": "scene.ts"
     },
     {
@@ -1919,7 +1999,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_scene_createscene",
-      "community": 3,
+      "community": 4,
       "norm_label": "createscene()"
     },
     {
@@ -2069,7 +2149,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagstore",
-      "community": 30,
+      "community": 43,
       "norm_label": "tagstore.ts"
     },
     {
@@ -2079,7 +2159,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_tagstore_tagvalue",
-      "community": 4,
+      "community": 31,
       "norm_label": "tagvalue"
     },
     {
@@ -2089,7 +2169,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_tagstore_tagrow",
-      "community": 30,
+      "community": 43,
       "norm_label": "tagrow"
     },
     {
@@ -2099,7 +2179,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_tagstore_tagstore",
-      "community": 30,
+      "community": 43,
       "norm_label": "tagstore"
     },
     {
@@ -2109,87 +2189,87 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_applyhello",
-      "community": 30,
+      "community": 40,
       "norm_label": ".applyhello()"
     },
     {
       "label": ".applyTagsChanged()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L37",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_applytagschanged",
-      "community": 30,
+      "community": 34,
       "norm_label": ".applytagschanged()"
     },
     {
       "label": ".apply()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L47",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_apply",
-      "community": 4,
+      "community": 40,
       "norm_label": ".apply()"
     },
     {
       "label": ".ageMs()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L63",
+      "source_location": "L70",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_agems",
-      "community": 30,
+      "community": 43,
       "norm_label": ".agems()"
     },
     {
       "label": ".raw()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L68",
+      "source_location": "L75",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_raw",
-      "community": 30,
+      "community": 43,
       "norm_label": ".raw()"
     },
     {
       "label": ".metaFor()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L72",
+      "source_location": "L79",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_metafor",
-      "community": 30,
+      "community": 43,
       "norm_label": ".metafor()"
     },
     {
       "label": ".num()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L76",
+      "source_location": "L83",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_num",
-      "community": 30,
+      "community": 43,
       "norm_label": ".num()"
     },
     {
       "label": ".bool()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L81",
+      "source_location": "L88",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_bool",
-      "community": 30,
+      "community": 43,
       "norm_label": ".bool()"
     },
     {
       "label": ".rows()",
       "file_type": "code",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L86",
+      "source_location": "L93",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_rows",
-      "community": 30,
+      "community": 43,
       "norm_label": ".rows()"
     },
     {
@@ -2199,7 +2279,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagtable",
-      "community": 30,
+      "community": 43,
       "norm_label": "tagtable.ts"
     },
     {
@@ -2209,7 +2289,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_tagtable_tagtable",
-      "community": 30,
+      "community": 43,
       "norm_label": "tagtable"
     },
     {
@@ -2219,7 +2299,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_tagtable_tagtable_constructor",
-      "community": 30,
+      "community": 43,
       "norm_label": ".constructor()"
     },
     {
@@ -2229,7 +2309,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_tagtable_tagtable_refresh",
-      "community": 30,
+      "community": 43,
       "norm_label": ".refresh()"
     },
     {
@@ -2349,7 +2429,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_widgets",
-      "community": 4,
+      "community": 31,
       "norm_label": "widgets.ts"
     },
     {
@@ -2359,7 +2439,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_widgets_widgetinstance",
-      "community": 4,
+      "community": 31,
       "norm_label": "widgetinstance"
     },
     {
@@ -2369,7 +2449,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_widgets_deps",
-      "community": 30,
+      "community": 31,
       "norm_label": "deps"
     },
     {
@@ -2379,7 +2459,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_widgets_buildwidget",
-      "community": 4,
+      "community": 31,
       "norm_label": "buildwidget()"
     },
     {
@@ -2389,7 +2469,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_widgets_buildled",
-      "community": 4,
+      "community": 31,
       "norm_label": "buildled()"
     },
     {
@@ -2399,7 +2479,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_widgets_buildswitch",
-      "community": 4,
+      "community": 31,
       "norm_label": "buildswitch()"
     },
     {
@@ -2409,7 +2489,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_widgets_buildbutton",
-      "community": 4,
+      "community": 31,
       "norm_label": "buildbutton()"
     },
     {
@@ -2419,7 +2499,7 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "src_widgets_buildknob",
-      "community": 4,
+      "community": 31,
       "norm_label": "buildknob()"
     },
     {
@@ -2429,7 +2509,7 @@
       "source_location": "L219",
       "_origin": "ast",
       "id": "src_widgets_buildgauge",
-      "community": 4,
+      "community": 31,
       "norm_label": "buildgauge()"
     },
     {
@@ -2439,7 +2519,7 @@
       "source_location": "L254",
       "_origin": "ast",
       "id": "src_widgets_svgel",
-      "community": 4,
+      "community": 31,
       "norm_label": "svgel()"
     },
     {
@@ -2449,7 +2529,7 @@
       "source_location": "L264",
       "_origin": "ast",
       "id": "src_widgets_polar",
-      "community": 4,
+      "community": 31,
       "norm_label": "polar()"
     },
     {
@@ -2459,7 +2539,7 @@
       "source_location": "L269",
       "_origin": "ast",
       "id": "src_widgets_arcpath",
-      "community": 4,
+      "community": 31,
       "norm_label": "arcpath()"
     },
     {
@@ -2469,7 +2549,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_wsclient",
-      "community": 3,
+      "community": 41,
       "norm_label": "wsclient.ts"
     },
     {
@@ -2479,7 +2559,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_wsclient_wsstatus",
-      "community": 3,
+      "community": 41,
       "norm_label": "wsstatus"
     },
     {
@@ -2489,27 +2569,27 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_wsclient_gatewayconnection",
-      "community": 30,
+      "community": 41,
       "norm_label": "gatewayconnection"
     },
     {
       "label": "STRUCTURAL_TYPES",
       "file_type": "code",
       "source_file": "frontend/src/wsClient.ts",
-      "source_location": "L13",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "src_wsclient_structural_types",
-      "community": 3,
+      "community": 41,
       "norm_label": "structural_types"
     },
     {
       "label": "connectGateway()",
       "file_type": "code",
       "source_file": "frontend/src/wsClient.ts",
-      "source_location": "L15",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "src_wsclient_connectgateway",
-      "community": 3,
+      "community": 41,
       "norm_label": "connectgateway()"
     },
     {
@@ -3629,7 +3709,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_adapter_publishfn",
-      "community": 33,
+      "community": 1,
       "norm_label": "publishfn"
     },
     {
@@ -3659,7 +3739,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "adapters_conveyor_conveyoradapterconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "conveyoradapterconfig"
     },
     {
@@ -3749,7 +3829,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapterconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "mixeradapterconfig"
     },
     {
@@ -3979,7 +4059,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "adapters_mqtt",
-      "community": 33,
+      "community": 0,
       "norm_label": "mqtt.ts"
     },
     {
@@ -3989,7 +4069,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "adapters_mqtt_mqtttagconfig",
-      "community": 33,
+      "community": 0,
       "norm_label": "mqtttagconfig"
     },
     {
@@ -3999,7 +4079,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapterconfig",
-      "community": 33,
+      "community": 0,
       "norm_label": "mqttadapterconfig"
     },
     {
@@ -4069,7 +4149,7 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_handlemessage",
-      "community": 33,
+      "community": 0,
       "norm_label": ".handlemessage()"
     },
     {
@@ -4079,7 +4159,7 @@
       "source_location": "L211",
       "_origin": "ast",
       "id": "adapters_mqtt_walkpath",
-      "community": 33,
+      "community": 0,
       "norm_label": "walkpath()"
     },
     {
@@ -4089,7 +4169,7 @@
       "source_location": "L220",
       "_origin": "ast",
       "id": "adapters_mqtt_coerce",
-      "community": 33,
+      "community": 0,
       "norm_label": "coerce()"
     },
     {
@@ -4249,7 +4329,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "adapters_press_pressadapterconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "pressadapterconfig"
     },
     {
@@ -4339,7 +4419,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "adapters_s7_s7adapterconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "s7adapterconfig"
     },
     {
@@ -4559,7 +4639,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapterconfig",
-      "community": 34,
+      "community": 28,
       "norm_label": "tiawebadapterconfig"
     },
     {
@@ -4626,7 +4706,7 @@
       "label": ".tags()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L136",
+      "source_location": "L137",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_tags",
       "community": 34,
@@ -4636,7 +4716,7 @@
       "label": ".refreshTags()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L155",
+      "source_location": "L156",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_refreshtags",
       "community": 34,
@@ -4646,7 +4726,7 @@
       "label": ".start()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L162",
+      "source_location": "L163",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_start",
       "community": 34,
@@ -4656,7 +4736,7 @@
       "label": ".stop()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L168",
+      "source_location": "L169",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_stop",
       "community": 34,
@@ -4666,7 +4746,7 @@
       "label": ".write()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L174",
+      "source_location": "L175",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_write",
       "community": 34,
@@ -4676,7 +4756,7 @@
       "label": ".poll()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L196",
+      "source_location": "L197",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_poll",
       "community": 34,
@@ -4686,7 +4766,7 @@
       "label": ".setOnline()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L222",
+      "source_location": "L223",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_setonline",
       "community": 34,
@@ -4696,7 +4776,7 @@
       "label": ".toUpdates()",
       "file_type": "code",
       "source_file": "gateway/src/adapters/tiaweb.ts",
-      "source_location": "L233",
+      "source_location": "L234",
       "_origin": "ast",
       "id": "adapters_tiaweb_tiawebadapter_toupdates",
       "community": 34,
@@ -4709,7 +4789,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bus",
-      "community": 28,
+      "community": 1,
       "norm_label": "bus.ts"
     },
     {
@@ -4719,7 +4799,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_bus_buslistener",
-      "community": 28,
+      "community": 1,
       "norm_label": "buslistener"
     },
     {
@@ -4763,10 +4843,20 @@
       "norm_label": ".refreshadaptertags()"
     },
     {
+      "label": ".unregisterAdapter()",
+      "file_type": "code",
+      "source_file": "gateway/src/bus.ts",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "src_bus_tagbus_unregisteradapter",
+      "community": 39,
+      "norm_label": ".unregisteradapter()"
+    },
+    {
       "label": ".subscribe()",
       "file_type": "code",
       "source_file": "gateway/src/bus.ts",
-      "source_location": "L86",
+      "source_location": "L107",
       "_origin": "ast",
       "id": "src_bus_tagbus_subscribe",
       "community": 39,
@@ -4776,7 +4866,7 @@
       "label": ".adapters()",
       "file_type": "code",
       "source_file": "gateway/src/bus.ts",
-      "source_location": "L91",
+      "source_location": "L112",
       "_origin": "ast",
       "id": "src_bus_tagbus_adapters",
       "community": 39,
@@ -4786,7 +4876,7 @@
       "label": ".tags()",
       "file_type": "code",
       "source_file": "gateway/src/bus.ts",
-      "source_location": "L95",
+      "source_location": "L116",
       "_origin": "ast",
       "id": "src_bus_tagbus_tags",
       "community": 39,
@@ -4796,7 +4886,7 @@
       "label": ".snapshot()",
       "file_type": "code",
       "source_file": "gateway/src/bus.ts",
-      "source_location": "L99",
+      "source_location": "L120",
       "_origin": "ast",
       "id": "src_bus_tagbus_snapshot",
       "community": 39,
@@ -4806,7 +4896,7 @@
       "label": ".stop()",
       "file_type": "code",
       "source_file": "gateway/src/bus.ts",
-      "source_location": "L103",
+      "source_location": "L124",
       "_origin": "ast",
       "id": "src_bus_tagbus_stop",
       "community": 39,
@@ -4819,7 +4909,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_config",
-      "community": 28,
+      "community": 0,
       "norm_label": "config.ts"
     },
     {
@@ -4829,7 +4919,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_config_adapterconfigentry",
-      "community": 28,
+      "community": 0,
       "norm_label": "adapterconfigentry"
     },
     {
@@ -4839,7 +4929,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_config_gatewayconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "gatewayconfig"
     },
     {
@@ -4849,7 +4939,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_config_config_url",
-      "community": 28,
+      "community": 0,
       "norm_label": "config_url"
     },
     {
@@ -4859,7 +4949,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "src_config_loadconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "loadconfig()"
     },
     {
@@ -4876,7 +4966,7 @@
       "label": "PORT",
       "file_type": "code",
       "source_file": "gateway/src/index.ts",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "src_index_port",
       "community": 28,
@@ -4886,17 +4976,27 @@
       "label": "bus",
       "file_type": "code",
       "source_file": "gateway/src/index.ts",
-      "source_location": "L18",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "src_index_bus",
       "community": 28,
       "norm_label": "bus"
     },
     {
+      "label": "tia",
+      "file_type": "code",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "src_index_tia",
+      "community": 28,
+      "norm_label": "tia"
+    },
+    {
       "label": "config",
       "file_type": "code",
       "source_file": "gateway/src/index.ts",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "src_index_config",
       "community": 28,
@@ -4919,7 +5019,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_links_linkconfig",
-      "community": 28,
+      "community": 0,
       "norm_label": "linkconfig"
     },
     {
@@ -4939,18 +5039,108 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_server",
-      "community": 40,
+      "community": 28,
       "norm_label": "server.ts"
     },
     {
       "label": "startWsServer()",
       "file_type": "code",
       "source_file": "gateway/src/server.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "src_server_startwsserver",
-      "community": 40,
+      "community": 28,
       "norm_label": "startwsserver()"
+    },
+    {
+      "label": "tiaConnection.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_tiaconnection",
+      "community": 28,
+      "norm_label": "tiaconnection.ts"
+    },
+    {
+      "label": "TiaProbeResult",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "src_tiaconnection_tiaproberesult",
+      "community": 28,
+      "norm_label": "tiaproberesult"
+    },
+    {
+      "label": "normalize()",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_tiaconnection_normalize",
+      "community": 28,
+      "norm_label": "normalize()"
+    },
+    {
+      "label": "probeTia()",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "src_tiaconnection_probetia",
+      "community": 28,
+      "norm_label": "probetia()"
+    },
+    {
+      "label": "TiaConnectionManager",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "src_tiaconnection_tiaconnectionmanager",
+      "community": 28,
+      "norm_label": "tiaconnectionmanager"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "src_tiaconnection_tiaconnectionmanager_constructor",
+      "community": 39,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".adopt()",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "src_tiaconnection_tiaconnectionmanager_adopt",
+      "community": 28,
+      "norm_label": ".adopt()"
+    },
+    {
+      "label": ".currentUrl()",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "src_tiaconnection_tiaconnectionmanager_currenturl",
+      "community": 28,
+      "norm_label": ".currenturl()"
+    },
+    {
+      "label": ".reconnect()",
+      "file_type": "code",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "src_tiaconnection_tiaconnectionmanager_reconnect",
+      "community": 28,
+      "norm_label": ".reconnect()"
     },
     {
       "label": "nodes7.d.ts",
@@ -5486,17 +5676,17 @@
       "label": "TagMeta",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "src_index_tagmeta",
-      "community": 1,
+      "community": 34,
       "norm_label": "tagmeta"
     },
     {
       "label": "TagUpdate",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "src_index_tagupdate",
       "community": 1,
@@ -5506,17 +5696,17 @@
       "label": "HelloMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "src_index_hellomessage",
-      "community": 30,
+      "community": 40,
       "norm_label": "hellomessage"
     },
     {
       "label": "TagUpdateMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L34",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "src_index_tagupdatemessage",
       "community": 40,
@@ -5526,7 +5716,7 @@
       "label": "WriteErrorMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "src_index_writeerrormessage",
       "community": 40,
@@ -5536,7 +5726,7 @@
       "label": "TagsChangedMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L51",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "src_index_tagschangedmessage",
       "community": 40,
@@ -5546,27 +5736,57 @@
       "label": "TagsRefreshErrorMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L58",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "src_index_tagsrefresherrormessage",
       "community": 40,
       "norm_label": "tagsrefresherrormessage"
     },
     {
+      "label": "TiaTestResultMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "src_index_tiatestresultmessage",
+      "community": 40,
+      "norm_label": "tiatestresultmessage"
+    },
+    {
+      "label": "TiaConnectedMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "src_index_tiaconnectedmessage",
+      "community": 40,
+      "norm_label": "tiaconnectedmessage"
+    },
+    {
+      "label": "TiaConnectErrorMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "src_index_tiaconnecterrormessage",
+      "community": 40,
+      "norm_label": "tiaconnecterrormessage"
+    },
+    {
       "label": "GatewayMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L64",
+      "source_location": "L91",
       "_origin": "ast",
       "id": "src_index_gatewaymessage",
-      "community": 40,
+      "community": 41,
       "norm_label": "gatewaymessage"
     },
     {
       "label": "WriteMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L72",
+      "source_location": "L102",
       "_origin": "ast",
       "id": "src_index_writemessage",
       "community": 40,
@@ -5576,20 +5796,40 @@
       "label": "RefreshTagsMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L79",
+      "source_location": "L109",
       "_origin": "ast",
       "id": "src_index_refreshtagsmessage",
       "community": 40,
       "norm_label": "refreshtagsmessage"
     },
     {
+      "label": "TestTiaMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "src_index_testtiamessage",
+      "community": 40,
+      "norm_label": "testtiamessage"
+    },
+    {
+      "label": "ConnectTiaMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "src_index_connecttiamessage",
+      "community": 40,
+      "norm_label": "connecttiamessage"
+    },
+    {
       "label": "ClientMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L84",
+      "source_location": "L132",
       "_origin": "ast",
       "id": "src_index_clientmessage",
-      "community": 40,
+      "community": 41,
       "norm_label": "clientmessage"
     },
     {
@@ -5636,7 +5876,7 @@
       "label": "Environment notes",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L175",
+      "source_location": "L197",
       "_origin": "ast",
       "id": "claude_environment_notes",
       "community": 26,
@@ -5666,7 +5906,7 @@
       "label": "Run",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L99",
+      "source_location": "L110",
       "_origin": "ast",
       "id": "readme_run",
       "community": 25,
@@ -5676,7 +5916,7 @@
       "label": "Layout",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L157",
+      "source_location": "L171",
       "_origin": "ast",
       "id": "readme_layout",
       "community": 25,
@@ -5686,7 +5926,7 @@
       "label": "Roadmap",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L170",
+      "source_location": "L184",
       "_origin": "ast",
       "id": "readme_roadmap",
       "community": 25,
@@ -5716,7 +5956,7 @@
       "label": "Contents",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L25",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_contents",
       "community": 25,
@@ -5726,7 +5966,7 @@
       "label": "1. Prerequisites & repo layout",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L37",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_1_prerequisites_repo_layout",
       "community": 25,
@@ -5736,7 +5976,7 @@
       "label": "2. Get a PLC program running",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L54",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_2_get_a_plc_program_running",
       "community": 25,
@@ -5746,7 +5986,7 @@
       "label": "3. Choose a path",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L83",
+      "source_location": "L89",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_3_choose_a_path",
       "community": 25,
@@ -5756,7 +5996,7 @@
       "label": "Simulation only (no hardware)",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L89",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_simulation_only_no_hardware",
       "community": 25,
@@ -5766,7 +6006,7 @@
       "label": "Real Raspberry Pi (with hardware)",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L111",
+      "source_location": "L117",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_real_raspberry_pi_with_hardware",
       "community": 25,
@@ -5776,27 +6016,57 @@
       "label": "4. Point the gateway at the runtime",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L133",
+      "source_location": "L139",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
       "community": 25,
       "norm_label": "4. point the gateway at the runtime"
     },
     {
-      "label": "Two ways to reach it \u2014 pick one per tag set",
+      "label": "The Online menu (no config.json editing)",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L157",
+      "source_location": "L143",
       "_origin": "ast",
-      "id": "docs_connecting_tia_web_practice_two_ways_to_reach_it_pick_one_per_tag_set",
+      "id": "docs_connecting_tia_web_practice_the_online_menu_no_config_json_editing",
       "community": 25,
-      "norm_label": "two ways to reach it \u2014 pick one per tag set"
+      "norm_label": "the online menu (no config.json editing)"
+    },
+    {
+      "label": "config.json (a fixed default, no clicking required)",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L164",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_config_json_a_fixed_default_no_clicking_required",
+      "community": 25,
+      "norm_label": "config.json (a fixed default, no clicking required)"
+    },
+    {
+      "label": "Either way: refresh after editing tags",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L184",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_either_way_refresh_after_editing_tags",
+      "community": 25,
+      "norm_label": "either way: refresh after editing tags"
+    },
+    {
+      "label": "Two ways to reach the runtime over the wire \u2014 pick one per tag set",
+      "file_type": "document",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L196",
+      "_origin": "ast",
+      "id": "docs_connecting_tia_web_practice_two_ways_to_reach_the_runtime_over_the_wire_pick_one_per_tag_set",
+      "community": 25,
+      "norm_label": "two ways to reach the runtime over the wire \u2014 pick one per tag set"
     },
     {
       "label": "5. Start everything",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L179",
+      "source_location": "L218",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_5_start_everything",
       "community": 25,
@@ -5806,7 +6076,7 @@
       "label": "6. Verify the link",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L196",
+      "source_location": "L235",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_6_verify_the_link",
       "community": 25,
@@ -5816,7 +6086,7 @@
       "label": "7. Close the loop \u2014 no hardware, ever",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L217",
+      "source_location": "L256",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_7_close_the_loop_no_hardware_ever",
       "community": 25,
@@ -5826,7 +6096,7 @@
       "label": "8. Bring it into the 3D scene",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L243",
+      "source_location": "L282",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_8_bring_it_into_the_3d_scene",
       "community": 25,
@@ -5836,7 +6106,7 @@
       "label": "9. Troubleshooting",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L263",
+      "source_location": "L302",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_9_troubleshooting",
       "community": 25,
@@ -5846,7 +6116,7 @@
       "label": "10. Command cheat-sheet",
       "file_type": "document",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L277",
+      "source_location": "L318",
       "_origin": "ast",
       "id": "docs_connecting_tia_web_practice_10_command_cheat_sheet",
       "community": 25,
@@ -8567,9 +8837,9 @@
       "source_file": "frontend/src/connectionsPanel.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_connectionspanel",
-      "target": "src_connectionspanel_refreshstate",
-      "confidence_score": 1.0
+      "target": "src_connectionspanel_refreshstate"
     },
     {
       "relation": "imports_from",
@@ -8611,9 +8881,9 @@
       "source_file": "frontend/src/connectionsPanel.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_connectionspanel",
-      "target": "src_ui_button",
-      "confidence_score": 1.0
+      "target": "src_ui_button"
     },
     {
       "relation": "imports",
@@ -8644,9 +8914,9 @@
       "source_file": "frontend/src/connectionsPanel.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_connectionspanel",
-      "target": "src_wsclient_gatewayconnection",
-      "confidence_score": 1.0
+      "target": "src_wsclient_gatewayconnection"
     },
     {
       "relation": "imports",
@@ -8686,9 +8956,9 @@
       "source_file": "frontend/src/connectionsPanel.ts",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_connectionspanel_connectionspanel",
-      "target": "src_connectionspanel_connectionspanel_refresh",
-      "confidence_score": 1.0
+      "target": "src_connectionspanel_connectionspanel_refresh"
     },
     {
       "relation": "method",
@@ -8740,9 +9010,9 @@
       "source_file": "frontend/src/connectionsPanel.ts",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_connectionspanel_connectionspanel_constructor",
-      "target": "src_wsclient_gatewayconnection",
-      "confidence_score": 1.0
+      "target": "src_wsclient_gatewayconnection"
     },
     {
       "relation": "references",
@@ -8762,9 +9032,9 @@
       "source_file": "frontend/src/connectionsPanel.ts",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_connectionspanel_connectionspanel_refresh",
-      "target": "src_connectionspanel_connectionspanel_render",
-      "confidence_score": 1.0
+      "target": "src_connectionspanel_connectionspanel_render"
     },
     {
       "relation": "calls",
@@ -9719,6 +9989,28 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/main.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_main",
+      "target": "src_onlinemenu",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/main.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_main",
+      "target": "src_onlinemenu_onlinemenu",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/main.ts",
       "source_location": "L9",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9944,6 +10236,274 @@
       "confidence_score": 1.0,
       "source": "src_main",
       "target": "src_wsclient_wsstatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_onlinemenu_normalizeurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_tagstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_tagstore_tagstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_ui_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_ui_div",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_ui_textinput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_wsclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_onlinemenu",
+      "target": "src_wsclient_gatewayconnection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_onlinemenu_normalizeurl",
+      "target": "src_onlinemenu_onlinemenu_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_connect",
+      "target": "src_onlinemenu_normalizeurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_connect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_renderstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_setopen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_constructor",
+      "target": "src_onlinemenu_onlinemenu_renderstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_constructor",
+      "target": "src_tagstore_tagstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_constructor",
+      "target": "src_ui_button"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_constructor",
+      "target": "src_ui_div"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_constructor",
+      "target": "src_ui_textinput"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_constructor",
+      "target": "src_wsclient_gatewayconnection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_setopen",
+      "target": "src_onlinemenu_onlinemenu_renderstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_connect",
+      "target": "src_onlinemenu_onlinemenu_renderstatus",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11150,9 +11710,9 @@
       "source_file": "frontend/src/tagStore.ts",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tagstore_tagstore",
-      "target": "src_tagstore_tagstore_applytagschanged",
-      "confidence_score": 1.0
+      "target": "src_tagstore_tagstore_applytagschanged"
     },
     {
       "relation": "method",
@@ -11286,11 +11846,22 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/tagStore.ts",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "src_tagstore_tagstore_applytagschanged",
-      "target": "src_index_tagmeta",
+      "target": "src_index_adaptermeta",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/tagStore.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tagstore_tagstore_applytagschanged",
+      "target": "src_index_tagmeta"
     },
     {
       "relation": "references",
@@ -11727,6 +12298,17 @@
       "source_file": "frontend/src/wsClient.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "source": "src_wsclient",
+      "target": "src_index_adaptermeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/wsClient.ts",
+      "source_location": "L1",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_wsclient",
       "target": "src_index_clientmessage"
@@ -11749,9 +12331,9 @@
       "source_file": "frontend/src/wsClient.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_wsclient",
-      "target": "src_index_tagmeta",
-      "confidence_score": 1.0
+      "target": "src_index_tagmeta"
     },
     {
       "relation": "contains",
@@ -11779,9 +12361,9 @@
       "source_file": "frontend/src/wsClient.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_wsclient",
-      "target": "src_wsclient_structural_types",
-      "confidence_score": 1.0
+      "target": "src_wsclient_structural_types"
     },
     {
       "relation": "contains",
@@ -15869,6 +16451,17 @@
       "target": "adapters_tiaweb"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "adapters_tiaweb",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -15878,6 +16471,39 @@
       "confidence_score": 1.0,
       "source": "src_config",
       "target": "adapters_tiaweb_tiawebadapterconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "adapters_tiaweb_tiawebadapterconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager",
+      "target": "adapters_tiaweb_tiawebadapterconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager_adopt",
+      "target": "adapters_tiaweb_tiawebadapterconfig",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -15897,9 +16523,9 @@
       "source_file": "gateway/src/adapters/tiaweb.ts",
       "source_location": "L157",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_tiaweb_tiawebadapter_refreshtags",
-      "target": "adapters_tiaweb_discovertags",
-      "confidence_score": 1.0
+      "target": "adapters_tiaweb_discovertags"
     },
     {
       "relation": "method",
@@ -15937,9 +16563,9 @@
       "source_file": "gateway/src/adapters/tiaweb.ts",
       "source_location": "L155",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_tiaweb_tiawebadapter",
-      "target": "adapters_tiaweb_tiawebadapter_refreshtags",
-      "confidence_score": 1.0
+      "target": "adapters_tiaweb_tiawebadapter_refreshtags"
     },
     {
       "relation": "method",
@@ -15977,9 +16603,9 @@
       "source_file": "gateway/src/adapters/tiaweb.ts",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_tiaweb_tiawebadapter",
-      "target": "adapters_tiaweb_tiawebadapter_tags",
-      "confidence_score": 1.0
+      "target": "adapters_tiaweb_tiawebadapter_tags"
     },
     {
       "relation": "method",
@@ -16035,15 +16661,37 @@
       "target": "adapters_tiaweb_tiawebadapter"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "adapters_tiaweb_tiawebadapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager_reconnect",
+      "target": "adapters_tiaweb_tiawebadapter",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "gateway/src/adapters/tiaweb.ts",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_tiaweb_tiawebadapter_tags",
-      "target": "src_index_tagmeta",
-      "confidence_score": 1.0
+      "target": "src_index_tagmeta"
     },
     {
       "relation": "references",
@@ -16052,9 +16700,9 @@
       "source_file": "gateway/src/adapters/tiaweb.ts",
       "source_location": "L155",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_tiaweb_tiawebadapter_refreshtags",
-      "target": "src_index_tagmeta",
-      "confidence_score": 1.0
+      "target": "src_index_tagmeta"
     },
     {
       "relation": "calls",
@@ -16187,6 +16835,17 @@
       "target": "src_bus"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "src_bus",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
@@ -16263,9 +16922,9 @@
       "source_file": "gateway/src/bus.ts",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_bus_tagbus",
-      "target": "src_bus_tagbus_refreshadaptertags",
-      "confidence_score": 1.0
+      "target": "src_bus_tagbus_refreshadaptertags"
     },
     {
       "relation": "method",
@@ -16321,6 +16980,16 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "gateway/src/bus.ts",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "src_bus_tagbus",
+      "target": "src_bus_tagbus_unregisteradapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/bus.ts",
       "source_location": "L48",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -16350,14 +17019,47 @@
       "target": "src_bus_tagbus"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "src_bus_tagbus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager_constructor",
+      "target": "src_bus_tagbus",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "gateway/src/bus.ts",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_bus_tagbus_refreshadaptertags",
-      "target": "src_index_tagmeta",
+      "target": "src_index_tagmeta"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/bus.ts",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "src_bus_tagbus_unregisteradapter",
+      "target": "src_bus_tagbus_stop",
       "confidence_score": 1.0
     },
     {
@@ -16530,6 +17232,16 @@
       "target": "src_index_port"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "src_index_tia",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -16572,6 +17284,28 @@
       "confidence_score": 1.0,
       "source": "gateway_src_index_ts_src_index",
       "target": "src_server_startwsserver"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "src_tiaconnection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "src_tiaconnection_tiaconnectionmanager",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16624,6 +17358,152 @@
       "confidence_score": 1.0,
       "source": "src_server",
       "target": "src_server_startwsserver"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/server.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server",
+      "target": "src_tiaconnection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/server.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server",
+      "target": "src_tiaconnection_probetia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/server.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server",
+      "target": "src_tiaconnection_tiaconnectionmanager",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "src_tiaconnection_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "src_tiaconnection_probetia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "src_tiaconnection_tiaconnectionmanager",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_tiaconnection",
+      "target": "src_tiaconnection_tiaproberesult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_tiaconnection_probetia",
+      "target": "src_tiaconnection_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager_reconnect",
+      "target": "src_tiaconnection_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager_reconnect",
+      "target": "src_tiaconnection_probetia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager",
+      "target": "src_tiaconnection_tiaconnectionmanager_adopt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager",
+      "target": "src_tiaconnection_tiaconnectionmanager_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager",
+      "target": "src_tiaconnection_tiaconnectionmanager_currenturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/tiaConnection.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "src_tiaconnection_tiaconnectionmanager",
+      "target": "src_tiaconnection_tiaconnectionmanager_reconnect",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17109,6 +17989,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "shared/src/index.ts",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_connecttiamessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
       "source_location": "L44",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -17131,9 +18021,9 @@
       "source_file": "shared/src/index.ts",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
-      "target": "src_index_refreshtagsmessage",
-      "confidence_score": 1.0
+      "target": "src_index_refreshtagsmessage"
     },
     {
       "relation": "contains",
@@ -17151,9 +18041,9 @@
       "source_file": "shared/src/index.ts",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
-      "target": "src_index_tagschangedmessage",
-      "confidence_score": 1.0
+      "target": "src_index_tagschangedmessage"
     },
     {
       "relation": "contains",
@@ -17161,9 +18051,9 @@
       "source_file": "shared/src/index.ts",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
-      "target": "src_index_tagsrefresherrormessage",
-      "confidence_score": 1.0
+      "target": "src_index_tagsrefresherrormessage"
     },
     {
       "relation": "contains",
@@ -17184,6 +18074,46 @@
       "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
       "target": "src_index_tagupdatemessage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_testtiamessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_tiaconnectedmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_tiaconnecterrormessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_tiatestresultmessage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17439,11 +18369,41 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/connecting-tia-web-practice.md",
-      "source_location": "L158",
+      "source_location": "L164",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
-      "target": "docs_connecting_tia_web_practice_two_ways_to_reach_it_pick_one_per_tag_set"
+      "target": "docs_connecting_tia_web_practice_config_json_a_fixed_default_no_clicking_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
+      "target": "docs_connecting_tia_web_practice_either_way_refresh_after_editing_tags",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
+      "target": "docs_connecting_tia_web_practice_the_online_menu_no_config_json_editing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/connecting-tia-web-practice.md",
+      "source_location": "L196",
+      "weight": 1.0,
+      "source": "docs_connecting_tia_web_practice_4_point_the_gateway_at_the_runtime",
+      "target": "docs_connecting_tia_web_practice_two_ways_to_reach_the_runtime_over_the_wire_pick_one_per_tag_set",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -17795,5 +18755,5 @@
       "source_file": "CLAUDE.md"
     }
   ],
-  "built_at_commit": "e5b9691dcc510558b39df5c272f2e2cc9158afa4"
+  "built_at_commit": "cbccf8050aac1807133576308539264a33022500"
 }

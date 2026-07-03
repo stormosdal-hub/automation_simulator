@@ -10,8 +10,8 @@
     "semantic_hash": "b7a7800c32bcdefd9290d08874275eca"
   },
   "frontend/src/main.ts": {
-    "mtime": 1783100850.8565376,
-    "ast_hash": "fe6a0022b173f8127c4b770362271a56",
+    "mtime": 1783105294.6489587,
+    "ast_hash": "d76a8d0e0ac065512a362a3d7d7744cc",
     "semantic_hash": ""
   },
   "frontend/src/scene.ts": {
@@ -20,13 +20,13 @@
     "semantic_hash": "28244cb579a036dd29d4e62672983490"
   },
   "frontend/src/tagStore.ts": {
-    "mtime": 1783100769.246593,
-    "ast_hash": "e8ae9185b517041eec389479effa2047",
+    "mtime": 1783105174.600048,
+    "ast_hash": "e59cf700941bbb27189d741d7320833d",
     "semantic_hash": ""
   },
   "frontend/src/wsClient.ts": {
-    "mtime": 1783100788.5005798,
-    "ast_hash": "cb578a9b634cc613fe1dc19cb09a963d",
+    "mtime": 1783105254.869988,
+    "ast_hash": "a2e4e698a1914cb97502405d8ff019cd",
     "semantic_hash": ""
   },
   "frontend/tsconfig.json": {
@@ -50,8 +50,8 @@
     "semantic_hash": "c8160312eda18d85aae689dfe584f586"
   },
   "gateway/src/index.ts": {
-    "mtime": 1783098807.172017,
-    "ast_hash": "9bdfd818992ed9236b07ed5775085b4e",
+    "mtime": 1783105148.227068,
+    "ast_hash": "86edf162278206893a3c71f027c71a32",
     "semantic_hash": ""
   },
   "gateway/tsconfig.json": {
@@ -75,18 +75,18 @@
     "semantic_hash": "842c681581de1e304fb3844de5b92a40"
   },
   "shared/src/index.ts": {
-    "mtime": 1783100634.1116848,
-    "ast_hash": "15b2780d4314a277a163d3cffbff75f2",
+    "mtime": 1783105032.5031562,
+    "ast_hash": "32aac78bf84690546548beacc8346d31",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1783101333.8424275,
-    "ast_hash": "8f8e45ed189fe11ac8059378f97ebc68",
+    "mtime": 1783105740.8536365,
+    "ast_hash": "cfc0482467614b9294d0db7d57fc6e6c",
     "semantic_hash": ""
   },
   "frontend/index.html": {
-    "mtime": 1783100881.0164542,
-    "ast_hash": "50a0697566a27ba330480037366630ac",
+    "mtime": 1783105277.985971,
+    "ast_hash": "ebbea1f783378e0a6e40b9c11a7448cc",
     "semantic_hash": ""
   },
   "frontend/src/panel.ts": {
@@ -110,18 +110,18 @@
     "semantic_hash": "efabff9c013282447536540e9e8d5a69"
   },
   "gateway/src/bus.ts": {
-    "mtime": 1783100655.3316703,
-    "ast_hash": "3f2953d97c66a59e1e82c5b33cf2d26c",
+    "mtime": 1783105094.9351082,
+    "ast_hash": "da773939bd616eb7572a249042e23e72",
     "semantic_hash": ""
   },
   "gateway/src/server.ts": {
-    "mtime": 1783100749.9236062,
-    "ast_hash": "e936cb9fbbfe09382b520c5baa966680",
+    "mtime": 1783105125.2120852,
+    "ast_hash": "3cf2e3c0d8806ae0823ae870548cbead",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783101376.787353,
-    "ast_hash": "192095d4f880fb31271bfd4bd0328125",
+    "mtime": 1783105820.2035804,
+    "ast_hash": "d2a3fdea70976e792491ed6140727817",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -170,7 +170,7 @@
     "semantic_hash": "b20851f3a5fd0878d5d47618ce68f4bf"
   },
   "gateway/config.json": {
-    "mtime": 1783098830.1039972,
+    "mtime": 1783105677.1726818,
     "ast_hash": "3b51e93a0223138f1a63cdf9e1854074",
     "semantic_hash": ""
   },
@@ -270,8 +270,8 @@
     "semantic_hash": ""
   },
   "gateway/src/adapters/tiaweb.ts": {
-    "mtime": 1783100721.0516257,
-    "ast_hash": "cd68b48ed044c726881927a32a273ce7",
+    "mtime": 1783105057.5231369,
+    "ast_hash": "4c72bb9ec9b087074eb3266a53bb8886",
     "semantic_hash": ""
   },
   "gateway/scripts/conveyor-loop-probe.mjs": {
@@ -305,13 +305,23 @@
     "semantic_hash": ""
   },
   "docs/connecting-tia-web-practice.md": {
-    "mtime": 1783101412.121294,
-    "ast_hash": "3aaffccc0095d624118196eb941ce879",
+    "mtime": 1783105909.052518,
+    "ast_hash": "99f1f2dc0791d079c5170020355e71e2",
     "semantic_hash": ""
   },
   "frontend/src/fileMenu.ts": {
     "mtime": 1783098991.274862,
     "ast_hash": "cbec127238505054f76ede6205f74d8d",
+    "semantic_hash": ""
+  },
+  "frontend/src/onlineMenu.ts": {
+    "mtime": 1783105238.4980001,
+    "ast_hash": "db5d1b86dfe1ad2dad631ffc750c124d",
+    "semantic_hash": ""
+  },
+  "gateway/src/tiaConnection.ts": {
+    "mtime": 1783105070.9701266,
+    "ast_hash": "de3836354014b4a1a07e35e4633d1853",
     "semantic_hash": ""
   }
 }

@@ -12,10 +12,12 @@ import { TagBus } from './bus';
 import { loadConfig } from './config';
 import { startLinks } from './links';
 import { startWsServer } from './server';
+import { TiaConnectionManager } from './tiaConnection';
 
 const PORT = Number(process.env.GATEWAY_PORT ?? DEFAULT_GATEWAY_PORT);
 
 const bus = new TagBus();
+const tia = new TiaConnectionManager(bus);
 const config = loadConfig();
 for (const entry of config.adapters) {
   switch (entry.type) {
@@ -34,9 +36,12 @@ for (const entry of config.adapters) {
     case 's7':
       bus.register(new S7Adapter(entry));
       break;
-    case 'tiaweb':
-      bus.register(await TiaWebAdapter.create(entry));
+    case 'tiaweb': {
+      const adapter = await TiaWebAdapter.create(entry);
+      bus.register(adapter);
+      tia.adopt(entry);
       break;
+    }
     case 'conveyor':
       bus.register(new ConveyorAdapter(entry));
       break;
@@ -51,7 +56,7 @@ for (const entry of config.adapters) {
   }
 }
 startLinks(bus, config.links ?? []);
-startWsServer(bus, PORT);
+startWsServer(bus, tia, PORT);
 
 console.log(
   `[gateway] ws://localhost:${PORT} — ${bus.adapters.length} adapter(s), ${bus.tags.length} tags`,

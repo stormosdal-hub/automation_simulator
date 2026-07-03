@@ -22,6 +22,12 @@ machine-model adapters simulate real belt/press/mixer physics on the bus, and a
 **tag-link bridge** wires their sensors straight back into the PLC's inputs —
 so the loop closes with zero external hardware. See [§7](#7-close-the-loop--no-hardware-ever).
 
+**TIA and the gateway don't need to be the same machine.** The runtime binds
+every network interface and its API is plain HTTP with open CORS, so the
+gateway just needs a reachable `host:port` — same box, another computer on
+your LAN over WiFi/Ethernet, or a Raspberry Pi. Point the **Online ▾** menu
+(or `config.json`, §4) at that address either way.
+
 ## Contents
 1. [Prerequisites & repo layout](#1-prerequisites--repo-layout)
 2. [Get a PLC program running](#2-get-a-plc-program-running)
@@ -132,29 +138,62 @@ like the simulation path.
 
 ## 4. Point the gateway at the runtime
 
-Edit `automation_sim/gateway/config.json`. It already ships a `tia` entry for
-the mock path — no tag list to maintain, since the adapter discovers every
-declared project tag from `GET /api/tags` the moment it connects:
+Two ways to do this — pick whichever fits. Both end up in the same place.
+
+### The Online menu (no config.json editing)
+
+Start the gateway with no `tia` adapter configured at all (or leave the
+shipped one — connecting overrides it live). Open the frontend
+(`http://localhost:5173`), click **Online ▾** in the topbar, and type the
+runtime's address:
+
+- Same machine: `127.0.0.1:8000` (or just `localhost:8000`)
+- **Another computer on your network** — a Raspberry Pi, a different desktop
+  over WiFi or Ethernet: that machine's IP, e.g. `192.168.1.50:8000`
+
+Click **Test connection** first — it probes `/api/info` and confirms it's
+actually a TIA Web Practice runtime before anything changes. Click **Connect**
+and the gateway hot-swaps to it immediately: no restart, no page reload, tags
+discovered fresh from whatever program is running there. A bad address is
+rejected without touching whatever's currently connected, so you can safely
+try an address and fall back if it's wrong. This is genuinely a different
+physical machine at that point — the gateway just needs to reach that IP:port
+over the network (LAN, WiFi, doesn't matter), the same way any other HTTP
+client would.
+
+### config.json (a fixed default, no clicking required)
+
+Edit `automation_sim/gateway/config.json` if you'd rather the connection
+already be there every time the gateway starts — no tag list to maintain,
+since the adapter discovers every declared project tag from `GET /api/tags`
+the moment it connects:
 
 ```json
 { "type": "tiaweb", "id": "tia", "url": "http://127.0.0.1:8000", "pollMs": 100 }
 ```
 
-For a real Pi, change only the `url`: `"url": "http://192.168.x.x:8000"` — the
-Pi's own address on your network.
-
-Discovery runs once at gateway startup — but you don't need to restart
-anything to pick up later edits. Add, rename, retype, or delete tags in the
-TIA app, download the updated program, then click the **⟳** button next to
-the `tia` row in the **Connections** panel (frontend, top-right by default):
-the gateway re-imports the tag list on the spot and every connected browser
-updates immediately. New tags appear, edited ones (name/type/comment) update
-in place, and removed ones simply stop updating — no gateway restart, no page
-reload. Want to curate a subset instead of publishing everything? Add an
+For a real Pi (or any other machine), change only the `url`:
+`"url": "http://192.168.x.x:8000"` — that machine's own address on your
+network. Want to curate a subset instead of publishing everything? Add an
 explicit `"tags": [...]` array (`{name, dataType: "boolean"|"number",
-writable}` per tag) — discovery (and the refresh button) is then skipped.
+writable}` per tag) — this also disables the **⟳** refresh button and the
+Online menu's Connect (a target with explicit tags is a deliberate, curated
+list; reconnecting live always re-discovers everything fresh, which would
+undo that curation, so it's skipped in that mode).
 
-### Two ways to reach it — pick one per tag set
+### Either way: refresh after editing tags
+
+Whichever way you connected, discovery only runs once (at startup, or at the
+moment you click Connect) — but you don't need to restart anything to pick up
+*later* edits. Add, rename, retype, or delete tags in the TIA app, download
+the updated program, then click the **⟳** button next to the `tia` row in the
+**Connections** panel (frontend, top-right by default): the gateway
+re-imports the tag list on the spot and every connected browser updates
+immediately. New tags appear, edited ones (name/type/comment) update in
+place, and removed ones simply stop updating — no gateway restart, no page
+reload.
+
+### Two ways to reach the runtime over the wire — pick one per tag set
 
 The `tiaweb` adapter above (HTTP) is the default and needs no extra flags. The
 runtime can *also* speak plain **Modbus TCP** (`plc_server.py --modbus-port
@@ -264,10 +303,12 @@ hand to someone else, on top of the autosave that already runs on every edit.
 
 | Symptom | Likely cause / fix |
 |---|---|
-| `tia.online` stays false | Wrong `url` in config.json, runtime not started yet, or a firewall between gateway and Pi. The adapter fails safe — it keeps polling and flips online after 3 failures, no restart needed once fixed. |
-| Gateway logs "tag discovery failed" and only publishes `tia.online`/`tia.running` | The runtime wasn't reachable *yet* when the gateway started (discovery only runs automatically once, at startup) — start `plc_server.py`, then click **⟳** in the Connections panel to discover on demand, no restart needed. |
-| Bindings reference a `tia.*` tag that never appears | You edited the ladder program after the gateway last discovered tags — click **⟳** next to the `tia` row in the Connections panel to re-import live. |
-| **⟳** button doesn't appear next to an adapter | It only shows for adapters with `canRefreshTags` — for `tiaweb` that means auto-discovery mode; if `config.json` gives it an explicit `tags` array, refresh is skipped (nothing to discover). |
+| `tia.online` stays false | Wrong `url` in config.json (or you haven't connected via the Online menu yet), runtime not started, or a firewall between gateway and Pi. The adapter fails safe — it keeps polling and flips online after 3 failures, no restart needed once fixed. |
+| Online menu's **Test connection** fails | The address is unreachable (wrong IP/port, runtime not started, firewall) or something else is answering on that port — the check specifically verifies the response looks like a TIA Web Practice `/api/info`, not just "something responded". |
+| **Connect** fails but the previous connection still works fine | That's by design — a failed connect attempt never tears down a working one. Fix the address and try again. |
+| Gateway logs "tag discovery failed" and only publishes `tia.online`/`tia.running` | The runtime wasn't reachable *yet* when the gateway started (discovery only runs automatically once, at startup) — start `plc_server.py`, then either click **⟳** in the Connections panel or reconnect via the Online menu, no restart needed. |
+| Bindings reference a `tia.*` tag that never appears | You edited the ladder program after the last discovery — click **⟳** next to the `tia` row in the Connections panel to re-import live. |
+| **⟳** button (or Online menu's Connect) doesn't appear/work as expected | Refresh only applies to adapters with `canRefreshTags` — for `tiaweb` that means auto-discovery mode; if `config.json` gives it an explicit `tags` array, both are skipped (a curated list is deliberate, and reconnecting always re-discovers everything fresh, which would undo that). |
 | Gateway logs "unknown tag name" (explicit `tags` config only) | A tag in config.json doesn't exist in the downloaded program yet (common right after startup, before you've hit Download → PLC), or a name typo — tag names are exact-match. |
 | Port 8082 already in use | `DEFAULT_GATEWAY_PORT` in `shared` is 8082 (8081 is often taken by unrelated Java processes) — override with `GATEWAY_PORT=<port>`. |
 | Pi: `gpiozero` import errors | Pi 5 needs the `lgpio` pin factory, not RPi.GPIO — `sudo apt install python3-gpiozero` pulls the right backend; `--mock` always works regardless of hardware. |
@@ -280,7 +321,7 @@ hand to someone else, on top of the autosave that already runs on every edit.
 |---|---|---|
 | Start the runtime | `python3 plc_server.py --mock` | `python3 plc_server.py` (on the Pi) |
 | GPIO mapping | none — skip it | Raspberry Pi → Export Python, or the Online pin table |
-| Gateway URL | `http://127.0.0.1:8000` | `http://<pi-lan-ip>:8000` |
+| Gateway URL | `http://127.0.0.1:8000` (config.json or Online menu) | `http://<pi-lan-ip>:8000` (config.json or Online menu) |
 | Start gateway + scene | `npm run dev` (from `automation_sim/`) | same |
 | Smoke test | `npm run tia-probe -w @sim/gateway` | same |
 | Optional: Modbus mode | `plc_server.py --modbus-port 5020`, gateway `modbus` adapter | same |

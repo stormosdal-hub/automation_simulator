@@ -5,7 +5,18 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: live tag refresh, no restart** — edit, add, or remove tags in
+**Current state: an Online menu, no config.json required** — a new **Online ▾**
+topbar menu shows the current `tia` connection (URL, online/running) and lets
+you switch it live: type a `host:port` (same machine, another machine on your
+LAN/Wi-Fi, or a Raspberry Pi — anything reachable over the network), **Test
+connection** to confirm it's actually a TIA Web Practice runtime before
+committing, then **Connect** to hot-swap to it — no gateway restart, no page
+reload, and no `tiaweb` entry in `config.json` needed at all (Connect creates
+one on the fly if none exists). A bad address is rejected without disturbing
+whatever's currently connected. Switching connections re-discovers tags fresh
+from the new target, same as the refresh button below.
+
+Previously: **live tag refresh, no restart** — edit, add, or remove tags in
 the TIA app, then click the **⟳** button next to the `tia` adapter in the
 Connections panel: the gateway re-imports the tag list on the spot and every
 connected browser updates immediately — no gateway restart, no page reload.
@@ -116,14 +127,17 @@ Connections are declared in `gateway/config.json` — adapter types:
   writes, optional jsonPath into JSON payloads, dataType, writable, retain)
 - `s7` — host/port/rack/slot/pollMs + tag map (nodes7 address like
   `DB1,REAL0` / `DB1,X8.0`, dataType, writable)
-- `tiaweb` — url (+pollMs) of a TIA Web Practice runtime; `tags` is optional —
-  omit it and every declared project tag is discovered from `GET /api/tags`
-  and published writable (forcing is unconditional on the runtime's side
-  anyway), so panel widgets and machine models can feed sensors with no
-  config.json tag list to maintain. Pass `tags` explicitly to curate a subset
-  instead (this also disables the refresh button below). In discovery mode,
-  the Connections panel's **⟳** button re-runs discovery live — edit the
-  ladder program, click refresh, and the new/edited/removed tags apply
+- `tiaweb` — url (+pollMs) of a TIA Web Practice runtime, and even that's
+  optional now — the **Online ▾** topbar menu can create/redirect this
+  connection live, so `config.json` doesn't need a `tiaweb` entry at all to
+  get started. `tags` is likewise optional — omit it and every declared
+  project tag is discovered from `GET /api/tags` and published writable
+  (forcing is unconditional on the runtime's side anyway), so panel widgets
+  and machine models can feed sensors with no config.json tag list to
+  maintain. Pass `tags` explicitly to curate a subset instead (this also
+  disables the refresh button below). In discovery mode, the Connections
+  panel's **⟳** button re-runs discovery live — edit the ladder program,
+  click refresh, and the new/edited/removed tags apply
   immediately across every connected browser with no restart.
 - `conveyor` — machine model (no external device): beltLength/eyeAt/maxSpeed/
   minSpeed/autoFeedS/partSlots; writable `motorCmd`/`speedCmd`/`feed`, read
@@ -198,8 +212,15 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     + `tagsChanged` broadcast carry it to every connected browser, and a
     per-adapter **⟳** button in the Connections panel triggers it — no
     gateway restart, no page reload~~
-16. Backlog: Raspberry Pi GPIO agent, in-app connection manager (edit
-    gateway config from the browser), browser-direct MQTT, alarm
-    acknowledge/history, 32-bit Modbus registers (client-side register-pair
-    combining in the gateway's own `modbus` adapter), OPC UA Sign&Encrypt,
-    faster S7 offline detection
+16. ~~In-app connection manager for the TIA link: `TiaConnectionManager`
+    hot-swaps the `tia` adapter to a new URL live (probed first, so a bad
+    address never tears down a working connection), works with no prior
+    `tiaweb` config.json entry at all, and the frontend's **Online ▾** menu
+    (host:port input, Test connection, Connect) drives it — proven over a
+    real (non-loopback) network address, not just localhost~~
+17. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
+    adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
+    browser-direct MQTT, alarm acknowledge/history, 32-bit Modbus registers
+    (client-side register-pair combining in the gateway's own `modbus`
+    adapter), OPC UA Sign&Encrypt, faster S7 offline detection, LAN
+    auto-discovery for the Online menu (currently manual host:port entry only)

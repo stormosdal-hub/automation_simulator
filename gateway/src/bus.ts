@@ -82,6 +82,27 @@ export class TagBus {
     return tags;
   }
 
+  /**
+   * Cleanly remove an adapter and every tag it owns — used to hot-swap a
+   * connection (e.g. reconnecting `tia` to a different TIA runtime): stop the
+   * old adapter, unregister it, then register() the replacement. A no-op if
+   * the adapter isn't currently registered.
+   */
+  unregisterAdapter(adapterId: string): void {
+    const idx = this.registered.findIndex((a) => a.meta.id === adapterId);
+    if (idx === -1) return;
+    const adapter = this.registered[idx];
+    if (!adapter) return;
+    this.registered.splice(idx, 1);
+    adapter.stop();
+    for (const [id, meta] of this.tagIndex) {
+      if (meta.adapterId === adapterId) {
+        this.tagIndex.delete(id);
+        this.latest.delete(id);
+      }
+    }
+  }
+
   /** Returns an unsubscribe function. */
   subscribe(listener: BusListener): () => void {
     this.listeners.add(listener);

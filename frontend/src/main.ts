@@ -7,6 +7,7 @@ import { ConnectionsPanel } from './connectionsPanel';
 import { ControlPanels } from './controlPanels';
 import { FileMenu } from './fileMenu';
 import { Hud } from './hud';
+import { OnlineMenu } from './onlineMenu';
 import { createPanel } from './panel';
 import { ProjectStore } from './projectStore';
 import { ReplayPanel } from './replayPanel';
@@ -36,6 +37,7 @@ const conn = connectGateway(gatewayUrl, store, (status) => {
   wsStatus = status;
   hud.setStatus(status);
 });
+new OnlineMenu(document.getElementById('topbar')!, store, conn);
 
 const connectionsPanel = createPanel('Connections');
 new ConnectionsPanel(connectionsPanel.body, store, () => wsStatus, conn);
