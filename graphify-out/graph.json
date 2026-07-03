@@ -389,7 +389,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_alarmspanel",
-      "community": 3,
+      "community": 30,
       "norm_label": "alarmspanel.ts"
     },
     {
@@ -399,7 +399,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel",
-      "community": 3,
+      "community": 30,
       "norm_label": "alarmspanel"
     },
     {
@@ -409,7 +409,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_constructor",
-      "community": 3,
+      "community": 30,
       "norm_label": ".constructor()"
     },
     {
@@ -419,7 +419,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_tick",
-      "community": 3,
+      "community": 30,
       "norm_label": ".tick()"
     },
     {
@@ -429,7 +429,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_refreshdurations",
-      "community": 3,
+      "community": 30,
       "norm_label": ".refreshdurations()"
     },
     {
@@ -439,7 +439,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_render",
-      "community": 3,
+      "community": 30,
       "norm_label": ".render()"
     },
     {
@@ -449,7 +449,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_renderform",
-      "community": 3,
+      "community": 30,
       "norm_label": ".renderform()"
     },
     {
@@ -459,7 +459,7 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "src_alarmspanel_formatduration",
-      "community": 3,
+      "community": 30,
       "norm_label": "formatduration()"
     },
     {
@@ -479,7 +479,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_bindingpanel_deps",
-      "community": 1,
+      "community": 3,
       "norm_label": "deps"
     },
     {
@@ -709,7 +709,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "bindings_engine_bindingengine_constructor",
-      "community": 3,
+      "community": 4,
       "norm_label": ".constructor()"
     },
     {
@@ -749,7 +749,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "bindings_engine_bindingengine_tick",
-      "community": 3,
+      "community": 4,
       "norm_label": ".tick()"
     },
     {
@@ -889,7 +889,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "bindings_types_widget",
-      "community": 4,
+      "community": 31,
       "norm_label": "widget"
     },
     {
@@ -919,7 +919,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "bindings_types_alarmrule",
-      "community": 4,
+      "community": 31,
       "norm_label": "alarmrule"
     },
     {
@@ -929,7 +929,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "bindings_types_project",
-      "community": 4,
+      "community": 31,
       "norm_label": "project"
     },
     {
@@ -939,7 +939,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "bindings_types_alarmactive",
-      "community": 3,
+      "community": 30,
       "norm_label": "alarmactive()"
     },
     {
@@ -999,7 +999,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_connectionspanel",
-      "community": 3,
+      "community": 30,
       "norm_label": "connectionspanel.ts"
     },
     {
@@ -1009,7 +1009,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "connectionspanel"
     },
     {
@@ -1019,7 +1019,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_constructor",
-      "community": 1,
+      "community": 3,
       "norm_label": ".constructor()"
     },
     {
@@ -1029,7 +1029,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_render",
-      "community": 1,
+      "community": 3,
       "norm_label": ".render()"
     },
     {
@@ -1169,7 +1169,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hud",
-      "community": 1,
+      "community": 3,
       "norm_label": "hud.ts"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_hud_hud",
-      "community": 1,
+      "community": 3,
       "norm_label": "hud"
     },
     {
@@ -1189,7 +1189,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_hud_hud_constructor",
-      "community": 1,
+      "community": 3,
       "norm_label": ".constructor()"
     },
     {
@@ -1199,7 +1199,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_hud_hud_setstatus",
-      "community": 1,
+      "community": 3,
       "norm_label": ".setstatus()"
     },
     {
@@ -1209,7 +1209,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_hud_hud_setscene",
-      "community": 1,
+      "community": 3,
       "norm_label": ".setscene()"
     },
     {
@@ -1219,7 +1219,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_hud_hud_render",
-      "community": 1,
+      "community": 3,
       "norm_label": ".render()"
     },
     {
@@ -1229,7 +1229,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 1,
+      "community": 3,
       "norm_label": "main.ts"
     },
     {
@@ -1239,7 +1239,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_main_canvas",
-      "community": 1,
+      "community": 3,
       "norm_label": "canvas"
     },
     {
@@ -1249,7 +1249,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_main_store",
-      "community": 1,
+      "community": 3,
       "norm_label": "store"
     },
     {
@@ -1259,7 +1259,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_main_projectstore",
-      "community": 1,
+      "community": 3,
       "norm_label": "projectstore"
     },
     {
@@ -1269,7 +1269,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_main_selection",
-      "community": 1,
+      "community": 3,
       "norm_label": "selection"
     },
     {
@@ -1279,7 +1279,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_main_bindingengine",
-      "community": 1,
+      "community": 3,
       "norm_label": "bindingengine"
     },
     {
@@ -1289,7 +1289,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_main_hud",
-      "community": 1,
+      "community": 3,
       "norm_label": "hud"
     },
     {
@@ -1299,7 +1299,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "src_main_connectionspanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "connectionspanel"
     },
     {
@@ -1309,7 +1309,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_main_tagspanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "tagspanel"
     },
     {
@@ -1319,7 +1319,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "src_main_treepanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "treepanel"
     },
     {
@@ -1329,7 +1329,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_main_scenetree",
-      "community": 1,
+      "community": 3,
       "norm_label": "scenetree"
     },
     {
@@ -1339,7 +1339,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_main_bindingspanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "bindingspanel"
     },
     {
@@ -1349,7 +1349,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_main_bindingpanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "bindingpanel"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_main_conn",
-      "community": 1,
+      "community": 3,
       "norm_label": "conn"
     },
     {
@@ -1369,7 +1369,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "src_main_alarmspanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "alarmspanel"
     },
     {
@@ -1379,7 +1379,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "src_main_replaypanel",
-      "community": 1,
+      "community": 3,
       "norm_label": "replaypanel"
     },
     {
@@ -1389,7 +1389,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_panel",
-      "community": 3,
+      "community": 30,
       "norm_label": "panel.ts"
     },
     {
@@ -1399,7 +1399,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_panel_panel",
-      "community": 3,
+      "community": 30,
       "norm_label": "panel"
     },
     {
@@ -1409,7 +1409,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_panel_createpanel",
-      "community": 3,
+      "community": 4,
       "norm_label": "createpanel()"
     },
     {
@@ -1419,7 +1419,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_projectstore",
-      "community": 4,
+      "community": 31,
       "norm_label": "projectstore.ts"
     },
     {
@@ -1429,7 +1429,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_projectstore_default_project",
-      "community": 4,
+      "community": 31,
       "norm_label": "default_project"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "src_projectstore_projectstore",
-      "community": 4,
+      "community": 31,
       "norm_label": "projectstore"
     },
     {
@@ -1459,7 +1459,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_constructor",
-      "community": 4,
+      "community": 31,
       "norm_label": ".constructor()"
     },
     {
@@ -1469,7 +1469,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_load",
-      "community": 4,
+      "community": 31,
       "norm_label": ".load()"
     },
     {
@@ -1479,7 +1479,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_onchange",
-      "community": 4,
+      "community": 31,
       "norm_label": ".onchange()"
     },
     {
@@ -1489,7 +1489,7 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_save",
-      "community": 4,
+      "community": 31,
       "norm_label": ".save()"
     },
     {
@@ -1499,7 +1499,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_upsertbinding",
-      "community": 4,
+      "community": 31,
       "norm_label": ".upsertbinding()"
     },
     {
@@ -1509,7 +1509,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removebinding",
-      "community": 4,
+      "community": 31,
       "norm_label": ".removebinding()"
     },
     {
@@ -1519,7 +1519,7 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_replace",
-      "community": 4,
+      "community": 31,
       "norm_label": ".replace()"
     },
     {
@@ -1529,7 +1529,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_upsertalarm",
-      "community": 4,
+      "community": 31,
       "norm_label": ".upsertalarm()"
     },
     {
@@ -1539,7 +1539,7 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removealarm",
-      "community": 4,
+      "community": 31,
       "norm_label": ".removealarm()"
     },
     {
@@ -1549,7 +1549,7 @@
       "source_location": "L158",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_addpanel",
-      "community": 4,
+      "community": 31,
       "norm_label": ".addpanel()"
     },
     {
@@ -1559,7 +1559,7 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removepanel",
-      "community": 4,
+      "community": 31,
       "norm_label": ".removepanel()"
     },
     {
@@ -1569,7 +1569,7 @@
       "source_location": "L170",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_upsertwidget",
-      "community": 4,
+      "community": 31,
       "norm_label": ".upsertwidget()"
     },
     {
@@ -1579,7 +1579,7 @@
       "source_location": "L179",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_removewidget",
-      "community": 4,
+      "community": 31,
       "norm_label": ".removewidget()"
     },
     {
@@ -1589,7 +1589,7 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_reset",
-      "community": 4,
+      "community": 31,
       "norm_label": ".reset()"
     },
     {
@@ -1599,7 +1599,7 @@
       "source_location": "L191",
       "_origin": "ast",
       "id": "src_projectstore_projectstore_export",
-      "community": 4,
+      "community": 31,
       "norm_label": ".export()"
     },
     {
@@ -1609,7 +1609,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_replaypanel",
-      "community": 3,
+      "community": 30,
       "norm_label": "replaypanel.ts"
     },
     {
@@ -1619,7 +1619,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_replaypanel_recordedevent",
-      "community": 3,
+      "community": 30,
       "norm_label": "recordedevent"
     },
     {
@@ -1629,7 +1629,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_replaypanel_recording",
-      "community": 3,
+      "community": 30,
       "norm_label": "recording"
     },
     {
@@ -1639,7 +1639,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel",
-      "community": 3,
+      "community": 30,
       "norm_label": "replaypanel"
     },
     {
@@ -1649,7 +1649,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_constructor",
-      "community": 3,
+      "community": 30,
       "norm_label": ".constructor()"
     },
     {
@@ -1659,7 +1659,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_duration",
-      "community": 3,
+      "community": 30,
       "norm_label": ".duration()"
     },
     {
@@ -1669,7 +1669,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_startrecording",
-      "community": 3,
+      "community": 30,
       "norm_label": ".startrecording()"
     },
     {
@@ -1679,7 +1679,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_stoprecording",
-      "community": 3,
+      "community": 30,
       "norm_label": ".stoprecording()"
     },
     {
@@ -1689,7 +1689,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_startreplay",
-      "community": 3,
+      "community": 30,
       "norm_label": ".startreplay()"
     },
     {
@@ -1699,7 +1699,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_pausereplay",
-      "community": 3,
+      "community": 30,
       "norm_label": ".pausereplay()"
     },
     {
@@ -1709,7 +1709,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_stopreplay",
-      "community": 3,
+      "community": 30,
       "norm_label": ".stopreplay()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_tickreplay",
-      "community": 3,
+      "community": 30,
       "norm_label": ".tickreplay()"
     },
     {
@@ -1729,7 +1729,7 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_download",
-      "community": 3,
+      "community": 30,
       "norm_label": ".download()"
     },
     {
@@ -1739,7 +1739,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_loadfile",
-      "community": 3,
+      "community": 30,
       "norm_label": ".loadfile()"
     },
     {
@@ -1749,7 +1749,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_updatestatus",
-      "community": 3,
+      "community": 30,
       "norm_label": ".updatestatus()"
     },
     {
@@ -1759,7 +1759,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "src_replaypanel_replaypanel_render",
-      "community": 3,
+      "community": 30,
       "norm_label": ".render()"
     },
     {
@@ -1769,7 +1769,7 @@
       "source_location": "L231",
       "_origin": "ast",
       "id": "src_replaypanel_formatms",
-      "community": 3,
+      "community": 30,
       "norm_label": "formatms()"
     },
     {
@@ -1779,7 +1779,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_scene",
-      "community": 1,
+      "community": 3,
       "norm_label": "scene.ts"
     },
     {
@@ -1789,7 +1789,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_scene_createscene",
-      "community": 1,
+      "community": 3,
       "norm_label": "createscene()"
     },
     {
@@ -1799,7 +1799,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_scenetree",
-      "community": 1,
+      "community": 3,
       "norm_label": "scenetree.ts"
     },
     {
@@ -1809,7 +1809,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_scenetree_treerow",
-      "community": 1,
+      "community": 3,
       "norm_label": "treerow"
     },
     {
@@ -1819,7 +1819,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_scenetree_scenetree",
-      "community": 1,
+      "community": 3,
       "norm_label": "scenetree"
     },
     {
@@ -1829,7 +1829,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_constructor",
-      "community": 1,
+      "community": 3,
       "norm_label": ".constructor()"
     },
     {
@@ -1839,7 +1839,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_setscene",
-      "community": 1,
+      "community": 3,
       "norm_label": ".setscene()"
     },
     {
@@ -1849,7 +1849,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_names",
-      "community": 1,
+      "community": 3,
       "norm_label": ".names()"
     },
     {
@@ -1859,7 +1859,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_walk",
-      "community": 1,
+      "community": 3,
       "norm_label": ".walk()"
     },
     {
@@ -1869,7 +1869,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_render",
-      "community": 1,
+      "community": 3,
       "norm_label": ".render()"
     },
     {
@@ -1879,7 +1879,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_highlight",
-      "community": 1,
+      "community": 3,
       "norm_label": ".highlight()"
     },
     {
@@ -1889,7 +1889,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_selection",
-      "community": 1,
+      "community": 3,
       "norm_label": "selection.ts"
     },
     {
@@ -1899,7 +1899,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "src_selection_selection",
-      "community": 1,
+      "community": 3,
       "norm_label": "selection"
     },
     {
@@ -1909,7 +1909,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_selection_selection_name",
-      "community": 1,
+      "community": 3,
       "norm_label": ".name()"
     },
     {
@@ -1919,7 +1919,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_selection_selection_set",
-      "community": 1,
+      "community": 3,
       "norm_label": ".set()"
     },
     {
@@ -1929,7 +1929,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_selection_selection_onchange",
-      "community": 1,
+      "community": 3,
       "norm_label": ".onchange()"
     },
     {
@@ -1939,7 +1939,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagstore",
-      "community": 3,
+      "community": 30,
       "norm_label": "tagstore.ts"
     },
     {
@@ -1959,7 +1959,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_tagstore_tagrow",
-      "community": 3,
+      "community": 30,
       "norm_label": "tagrow"
     },
     {
@@ -1969,7 +1969,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_tagstore_tagstore",
-      "community": 3,
+      "community": 4,
       "norm_label": "tagstore"
     },
     {
@@ -1979,7 +1979,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_applyhello",
-      "community": 3,
+      "community": 4,
       "norm_label": ".applyhello()"
     },
     {
@@ -1989,7 +1989,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_apply",
-      "community": 3,
+      "community": 4,
       "norm_label": ".apply()"
     },
     {
@@ -1999,7 +1999,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_agems",
-      "community": 3,
+      "community": 4,
       "norm_label": ".agems()"
     },
     {
@@ -2009,7 +2009,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_raw",
-      "community": 3,
+      "community": 4,
       "norm_label": ".raw()"
     },
     {
@@ -2019,7 +2019,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_metafor",
-      "community": 3,
+      "community": 4,
       "norm_label": ".metafor()"
     },
     {
@@ -2029,7 +2029,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_num",
-      "community": 3,
+      "community": 4,
       "norm_label": ".num()"
     },
     {
@@ -2039,7 +2039,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_bool",
-      "community": 3,
+      "community": 4,
       "norm_label": ".bool()"
     },
     {
@@ -2049,7 +2049,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_rows",
-      "community": 3,
+      "community": 4,
       "norm_label": ".rows()"
     },
     {
@@ -2099,7 +2099,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_ui",
-      "community": 3,
+      "community": 30,
       "norm_label": "ui.ts"
     },
     {
@@ -2109,7 +2109,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_ui_div",
-      "community": 3,
+      "community": 30,
       "norm_label": "div()"
     },
     {
@@ -2119,7 +2119,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_ui_button",
-      "community": 3,
+      "community": 30,
       "norm_label": "button()"
     },
     {
@@ -2129,7 +2129,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_ui_select",
-      "community": 3,
+      "community": 30,
       "norm_label": "select()"
     },
     {
@@ -2139,7 +2139,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "src_ui_formrow",
-      "community": 3,
+      "community": 30,
       "norm_label": "formrow()"
     },
     {
@@ -2149,7 +2149,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_ui_numberinput",
-      "community": 3,
+      "community": 30,
       "norm_label": "numberinput()"
     },
     {
@@ -2159,7 +2159,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_ui_textinput",
-      "community": 3,
+      "community": 30,
       "norm_label": "textinput()"
     },
     {
@@ -2169,7 +2169,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_ui_colorinput",
-      "community": 3,
+      "community": 30,
       "norm_label": "colorinput()"
     },
     {
@@ -2179,7 +2179,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_viewportselection",
-      "community": 1,
+      "community": 3,
       "norm_label": "viewportselection.ts"
     },
     {
@@ -2189,7 +2189,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_viewportselection_highlight",
-      "community": 1,
+      "community": 3,
       "norm_label": "highlight"
     },
     {
@@ -2199,7 +2199,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_viewportselection_attachviewportselection",
-      "community": 1,
+      "community": 3,
       "norm_label": "attachviewportselection()"
     },
     {
@@ -2329,7 +2329,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_wsclient",
-      "community": 1,
+      "community": 3,
       "norm_label": "wsclient.ts"
     },
     {
@@ -2339,7 +2339,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_wsclient_wsstatus",
-      "community": 1,
+      "community": 3,
       "norm_label": "wsstatus"
     },
     {
@@ -2359,7 +2359,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_wsclient_connectgateway",
-      "community": 1,
+      "community": 3,
       "norm_label": "connectgateway()"
     },
     {
@@ -2643,10 +2643,50 @@
       "norm_label": "s7-sim"
     },
     {
-      "label": "typecheck",
+      "label": "tia-sim",
       "file_type": "code",
       "source_file": "gateway/package.json",
       "source_location": "L14",
+      "_origin": "ast",
+      "id": "gateway_package_scripts_tia_sim",
+      "community": 5,
+      "norm_label": "tia-sim"
+    },
+    {
+      "label": "tia-probe",
+      "file_type": "code",
+      "source_file": "gateway/package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "gateway_package_scripts_tia_probe",
+      "community": 5,
+      "norm_label": "tia-probe"
+    },
+    {
+      "label": "tia-loop-probe",
+      "file_type": "code",
+      "source_file": "gateway/package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "gateway_package_scripts_tia_loop_probe",
+      "community": 5,
+      "norm_label": "tia-loop-probe"
+    },
+    {
+      "label": "machines-probe",
+      "file_type": "code",
+      "source_file": "gateway/package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "gateway_package_scripts_machines_probe",
+      "community": 5,
+      "norm_label": "machines-probe"
+    },
+    {
+      "label": "typecheck",
+      "file_type": "code",
+      "source_file": "gateway/package.json",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "gateway_package_scripts_typecheck",
       "community": 5,
@@ -2656,7 +2696,7 @@
       "label": "dependencies",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L16",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "gateway_package_dependencies",
       "community": 5,
@@ -2666,7 +2706,7 @@
       "label": "@sim/shared",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L17",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "gateway_package_dependencies_sim_shared",
       "community": 5,
@@ -2676,7 +2716,7 @@
       "label": "modbus-serial",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L18",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "gateway_package_dependencies_modbus_serial",
       "community": 5,
@@ -2686,7 +2726,7 @@
       "label": "mqtt",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L19",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "gateway_package_dependencies_mqtt",
       "community": 5,
@@ -2696,7 +2736,7 @@
       "label": "node-opcua",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L20",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "gateway_package_dependencies_node_opcua",
       "community": 5,
@@ -2706,7 +2746,7 @@
       "label": "nodes7",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L21",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "gateway_package_dependencies_nodes7",
       "community": 5,
@@ -2716,7 +2756,7 @@
       "label": "ws",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L22",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "gateway_package_dependencies_ws",
       "community": 5,
@@ -2726,7 +2766,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L24",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "gateway_package_devdependencies",
       "community": 5,
@@ -2736,7 +2776,7 @@
       "label": "@types/node",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L25",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "gateway_package_devdependencies_types_node",
       "community": 5,
@@ -2746,7 +2786,7 @@
       "label": "@types/ws",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L26",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "gateway_package_devdependencies_types_ws",
       "community": 5,
@@ -2756,7 +2796,7 @@
       "label": "node-snap7",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L27",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "gateway_package_devdependencies_node_snap7",
       "community": 5,
@@ -2766,7 +2806,7 @@
       "label": "tsx",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L28",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "gateway_package_devdependencies_tsx",
       "community": 5,
@@ -2776,11 +2816,231 @@
       "label": "typescript",
       "file_type": "code",
       "source_file": "gateway/package.json",
-      "source_location": "L29",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "gateway_package_devdependencies_typescript",
       "community": 5,
       "norm_label": "typescript"
+    },
+    {
+      "label": "conveyor-loop-probe.mjs",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe",
+      "community": 32,
+      "norm_label": "conveyor-loop-probe.mjs"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_results",
+      "community": 32,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_ok",
+      "community": 32,
+      "norm_label": "ok()"
+    },
+    {
+      "label": "el()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_el",
+      "community": 32,
+      "norm_label": "el()"
+    },
+    {
+      "label": "stage()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_stage",
+      "community": 32,
+      "norm_label": "stage()"
+    },
+    {
+      "label": "net()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_net",
+      "community": 32,
+      "norm_label": "net()"
+    },
+    {
+      "label": "project",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_project",
+      "community": 32,
+      "norm_label": "project"
+    },
+    {
+      "label": "latest",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_latest",
+      "community": 32,
+      "norm_label": "latest"
+    },
+    {
+      "label": "ws",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_ws",
+      "community": 32,
+      "norm_label": "ws"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_sleep",
+      "community": 32,
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "waitFor()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_waitfor",
+      "community": 32,
+      "norm_label": "waitfor()"
+    },
+    {
+      "label": "write()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_write",
+      "community": 32,
+      "norm_label": "write()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "scripts_conveyor_loop_probe_main",
+      "community": 32,
+      "norm_label": "main()"
+    },
+    {
+      "label": "machines-probe.mjs",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_machines_probe",
+      "community": 36,
+      "norm_label": "machines-probe.mjs"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_results",
+      "community": 36,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_ok",
+      "community": 36,
+      "norm_label": "ok()"
+    },
+    {
+      "label": "latest",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_latest",
+      "community": 36,
+      "norm_label": "latest"
+    },
+    {
+      "label": "ws",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_ws",
+      "community": 36,
+      "norm_label": "ws"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_sleep",
+      "community": 36,
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "waitFor()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_waitfor",
+      "community": 36,
+      "norm_label": "waitfor()"
+    },
+    {
+      "label": "write()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_write",
+      "community": 36,
+      "norm_label": "write()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "scripts_machines_probe_main",
+      "community": 36,
+      "norm_label": "main()"
     },
     {
       "label": "modbus-plc-sim.mjs",
@@ -3073,13 +3333,143 @@
       "norm_label": "initial"
     },
     {
+      "label": "tiaweb-probe.mjs",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe",
+      "community": 29,
+      "norm_label": "tiaweb-probe.mjs"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_results",
+      "community": 29,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_ok",
+      "community": 29,
+      "norm_label": "ok()"
+    },
+    {
+      "label": "el()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_el",
+      "community": 29,
+      "norm_label": "el()"
+    },
+    {
+      "label": "stage()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_stage",
+      "community": 29,
+      "norm_label": "stage()"
+    },
+    {
+      "label": "net()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_net",
+      "community": 29,
+      "norm_label": "net()"
+    },
+    {
+      "label": "project",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_project",
+      "community": 29,
+      "norm_label": "project"
+    },
+    {
+      "label": "latest",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_latest",
+      "community": 29,
+      "norm_label": "latest"
+    },
+    {
+      "label": "ws",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_ws",
+      "community": 29,
+      "norm_label": "ws"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_sleep",
+      "community": 29,
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "waitFor()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_waitfor",
+      "community": 29,
+      "norm_label": "waitfor()"
+    },
+    {
+      "label": "write()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_write",
+      "community": 29,
+      "norm_label": "write()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "scripts_tiaweb_probe_main",
+      "community": 29,
+      "norm_label": "main()"
+    },
+    {
       "label": "adapter.ts",
       "file_type": "code",
       "source_file": "gateway/src/adapter.ts",
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_adapter",
-      "community": 0,
+      "community": 1,
       "norm_label": "adapter.ts"
     },
     {
@@ -3089,7 +3479,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_adapter_publishfn",
-      "community": 0,
+      "community": 33,
       "norm_label": "publishfn"
     },
     {
@@ -3099,8 +3489,178 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_adapter_adapter",
-      "community": 0,
+      "community": 1,
       "norm_label": "adapter"
+    },
+    {
+      "label": "conveyor.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "adapters_conveyor",
+      "community": 1,
+      "norm_label": "conveyor.ts"
+    },
+    {
+      "label": "ConveyorAdapterConfig",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapterconfig",
+      "community": 28,
+      "norm_label": "conveyoradapterconfig"
+    },
+    {
+      "label": "ConveyorAdapter",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter",
+      "community": 37,
+      "norm_label": "conveyoradapter"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter_constructor",
+      "community": 37,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter_start",
+      "community": 37,
+      "norm_label": ".start()"
+    },
+    {
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter_stop",
+      "community": 37,
+      "norm_label": ".stop()"
+    },
+    {
+      "label": ".write()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter_write",
+      "community": 37,
+      "norm_label": ".write()"
+    },
+    {
+      "label": ".spawnPart()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter_spawnpart",
+      "community": 37,
+      "norm_label": ".spawnpart()"
+    },
+    {
+      "label": ".tick()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L129",
+      "_origin": "ast",
+      "id": "adapters_conveyor_conveyoradapter_tick",
+      "community": 37,
+      "norm_label": ".tick()"
+    },
+    {
+      "label": "mixer.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "adapters_mixer",
+      "community": 1,
+      "norm_label": "mixer.ts"
+    },
+    {
+      "label": "MixerAdapterConfig",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapterconfig",
+      "community": 28,
+      "norm_label": "mixeradapterconfig"
+    },
+    {
+      "label": "MixerAdapter",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapter",
+      "community": 38,
+      "norm_label": "mixeradapter"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapter_constructor",
+      "community": 38,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapter_start",
+      "community": 38,
+      "norm_label": ".start()"
+    },
+    {
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapter_stop",
+      "community": 38,
+      "norm_label": ".stop()"
+    },
+    {
+      "label": ".write()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapter_write",
+      "community": 38,
+      "norm_label": ".write()"
+    },
+    {
+      "label": ".tick()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "adapters_mixer_mixeradapter_tick",
+      "community": 38,
+      "norm_label": ".tick()"
     },
     {
       "label": "modbus.ts",
@@ -3269,7 +3829,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "adapters_mqtt",
-      "community": 0,
+      "community": 33,
       "norm_label": "mqtt.ts"
     },
     {
@@ -3279,7 +3839,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "adapters_mqtt_mqtttagconfig",
-      "community": 0,
+      "community": 33,
       "norm_label": "mqtttagconfig"
     },
     {
@@ -3289,7 +3849,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapterconfig",
-      "community": 0,
+      "community": 33,
       "norm_label": "mqttadapterconfig"
     },
     {
@@ -3299,7 +3859,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter",
-      "community": 0,
+      "community": 33,
       "norm_label": "mqttadapter"
     },
     {
@@ -3309,7 +3869,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_constructor",
-      "community": 0,
+      "community": 33,
       "norm_label": ".constructor()"
     },
     {
@@ -3319,7 +3879,7 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_start",
-      "community": 0,
+      "community": 33,
       "norm_label": ".start()"
     },
     {
@@ -3329,7 +3889,7 @@
       "source_location": "L142",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_stop",
-      "community": 0,
+      "community": 33,
       "norm_label": ".stop()"
     },
     {
@@ -3339,7 +3899,7 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_write",
-      "community": 0,
+      "community": 33,
       "norm_label": ".write()"
     },
     {
@@ -3349,7 +3909,7 @@
       "source_location": "L168",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_setonline",
-      "community": 0,
+      "community": 33,
       "norm_label": ".setonline()"
     },
     {
@@ -3359,7 +3919,7 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "adapters_mqtt_mqttadapter_handlemessage",
-      "community": 0,
+      "community": 33,
       "norm_label": ".handlemessage()"
     },
     {
@@ -3369,7 +3929,7 @@
       "source_location": "L211",
       "_origin": "ast",
       "id": "adapters_mqtt_walkpath",
-      "community": 0,
+      "community": 33,
       "norm_label": "walkpath()"
     },
     {
@@ -3379,7 +3939,7 @@
       "source_location": "L220",
       "_origin": "ast",
       "id": "adapters_mqtt_coerce",
-      "community": 0,
+      "community": 33,
       "norm_label": "coerce()"
     },
     {
@@ -3523,13 +4083,93 @@
       "norm_label": ".createsubscription()"
     },
     {
+      "label": "press.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "adapters_press",
+      "community": 1,
+      "norm_label": "press.ts"
+    },
+    {
+      "label": "PressAdapterConfig",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapterconfig",
+      "community": 28,
+      "norm_label": "pressadapterconfig"
+    },
+    {
+      "label": "PressAdapter",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapter",
+      "community": 39,
+      "norm_label": "pressadapter"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapter_constructor",
+      "community": 39,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapter_start",
+      "community": 39,
+      "norm_label": ".start()"
+    },
+    {
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapter_stop",
+      "community": 39,
+      "norm_label": ".stop()"
+    },
+    {
+      "label": ".write()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapter_write",
+      "community": 38,
+      "norm_label": ".write()"
+    },
+    {
+      "label": ".tick()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "adapters_press_pressadapter_tick",
+      "community": 39,
+      "norm_label": ".tick()"
+    },
+    {
       "label": "s7.ts",
       "file_type": "code",
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L1",
       "_origin": "ast",
       "id": "adapters_s7",
-      "community": 0,
+      "community": 1,
       "norm_label": "s7.ts"
     },
     {
@@ -3539,7 +4179,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "adapters_s7_s7tagconfig",
-      "community": 0,
+      "community": 1,
       "norm_label": "s7tagconfig"
     },
     {
@@ -3549,7 +4189,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "adapters_s7_s7adapterconfig",
-      "community": 0,
+      "community": 28,
       "norm_label": "s7adapterconfig"
     },
     {
@@ -3559,7 +4199,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter",
-      "community": 0,
+      "community": 35,
       "norm_label": "s7adapter"
     },
     {
@@ -3569,7 +4209,7 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_constructor",
-      "community": 0,
+      "community": 35,
       "norm_label": ".constructor()"
     },
     {
@@ -3579,7 +4219,7 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_start",
-      "community": 0,
+      "community": 35,
       "norm_label": ".start()"
     },
     {
@@ -3589,7 +4229,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_stop",
-      "community": 0,
+      "community": 35,
       "norm_label": ".stop()"
     },
     {
@@ -3599,7 +4239,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_write",
-      "community": 0,
+      "community": 35,
       "norm_label": ".write()"
     },
     {
@@ -3609,7 +4249,7 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_connect",
-      "community": 0,
+      "community": 35,
       "norm_label": ".connect()"
     },
     {
@@ -3619,7 +4259,7 @@
       "source_location": "L145",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_teardown",
-      "community": 0,
+      "community": 35,
       "norm_label": ".teardown()"
     },
     {
@@ -3629,7 +4269,7 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_schedulereconnect",
-      "community": 0,
+      "community": 35,
       "norm_label": ".schedulereconnect()"
     },
     {
@@ -3639,7 +4279,7 @@
       "source_location": "L168",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_setonline",
-      "community": 0,
+      "community": 35,
       "norm_label": ".setonline()"
     },
     {
@@ -3649,7 +4289,7 @@
       "source_location": "L177",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_poll",
-      "community": 0,
+      "community": 35,
       "norm_label": ".poll()"
     },
     {
@@ -3659,7 +4299,7 @@
       "source_location": "L199",
       "_origin": "ast",
       "id": "adapters_s7_s7adapter_toupdates",
-      "community": 0,
+      "community": 35,
       "norm_label": ".toupdates()"
     },
     {
@@ -3669,7 +4309,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "adapters_simulator",
-      "community": 0,
+      "community": 1,
       "norm_label": "simulator.ts"
     },
     {
@@ -3679,7 +4319,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter",
-      "community": 0,
+      "community": 38,
       "norm_label": "simulatoradapter"
     },
     {
@@ -3689,7 +4329,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter_constructor",
-      "community": 0,
+      "community": 38,
       "norm_label": ".constructor()"
     },
     {
@@ -3699,7 +4339,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter_t",
-      "community": 0,
+      "community": 38,
       "norm_label": ".t()"
     },
     {
@@ -3709,7 +4349,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter_start",
-      "community": 0,
+      "community": 38,
       "norm_label": ".start()"
     },
     {
@@ -3719,7 +4359,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter_stop",
-      "community": 0,
+      "community": 38,
       "norm_label": ".stop()"
     },
     {
@@ -3729,7 +4369,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter_write",
-      "community": 0,
+      "community": 38,
       "norm_label": ".write()"
     },
     {
@@ -3739,8 +4379,128 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "adapters_simulator_simulatoradapter_sample",
-      "community": 0,
+      "community": 38,
       "norm_label": ".sample()"
+    },
+    {
+      "label": "tiaweb.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "adapters_tiaweb",
+      "community": 28,
+      "norm_label": "tiaweb.ts"
+    },
+    {
+      "label": "TiaWebTagConfig",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebtagconfig",
+      "community": 28,
+      "norm_label": "tiawebtagconfig"
+    },
+    {
+      "label": "TiaWebAdapterConfig",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapterconfig",
+      "community": 28,
+      "norm_label": "tiawebadapterconfig"
+    },
+    {
+      "label": "TiaState",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiastate",
+      "community": 28,
+      "norm_label": "tiastate"
+    },
+    {
+      "label": "TiaWebAdapter",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter",
+      "community": 34,
+      "norm_label": "tiawebadapter"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_constructor",
+      "community": 34,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L102",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_start",
+      "community": 34,
+      "norm_label": ".start()"
+    },
+    {
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_stop",
+      "community": 34,
+      "norm_label": ".stop()"
+    },
+    {
+      "label": ".write()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_write",
+      "community": 34,
+      "norm_label": ".write()"
+    },
+    {
+      "label": ".poll()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L136",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_poll",
+      "community": 34,
+      "norm_label": ".poll()"
+    },
+    {
+      "label": ".setOnline()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L162",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_setonline",
+      "community": 34,
+      "norm_label": ".setonline()"
+    },
+    {
+      "label": ".toUpdates()",
+      "file_type": "code",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "adapters_tiaweb_tiawebadapter_toupdates",
+      "community": 34,
+      "norm_label": ".toupdates()"
     },
     {
       "label": "bus.ts",
@@ -3749,7 +4509,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bus",
-      "community": 0,
+      "community": 1,
       "norm_label": "bus.ts"
     },
     {
@@ -3759,7 +4519,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_bus_buslistener",
-      "community": 0,
+      "community": 1,
       "norm_label": "buslistener"
     },
     {
@@ -3849,47 +4609,47 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_config",
-      "community": 0,
+      "community": 28,
       "norm_label": "config.ts"
     },
     {
       "label": "AdapterConfigEntry",
       "file_type": "code",
       "source_file": "gateway/src/config.ts",
-      "source_location": "L8",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "src_config_adapterconfigentry",
-      "community": 0,
+      "community": 28,
       "norm_label": "adapterconfigentry"
     },
     {
       "label": "GatewayConfig",
       "file_type": "code",
       "source_file": "gateway/src/config.ts",
-      "source_location": "L15",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "src_config_gatewayconfig",
-      "community": 0,
+      "community": 28,
       "norm_label": "gatewayconfig"
     },
     {
       "label": "CONFIG_URL",
       "file_type": "code",
       "source_file": "gateway/src/config.ts",
-      "source_location": "L19",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "src_config_config_url",
-      "community": 0,
+      "community": 28,
       "norm_label": "config_url"
     },
     {
       "label": "loadConfig()",
       "file_type": "code",
       "source_file": "gateway/src/config.ts",
-      "source_location": "L22",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "src_config_loadconfig",
-      "community": 0,
+      "community": 28,
       "norm_label": "loadconfig()"
     },
     {
@@ -3899,28 +4659,68 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "gateway_src_index_ts_src_index",
-      "community": 0,
+      "community": 28,
       "norm_label": "index.ts"
     },
     {
       "label": "PORT",
       "file_type": "code",
       "source_file": "gateway/src/index.ts",
-      "source_location": "L11",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "src_index_port",
-      "community": 0,
+      "community": 28,
       "norm_label": "port"
     },
     {
       "label": "bus",
       "file_type": "code",
       "source_file": "gateway/src/index.ts",
-      "source_location": "L13",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "src_index_bus",
-      "community": 0,
+      "community": 28,
       "norm_label": "bus"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "src_index_config",
+      "community": 28,
+      "norm_label": "config"
+    },
+    {
+      "label": "links.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_links",
+      "community": 28,
+      "norm_label": "links.ts"
+    },
+    {
+      "label": "LinkConfig",
+      "file_type": "code",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_links_linkconfig",
+      "community": 28,
+      "norm_label": "linkconfig"
+    },
+    {
+      "label": "startLinks()",
+      "file_type": "code",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "src_links_startlinks",
+      "community": 28,
+      "norm_label": "startlinks()"
     },
     {
       "label": "server.ts",
@@ -3929,7 +4729,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_server",
-      "community": 1,
+      "community": 3,
       "norm_label": "server.ts"
     },
     {
@@ -3939,7 +4739,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_server_startwsserver",
-      "community": 1,
+      "community": 3,
       "norm_label": "startwsserver()"
     },
     {
@@ -4469,7 +5269,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_index_adaptermeta",
-      "community": 0,
+      "community": 1,
       "norm_label": "adaptermeta"
     },
     {
@@ -4479,7 +5279,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_index_tagmeta",
-      "community": 0,
+      "community": 1,
       "norm_label": "tagmeta"
     },
     {
@@ -4489,7 +5289,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_index_tagupdate",
-      "community": 0,
+      "community": 1,
       "norm_label": "tagupdate"
     },
     {
@@ -4499,7 +5299,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_index_hellomessage",
-      "community": 3,
+      "community": 4,
       "norm_label": "hellomessage"
     },
     {
@@ -4529,7 +5329,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_index_gatewaymessage",
-      "community": 1,
+      "community": 3,
       "norm_label": "gatewaymessage"
     },
     {
@@ -4549,7 +5349,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_index_clientmessage",
-      "community": 1,
+      "community": 3,
       "norm_label": "clientmessage"
     },
     {
@@ -4586,7 +5386,7 @@
       "label": "Architecture",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L20",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "claude_architecture",
       "community": 26,
@@ -4596,7 +5396,7 @@
       "label": "Environment notes",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L90",
+      "source_location": "L128",
       "_origin": "ast",
       "id": "claude_environment_notes",
       "community": 26,
@@ -4626,7 +5426,7 @@
       "label": "Run",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L30",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "readme_run",
       "community": 25,
@@ -4636,7 +5436,7 @@
       "label": "Layout",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L60",
+      "source_location": "L118",
       "_origin": "ast",
       "id": "readme_layout",
       "community": 25,
@@ -4646,7 +5446,7 @@
       "label": "Roadmap",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L73",
+      "source_location": "L131",
       "_origin": "ast",
       "id": "readme_roadmap",
       "community": 25,
@@ -4960,7 +5760,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 6,
       "norm_label": "tag write path (browser \u2192 gateway \u2192 adapter)",
       "id": "concept_write_path"
     },
@@ -10414,6 +11214,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "gateway/package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "gateway_package_scripts",
+      "target": "gateway_package_scripts_machines_probe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/package.json",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -10456,9 +11266,9 @@
       "source_file": "gateway/package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gateway_package_scripts",
-      "target": "gateway_package_scripts_s7_sim",
-      "confidence_score": 1.0
+      "target": "gateway_package_scripts_s7_sim"
     },
     {
       "relation": "contains",
@@ -10469,6 +11279,36 @@
       "confidence_score": 1.0,
       "source": "gateway_package_scripts",
       "target": "gateway_package_scripts_start"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_package_scripts",
+      "target": "gateway_package_scripts_tia_loop_probe"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_package_scripts",
+      "target": "gateway_package_scripts_tia_probe"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_package_scripts",
+      "target": "gateway_package_scripts_tia_sim"
     },
     {
       "relation": "contains",
@@ -10516,9 +11356,9 @@
       "source_file": "gateway/package.json",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gateway_package_dependencies",
-      "target": "gateway_package_dependencies_nodes7",
-      "confidence_score": 1.0
+      "target": "gateway_package_dependencies_nodes7"
     },
     {
       "relation": "contains",
@@ -10546,9 +11386,9 @@
       "source_file": "gateway/package.json",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gateway_package_devdependencies",
-      "target": "gateway_package_devdependencies_node_snap7",
-      "confidence_score": 1.0
+      "target": "gateway_package_devdependencies_node_snap7"
     },
     {
       "relation": "contains",
@@ -10589,6 +11429,327 @@
       "confidence_score": 1.0,
       "source": "gateway_package_devdependencies",
       "target": "gateway_package_devdependencies_typescript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_el"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_latest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_net"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_ok"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_project"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_results"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_sleep"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_stage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_waitfor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_write"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe",
+      "target": "scripts_conveyor_loop_probe_ws"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe_main",
+      "target": "scripts_conveyor_loop_probe_ok"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L78",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe_waitfor",
+      "target": "scripts_conveyor_loop_probe_ok"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe_waitfor",
+      "target": "scripts_conveyor_loop_probe_sleep"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe_main",
+      "target": "scripts_conveyor_loop_probe_waitfor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/conveyor-loop-probe.mjs",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_conveyor_loop_probe_main",
+      "target": "scripts_conveyor_loop_probe_write"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_latest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_waitfor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_write",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "scripts_machines_probe",
+      "target": "scripts_machines_probe_ws",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "scripts_machines_probe_main",
+      "target": "scripts_machines_probe_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "scripts_machines_probe_waitfor",
+      "target": "scripts_machines_probe_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "scripts_machines_probe_main",
+      "target": "scripts_machines_probe_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "scripts_machines_probe_waitfor",
+      "target": "scripts_machines_probe_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "scripts_machines_probe_main",
+      "target": "scripts_machines_probe_waitfor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/machines-probe.mjs",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "scripts_machines_probe_main",
+      "target": "scripts_machines_probe_write",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -10816,9 +11977,9 @@
       "source_file": "gateway/scripts/s7-plc-sim.mjs",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_s7_plc_sim",
-      "target": "scripts_s7_plc_sim_initial",
-      "confidence_score": 1.0
+      "target": "scripts_s7_plc_sim_initial"
     },
     {
       "relation": "contains",
@@ -10826,9 +11987,9 @@
       "source_file": "gateway/scripts/s7-plc-sim.mjs",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_s7_plc_sim",
-      "target": "scripts_s7_plc_sim_port",
-      "confidence_score": 1.0
+      "target": "scripts_s7_plc_sim_port"
     },
     {
       "relation": "contains",
@@ -10836,9 +11997,9 @@
       "source_file": "gateway/scripts/s7-plc-sim.mjs",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_s7_plc_sim",
-      "target": "scripts_s7_plc_sim_require",
-      "confidence_score": 1.0
+      "target": "scripts_s7_plc_sim_require"
     },
     {
       "relation": "contains",
@@ -10846,9 +12007,9 @@
       "source_file": "gateway/scripts/s7-plc-sim.mjs",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_s7_plc_sim",
-      "target": "scripts_s7_plc_sim_server",
-      "confidence_score": 1.0
+      "target": "scripts_s7_plc_sim_server"
     },
     {
       "relation": "contains",
@@ -10856,8 +12017,216 @@
       "source_file": "gateway/scripts/s7-plc-sim.mjs",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_s7_plc_sim",
-      "target": "scripts_s7_plc_sim_snap7",
+      "target": "scripts_s7_plc_sim_snap7"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_el"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_latest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_net"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_ok"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_project"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_results"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_sleep"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_stage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_waitfor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_write"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe",
+      "target": "scripts_tiaweb_probe_ws"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe_main",
+      "target": "scripts_tiaweb_probe_ok"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe_waitfor",
+      "target": "scripts_tiaweb_probe_ok"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe_main",
+      "target": "scripts_tiaweb_probe_sleep"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe_waitfor",
+      "target": "scripts_tiaweb_probe_sleep"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe_main",
+      "target": "scripts_tiaweb_probe_waitfor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/scripts/tiaweb-probe.mjs",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_tiaweb_probe_main",
+      "target": "scripts_tiaweb_probe_write"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "src_adapter"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "src_adapter",
       "confidence_score": 1.0
     },
     {
@@ -10897,12 +12266,23 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "adapters_press",
+      "target": "src_adapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7",
-      "target": "src_adapter",
-      "confidence_score": 1.0
+      "target": "src_adapter"
     },
     {
       "relation": "imports_from",
@@ -10913,6 +12293,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "adapters_simulator",
+      "target": "src_adapter"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
       "target": "src_adapter"
     },
     {
@@ -10978,6 +12369,50 @@
       "confidence_score": 1.0,
       "source": "src_bus",
       "target": "src_adapter"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "src_adapter_publishfn"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter_start",
+      "target": "src_adapter_publishfn"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "src_adapter_publishfn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter_start",
+      "target": "src_adapter_publishfn",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -11082,12 +12517,34 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "adapters_press",
+      "target": "src_adapter_publishfn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter_start",
+      "target": "src_adapter_publishfn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7",
-      "target": "src_adapter_publishfn",
-      "confidence_score": 1.0
+      "target": "src_adapter_publishfn"
     },
     {
       "relation": "references",
@@ -11096,9 +12553,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "src_adapter_publishfn",
-      "confidence_score": 1.0
+      "target": "src_adapter_publishfn"
     },
     {
       "relation": "references",
@@ -11107,9 +12564,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter_start",
-      "target": "src_adapter_publishfn",
-      "confidence_score": 1.0
+      "target": "src_adapter_publishfn"
     },
     {
       "relation": "imports",
@@ -11137,12 +12594,89 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "src_adapter_publishfn"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "src_adapter_publishfn"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter_start",
+      "target": "src_adapter_publishfn"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "gateway/src/bus.ts",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_bus",
       "target": "src_adapter_publishfn"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "src_adapter_adapter"
+    },
+    {
+      "relation": "implements",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "src_adapter_adapter"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "src_adapter_adapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "src_adapter_adapter",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -11214,12 +12748,34 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "adapters_press",
+      "target": "src_adapter_adapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "src_adapter_adapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7",
-      "target": "src_adapter_adapter",
-      "confidence_score": 1.0
+      "target": "src_adapter_adapter"
     },
     {
       "relation": "implements",
@@ -11228,9 +12784,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "src_adapter_adapter",
-      "confidence_score": 1.0
+      "target": "src_adapter_adapter"
     },
     {
       "relation": "imports",
@@ -11252,6 +12808,28 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "adapters_simulator_simulatoradapter",
+      "target": "src_adapter_adapter"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "src_adapter_adapter"
+    },
+    {
+      "relation": "implements",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
       "target": "src_adapter_adapter"
     },
     {
@@ -11308,6 +12886,420 @@
       "confidence_score": 1.0,
       "source": "src_bus_tagbus_register",
       "target": "src_adapter_adapter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "adapters_conveyor_conveyoradapter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "adapters_conveyor_conveyoradapterconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "src_index_adaptermeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "src_index_tagmeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor",
+      "target": "src_index_tagupdate"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_conveyor"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config",
+      "target": "adapters_conveyor"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config",
+      "target": "adapters_conveyor_conveyoradapterconfig"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "adapters_conveyor_conveyoradapter_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L124",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "adapters_conveyor_conveyoradapter_spawnpart"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "adapters_conveyor_conveyoradapter_start"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L100",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "adapters_conveyor_conveyoradapter_stop"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L129",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "adapters_conveyor_conveyoradapter_tick"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "adapters_conveyor_conveyoradapter_write"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "src_index_adaptermeta"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter",
+      "target": "src_index_tagmeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_conveyor_conveyoradapter"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter_write",
+      "target": "adapters_conveyor_conveyoradapter_spawnpart"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "adapters_conveyor_conveyoradapter_write",
+      "target": "adapters_simulator_simulatoradapter_t"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L147",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter_tick",
+      "target": "adapters_conveyor_conveyoradapter_spawnpart"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/conveyor.ts",
+      "source_location": "L129",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_conveyor_conveyoradapter_tick",
+      "target": "src_index_tagupdate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "adapters_mixer_mixeradapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "adapters_mixer_mixeradapterconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "src_index_adaptermeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "src_index_tagmeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "adapters_mixer",
+      "target": "src_index_tagupdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_mixer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_config",
+      "target": "adapters_mixer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_config",
+      "target": "adapters_mixer_mixeradapterconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "adapters_mixer_mixeradapter_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "adapters_mixer_mixeradapter_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "adapters_mixer_mixeradapter_stop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "adapters_mixer_mixeradapter_tick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "adapters_mixer_mixeradapter_write",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "src_index_adaptermeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter",
+      "target": "src_index_tagmeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_mixer_mixeradapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter_write",
+      "target": "adapters_simulator_simulatoradapter_t"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/mixer.ts",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "adapters_mixer_mixeradapter_tick",
+      "target": "src_index_tagupdate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12307,41 +14299,31 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gateway/src/adapters/s7.ts",
-      "source_location": "L38",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L30",
       "weight": 1.0,
-      "source": "adapters_s7",
-      "target": "adapters_s7_s7adapter",
+      "source": "adapters_press",
+      "target": "adapters_press_pressadapter",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gateway/src/adapters/s7.ts",
-      "source_location": "L16",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L4",
       "weight": 1.0,
-      "source": "adapters_s7",
-      "target": "adapters_s7_s7adapterconfig",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gateway/src/adapters/s7.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "adapters_s7",
-      "target": "adapters_s7_s7tagconfig",
+      "source": "adapters_press",
+      "target": "adapters_press_pressadapterconfig",
       "confidence_score": 1.0
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "gateway/src/adapters/s7.ts",
-      "source_location": "L2",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L1",
       "weight": 1.0,
-      "source": "adapters_s7",
+      "source": "adapters_press",
       "target": "src_index_adaptermeta",
       "confidence_score": 1.0
     },
@@ -12349,10 +14331,10 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "gateway/src/adapters/s7.ts",
-      "source_location": "L2",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L1",
       "weight": 1.0,
-      "source": "adapters_s7",
+      "source": "adapters_press",
       "target": "src_index_tagmeta",
       "confidence_score": 1.0
     },
@@ -12360,10 +14342,10 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "gateway/src/adapters/s7.ts",
-      "source_location": "L2",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L1",
       "weight": 1.0,
-      "source": "adapters_s7",
+      "source": "adapters_press",
       "target": "src_index_tagupdate",
       "confidence_score": 1.0
     },
@@ -12375,8 +14357,209 @@
       "source_location": "L5",
       "weight": 1.0,
       "source": "gateway_src_index_ts_src_index",
-      "target": "adapters_s7",
+      "target": "adapters_press",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_config",
+      "target": "adapters_press",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_config",
+      "target": "adapters_press_pressadapterconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "adapters_press_pressadapter_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "adapters_press_pressadapter_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "adapters_press_pressadapter_stop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "adapters_press_pressadapter_tick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "adapters_press_pressadapter_write",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "src_index_adaptermeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter",
+      "target": "src_index_tagmeta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_press_pressadapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter_write",
+      "target": "adapters_simulator_simulatoradapter_t"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/press.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "adapters_press_pressadapter_tick",
+      "target": "src_index_tagupdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/s7.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_s7",
+      "target": "adapters_s7_s7adapter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/s7.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_s7",
+      "target": "adapters_s7_s7adapterconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/s7.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_s7",
+      "target": "adapters_s7_s7tagconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/s7.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_s7",
+      "target": "src_index_adaptermeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/s7.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_s7",
+      "target": "src_index_tagmeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/s7.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_s7",
+      "target": "src_index_tagupdate"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_s7"
     },
     {
       "relation": "imports_from",
@@ -12385,9 +14568,9 @@
       "source_file": "gateway/src/config.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config",
-      "target": "adapters_s7",
-      "confidence_score": 1.0
+      "target": "adapters_s7"
     },
     {
       "relation": "imports",
@@ -12396,9 +14579,9 @@
       "source_file": "gateway/src/config.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config",
-      "target": "adapters_s7_s7adapterconfig",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapterconfig"
     },
     {
       "relation": "method",
@@ -12406,9 +14589,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_connect",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_connect"
     },
     {
       "relation": "method",
@@ -12416,9 +14599,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_constructor",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_constructor"
     },
     {
       "relation": "method",
@@ -12426,9 +14609,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_poll",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_poll"
     },
     {
       "relation": "method",
@@ -12436,9 +14619,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L162",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_schedulereconnect",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_schedulereconnect"
     },
     {
       "relation": "method",
@@ -12446,9 +14629,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L168",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_setonline",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_setonline"
     },
     {
       "relation": "method",
@@ -12456,9 +14639,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_start",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_start"
     },
     {
       "relation": "method",
@@ -12466,9 +14649,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_stop",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_stop"
     },
     {
       "relation": "method",
@@ -12476,9 +14659,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L145",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_teardown",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_teardown"
     },
     {
       "relation": "method",
@@ -12486,9 +14669,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_toupdates",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_toupdates"
     },
     {
       "relation": "method",
@@ -12496,9 +14679,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "adapters_s7_s7adapter_write",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_write"
     },
     {
       "relation": "references",
@@ -12507,9 +14690,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "src_index_adaptermeta",
-      "confidence_score": 1.0
+      "target": "src_index_adaptermeta"
     },
     {
       "relation": "references",
@@ -12518,9 +14701,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter",
-      "target": "src_index_tagmeta",
-      "confidence_score": 1.0
+      "target": "src_index_tagmeta"
     },
     {
       "relation": "imports",
@@ -12529,9 +14712,9 @@
       "source_file": "gateway/src/index.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gateway_src_index_ts_src_index",
-      "target": "adapters_s7_s7adapter",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter"
     },
     {
       "relation": "calls",
@@ -12540,9 +14723,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter_start",
-      "target": "adapters_s7_s7adapter_connect",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_connect"
     },
     {
       "relation": "calls",
@@ -12551,9 +14734,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter_stop",
-      "target": "adapters_s7_s7adapter_teardown",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_teardown"
     },
     {
       "relation": "calls",
@@ -12562,9 +14745,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter_schedulereconnect",
-      "target": "adapters_s7_s7adapter_teardown",
-      "confidence_score": 1.0
+      "target": "adapters_s7_s7adapter_teardown"
     },
     {
       "relation": "references",
@@ -12573,9 +14756,9 @@
       "source_file": "gateway/src/adapters/s7.ts",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_s7_s7adapter_toupdates",
-      "target": "src_index_tagupdate",
-      "confidence_score": 1.0
+      "target": "src_index_tagupdate"
     },
     {
       "relation": "contains",
@@ -12778,6 +14961,259 @@
       "target": "src_index_tagupdate"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "adapters_tiaweb_tiastate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "adapters_tiaweb_tiawebadapter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "adapters_tiaweb_tiawebadapterconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "adapters_tiaweb_tiawebtagconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "src_index_adaptermeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "src_index_tagmeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb",
+      "target": "src_index_tagupdate"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_tiaweb"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config",
+      "target": "adapters_tiaweb"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config",
+      "target": "adapters_tiaweb_tiawebadapterconfig"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L136",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_poll"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L162",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_setonline"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_start"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_stop"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L173",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_toupdates"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "adapters_tiaweb_tiawebadapter_write"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "src_index_adaptermeta"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter",
+      "target": "src_index_tagmeta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "adapters_tiaweb_tiawebadapter"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L104",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter_start",
+      "target": "adapters_tiaweb_tiawebadapter_poll"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter_poll",
+      "target": "adapters_tiaweb_tiawebadapter_setonline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L147",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter_poll",
+      "target": "adapters_tiaweb_tiawebadapter_toupdates"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/adapters/tiaweb.ts",
+      "source_location": "L173",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "adapters_tiaweb_tiawebadapter_toupdates",
+      "target": "src_index_tagupdate"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -12840,6 +15276,17 @@
       "confidence_score": 1.0,
       "source": "src_bus",
       "target": "src_index_tagupdate"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_links",
+      "target": "src_bus"
     },
     {
       "relation": "imports_from",
@@ -12987,6 +15434,17 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_links",
+      "target": "src_bus_tagbus"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "gateway/src/server.ts",
       "source_location": "L3",
       "weight": 1.0,
@@ -13079,6 +15537,39 @@
       "target": "src_config_loadconfig"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config",
+      "target": "src_links"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config",
+      "target": "src_links_linkconfig"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/config.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_config_gatewayconfig",
+      "target": "src_links_linkconfig"
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -13114,11 +15605,43 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "gateway/src/index.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "src_index_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
       "source_location": "L10",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "gateway_src_index_ts_src_index",
       "target": "src_index_port"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "src_links"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/index.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gateway_src_index_ts_src_index",
+      "target": "src_links_startlinks"
     },
     {
       "relation": "imports_from",
@@ -13141,6 +15664,26 @@
       "confidence_score": 1.0,
       "source": "gateway_src_index_ts_src_index",
       "target": "src_server_startwsserver"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_links",
+      "target": "src_links_linkconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/links.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_links",
+      "target": "src_links_startlinks"
     },
     {
       "relation": "imports",
@@ -13180,9 +15723,9 @@
       "source_file": "gateway/src/types/nodes7.d.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "types_nodes7_d",
-      "target": "types_nodes7_d_connectionparams",
-      "confidence_score": 1.0
+      "target": "types_nodes7_d_connectionparams"
     },
     {
       "relation": "contains",
@@ -13190,9 +15733,9 @@
       "source_file": "gateway/src/types/nodes7.d.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "types_nodes7_d",
-      "target": "types_nodes7_d_nodes7",
-      "confidence_score": 1.0
+      "target": "types_nodes7_d_nodes7"
     },
     {
       "relation": "contains",
@@ -14154,5 +16697,5 @@
       "source_file": "CLAUDE.md"
     }
   ],
-  "built_at_commit": "1654221ebc1b9f4d92d6c6d703ff340a5534f01e"
+  "built_at_commit": "2474fbc3479fc171f8e7765079c2cacd14bebbd4"
 }

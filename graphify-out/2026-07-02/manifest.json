@@ -40,9 +40,9 @@
     "semantic_hash": "1ea01e0357e725d6e6de17b7f9297cd6"
   },
   "gateway/package.json": {
-    "mtime": 1782989979.1094832,
-    "ast_hash": "6853ca2fbca1d91c82ec52610f2c4be5",
-    "semantic_hash": "6853ca2fbca1d91c82ec52610f2c4be5"
+    "mtime": 1783032221.4666724,
+    "ast_hash": "018fa7ee2d679e74a8e9cdc2dc5ebeb2",
+    "semantic_hash": ""
   },
   "gateway/scripts/probe.mjs": {
     "mtime": 1782985850.9882994,
@@ -50,9 +50,9 @@
     "semantic_hash": "c8160312eda18d85aae689dfe584f586"
   },
   "gateway/src/index.ts": {
-    "mtime": 1782989955.1884975,
-    "ast_hash": "5d7e5c83f15ae507fdd579e4590cd7cd",
-    "semantic_hash": "5d7e5c83f15ae507fdd579e4590cd7cd"
+    "mtime": 1783032150.7577496,
+    "ast_hash": "a5d73f3553bbeb58e44492a00cbb3f29",
+    "semantic_hash": ""
   },
   "gateway/tsconfig.json": {
     "mtime": 1782983426.1674767,
@@ -60,9 +60,9 @@
     "semantic_hash": "65456189a81542bf240b3db20c52940f"
   },
   "package.json": {
-    "mtime": 1782989965.2394915,
-    "ast_hash": "884056d1cff8f272d9bdcb4b9eded7c3",
-    "semantic_hash": "884056d1cff8f272d9bdcb4b9eded7c3"
+    "mtime": 1782994542.501882,
+    "ast_hash": "9d9893f6c31f93a94fd355a0be33d25b",
+    "semantic_hash": ""
   },
   "scripts/make-demo-glb.mjs": {
     "mtime": 1782983471.4394586,
@@ -80,8 +80,8 @@
     "semantic_hash": "af4024f5a17a713d0c5d1d6b221aa536"
   },
   "README.md": {
-    "mtime": 1782991442.601421,
-    "ast_hash": "d9db08f8ba4d086fd745717d0627bcaf",
+    "mtime": 1783032412.250478,
+    "ast_hash": "6aaa319071de5425eb13bcbe1002c4ba",
     "semantic_hash": ""
   },
   "frontend/index.html": {
@@ -120,8 +120,8 @@
     "semantic_hash": "a569e60d45f1a1f87821cff15a3ea616"
   },
   "CLAUDE.md": {
-    "mtime": 1782991447.7224166,
-    "ast_hash": "fd27291c7dfdf74fcb0f660b668bd769",
+    "mtime": 1783032421.0874693,
+    "ast_hash": "af5a1efc8840b3781195b5cc8f90c133",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -170,9 +170,9 @@
     "semantic_hash": "b20851f3a5fd0878d5d47618ce68f4bf"
   },
   "gateway/config.json": {
-    "mtime": 1782990863.2069283,
-    "ast_hash": "6ca6469703b4d2f211bbf7574df29b3e",
-    "semantic_hash": "6ca6469703b4d2f211bbf7574df29b3e"
+    "mtime": 1783032164.1967347,
+    "ast_hash": "83110961a7a4969a8710a20813b8347b",
+    "semantic_hash": ""
   },
   "gateway/scripts/modbus-plc-sim.mjs": {
     "mtime": 1782988160.2115746,
@@ -185,9 +185,9 @@
     "semantic_hash": "4e722a0ebdd03da12517473741f187d7"
   },
   "gateway/src/config.ts": {
-    "mtime": 1782989951.4494998,
-    "ast_hash": "eb423b8b86c08426e1667c407505b93e",
-    "semantic_hash": "eb423b8b86c08426e1667c407505b93e"
+    "mtime": 1783032141.8967595,
+    "ast_hash": "e7329da369b151eae3f201ec95f8f194",
+    "semantic_hash": ""
   },
   "gateway/scripts/opcua-server-sim.mjs": {
     "mtime": 1782988988.8330011,
@@ -248,5 +248,45 @@
     "mtime": 1782991979.706997,
     "ast_hash": "04e12d47e4e384888b941f65aad2ac70",
     "semantic_hash": "04e12d47e4e384888b941f65aad2ac70"
+  },
+  "gateway/scripts/s7-plc-sim.mjs": {
+    "mtime": 1782994523.9368966,
+    "ast_hash": "bc2d4da7f03b0e053c8275fc8b34c2c0",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/s7.ts": {
+    "mtime": 1782994502.2289133,
+    "ast_hash": "7046124879fd1809ac4c66d4e326d1b2",
+    "semantic_hash": ""
+  },
+  "gateway/src/types/nodes7.d.ts": {
+    "mtime": 1782994478.7689316,
+    "ast_hash": "6412b7766f6907076284432d36cc0d97",
+    "semantic_hash": ""
+  },
+  "gateway/scripts/tiaweb-probe.mjs": {
+    "mtime": 1783031797.4130888,
+    "ast_hash": "4c3e6e086048546c4082a7ea3789b837",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/tiaweb.ts": {
+    "mtime": 1783031626.7842042,
+    "ast_hash": "a95d6ee970fbb43b82aa93b9425c6d94",
+    "semantic_hash": ""
+  },
+  "gateway/scripts/conveyor-loop-probe.mjs": {
+    "mtime": 1783032210.9916837,
+    "ast_hash": "bea8e675a2349c63276799eb697b0e18",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/conveyor.ts": {
+    "mtime": 1783032245.0246475,
+    "ast_hash": "0aa88df11bad61f958b6c3cd90153152",
+    "semantic_hash": ""
+  },
+  "gateway/src/links.ts": {
+    "mtime": 1783032089.4888191,
+    "ast_hash": "7743822082250270f6d8e7ba321e0264",
+    "semantic_hash": ""
   }
 }

@@ -1,13 +1,18 @@
 # Graph Report - automation_sim  (2026-07-02)
 
 ## Corpus Check
-- 49 files · ~19,154 words
+- 57 files · ~25,530 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 461 nodes · 826 edges · 27 communities (22 shown, 5 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 24 edges (avg confidence: 0.86)
+- 541 nodes · 972 edges · 39 communities (29 shown, 10 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 25 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `2474fbc3`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Community 0|Community 0]]
@@ -36,18 +41,30 @@
 - [[_COMMUNITY_Community 23|Community 23]]
 - [[_COMMUNITY_Community 25|Community 25]]
 - [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `TagStore` - 29 edges
 2. `ProjectStore` - 24 edges
-3. `TagBus` - 20 edges
-4. `ModbusAdapter` - 18 edges
-5. `TagMeta` - 17 edges
-6. `OpcUaAdapter` - 15 edges
-7. `AdapterMeta` - 15 edges
-8. `TagUpdate` - 15 edges
-9. `Frontend Main Entry (main.ts)` - 15 edges
-10. `ReplayPanel` - 14 edges
+3. `TagMeta` - 23 edges
+4. `PublishFn` - 21 edges
+5. `TagBus` - 21 edges
+6. `AdapterMeta` - 21 edges
+7. `TagUpdate` - 21 edges
+8. `Adapter` - 20 edges
+9. `ModbusAdapter` - 18 edges
+10. `S7Adapter` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `TagBus` --references--> `Tag Write Path (browser → gateway → adapter)`  [EXTRACTED]
@@ -69,39 +86,39 @@
 - **Tag Write Path Flow: Browser → WS → Bus → Adapter** — frontend_wsclient, gateway_bus, adapters_modbus, adapters_opcua, adapters_mqtt, concept_write_path [EXTRACTED 0.95]
 - **Polish Phase Frontend Modules** — frontend_connectionspanel, frontend_alarmspanel, frontend_replaypanel, frontend_ui, frontend_widgets, frontend_controlpanels [EXTRACTED 0.90]
 
-## Communities (27 total, 5 thin omitted)
+## Communities (39 total, 10 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (31): ModbusAdapterConfig, ModbusTagConfig, coerce(), MqttAdapter, MqttAdapterConfig, MqttTagConfig, walkPath(), INTEGER_TYPES (+23 more)
+Cohesion: 0.12
+Nodes (12): ModbusAdapterConfig, ModbusTagConfig, INTEGER_TYPES, OpcUaAdapterConfig, OpcUaTagConfig, 2s Heartbeat for Change-Driven Adapters, Adapter Online Health Tag Convention, TagBus Pub/Sub Pattern (+4 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.05
-Nodes (31): Deps, Hud, ClientMessage, GatewayMessage, TagUpdateMessage, WriteErrorMessage, WriteMessage, alarmsPanel (+23 more)
+Cohesion: 0.34
+Nodes (7): S7AdapterConfig, S7TagConfig, Adapter, BusListener, AdapterMeta, TagMeta, TagUpdate
 
 ### Community 2 - "Community 2"
-Cohesion: 0.10
-Nodes (28): Applier, Axis, baselineKey(), BindingEngine, AlarmCondition, applyTransform(), BINDABLE_PROPERTIES, Binding (+20 more)
+Cohesion: 0.06
+Nodes (37): Applier, Axis, baselineKey(), BindingEngine, AlarmCondition, AlarmRule, applyTransform(), BINDABLE_PROPERTIES (+29 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (18): alarmActive(), AlarmsPanel, formatDuration(), ConnectionsPanel, HelloMessage, createPanel(), Panel, RecordedEvent (+10 more)
+Cohesion: 0.05
+Nodes (37): alarmActive(), AlarmsPanel, formatDuration(), ConnectionsPanel, Hud, HelloMessage, alarmsPanel, bindingEngine (+29 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (20): ControlPanelDef, widgetAcceptsTag(), WidgetType, ControlPanels, Deps, WIDGET_TYPES, newBindingId(), TagValue (+12 more)
+Cohesion: 0.16
+Nodes (16): ControlPanelDef, ControlPanels, Deps, TagValue, arcPath(), buildButton(), buildGauge(), buildKnob() (+8 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.08
-Nodes (23): dependencies, modbus-serial, mqtt, node-opcua, @sim/shared, ws, devDependencies, tsx (+15 more)
+Cohesion: 0.07
+Nodes (29): dependencies, modbus-serial, mqtt, node-opcua, nodes7, @sim/shared, ws, devDependencies (+21 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.16
 Nodes (19): window.__SIM__ Testing Hook, Tag Write Path (browser → gateway → adapter), Alarms Panel, Connections Panel, Control Panels Manager, Frontend index.html, Frontend Main Entry (main.ts), Panel Manager (+11 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.17
-Nodes (5): AlarmRule, Project, Widget, DEFAULT_PROJECT, ProjectStore
+Cohesion: 0.33
+Nodes (5): initial, PORT, require, server, snap7
 
 ### Community 9 - "Community 9"
 Cohesion: 0.12
@@ -155,25 +172,53 @@ Nodes (4): Automation Sim, Layout, Roadmap, Run
 Cohesion: 0.40
 Nodes (4): Architecture, Automation Sim — agent guide, Commands, Environment notes
 
+### Community 28 - "Community 28"
+Cohesion: 0.21
+Nodes (11): ConveyorAdapterConfig, TiaWebAdapterConfig, AdapterConfigEntry, CONFIG_URL, GatewayConfig, loadConfig(), bus, config (+3 more)
+
+### Community 29 - "Community 29"
+Cohesion: 0.23
+Nodes (9): latest, main(), ok(), project, results, sleep(), waitFor(), write() (+1 more)
+
+### Community 31 - "Community 31"
+Cohesion: 0.15
+Nodes (6): Deps, SceneTree, TreeRow, Selection, attachViewportSelection(), HIGHLIGHT
+
+### Community 32 - "Community 32"
+Cohesion: 0.22
+Nodes (9): latest, main(), ok(), project, results, sleep(), waitFor(), write() (+1 more)
+
+### Community 33 - "Community 33"
+Cohesion: 0.20
+Nodes (5): coerce(), MqttAdapter, MqttAdapterConfig, MqttTagConfig, walkPath()
+
+### Community 34 - "Community 34"
+Cohesion: 0.24
+Nodes (4): TiaState, TiaWebAdapter, TiaWebTagConfig, PublishFn
+
+### Community 36 - "Community 36"
+Cohesion: 0.29
+Nodes (6): ClientMessage, GatewayMessage, TagUpdateMessage, WriteErrorMessage, WriteMessage, startWsServer()
+
 ## Knowledge Gaps
-- **165 isolated node(s):** `node`, `name`, `version`, `type`, `main` (+160 more)
+- **189 isolated node(s):** `node`, `name`, `version`, `type`, `main` (+184 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `TagStore` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 4`, `Community 7`?**
-  _High betweenness centrality (0.099) - this node is a cross-community bridge._
-- **Why does `AdapterMeta` connect `Community 0` to `Community 1`, `Community 3`, `Community 13`?**
-  _High betweenness centrality (0.078) - this node is a cross-community bridge._
-- **Why does `TagUpdate` connect `Community 0` to `Community 1`, `Community 3`, `Community 13`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+- **Why does `TagStore` connect `Community 3` to `Community 1`, `Community 2`, `Community 4`, `Community 30`, `Community 31`?**
+  _High betweenness centrality (0.090) - this node is a cross-community bridge._
+- **Why does `AdapterMeta` connect `Community 1` to `Community 0`, `Community 33`, `Community 34`, `Community 35`, `Community 36`, `Community 37`, `Community 38`, `Community 7`, `Community 3`, `Community 13`?**
+  _High betweenness centrality (0.083) - this node is a cross-community bridge._
+- **Why does `TagUpdate` connect `Community 1` to `Community 0`, `Community 33`, `Community 34`, `Community 3`, `Community 36`, `Community 37`, `Community 38`, `Community 13`?**
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `TagBus` (e.g. with `simulator.ts` and `WebSocket Client`) actually correct?**
   _`TagBus` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `node`, `name`, `version` to the rest of the system?**
-  _166 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _190 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.0673903211216644 - nodes in this community are weakly interconnected._
-- **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.054426705370101594 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11578947368421053 - nodes in this community are weakly interconnected._
+- **Should `Community 2` be split into smaller, more focused modules?**
+  _Cohesion score 0.05649122807017544 - nodes in this community are weakly interconnected._

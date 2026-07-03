@@ -40,8 +40,8 @@
     "semantic_hash": "1ea01e0357e725d6e6de17b7f9297cd6"
   },
   "gateway/package.json": {
-    "mtime": 1782994539.0168848,
-    "ast_hash": "58530799f7ddf764941e4e14d54e14f3",
+    "mtime": 1783032940.024004,
+    "ast_hash": "fe3d994bbfdf2f9faf8b2443d70e30de",
     "semantic_hash": ""
   },
   "gateway/scripts/probe.mjs": {
@@ -50,8 +50,8 @@
     "semantic_hash": "c8160312eda18d85aae689dfe584f586"
   },
   "gateway/src/index.ts": {
-    "mtime": 1782994532.4048898,
-    "ast_hash": "151ea2bd063861874bdfd9d477395b10",
+    "mtime": 1783032895.9470413,
+    "ast_hash": "e3f09319ab0b2d5b568b2f5ba07e7708",
     "semantic_hash": ""
   },
   "gateway/tsconfig.json": {
@@ -80,8 +80,8 @@
     "semantic_hash": "af4024f5a17a713d0c5d1d6b221aa536"
   },
   "README.md": {
-    "mtime": 1782995005.4385264,
-    "ast_hash": "0f1d531201449b5d9335a83f4ff9ef1a",
+    "mtime": 1783033058.2699053,
+    "ast_hash": "5457aafff4ecd53ffa2146294c4728e2",
     "semantic_hash": ""
   },
   "frontend/index.html": {
@@ -120,8 +120,8 @@
     "semantic_hash": "a569e60d45f1a1f87821cff15a3ea616"
   },
   "CLAUDE.md": {
-    "mtime": 1782995012.4415212,
-    "ast_hash": "a422a46b7d75b96cd6aca88fe6e64e98",
+    "mtime": 1783033065.1678996,
+    "ast_hash": "14730394452ba42b7444f0deae1d7733",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -170,8 +170,8 @@
     "semantic_hash": "b20851f3a5fd0878d5d47618ce68f4bf"
   },
   "gateway/config.json": {
-    "mtime": 1782994537.578886,
-    "ast_hash": "4c406b26381ca056af3b5bd4950b292c",
+    "mtime": 1783032897.7910397,
+    "ast_hash": "1fbbd6a20068fcf99cf4dcad5aa361f0",
     "semantic_hash": ""
   },
   "gateway/scripts/modbus-plc-sim.mjs": {
@@ -185,8 +185,8 @@
     "semantic_hash": "4e722a0ebdd03da12517473741f187d7"
   },
   "gateway/src/config.ts": {
-    "mtime": 1782994528.6428928,
-    "ast_hash": "3f3c606c8e8ebbd349d41775c9811b69",
+    "mtime": 1783032890.7010458,
+    "ast_hash": "5637b12d1f7e2048f69988ac82ffa5df",
     "semantic_hash": ""
   },
   "gateway/scripts/opcua-server-sim.mjs": {
@@ -262,6 +262,46 @@
   "gateway/src/types/nodes7.d.ts": {
     "mtime": 1782994478.7689316,
     "ast_hash": "6412b7766f6907076284432d36cc0d97",
+    "semantic_hash": ""
+  },
+  "gateway/scripts/tiaweb-probe.mjs": {
+    "mtime": 1783031797.4130888,
+    "ast_hash": "4c3e6e086048546c4082a7ea3789b837",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/tiaweb.ts": {
+    "mtime": 1783031626.7842042,
+    "ast_hash": "a95d6ee970fbb43b82aa93b9425c6d94",
+    "semantic_hash": ""
+  },
+  "gateway/scripts/conveyor-loop-probe.mjs": {
+    "mtime": 1783032210.9916837,
+    "ast_hash": "bea8e675a2349c63276799eb697b0e18",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/conveyor.ts": {
+    "mtime": 1783032245.0246475,
+    "ast_hash": "0aa88df11bad61f958b6c3cd90153152",
+    "semantic_hash": ""
+  },
+  "gateway/src/links.ts": {
+    "mtime": 1783032089.4888191,
+    "ast_hash": "7743822082250270f6d8e7ba321e0264",
+    "semantic_hash": ""
+  },
+  "gateway/scripts/machines-probe.mjs": {
+    "mtime": 1783032938.4070055,
+    "ast_hash": "3e7cb144cb8434af7556733008d9a20d",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/mixer.ts": {
+    "mtime": 1783032873.4610605,
+    "ast_hash": "f835690613546bf7a568e9c3b0bf6d23",
+    "semantic_hash": ""
+  },
+  "gateway/src/adapters/press.ts": {
+    "mtime": 1783032843.742086,
+    "ast_hash": "7b187aa69c2e3e1e11400a708d3f3034",
     "semantic_hash": ""
   }
 }

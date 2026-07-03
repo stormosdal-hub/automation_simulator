@@ -46,6 +46,48 @@
       ]
     },
     {
+      "type": "tiaweb",
+      "id": "tia",
+      "label": "TIA Web PLC",
+      "url": "http://127.0.0.1:8000",
+      "pollMs": 100,
+      "tags": [
+        { "name": "Start_PB", "label": "Start push button", "dataType": "boolean", "writable": true },
+        { "name": "Stop_PB", "label": "Stop push button", "dataType": "boolean", "writable": true },
+        { "name": "Part_Sensor", "label": "Part sensor", "dataType": "boolean", "writable": true },
+        { "name": "Motor", "label": "Conveyor motor", "dataType": "boolean" },
+        { "name": "Run_Lamp", "label": "Run lamp", "dataType": "boolean" },
+        { "name": "Count_Done", "label": "Batch complete", "dataType": "boolean" },
+        { "name": "Part_Count", "label": "Parts counted", "dataType": "number" },
+        { "name": "Conveyor_PWM", "label": "Conveyor speed duty", "dataType": "number" }
+      ]
+    },
+    {
+      "type": "conveyor",
+      "id": "conv",
+      "label": "Conveyor line (machine model)",
+      "beltLength": 4,
+      "eyeAt": 3,
+      "maxSpeed": 1.2,
+      "minSpeed": 0.4,
+      "autoFeedS": 3,
+      "partSlots": 4
+    },
+    {
+      "type": "press",
+      "id": "press",
+      "label": "Hydraulic press (machine model)",
+      "strokeS": 4,
+      "defaultTarget": 150
+    },
+    {
+      "type": "mixer",
+      "id": "mixer",
+      "label": "Mixer skid (machine model)",
+      "batchS": 8,
+      "overTempC": 50
+    },
+    {
       "type": "s7",
       "id": "press1",
       "label": "Hydraulic press (S7)",
@@ -63,5 +105,10 @@
         { "name": "targetPressure", "label": "Target pressure", "address": "DB1,REAL14", "dataType": "number", "unit": "bar", "writable": true }
       ]
     }
+  ],
+  "links": [
+    { "from": "tia.Motor", "to": "conv.motorCmd" },
+    { "from": "tia.Conveyor_PWM", "to": "conv.speedCmd" },
+    { "from": "conv.photoEye", "to": "tia.Part_Sensor" }
   ]
 }

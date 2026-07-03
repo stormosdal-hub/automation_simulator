@@ -11,6 +11,10 @@
     "opcua-sim": "node scripts/opcua-server-sim.mjs",
     "mqtt-sim": "node scripts/mqtt-device-sim.mjs",
     "s7-sim": "node scripts/s7-plc-sim.mjs",
+    "tia-sim": "python3 ../../TIA_Portal_Web-app/plc_server.py --mock",
+    "tia-probe": "node scripts/tiaweb-probe.mjs",
+    "tia-loop-probe": "node scripts/conveyor-loop-probe.mjs",
+    "machines-probe": "node scripts/machines-probe.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

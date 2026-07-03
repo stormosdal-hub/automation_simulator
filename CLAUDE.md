@@ -15,6 +15,11 @@ npm run plc-sim -w @sim/gateway    # fake conveyor PLC, Modbus TCP on 5020
 npm run opcua-sim -w @sim/gateway  # fake mixer skid, OPC UA on 4850 (first run generates certs, ~5s)
 npm run mqtt-sim -w @sim/gateway   # fake ESP32 fan node — needs the system mosquitto on 1883
 npm run s7-sim -w @sim/gateway     # fake hydraulic press, S7comm (snap7 server) on 9102
+npm run tia-sim -w @sim/gateway    # sibling TIA Web Practice PLC runtime (mock), HTTP on 8000
+npm run tia-probe -w @sim/gateway  # tiaweb adapter smoke test (needs gateway + tia-sim running;
+                                   #   gateway on 8092: GATEWAY_PORT=8092 npm run start -w @sim/gateway)
+npm run tia-loop-probe -w @sim/gateway  # closed-loop test: PLC ⇄ conveyor via links (~30 s, same setup)
+npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 s, gateway only)
 ```
 
 ## Architecture
@@ -52,6 +57,39 @@ npm run s7-sim -w @sim/gateway     # fake hydraulic press, S7comm (snap7 server)
   header) — uses the system mosquitto on 1883; topics namespaced
   `automation-sim/`. Do NOT restart mosquitto (shared service; permission
   classifier blocks it).
+- `gateway/src/adapters/tiaweb.ts` — sibling TIA Web Practice PLC runtime
+  (`../TIA_Portal_Web-app/plc_server.py`) over its HTTP API: polls
+  `GET /api/state` (tag values by NAME in `mem`), writes via `POST /api/force`
+  (accepts names or `%I0.0` addresses). Stateless HTTP → no reconnect dance:
+  the loop keeps polling and flips `<id>.online` after 3 failures.
+  `<id>.running` mirrors PLC RUN/STOP and fails safe to false while offline.
+  Unknown tag names are warned once (usually "program not downloaded yet").
+  E2E smoke test: `scripts/tiaweb-probe.mjs` (downloads a seal-in + CTU
+  program, drives it through the gateway WS, checks writeError + offline;
+  `offline` arg asserts the down state after killing the runtime).
+- `gateway/src/links.ts` — tag-link bridge (`config.links`): routes one
+  adapter's published tag into another's write. Change-driven (adapters
+  republish every poll — forwarding those would hammer targets), values are
+  coerced to the target's dataType, failed writes log ONCE then retry
+  silently, bad links are dropped at startup with a warning. This is what
+  closes the loop between the TIA PLC and machine models.
+- `gateway/src/adapters/conveyor.ts` — conveyor MACHINE MODEL (plant behavior
+  on the bus, no external device): ~30 Hz tick, parts advance at
+  `minSpeed + speedCmd*(maxSpeed-minSpeed)` while `motorCmd`, auto feeder
+  every `autoFeedS` s (+ momentary `feed`), `photoEye` true while a part is
+  in the eye zone (dwell = eyeWidth/speed — keep ≥ a few PLC scans),
+  `part<N>Pos` = −1 when the slot is empty (bindings can park the mesh).
+  Closed-loop test: `scripts/conveyor-loop-probe.mjs` — presses Start through
+  the gateway, then asserts the plant runs the PLC's counter with NO client
+  writing sensors.
+- `gateway/src/adapters/press.ts` + `mixer.ts` — machine-model ports of the
+  protocol sims (`s7-plc-sim.mjs` / `opcua-server-sim.mjs`) with identical
+  dynamics; lags are tick-rate independent (`1 - (1-k)^(dt/0.1)` reproduces
+  the sims' per-100 ms factors). Extra PLC-facing sensors: press
+  `atTop`/`atBottom`/`pressing`; mixer `batchDone` (0.6 s pulse — long enough
+  for a polled PLC), `batchProgress`, `overTemp`. Smoke test:
+  `scripts/machines-probe.mjs` (gateway only; asserts stroke/pressure/cycle
+  dynamics and slosh/batch/thermal dynamics through the WS).
 - `gateway/src/adapters/s7.ts` — Siemens S7comm via pure-JS nodes7 (typings
   in `src/types/nodes7.d.ts` — no @types package). Polled like Modbus;
   nodes7 converts REAL/INT/X-bit types. Fresh NodeS7 instance per connect
