@@ -181,17 +181,24 @@ Online menu's Connect (a target with explicit tags is a deliberate, curated
 list; reconnecting live always re-discovers everything fresh, which would
 undo that curation, so it's skipped in that mode).
 
-### Either way: refresh after editing tags
+### Editing tags later — it syncs itself
 
-Whichever way you connected, discovery only runs once (at startup, or at the
-moment you click Connect) — but you don't need to restart anything to pick up
-*later* edits. Add, rename, retype, or delete tags in the TIA app, download
-the updated program, then click the **⟳** button next to the `tia` row in the
-**Connections** panel (frontend, top-right by default): the gateway
-re-imports the tag list on the spot and every connected browser updates
-immediately. New tags appear, edited ones (name/type/comment) update in
-place, and removed ones simply stop updating — no gateway restart, no page
-reload.
+Add, rename, retype, or delete tags in the TIA app, then do **Download → PLC**
+in the TIA app's Online group. That's it — the gateway picks up the change on
+its own: new tags appear, edited ones (name/type/comment) update in place, and
+removed ones stop updating, across every connected browser, with **no restart,
+no page reload, and no button to click**. (Under the hood the runtime stamps
+each download with a revision the gateway watches while polling.)
+
+The one thing that trips people up: **editing a tag in the TIA app isn't
+enough by itself** — you have to **Download → PLC** so the runtime actually
+gets the new program. Until you do, the runtime (and therefore the gateway)
+still knows only the previously-downloaded tags. Once you download, it syncs
+within a poll cycle.
+
+There's also a manual **⟳** button next to the `tia` row in the **Connections**
+panel (frontend, top-right by default) if you ever want to force a re-import —
+same effect, on demand.
 
 ### Two ways to reach the runtime over the wire — pick one per tag set
 
@@ -307,7 +314,8 @@ hand to someone else, on top of the autosave that already runs on every edit.
 | Online menu's **Test connection** fails | The address is unreachable (wrong IP/port, runtime not started, firewall) or something else is answering on that port — the check specifically verifies the response looks like a TIA Web Practice `/api/info`, not just "something responded". |
 | **Connect** fails but the previous connection still works fine | That's by design — a failed connect attempt never tears down a working one. Fix the address and try again. |
 | Gateway logs "tag discovery failed" and only publishes `tia.online`/`tia.running` | The runtime wasn't reachable *yet* when the gateway started (discovery only runs automatically once, at startup) — start `plc_server.py`, then either click **⟳** in the Connections panel or reconnect via the Online menu, no restart needed. |
-| Bindings reference a `tia.*` tag that never appears | You edited the ladder program after the last discovery — click **⟳** next to the `tia` row in the Connections panel to re-import live. |
+| A tag you added in the TIA app never appears in the sim (even after **⟳**) | You added it in the tag table but didn't **Download → PLC** — the runtime still has the old program, so there's nothing new to import. Download, and it syncs automatically (no ⟳ needed). |
+| Tags don't auto-sync on download | Only happens in discovery mode; if `config.json` gave the `tiaweb` adapter an explicit `tags` array, the list is frozen (no auto-refresh, no ⟳). Remove `tags` to enable discovery. Also confirm the runtime is a current build (its `/api/state` must include `programRev`). |
 | **⟳** button (or Online menu's Connect) doesn't appear/work as expected | Refresh only applies to adapters with `canRefreshTags` — for `tiaweb` that means auto-discovery mode; if `config.json` gives it an explicit `tags` array, both are skipped (a curated list is deliberate, and reconnecting always re-discovers everything fresh, which would undo that). |
 | Gateway logs "unknown tag name" (explicit `tags` config only) | A tag in config.json doesn't exist in the downloaded program yet (common right after startup, before you've hit Download → PLC), or a name typo — tag names are exact-match. |
 | Port 8082 already in use | `DEFAULT_GATEWAY_PORT` in `shared` is 8082 (8081 is often taken by unrelated Java processes) — override with `GATEWAY_PORT=<port>`. |

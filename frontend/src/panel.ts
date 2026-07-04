@@ -37,6 +37,18 @@ export function createPanel(title: string, host?: HTMLElement, actions?: HTMLEle
   root.append(header, body);
   container.appendChild(root);
 
+  // remember a height the user set by dragging the panel-body's resize grip.
+  // The browser writes an inline `height` only on a manual resize, so a
+  // non-empty body.style.height distinguishes user intent from content growth.
+  const heightKey = `panel:${title}:height`;
+  const savedHeight = localStorage.getItem(heightKey);
+  if (savedHeight) body.style.height = savedHeight;
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(() => {
+      if (body.style.height) localStorage.setItem(heightKey, body.style.height);
+    }).observe(body);
+  }
+
   const storageKey = `panel:${title}:collapsed`;
   let collapsed = localStorage.getItem(storageKey) === '1';
 

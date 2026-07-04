@@ -7,6 +7,7 @@ import { ConnectionsPanel } from './connectionsPanel';
 import { ControlPanels } from './controlPanels';
 import { FileMenu } from './fileMenu';
 import { Hud } from './hud';
+import { initLayout } from './layout';
 import { OnlineMenu } from './onlineMenu';
 import { createPanel } from './panel';
 import { ProjectStore } from './projectStore';
@@ -62,6 +63,9 @@ new ControlPanels(right, { projectStore, store, conn });
 
 const alarmsPanel = new AlarmsPanel(createPanel('Alarms'), projectStore, store);
 const replayPanel = new ReplayPanel(createPanel('Record / Replay'), store);
+
+// column width drag handles (+ restore persisted widths) — after all panels exist
+initLayout();
 
 // Engine creation throws where WebGL is unavailable; keep the HUD and tag
 // stream alive so the failure is visible instead of a silent blank page.

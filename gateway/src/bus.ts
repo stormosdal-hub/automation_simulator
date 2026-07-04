@@ -2,6 +2,7 @@ import type { AdapterMeta, TagMeta, TagUpdate } from '@sim/shared';
 import type { Adapter, PublishFn } from './adapter';
 
 export type BusListener = (updates: TagUpdate[]) => void;
+export type TagChangeListener = (adapterId: string, meta: AdapterMeta, tags: TagMeta[]) => void;
 
 /**
  * Normalized pub/sub core: adapters publish in, subscribers (the WS server,
@@ -13,6 +14,7 @@ export class TagBus {
   private tagIndex = new Map<string, TagMeta>();
   private latest = new Map<string, TagUpdate>();
   private listeners = new Set<BusListener>();
+  private tagChangeListeners = new Set<TagChangeListener>();
 
   register(adapter: Adapter): void {
     for (const tag of adapter.tags) {
@@ -40,7 +42,10 @@ export class TagBus {
       for (const u of known) this.latest.set(u.tagId, u);
       for (const listener of this.listeners) listener(known);
     };
-    adapter.start(publish);
+    // adapters that notice their own tag set changed can ask the bus to
+    // reconcile + broadcast (the push path; the ⟳ button is the pull path).
+    const requestTagRefresh = () => this.refreshAdapterTags(adapter.meta.id).then(() => undefined);
+    adapter.start(publish, { requestTagRefresh });
     console.log(`[bus] adapter '${adapter.meta.id}' registered (${adapter.tags.length} tags)`);
   }
 
@@ -79,7 +84,18 @@ export class TagBus {
       }
     }
     for (const t of tags) this.tagIndex.set(t.id, t);
+    for (const l of this.tagChangeListeners) l(adapterId, adapter.meta, tags);
     return tags;
+  }
+
+  /**
+   * Notified whenever an adapter's tag set is reconciled (via refreshAdapterTags —
+   * the ⟳ button or an adapter's own change-detection). The WS server subscribes
+   * to broadcast `tagsChanged`. Returns an unsubscribe function.
+   */
+  onTagsChanged(listener: TagChangeListener): () => void {
+    this.tagChangeListeners.add(listener);
+    return () => this.tagChangeListeners.delete(listener);
   }
 
   /**

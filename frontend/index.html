@@ -146,9 +146,38 @@
         top: 52px;
         right: 12px;
         width: 340px;
+        max-height: calc(100vh - 64px);
         display: flex;
         flex-direction: column;
         gap: 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 4px;
+        scrollbar-width: thin;
+      }
+      /* thin vertical bars that drag a whole column wider/narrower */
+      .col-resize-handle {
+        position: fixed;
+        width: 7px;
+        cursor: ew-resize;
+        z-index: 50;
+        border-radius: 4px;
+      }
+      .col-resize-handle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 3px;
+        height: 34px;
+        border-radius: 3px;
+        background: #2a3442;
+        transition: background 0.12s;
+      }
+      .col-resize-handle:hover::after,
+      .col-resize-handle.dragging::after {
+        background: #3d8bff;
       }
       .panel {
         background: rgba(10, 14, 20, 0.82);
@@ -177,8 +206,14 @@
       }
       .panel-body {
         padding: 2px 12px 10px;
-        max-height: 60vh;
-        overflow-y: auto;
+        max-height: 70vh;
+        min-height: 34px;
+        overflow: auto;
+        /* native corner grip: drag to make a panel taller/shorter; content scrolls inside */
+        resize: vertical;
+      }
+      .panel.collapsed .panel-body {
+        resize: none;
       }
       #tag-table {
         width: 100%;
@@ -220,6 +255,9 @@
         gap: 10px;
         max-height: calc(100vh - 132px);
         overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 4px;
+        scrollbar-width: thin;
       }
       .tree-row {
         padding: 3px 6px;

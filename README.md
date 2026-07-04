@@ -5,7 +5,23 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: an Online menu, no config.json required** — a new **Online ▾**
+**Current state: tags sync themselves + a resizable UI** — two things.
+*(1) Automatic tag re-discovery.* Edit tags in the TIA app and hit **Download →
+PLC** (which you do anyway to run the new program) and the gateway notices on
+its own — the runtime stamps every download with a `programRev`, the `tiaweb`
+adapter watches it while polling, and re-discovers tags the instant it changes.
+New/edited/removed tags appear across every connected browser with **no ⟳
+click, no restart, no reconnect**. (The manual **⟳** button in the Connections
+panel is still there for a forced refresh.) The one thing to remember: adding a
+tag in the TIA app isn't enough on its own — you have to **Download → PLC** so
+the runtime actually has the new program; then it syncs automatically.
+*(2) Resizable, scrollable panels.* Both side columns now scroll when the panel
+stack is taller than the window (no more collapsing panels to reach the ones
+below); each panel body has a corner grip to drag it taller/shorter and scrolls
+inside; and a drag handle on each column's inner edge resizes the whole column's
+width. Column widths and panel heights persist in localStorage.
+
+Previously: **an Online menu, no config.json required** — a new **Online ▾**
 topbar menu shows the current `tia` connection (URL, online/running) and lets
 you switch it live: type a `host:port` (same machine, another machine on your
 LAN/Wi-Fi, or a Raspberry Pi — anything reachable over the network), **Test
@@ -13,18 +29,14 @@ connection** to confirm it's actually a TIA Web Practice runtime before
 committing, then **Connect** to hot-swap to it — no gateway restart, no page
 reload, and no `tiaweb` entry in `config.json` needed at all (Connect creates
 one on the fly if none exists). A bad address is rejected without disturbing
-whatever's currently connected. Switching connections re-discovers tags fresh
-from the new target, same as the refresh button below.
+whatever's currently connected.
 
-Previously: **live tag refresh, no restart** — edit, add, or remove tags in
-the TIA app, then click the **⟳** button next to the `tia` adapter in the
-Connections panel: the gateway re-imports the tag list on the spot and every
-connected browser updates immediately — no gateway restart, no page reload.
-New tags appear, edited ones (renamed/retyped/re-commented) update in place,
-and removed ones simply stop updating (a write against one then correctly
-fails as "unknown tag"). The refresh button only shows up for adapters that
-support it (`AdapterMeta.canRefreshTags`) — currently just `tiaweb` when it's
-running in auto-discovery mode (no explicit `tags` array in config.json).
+Previously: **live tag refresh, no restart** — the **⟳** button next to the
+`tia` adapter in the Connections panel re-imports the tag list on demand
+(added/edited/removed reconciled live), the pull counterpart of the automatic
+re-discovery above. Only shown for adapters that support it
+(`AdapterMeta.canRefreshTags`) — currently `tiaweb` in auto-discovery mode (no
+explicit `tags` array in config.json).
 
 Previously: **zero-JSON setup** — the `tiaweb` adapter discovers its tags
 automatically: leave `tags` out of its `config.json` entry (just
@@ -135,10 +147,12 @@ Connections are declared in `gateway/config.json` — adapter types:
   (forcing is unconditional on the runtime's side anyway), so panel widgets
   and machine models can feed sensors with no config.json tag list to
   maintain. Pass `tags` explicitly to curate a subset instead (this also
-  disables the refresh button below). In discovery mode, the Connections
-  panel's **⟳** button re-runs discovery live — edit the ladder program,
-  click refresh, and the new/edited/removed tags apply
-  immediately across every connected browser with no restart.
+  freezes the list — no auto-refresh or ⟳ button). In discovery mode the tag
+  set stays in sync **automatically**: the adapter watches the runtime's
+  `programRev` while polling and re-discovers the moment it changes (i.e. as
+  soon as the TIA app does Download → PLC), so edited/added/removed tags apply
+  across every connected browser with no restart and no click. The Connections
+  panel's **⟳** button forces the same refresh on demand.
 - `conveyor` — machine model (no external device): beltLength/eyeAt/maxSpeed/
   minSpeed/autoFeedS/partSlots; writable `motorCmd`/`speedCmd`/`feed`, read
   `photoEye`, `beltSpeed`, `partsOnBelt`, `partsDone`, `part1Pos…partNPos`
@@ -218,9 +232,18 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     `tiaweb` config.json entry at all, and the frontend's **Online ▾** menu
     (host:port input, Test connection, Connect) drives it — proven over a
     real (non-loopback) network address, not just localhost~~
-17. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
+17. ~~Automatic tag re-discovery: the runtime stamps downloads with a
+    `programRev`, the `tiaweb` adapter watches it while polling and asks the
+    bus to re-discover on change (adapter→bus `requestTagRefresh`, one shared
+    `onTagsChanged` broadcast for both the auto path and the ⟳ button) — tags
+    sync on Download → PLC with no client action~~
+18. ~~Resizable/scrollable panel layout: both side columns scroll, panel
+    bodies drag-resize (`resize: vertical`) + scroll inside, per-column width
+    drag handles (`layout.ts`), widths + heights persisted to localStorage~~
+19. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
     adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history, 32-bit Modbus registers
     (client-side register-pair combining in the gateway's own `modbus`
     adapter), OPC UA Sign&Encrypt, faster S7 offline detection, LAN
-    auto-discovery for the Online menu (currently manual host:port entry only)
+    auto-discovery for the Online menu (currently manual host:port entry only),
+    draggable/dockable panels (currently fixed left/right columns)

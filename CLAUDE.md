@@ -31,10 +31,14 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   keeps latest value per tag for hello snapshots. `register()` fixes an
   adapter's tag set once, at startup (`tagIndex` built from `adapter.tags`).
   `refreshAdapterTags(id)` is the one exception: it calls the adapter's
-  optional `refreshTags()`, then reconciles that adapter's *slice* of
-  `tagIndex` live (add/update/remove) — a write against a since-removed tag
-  then correctly fails as "unknown tag". Nothing else mutates `tagIndex` after
-  registration.
+  optional `refreshTags()`, reconciles that adapter's *slice* of `tagIndex`
+  live (add/update/remove) — a write against a since-removed tag then
+  correctly fails as "unknown tag" — and fires `onTagsChanged` listeners.
+  `onTagsChanged(fn)` is the single broadcast source the WS server subscribes
+  to, so BOTH the ⟳ pull path and an adapter's own change-detection push path
+  land in one place. `register()` hands each adapter a `requestTagRefresh()`
+  (via `AdapterContext`) that just calls `refreshAdapterTags` on itself — that's
+  the push path. Nothing else mutates `tagIndex` after registration.
 - `gateway/src/adapter.ts` — Adapter contract. New data sources (OPC UA,
   MQTT, …) implement this; instances are declared in `gateway/config.json`
   and constructed in `gateway/src/index.ts`. Tag ids are `<adapterId>.<name>`,
@@ -42,6 +46,8 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   `<adapterId>.online` (boolean) as a bindable health tag. Optional
   `refreshTags(): Promise<TagMeta[]>` opts an adapter into live re-discovery
   (advertise it via `meta.canRefreshTags` so the frontend shows a button).
+  `start(publish, ctx?)` — `ctx.requestTagRefresh()` lets an adapter trigger
+  its own re-discovery when it detects its tag set changed (see tiaweb).
 - `gateway/src/adapters/modbus.ts` — Modbus TCP: per-kind span-batched polls,
   raw↔engineering via scale/offset (+signed int16), writes to coils/holding
   registers, offline after 3 failed polls with a 2 s reconnect loop. All
@@ -84,11 +90,19 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   re-runs `GET /api/tags` and replaces `tagConfigs` wholesale — is reflected
   immediately; `meta.canRefreshTags` is `true` unless `config.tags` was given
   explicitly (nothing to discover, so refresh is a no-op returning the
-  current tags). `TagBus.refreshAdapterTags()` calls this, reconciles the bus,
-  and `server.ts` broadcasts the result as `tagsChanged` to every client —
-  driven by the Connections panel's **⟳** button
-  (`ConnectionsPanel` → `GatewayConnection.refreshTags()` → WS `refreshTags`
-  request), no gateway restart or page reload needed. E2E smoke test:
+  current tags). Two triggers: the Connections panel's **⟳** button (pull:
+  `ConnectionsPanel` → WS `refreshTags` → `bus.refreshAdapterTags`), and
+  **automatic** re-discovery (push) — `poll()`'s `maybeAutoRefresh()` compares
+  the runtime's `programRev` (carried in `/api/state`) against the `lastRev`
+  the tags were discovered at; on a mismatch (a Download → PLC happened) it
+  calls `ctx.requestTagRefresh()`. Both land in `bus.onTagsChanged` →
+  `server.ts` broadcasts one `tagsChanged` to every client, no gateway restart
+  or page reload needed. `discoverTags()` returns `{tags, rev}` so `lastRev` is
+  seeded from `/api/tags`' `programRev` (create + refresh both); an
+  `autoRefreshing` guard prevents overlapping refreshes, and a failed refresh
+  leaves `lastRev` stale so the next poll retries. Reminder: adding a tag in
+  the TIA app does nothing until **Download → PLC** — that's what bumps
+  `programRev` and puts the tag in `/api/tags`. E2E smoke test:
   `scripts/tiaweb-probe.mjs` (downloads a seal-in + CTU program, drives it
   through the gateway WS, checks writeError + offline; `offline` arg asserts
   the down state after killing the runtime). The runtime can *also* be
@@ -149,7 +163,22 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   (localStorage + defaults; `.export()`/`.replace()` back the File menu),
   bindingPanel.ts (editor UI), sceneTree.ts + viewportSelection.ts (picking;
   engine needs `{ stencil: true }` for the HighlightLayer), tagStore.ts,
-  panel.ts, tagTable.ts, wsClient.ts.
+  tagTable.ts, wsClient.ts.
+- Panel layout: the two fixed side columns (`#panels` right, `#panels-left`
+  left) scroll vertically (CSS `overflow-y:auto` + `max-height`), so a tall
+  panel stack no longer runs off-screen. `panel.ts` bodies are
+  `resize: vertical` (corner grip → taller/shorter, content scrolls inside)
+  and persist a user-set height per title (a ResizeObserver saves
+  `body.style.height` only when it's a non-empty inline value, i.e. set by a
+  manual drag, not content growth). `frontend/src/layout.ts` (`initLayout()`,
+  called last in main.ts) adds a `.col-resize-handle` per column that drags
+  the whole column's width, clamped [220,640], persisted to
+  `layout:panels:w` / `layout:panelsLeft:w`; handles are `position:fixed` and
+  kept glued to the column edge via a ResizeObserver + window resize.
+  `data-role="col-resize-left|right"` for headless testing. (Headless caveat:
+  `Page.captureScreenshot` composites the live WebGL canvas OVER these
+  semi-transparent fixed overlays, so panels look absent in screenshots —
+  they're really there; hit-test with `elementFromPoint` to confirm.)
 - `frontend/src/fileMenu.ts` — the `#topbar` **File** dropdown: New / Open /
   Save project as JSON, in addition to (not instead of) the localStorage
   autosave every `ProjectStore` mutation already does. Save downloads

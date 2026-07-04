@@ -41,18 +41,13 @@ export function startWsServer(bus: TagBus, tia: TiaConnectionManager, port: numb
       }
       if (msg?.type === 'refreshTags') {
         const { adapterId } = msg;
-        bus
-          .refreshAdapterTags(adapterId)
-          .then((tags) => {
-            console.log(`[server] '${adapterId}' tags refreshed (${tags.length} tag(s))`);
-            const meta = bus.adapters.find((a) => a.id === adapterId);
-            if (meta) broadcast({ type: 'tagsChanged', adapterId, meta, tags });
-          })
-          .catch((err: Error) => {
-            console.warn(`[server] tag refresh failed for '${adapterId}': ${err.message}`);
-            const errorMsg: GatewayMessage = { type: 'tagsRefreshError', adapterId, reason: err.message };
-            if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(errorMsg));
-          });
+        // the successful broadcast is driven by bus.onTagsChanged below (shared
+        // with the adapter's own auto-refresh); here we only relay failures.
+        bus.refreshAdapterTags(adapterId).catch((err: Error) => {
+          console.warn(`[server] tag refresh failed for '${adapterId}': ${err.message}`);
+          const errorMsg: GatewayMessage = { type: 'tagsRefreshError', adapterId, reason: err.message };
+          if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(errorMsg));
+        });
         return;
       }
       if (msg?.type === 'testTia') {
@@ -96,6 +91,12 @@ export function startWsServer(bus: TagBus, tia: TiaConnectionManager, port: numb
   }
 
   bus.subscribe((updates) => broadcast({ type: 'tagUpdate', updates }));
+  // one broadcast source for every reconciled tag set — the ⟳ button AND an
+  // adapter noticing its own program changed both land here.
+  bus.onTagsChanged((adapterId, meta, tags) => {
+    console.log(`[server] '${adapterId}' tags changed (${tags.length} tag(s)) — broadcasting`);
+    broadcast({ type: 'tagsChanged', adapterId, meta, tags });
+  });
 
   return wss;
 }

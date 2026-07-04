@@ -1,5 +1,5 @@
 import type { AdapterMeta, TagMeta, TagUpdate } from '@sim/shared';
-import type { Adapter, PublishFn } from '../adapter';
+import type { Adapter, AdapterContext, PublishFn } from '../adapter';
 
 export interface TiaWebTagConfig {
   /**
@@ -25,12 +25,14 @@ export interface TiaWebAdapterConfig {
   /**
    * Optional explicit tag list. When omitted (the default — no need to hand-edit
    * config.json), `TiaWebAdapter.create()` discovers every declared project tag
-   * from `GET /api/tags` once at startup and publishes all of them, writable
-   * (the runtime's `/api/force` already forces any tag unconditionally, so this
+   * from `GET /api/tags` at startup and publishes all of them, writable (the
+   * runtime's `/api/force` already forces any tag unconditionally, so this
    * isn't a security boundary — just adapter bookkeeping). Tags added to the
-   * ladder program *after* the gateway started need a gateway restart to show
-   * up, same as every other adapter's config-driven, boot-time tag list. Supply
-   * `tags` explicitly to curate a subset instead.
+   * program later are picked up automatically: the poll loop watches the
+   * runtime's `programRev` and re-discovers when it changes (i.e. as soon as
+   * the TIA app does Download → PLC), no restart or manual refresh needed.
+   * Supply `tags` explicitly to curate a subset instead (which also freezes
+   * the list — no auto-refresh, since a curated subset is a deliberate choice).
    */
   tags?: TiaWebTagConfig[];
 }
@@ -41,6 +43,8 @@ const MAX_POLL_FAILURES = 3;
 interface TiaState {
   running?: boolean;
   mem?: Record<string, number | boolean>;
+  /** Bumped by the runtime on every program download — our cue to re-discover tags. */
+  programRev?: number;
 }
 
 /** Shape of the fields we consume from GET /api/tags. */
@@ -50,11 +54,17 @@ interface DiscoveredTag {
   comment?: string | null;
 }
 
-async function discoverTags(url: string, timeoutMs: number): Promise<TiaWebTagConfig[]> {
+interface Discovery {
+  tags: TiaWebTagConfig[];
+  /** The runtime's programRev at discovery time — pins the list to a download. */
+  rev: number | null;
+}
+
+async function discoverTags(url: string, timeoutMs: number): Promise<Discovery> {
   const res = await fetch(`${url}/api/tags`, { signal: AbortSignal.timeout(timeoutMs) });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const body = (await res.json()) as { tags?: DiscoveredTag[] };
-  return (body.tags ?? [])
+  const body = (await res.json()) as { tags?: DiscoveredTag[]; programRev?: number };
+  const tags = (body.tags ?? [])
     .filter((t) => t.name)
     .map((t) => ({
       name: t.name,
@@ -62,6 +72,7 @@ async function discoverTags(url: string, timeoutMs: number): Promise<TiaWebTagCo
       dataType: t.dataType === 'Bool' ? ('boolean' as const) : ('number' as const),
       writable: true,
     }));
+  return { tags, rev: body.programRev ?? null };
 }
 
 /**
@@ -81,6 +92,7 @@ export class TiaWebAdapter implements Adapter {
   readonly meta: AdapterMeta;
 
   private publish: PublishFn | null = null;
+  private ctx: AdapterContext | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
   private online = false;
   private pollFailures = 0;
@@ -95,6 +107,10 @@ export class TiaWebAdapter implements Adapter {
   private tagConfigs: TiaWebTagConfig[];
   /** True when config.tags was given explicitly — refreshTags() is then a no-op (nothing to discover). */
   private readonly explicitTags: boolean;
+  /** programRev the current tagConfigs were discovered at; a poll seeing a different rev auto-refreshes. */
+  private lastRev: number | null;
+  /** Guards against overlapping auto-refreshes while one is in flight. */
+  private autoRefreshing = false;
 
   /** Discovers tags from /api/tags when config.tags is omitted, then constructs. */
   static async create(config: TiaWebAdapterConfig): Promise<TiaWebAdapter> {
@@ -102,28 +118,37 @@ export class TiaWebAdapter implements Adapter {
     const timeoutMs = Math.max(500, Math.min((config.pollMs ?? 100) * 3, 2000));
     const explicitTags = !!config.tags && config.tags.length > 0;
     let tags: TiaWebTagConfig[] = config.tags ?? [];
+    let rev: number | null = null;
     if (!explicitTags) {
       try {
-        tags = await discoverTags(url, timeoutMs);
+        const d = await discoverTags(url, timeoutMs);
+        tags = d.tags;
+        rev = d.rev;
         console.log(`[tiaweb:${config.id}] discovered ${tags.length} tag(s) from ${url}/api/tags`);
       } catch (err) {
         const reason = err instanceof Error ? err.message : String(err);
         console.warn(
           `[tiaweb:${config.id}] tag discovery failed (${reason}) — starting with no tags; ` +
-            'refresh once the runtime is reachable, or declare "tags" in config.json',
+            'it will auto-discover once the runtime is reachable, or declare "tags" in config.json',
         );
         tags = [];
       }
     }
-    return new TiaWebAdapter(config, tags, explicitTags);
+    return new TiaWebAdapter(config, tags, explicitTags, rev);
   }
 
-  private constructor(config: TiaWebAdapterConfig, tags: TiaWebTagConfig[], explicitTags: boolean) {
+  private constructor(
+    config: TiaWebAdapterConfig,
+    tags: TiaWebTagConfig[],
+    explicitTags: boolean,
+    rev: number | null,
+  ) {
     this.url = config.url.replace(/\/+$/, '');
     this.pollMs = config.pollMs ?? 100;
     this.timeoutMs = Math.max(500, Math.min(this.pollMs * 3, 2000));
     this.tagConfigs = tags;
     this.explicitTags = explicitTags;
+    this.lastRev = rev;
     this.meta = {
       id: config.id,
       label: config.label ?? `TIA Web PLC (${this.url})`,
@@ -155,13 +180,16 @@ export class TiaWebAdapter implements Adapter {
   /** Re-run discovery and adopt the result; a no-op returning the current tags if config.tags was explicit. */
   async refreshTags(): Promise<TagMeta[]> {
     if (this.explicitTags) return this.tags;
-    this.tagConfigs = await discoverTags(this.url, this.timeoutMs);
+    const d = await discoverTags(this.url, this.timeoutMs);
+    this.tagConfigs = d.tags;
+    this.lastRev = d.rev;
     this.warnedMissing.clear();
     return this.tags;
   }
 
-  start(publish: PublishFn): void {
+  start(publish: PublishFn, ctx?: AdapterContext): void {
     this.publish = publish;
+    this.ctx = ctx ?? null;
     void this.poll();
     this.timer = setInterval(() => void this.poll(), this.pollMs);
   }
@@ -206,6 +234,7 @@ export class TiaWebAdapter implements Adapter {
       this.pollFailures = 0;
       this.setOnline(true);
       this.publish?.(this.toUpdates(state));
+      this.maybeAutoRefresh(state.programRev);
     } catch (err) {
       this.pollFailures++;
       if (this.pollFailures >= MAX_POLL_FAILURES && this.online) {
@@ -218,6 +247,31 @@ export class TiaWebAdapter implements Adapter {
     } finally {
       this.polling = false;
     }
+  }
+
+  /**
+   * When the runtime reports a programRev different from the one our tags were
+   * discovered at, the program was (re)downloaded (tags may have changed) — ask
+   * the bus to re-discover + broadcast, no client action needed. A `null`
+   * baseline (discovery failed at startup because the runtime was down, so we
+   * have no tags yet) also triggers, so the connection self-heals the moment
+   * the runtime comes up. Skipped in explicit-tags mode (curated list, no
+   * auto-refresh); guarded so only one refresh runs at a time, and a failed
+   * attempt leaves lastRev stale so the next poll retries.
+   */
+  private maybeAutoRefresh(rev: number | undefined): void {
+    if (rev === undefined || this.explicitTags || this.autoRefreshing || !this.ctx) return;
+    if (this.lastRev === rev) return;
+    this.autoRefreshing = true;
+    console.log(`[tiaweb:${this.meta.id}] program rev ${this.lastRev} → ${rev}, re-discovering tags`);
+    this.ctx
+      .requestTagRefresh()
+      .catch((err: Error) =>
+        console.warn(`[tiaweb:${this.meta.id}] auto tag refresh failed: ${err.message}`),
+      )
+      .finally(() => {
+        this.autoRefreshing = false;
+      });
   }
 
   private setOnline(online: boolean): void {
