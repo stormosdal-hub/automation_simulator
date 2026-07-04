@@ -141,6 +141,42 @@
         flex-direction: column;
         gap: 2px;
       }
+      .online-search-row {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .online-search-row .online-port {
+        width: 68px;
+        flex: 0 0 auto;
+      }
+      .online-search-row .btn {
+        flex: 1;
+      }
+      .online-scan-results {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        font-size: 11.5px;
+        max-height: 160px;
+        overflow-y: auto;
+      }
+      .online-scan-results:empty {
+        display: none;
+      }
+      .online-scan-hit {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 2px 0;
+      }
+      .online-scan-label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       .online-field label {
         font-size: 10px;
         text-transform: uppercase;

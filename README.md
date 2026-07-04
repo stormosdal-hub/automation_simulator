@@ -5,17 +5,22 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: trend charts + a multi-PLC connection manager** — two things.
-*(1) Trends.* A **Trends** panel plots any numeric or boolean tag over a rolling
-time window as a compact sparkline — a line per numeric tag (own auto-scaled
-axis + current value + hover crosshair), a step line per boolean (see when a
-motor was on). Pick tags from a dropdown; selection and window (30s–5m) persist.
-*(2) Multiple PLCs.* The **Online ▾** menu is now a connection manager: run
-several TIA runtimes at once, each a named connection with its own host:port.
-Their tags namespace by connection (`line1.Motor`, `press-plc.Motor`), so one 3D
-scene can front several machines — add, redirect (Test then Connect), and remove
-connections live, no restart. Removing one drops its tags everywhere. Great for
-a Raspberry Pi PLC + your desktop: see
+**Current state: find PLCs without a terminal** — the **Online ▾** menu has a
+**Search network** button: enter a port (default 8000) and the gateway scans
+its local subnet(s) for TIA Web Practice runtimes, lists the ones it finds
+(IP:port + program + RUN state), and one click drops a result into the connect
+form — no `curl` or `hostname -I` needed. (On the TIA side, its own app now has
+an **Address** pop-up that shows the runtime's hostname/URL — the two halves of
+"which address do I type?") The scan is read-only (a plain `GET /api/info` per
+host, the same probe *Test connection* uses), bounded to a couple of /24s, and
+only runs when you click the button.
+
+Previously: **trend charts + a multi-PLC connection manager.** A **Trends** panel
+plots any numeric or boolean tag over a rolling window as a sparkline (auto-scaled
+line + hover crosshair; boolean step line). The **Online ▾** menu manages several
+TIA runtimes at once — each a named connection whose tags namespace by id
+(`line1.Motor`, `press-plc.Motor`) — add/redirect/remove live, no restart. Great
+for a Raspberry Pi PLC + your desktop:
 [`docs/networking-two-computers.md`](docs/networking-two-computers.md).
 
 Previously: **tags sync themselves + a resizable UI.** Edit tags in the TIA app
@@ -251,11 +256,15 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     TIA connections (`connect(id,url)` / `remove(id)`), the Online menu lists +
     adds + redirects + removes them live, tags namespace by connection
     (`adapterRemoved` broadcast drops a removed one everywhere)~~
-21. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
+21. ~~LAN discovery + address helpers: the Online menu's **Search network**
+    button (gateway-side `netscan.ts` sweeps the primary /24s probing
+    `/api/info`) lists reachable runtimes to pick from; the TIA app's
+    **Address** pop-up (`/api/netinfo`) shows the runtime's own hostname/URL —
+    so neither side needs `curl`/`hostname -I`~~
+22. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
     adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history + browser notifications,
     tag history logging / CSV export, 32-bit Modbus registers (client-side
     register-pair combining in the gateway's own `modbus` adapter), OPC UA
-    Sign&Encrypt, faster S7 offline detection, LAN auto-discovery for the
-    Online menu (currently manual host:port entry only), draggable/dockable
-    panels (currently fixed left/right columns)
+    Sign&Encrypt, faster S7 offline detection, draggable/dockable panels
+    (currently fixed left/right columns)

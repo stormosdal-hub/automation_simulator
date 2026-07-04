@@ -399,7 +399,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel",
-      "community": 30,
+      "community": 45,
       "norm_label": "alarmspanel"
     },
     {
@@ -409,7 +409,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_constructor",
-      "community": 30,
+      "community": 45,
       "norm_label": ".constructor()"
     },
     {
@@ -419,7 +419,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_tick",
-      "community": 30,
+      "community": 45,
       "norm_label": ".tick()"
     },
     {
@@ -429,7 +429,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_refreshdurations",
-      "community": 30,
+      "community": 45,
       "norm_label": ".refreshdurations()"
     },
     {
@@ -439,7 +439,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_render",
-      "community": 30,
+      "community": 45,
       "norm_label": ".render()"
     },
     {
@@ -449,7 +449,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "src_alarmspanel_alarmspanel_renderform",
-      "community": 30,
+      "community": 45,
       "norm_label": ".renderform()"
     },
     {
@@ -459,7 +459,7 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "src_alarmspanel_formatduration",
-      "community": 30,
+      "community": 45,
       "norm_label": "formatduration()"
     },
     {
@@ -479,7 +479,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_bindingpanel_deps",
-      "community": 3,
+      "community": 42,
       "norm_label": "deps"
     },
     {
@@ -749,7 +749,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "bindings_engine_bindingengine_tick",
-      "community": 31,
+      "community": 39,
       "norm_label": ".tick()"
     },
     {
@@ -939,7 +939,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "bindings_types_alarmactive",
-      "community": 30,
+      "community": 45,
       "norm_label": "alarmactive()"
     },
     {
@@ -999,7 +999,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_connectionspanel",
-      "community": 30,
+      "community": 43,
       "norm_label": "connectionspanel.ts"
     },
     {
@@ -1009,7 +1009,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_connectionspanel_refreshstate",
-      "community": 30,
+      "community": 43,
       "norm_label": "refreshstate"
     },
     {
@@ -1019,7 +1019,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel",
-      "community": 30,
+      "community": 43,
       "norm_label": "connectionspanel"
     },
     {
@@ -1029,7 +1029,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_constructor",
-      "community": 30,
+      "community": 43,
       "norm_label": ".constructor()"
     },
     {
@@ -1039,7 +1039,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_refresh",
-      "community": 30,
+      "community": 43,
       "norm_label": ".refresh()"
     },
     {
@@ -1049,7 +1049,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_connectionspanel_connectionspanel_render",
-      "community": 30,
+      "community": 43,
       "norm_label": ".render()"
     },
     {
@@ -1299,7 +1299,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hud",
-      "community": 3,
+      "community": 43,
       "norm_label": "hud.ts"
     },
     {
@@ -1309,7 +1309,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_hud_hud",
-      "community": 3,
+      "community": 43,
       "norm_label": "hud"
     },
     {
@@ -1319,7 +1319,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_hud_hud_constructor",
-      "community": 3,
+      "community": 43,
       "norm_label": ".constructor()"
     },
     {
@@ -1329,7 +1329,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_hud_hud_setstatus",
-      "community": 3,
+      "community": 43,
       "norm_label": ".setstatus()"
     },
     {
@@ -1339,7 +1339,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_hud_hud_setscene",
-      "community": 3,
+      "community": 43,
       "norm_label": ".setscene()"
     },
     {
@@ -1349,7 +1349,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_hud_hud_render",
-      "community": 3,
+      "community": 43,
       "norm_label": ".render()"
     },
     {
@@ -1569,7 +1569,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_onlinemenu_normalizeurl",
-      "community": 30,
+      "community": 44,
       "norm_label": "normalizeurl()"
     },
     {
@@ -1579,114 +1579,134 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu",
-      "community": 30,
+      "community": 44,
       "norm_label": "onlinemenu"
     },
     {
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L32",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_constructor",
-      "community": 30,
+      "community": 44,
       "norm_label": ".constructor()"
     },
     {
       "label": ".setOpen()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L95",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_setopen",
-      "community": 30,
+      "community": 44,
       "norm_label": ".setopen()"
     },
     {
       "label": ".connections()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L101",
+      "source_location": "L121",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_connections",
-      "community": 30,
+      "community": 44,
       "norm_label": ".connections()"
+    },
+    {
+      "label": ".search()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L127",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_search",
+      "community": 44,
+      "norm_label": ".search()"
+    },
+    {
+      "label": ".renderScanResults()",
+      "file_type": "code",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L149",
+      "_origin": "ast",
+      "id": "src_onlinemenu_onlinemenu_renderscanresults",
+      "community": 44,
+      "norm_label": ".renderscanresults()"
     },
     {
       "label": ".suggestId()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L107",
+      "source_location": "L183",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_suggestid",
-      "community": 30,
+      "community": 44,
       "norm_label": ".suggestid()"
     },
     {
       "label": ".renderList()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L114",
+      "source_location": "L190",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_renderlist",
-      "community": 30,
+      "community": 44,
       "norm_label": ".renderlist()"
     },
     {
       "label": ".resetForm()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L146",
+      "source_location": "L222",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_resetform",
-      "community": 30,
+      "community": 44,
       "norm_label": ".resetform()"
     },
     {
       "label": ".startEdit()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L157",
+      "source_location": "L235",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_startedit",
-      "community": 30,
+      "community": 44,
       "norm_label": ".startedit()"
     },
     {
       "label": ".test()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L169",
+      "source_location": "L247",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_test",
-      "community": 30,
+      "community": 44,
       "norm_label": ".test()"
     },
     {
       "label": ".connect()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L188",
+      "source_location": "L266",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_connect",
-      "community": 30,
+      "community": 44,
       "norm_label": ".connect()"
     },
     {
       "label": ".remove()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L214",
+      "source_location": "L292",
       "_origin": "ast",
       "id": "src_onlinemenu_onlinemenu_remove",
-      "community": 30,
+      "community": 44,
       "norm_label": ".remove()"
     },
     {
       "label": "labeled()",
       "file_type": "code",
       "source_file": "frontend/src/onlineMenu.ts",
-      "source_location": "L226",
+      "source_location": "L304",
       "_origin": "ast",
       "id": "src_onlinemenu_labeled",
       "community": 30,
@@ -1719,7 +1739,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_panel_createpanel",
-      "community": 31,
+      "community": 39,
       "norm_label": "createpanel()"
     },
     {
@@ -2109,7 +2129,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_scenetree",
-      "community": 3,
+      "community": 42,
       "norm_label": "scenetree.ts"
     },
     {
@@ -2119,7 +2139,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_scenetree_treerow",
-      "community": 3,
+      "community": 42,
       "norm_label": "treerow"
     },
     {
@@ -2129,7 +2149,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_scenetree_scenetree",
-      "community": 3,
+      "community": 42,
       "norm_label": "scenetree"
     },
     {
@@ -2139,7 +2159,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_constructor",
-      "community": 3,
+      "community": 42,
       "norm_label": ".constructor()"
     },
     {
@@ -2149,7 +2169,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_setscene",
-      "community": 3,
+      "community": 42,
       "norm_label": ".setscene()"
     },
     {
@@ -2159,7 +2179,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_names",
-      "community": 3,
+      "community": 42,
       "norm_label": ".names()"
     },
     {
@@ -2169,7 +2189,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_walk",
-      "community": 3,
+      "community": 42,
       "norm_label": ".walk()"
     },
     {
@@ -2179,7 +2199,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_render",
-      "community": 3,
+      "community": 42,
       "norm_label": ".render()"
     },
     {
@@ -2189,7 +2209,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "src_scenetree_scenetree_highlight",
-      "community": 3,
+      "community": 42,
       "norm_label": ".highlight()"
     },
     {
@@ -2199,7 +2219,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_selection",
-      "community": 3,
+      "community": 42,
       "norm_label": "selection.ts"
     },
     {
@@ -2209,7 +2229,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "src_selection_selection",
-      "community": 3,
+      "community": 42,
       "norm_label": "selection"
     },
     {
@@ -2219,7 +2239,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_selection_selection_name",
-      "community": 3,
+      "community": 42,
       "norm_label": ".name()"
     },
     {
@@ -2229,7 +2249,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_selection_selection_set",
-      "community": 3,
+      "community": 42,
       "norm_label": ".set()"
     },
     {
@@ -2239,7 +2259,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_selection_selection_onchange",
-      "community": 3,
+      "community": 42,
       "norm_label": ".onchange()"
     },
     {
@@ -2249,7 +2269,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagstore",
-      "community": 30,
+      "community": 39,
       "norm_label": "tagstore.ts"
     },
     {
@@ -2269,7 +2289,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_tagstore_tagrow",
-      "community": 30,
+      "community": 39,
       "norm_label": "tagrow"
     },
     {
@@ -2279,7 +2299,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_tagstore_tagstore",
-      "community": 30,
+      "community": 39,
       "norm_label": "tagstore"
     },
     {
@@ -2289,7 +2309,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_applyhello",
-      "community": 30,
+      "community": 39,
       "norm_label": ".applyhello()"
     },
     {
@@ -2309,7 +2329,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_applyadapterremoved",
-      "community": 30,
+      "community": 39,
       "norm_label": ".applyadapterremoved()"
     },
     {
@@ -2319,7 +2339,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_apply",
-      "community": 31,
+      "community": 39,
       "norm_label": ".apply()"
     },
     {
@@ -2329,7 +2349,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_agems",
-      "community": 30,
+      "community": 39,
       "norm_label": ".agems()"
     },
     {
@@ -2339,7 +2359,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_raw",
-      "community": 30,
+      "community": 39,
       "norm_label": ".raw()"
     },
     {
@@ -2349,7 +2369,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_metafor",
-      "community": 30,
+      "community": 39,
       "norm_label": ".metafor()"
     },
     {
@@ -2359,7 +2379,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_num",
-      "community": 30,
+      "community": 39,
       "norm_label": ".num()"
     },
     {
@@ -2369,7 +2389,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_bool",
-      "community": 30,
+      "community": 39,
       "norm_label": ".bool()"
     },
     {
@@ -2379,7 +2399,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "src_tagstore_tagstore_rows",
-      "community": 30,
+      "community": 39,
       "norm_label": ".rows()"
     },
     {
@@ -2389,7 +2409,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tagtable",
-      "community": 30,
+      "community": 39,
       "norm_label": "tagtable.ts"
     },
     {
@@ -2399,7 +2419,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_tagtable_tagtable",
-      "community": 30,
+      "community": 39,
       "norm_label": "tagtable"
     },
     {
@@ -2409,7 +2429,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_tagtable_tagtable_constructor",
-      "community": 30,
+      "community": 39,
       "norm_label": ".constructor()"
     },
     {
@@ -2419,7 +2439,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_tagtable_tagtable_refresh",
-      "community": 30,
+      "community": 39,
       "norm_label": ".refresh()"
     },
     {
@@ -2429,7 +2449,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_trendpanel",
-      "community": 30,
+      "community": 46,
       "norm_label": "trendpanel.ts"
     },
     {
@@ -2439,7 +2459,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_trendpanel_windows",
-      "community": 30,
+      "community": 46,
       "norm_label": "windows"
     },
     {
@@ -2449,7 +2469,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_trendpanel_sample",
-      "community": 30,
+      "community": 46,
       "norm_label": "sample"
     },
     {
@@ -2459,7 +2479,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_trendpanel_series",
-      "community": 30,
+      "community": 46,
       "norm_label": "series"
     },
     {
@@ -2589,7 +2609,7 @@
       "source_location": "L364",
       "_origin": "ast",
       "id": "src_trendpanel_fmt",
-      "community": 30,
+      "community": 46,
       "norm_label": "fmt()"
     },
     {
@@ -2679,7 +2699,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_viewportselection",
-      "community": 3,
+      "community": 42,
       "norm_label": "viewportselection.ts"
     },
     {
@@ -2689,7 +2709,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_viewportselection_highlight",
-      "community": 3,
+      "community": 42,
       "norm_label": "highlight"
     },
     {
@@ -2699,7 +2719,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_viewportselection_attachviewportselection",
-      "community": 3,
+      "community": 42,
       "norm_label": "attachviewportselection()"
     },
     {
@@ -2729,7 +2749,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_widgets_deps",
-      "community": 31,
+      "community": 43,
       "norm_label": "deps"
     },
     {
@@ -2829,47 +2849,57 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_wsclient",
-      "community": 30,
+      "community": 43,
       "norm_label": "wsclient.ts"
+    },
+    {
+      "label": "ScanReport",
+      "file_type": "code",
+      "source_file": "frontend/src/wsClient.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_wsclient_scanreport",
+      "community": 40,
+      "norm_label": "scanreport"
     },
     {
       "label": "WsStatus",
       "file_type": "code",
       "source_file": "frontend/src/wsClient.ts",
-      "source_location": "L4",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "src_wsclient_wsstatus",
-      "community": 3,
+      "community": 43,
       "norm_label": "wsstatus"
     },
     {
       "label": "GatewayConnection",
       "file_type": "code",
       "source_file": "frontend/src/wsClient.ts",
-      "source_location": "L6",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "src_wsclient_gatewayconnection",
-      "community": 30,
+      "community": 43,
       "norm_label": "gatewayconnection"
     },
     {
       "label": "STRUCTURAL_TYPES",
       "file_type": "code",
       "source_file": "frontend/src/wsClient.ts",
-      "source_location": "L19",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "src_wsclient_structural_types",
-      "community": 30,
+      "community": 43,
       "norm_label": "structural_types"
     },
     {
       "label": "connectGateway()",
       "file_type": "code",
       "source_file": "frontend/src/wsClient.ts",
-      "source_location": "L30",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "src_wsclient_connectgateway",
-      "community": 3,
+      "community": 43,
       "norm_label": "connectgateway()"
     },
     {
@@ -4129,7 +4159,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter",
-      "community": 38,
+      "community": 1,
       "norm_label": "mixeradapter"
     },
     {
@@ -4139,7 +4169,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_constructor",
-      "community": 38,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -4149,7 +4179,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_start",
-      "community": 38,
+      "community": 1,
       "norm_label": ".start()"
     },
     {
@@ -4159,7 +4189,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_stop",
-      "community": 38,
+      "community": 1,
       "norm_label": ".stop()"
     },
     {
@@ -4179,7 +4209,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "adapters_mixer_mixeradapter_tick",
-      "community": 38,
+      "community": 1,
       "norm_label": ".tick()"
     },
     {
@@ -5129,7 +5159,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_bus_tagbus",
-      "community": 39,
+      "community": 0,
       "norm_label": "tagbus"
     },
     {
@@ -5139,7 +5169,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_bus_tagbus_register",
-      "community": 39,
+      "community": 0,
       "norm_label": ".register()"
     },
     {
@@ -5149,7 +5179,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_bus_tagbus_write",
-      "community": 39,
+      "community": 0,
       "norm_label": ".write()"
     },
     {
@@ -5159,7 +5189,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "src_bus_tagbus_refreshadaptertags",
-      "community": 39,
+      "community": 0,
       "norm_label": ".refreshadaptertags()"
     },
     {
@@ -5169,7 +5199,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "src_bus_tagbus_ontagschanged",
-      "community": 39,
+      "community": 0,
       "norm_label": ".ontagschanged()"
     },
     {
@@ -5179,7 +5209,7 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "src_bus_tagbus_unregisteradapter",
-      "community": 39,
+      "community": 0,
       "norm_label": ".unregisteradapter()"
     },
     {
@@ -5189,7 +5219,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "src_bus_tagbus_subscribe",
-      "community": 39,
+      "community": 0,
       "norm_label": ".subscribe()"
     },
     {
@@ -5209,7 +5239,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "src_bus_tagbus_tags",
-      "community": 39,
+      "community": 0,
       "norm_label": ".tags()"
     },
     {
@@ -5219,7 +5249,7 @@
       "source_location": "L136",
       "_origin": "ast",
       "id": "src_bus_tagbus_snapshot",
-      "community": 39,
+      "community": 0,
       "norm_label": ".snapshot()"
     },
     {
@@ -5229,7 +5259,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "src_bus_tagbus_stop",
-      "community": 39,
+      "community": 0,
       "norm_label": ".stop()"
     },
     {
@@ -5363,6 +5393,66 @@
       "norm_label": "startlinks()"
     },
     {
+      "label": "netscan.ts",
+      "file_type": "code",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_netscan",
+      "community": 40,
+      "norm_label": "netscan.ts"
+    },
+    {
+      "label": "ScanReport",
+      "file_type": "code",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "src_netscan_scanreport",
+      "community": 40,
+      "norm_label": "scanreport"
+    },
+    {
+      "label": "primaryIp()",
+      "file_type": "code",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "src_netscan_primaryip",
+      "community": 40,
+      "norm_label": "primaryip()"
+    },
+    {
+      "label": "subnetsToScan()",
+      "file_type": "code",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "src_netscan_subnetstoscan",
+      "community": 40,
+      "norm_label": "subnetstoscan()"
+    },
+    {
+      "label": "probe()",
+      "file_type": "code",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "src_netscan_probe",
+      "community": 40,
+      "norm_label": "probe()"
+    },
+    {
+      "label": "scanForRuntimes()",
+      "file_type": "code",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "src_netscan_scanforruntimes",
+      "community": 40,
+      "norm_label": "scanforruntimes()"
+    },
+    {
       "label": "server.ts",
       "file_type": "code",
       "source_file": "gateway/src/server.ts",
@@ -5376,7 +5466,7 @@
       "label": "startWsServer()",
       "file_type": "code",
       "source_file": "gateway/src/server.ts",
-      "source_location": "L11",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "src_server_startwsserver",
       "community": 40,
@@ -6039,7 +6129,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "src_index_hellomessage",
-      "community": 30,
+      "community": 39,
       "norm_label": "hellomessage"
     },
     {
@@ -6133,10 +6223,30 @@
       "norm_label": "adapterremovedmessage"
     },
     {
+      "label": "ScanHit",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "src_index_scanhit",
+      "community": 40,
+      "norm_label": "scanhit"
+    },
+    {
+      "label": "ScanResultMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "src_index_scanresultmessage",
+      "community": 40,
+      "norm_label": "scanresultmessage"
+    },
+    {
       "label": "GatewayMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L109",
+      "source_location": "L127",
       "_origin": "ast",
       "id": "src_index_gatewaymessage",
       "community": 40,
@@ -6146,7 +6256,7 @@
       "label": "WriteMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L122",
+      "source_location": "L141",
       "_origin": "ast",
       "id": "src_index_writemessage",
       "community": 40,
@@ -6156,7 +6266,7 @@
       "label": "RefreshTagsMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L129",
+      "source_location": "L148",
       "_origin": "ast",
       "id": "src_index_refreshtagsmessage",
       "community": 40,
@@ -6166,7 +6276,7 @@
       "label": "TestTiaMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L135",
+      "source_location": "L154",
       "_origin": "ast",
       "id": "src_index_testtiamessage",
       "community": 40,
@@ -6176,7 +6286,7 @@
       "label": "ConnectTiaMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L147",
+      "source_location": "L166",
       "_origin": "ast",
       "id": "src_index_connecttiamessage",
       "community": 40,
@@ -6186,17 +6296,27 @@
       "label": "RemoveTiaMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L155",
+      "source_location": "L174",
       "_origin": "ast",
       "id": "src_index_removetiamessage",
       "community": 40,
       "norm_label": "removetiamessage"
     },
     {
+      "label": "ScanTiaMessage",
+      "file_type": "code",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L184",
+      "_origin": "ast",
+      "id": "src_index_scantiamessage",
+      "community": 40,
+      "norm_label": "scantiamessage"
+    },
+    {
       "label": "ClientMessage",
       "file_type": "code",
       "source_file": "shared/src/index.ts",
-      "source_location": "L161",
+      "source_location": "L190",
       "_origin": "ast",
       "id": "src_index_clientmessage",
       "community": 40,
@@ -6246,7 +6366,7 @@
       "label": "Environment notes",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L245",
+      "source_location": "L257",
       "_origin": "ast",
       "id": "claude_environment_notes",
       "community": 26,
@@ -6276,7 +6396,7 @@
       "label": "Run",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L122",
+      "source_location": "L127",
       "_origin": "ast",
       "id": "readme_run",
       "community": 25,
@@ -6286,7 +6406,7 @@
       "label": "Layout",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L188",
+      "source_location": "L193",
       "_origin": "ast",
       "id": "readme_layout",
       "community": 25,
@@ -6296,7 +6416,7 @@
       "label": "Roadmap",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L201",
+      "source_location": "L206",
       "_origin": "ast",
       "id": "readme_roadmap",
       "community": 25,
@@ -6556,7 +6676,7 @@
       "label": "4. Open the port in the Pi's firewall",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L102",
+      "source_location": "L108",
       "_origin": "ast",
       "id": "docs_networking_two_computers_4_open_the_port_in_the_pi_s_firewall",
       "community": 25,
@@ -6566,7 +6686,7 @@
       "label": "5. From the other computer: check you can reach it",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L115",
+      "source_location": "L121",
       "_origin": "ast",
       "id": "docs_networking_two_computers_5_from_the_other_computer_check_you_can_reach_it",
       "community": 25,
@@ -6576,7 +6696,7 @@
       "label": "6. Load a PLC program onto the Pi",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L130",
+      "source_location": "L136",
       "_origin": "ast",
       "id": "docs_networking_two_computers_6_load_a_plc_program_onto_the_pi",
       "community": 25,
@@ -6586,7 +6706,7 @@
       "label": "7. Connect the gateway to the Pi",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L146",
+      "source_location": "L152",
       "_origin": "ast",
       "id": "docs_networking_two_computers_7_connect_the_gateway_to_the_pi",
       "community": 25,
@@ -6596,7 +6716,7 @@
       "label": "8. Keep the runtime running on boot (optional)",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L173",
+      "source_location": "L182",
       "_origin": "ast",
       "id": "docs_networking_two_computers_8_keep_the_runtime_running_on_boot_optional",
       "community": 25,
@@ -6606,7 +6726,7 @@
       "label": "9. Troubleshooting",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L210",
+      "source_location": "L219",
       "_origin": "ast",
       "id": "docs_networking_two_computers_9_troubleshooting",
       "community": 25,
@@ -6616,7 +6736,7 @@
       "label": "10. Security note",
       "file_type": "document",
       "source_file": "docs/networking-two-computers.md",
-      "source_location": "L223",
+      "source_location": "L232",
       "_origin": "ast",
       "id": "docs_networking_two_computers_10_security_note",
       "community": 25,
@@ -6917,7 +7037,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 39,
+      "community": 0,
       "norm_label": "tagbus pub/sub pattern",
       "id": "concept_tagbus"
     },
@@ -10532,9 +10652,9 @@
       "source_file": "frontend/src/main.ts",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_main",
-      "target": "src_main_trendspanel",
-      "confidence_score": 1.0
+      "target": "src_main_trendspanel"
     },
     {
       "relation": "imports_from",
@@ -10741,9 +10861,9 @@
       "source_file": "frontend/src/main.ts",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_main",
-      "target": "src_trendpanel",
-      "confidence_score": 1.0
+      "target": "src_trendpanel"
     },
     {
       "relation": "imports",
@@ -10752,9 +10872,9 @@
       "source_file": "frontend/src/main.ts",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_main",
-      "target": "src_trendpanel_trendpanel",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel"
     },
     {
       "relation": "imports_from",
@@ -10817,9 +10937,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L226",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu",
-      "target": "src_onlinemenu_labeled",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_labeled"
     },
     {
       "relation": "contains",
@@ -10967,9 +11087,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu",
-      "target": "src_onlinemenu_onlinemenu_connections",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_connections"
     },
     {
       "relation": "method",
@@ -10987,9 +11107,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L214",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu",
-      "target": "src_onlinemenu_onlinemenu_remove",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_remove"
     },
     {
       "relation": "method",
@@ -10997,8 +11117,18 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu",
-      "target": "src_onlinemenu_onlinemenu_renderlist",
+      "target": "src_onlinemenu_onlinemenu_renderlist"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_renderscanresults",
       "confidence_score": 1.0
     },
     {
@@ -11007,8 +11137,18 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu",
-      "target": "src_onlinemenu_onlinemenu_resetform",
+      "target": "src_onlinemenu_onlinemenu_resetform"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu",
+      "target": "src_onlinemenu_onlinemenu_search",
       "confidence_score": 1.0
     },
     {
@@ -11027,9 +11167,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L157",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu",
-      "target": "src_onlinemenu_onlinemenu_startedit",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_startedit"
     },
     {
       "relation": "method",
@@ -11037,9 +11177,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu",
-      "target": "src_onlinemenu_onlinemenu_suggestid",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_suggestid"
     },
     {
       "relation": "method",
@@ -11058,9 +11198,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_constructor",
-      "target": "src_onlinemenu_labeled",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_labeled"
     },
     {
       "relation": "calls",
@@ -11069,9 +11209,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_constructor",
-      "target": "src_onlinemenu_onlinemenu_renderlist",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_renderlist"
     },
     {
       "relation": "calls",
@@ -11080,9 +11220,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_constructor",
-      "target": "src_onlinemenu_onlinemenu_resetform",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_resetform"
     },
     {
       "relation": "references",
@@ -11146,9 +11286,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_setopen",
-      "target": "src_onlinemenu_onlinemenu_renderlist",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_renderlist"
     },
     {
       "relation": "calls",
@@ -11157,7 +11297,18 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L115",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_renderlist",
+      "target": "src_onlinemenu_onlinemenu_connections"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L159",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_renderscanresults",
       "target": "src_onlinemenu_onlinemenu_connections",
       "confidence_score": 1.0
     },
@@ -11166,11 +11317,44 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_search",
+      "target": "src_onlinemenu_onlinemenu_renderscanresults",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_renderscanresults",
+      "target": "src_ui_button"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/onlineMenu.ts",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "src_onlinemenu_onlinemenu_renderscanresults",
+      "target": "src_ui_div"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L150",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_resetform",
-      "target": "src_onlinemenu_onlinemenu_suggestid",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_suggestid"
     },
     {
       "relation": "calls",
@@ -11179,9 +11363,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L204",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_connect",
-      "target": "src_onlinemenu_onlinemenu_renderlist",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_renderlist"
     },
     {
       "relation": "calls",
@@ -11190,9 +11374,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L219",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_remove",
-      "target": "src_onlinemenu_onlinemenu_renderlist",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_renderlist"
     },
     {
       "relation": "calls",
@@ -11223,9 +11407,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L205",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_connect",
-      "target": "src_onlinemenu_onlinemenu_resetform",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_resetform"
     },
     {
       "relation": "calls",
@@ -11234,9 +11418,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L218",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_onlinemenu_remove",
-      "target": "src_onlinemenu_onlinemenu_resetform",
-      "confidence_score": 1.0
+      "target": "src_onlinemenu_onlinemenu_resetform"
     },
     {
       "relation": "calls",
@@ -11245,9 +11429,9 @@
       "source_file": "frontend/src/onlineMenu.ts",
       "source_location": "L227",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_onlinemenu_labeled",
-      "target": "src_ui_div",
-      "confidence_score": 1.0
+      "target": "src_ui_div"
     },
     {
       "relation": "contains",
@@ -12359,9 +12543,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_tagstore",
-      "confidence_score": 1.0
+      "target": "src_tagstore"
     },
     {
       "relation": "imports_from",
@@ -12455,9 +12639,9 @@
       "source_file": "frontend/src/tagStore.ts",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tagstore_tagstore",
-      "target": "src_tagstore_tagstore_applyadapterremoved",
-      "confidence_score": 1.0
+      "target": "src_tagstore_tagstore_applyadapterremoved"
     },
     {
       "relation": "method",
@@ -12558,9 +12742,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_tagstore_tagstore",
-      "confidence_score": 1.0
+      "target": "src_tagstore_tagstore"
     },
     {
       "relation": "references",
@@ -12569,9 +12753,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_constructor",
-      "target": "src_tagstore_tagstore",
-      "confidence_score": 1.0
+      "target": "src_tagstore_tagstore"
     },
     {
       "relation": "imports",
@@ -12719,9 +12903,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L364",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_trendpanel_fmt",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_fmt"
     },
     {
       "relation": "contains",
@@ -12729,9 +12913,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_trendpanel_sample",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_sample"
     },
     {
       "relation": "contains",
@@ -12739,9 +12923,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_trendpanel_series",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_series"
     },
     {
       "relation": "contains",
@@ -12749,9 +12933,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_trendpanel_trendpanel",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel"
     },
     {
       "relation": "contains",
@@ -12759,9 +12943,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_trendpanel_windows",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_windows"
     },
     {
       "relation": "imports_from",
@@ -12770,9 +12954,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_ui",
-      "confidence_score": 1.0
+      "target": "src_ui"
     },
     {
       "relation": "imports",
@@ -12781,9 +12965,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_ui_button",
-      "confidence_score": 1.0
+      "target": "src_ui_button"
     },
     {
       "relation": "imports",
@@ -12792,9 +12976,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel",
-      "target": "src_ui_div",
-      "confidence_score": 1.0
+      "target": "src_ui_div"
     },
     {
       "relation": "method",
@@ -12802,9 +12986,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_constructor",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_constructor"
     },
     {
       "relation": "method",
@@ -12812,9 +12996,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_createrow",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_createrow"
     },
     {
       "relation": "method",
@@ -12822,9 +13006,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L230",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_draw",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_draw"
     },
     {
       "relation": "method",
@@ -12832,9 +13016,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_materialize",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_materialize"
     },
     {
       "relation": "method",
@@ -12842,9 +13026,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_persist",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_persist"
     },
     {
       "relation": "method",
@@ -12852,9 +13036,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L191",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_refreshoptions",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_refreshoptions"
     },
     {
       "relation": "method",
@@ -12862,9 +13046,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_removeseries",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_removeseries"
     },
     {
       "relation": "method",
@@ -12872,9 +13056,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_syncwindowbuttons",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_syncwindowbuttons"
     },
     {
       "relation": "method",
@@ -12882,9 +13066,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L212",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_tick",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_tick"
     },
     {
       "relation": "method",
@@ -12892,9 +13076,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_updateempty",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_updateempty"
     },
     {
       "relation": "method",
@@ -12902,9 +13086,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel",
-      "target": "src_trendpanel_trendpanel_want",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_want"
     },
     {
       "relation": "calls",
@@ -12913,9 +13097,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_constructor",
-      "target": "src_trendpanel_trendpanel_syncwindowbuttons",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_syncwindowbuttons"
     },
     {
       "relation": "calls",
@@ -12924,9 +13108,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_constructor",
-      "target": "src_trendpanel_trendpanel_tick",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_tick"
     },
     {
       "relation": "calls",
@@ -12935,9 +13119,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_constructor",
-      "target": "src_trendpanel_trendpanel_updateempty",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_updateempty"
     },
     {
       "relation": "calls",
@@ -12968,9 +13152,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_want",
-      "target": "src_trendpanel_trendpanel_materialize",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_materialize"
     },
     {
       "relation": "calls",
@@ -12979,9 +13163,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L111",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_want",
-      "target": "src_trendpanel_trendpanel_persist",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_persist"
     },
     {
       "relation": "calls",
@@ -12990,9 +13174,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_want",
-      "target": "src_trendpanel_trendpanel_updateempty",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_updateempty"
     },
     {
       "relation": "calls",
@@ -13001,9 +13185,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L187",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_removeseries",
-      "target": "src_trendpanel_trendpanel_persist",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_persist"
     },
     {
       "relation": "calls",
@@ -13012,9 +13196,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L188",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_removeseries",
-      "target": "src_trendpanel_trendpanel_updateempty",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_updateempty"
     },
     {
       "relation": "calls",
@@ -13023,9 +13207,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_materialize",
-      "target": "src_trendpanel_trendpanel_createrow",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_createrow"
     },
     {
       "relation": "calls",
@@ -13034,9 +13218,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L213",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_tick",
-      "target": "src_trendpanel_trendpanel_materialize",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_materialize"
     },
     {
       "relation": "calls",
@@ -13067,9 +13251,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L214",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_tick",
-      "target": "src_trendpanel_trendpanel_refreshoptions",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_refreshoptions"
     },
     {
       "relation": "calls",
@@ -13078,9 +13262,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L226",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_tick",
-      "target": "src_trendpanel_trendpanel_draw",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_trendpanel_draw"
     },
     {
       "relation": "calls",
@@ -13089,9 +13273,9 @@
       "source_file": "frontend/src/trendPanel.ts",
       "source_location": "L356",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_trendpanel_trendpanel_draw",
-      "target": "src_trendpanel_fmt",
-      "confidence_score": 1.0
+      "target": "src_trendpanel_fmt"
     },
     {
       "relation": "contains",
@@ -13498,6 +13682,17 @@
       "source_file": "frontend/src/wsClient.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "source": "src_wsclient",
+      "target": "src_index_scanhit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/wsClient.ts",
+      "source_location": "L1",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_wsclient",
       "target": "src_index_tagmeta"
@@ -13526,6 +13721,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/wsClient.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_wsclient",
+      "target": "src_wsclient_scanreport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/wsClient.ts",
       "source_location": "L13",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -13541,6 +13746,17 @@
       "confidence_score": 1.0,
       "source": "src_wsclient",
       "target": "src_wsclient_wsstatus"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/wsClient.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_wsclient_scanreport",
+      "target": "src_index_scanhit",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17908,9 +18124,9 @@
       "source_file": "gateway/src/tiaConnection.ts",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tiaconnection_tiaconnectionmanager_connect",
-      "target": "adapters_tiaweb_tiawebadapter",
-      "confidence_score": 1.0
+      "target": "adapters_tiaweb_tiawebadapter"
     },
     {
       "relation": "references",
@@ -18592,6 +18808,122 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_netscan",
+      "target": "src_index_scanhit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_netscan",
+      "target": "src_netscan_primaryip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "src_netscan",
+      "target": "src_netscan_probe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "src_netscan",
+      "target": "src_netscan_scanforruntimes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_netscan",
+      "target": "src_netscan_scanreport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "src_netscan",
+      "target": "src_netscan_subnetstoscan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/server.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server",
+      "target": "src_netscan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_netscan_scanreport",
+      "target": "src_index_scanhit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "src_netscan_scanforruntimes",
+      "target": "src_netscan_primaryip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/netscan.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "src_netscan_scanforruntimes",
+      "target": "src_netscan_subnetstoscan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gateway/src/server.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server",
+      "target": "src_netscan_scanforruntimes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "gateway/src/server.ts",
       "source_location": "L2",
       "weight": 1.0,
@@ -18711,9 +19043,9 @@
       "source_file": "gateway/src/tiaConnection.ts",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tiaconnection_tiaconnectionmanager_connect",
-      "target": "src_tiaconnection_normalize",
-      "confidence_score": 1.0
+      "target": "src_tiaconnection_normalize"
     },
     {
       "relation": "calls",
@@ -18722,9 +19054,9 @@
       "source_file": "gateway/src/tiaConnection.ts",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tiaconnection_tiaconnectionmanager_connect",
-      "target": "src_tiaconnection_probetia",
-      "confidence_score": 1.0
+      "target": "src_tiaconnection_probetia"
     },
     {
       "relation": "method",
@@ -18742,9 +19074,9 @@
       "source_file": "gateway/src/tiaConnection.ts",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tiaconnection_tiaconnectionmanager",
-      "target": "src_tiaconnection_tiaconnectionmanager_connect",
-      "confidence_score": 1.0
+      "target": "src_tiaconnection_tiaconnectionmanager_connect"
     },
     {
       "relation": "method",
@@ -18762,9 +19094,9 @@
       "source_file": "gateway/src/tiaConnection.ts",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tiaconnection_tiaconnectionmanager",
-      "target": "src_tiaconnection_tiaconnectionmanager_list",
-      "confidence_score": 1.0
+      "target": "src_tiaconnection_tiaconnectionmanager_list"
     },
     {
       "relation": "method",
@@ -18772,9 +19104,9 @@
       "source_file": "gateway/src/tiaConnection.ts",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tiaconnection_tiaconnectionmanager",
-      "target": "src_tiaconnection_tiaconnectionmanager_remove",
-      "confidence_score": 1.0
+      "target": "src_tiaconnection_tiaconnectionmanager_remove"
     },
     {
       "relation": "contains",
@@ -19252,9 +19584,9 @@
       "source_file": "shared/src/index.ts",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
-      "target": "src_index_adapterremovedmessage",
-      "confidence_score": 1.0
+      "target": "src_index_adapterremovedmessage"
     },
     {
       "relation": "contains",
@@ -19312,8 +19644,38 @@
       "source_file": "shared/src/index.ts",
       "source_location": "L155",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
-      "target": "src_index_removetiamessage",
+      "target": "src_index_removetiamessage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_scanhit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_scanresultmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/src/index.ts",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "shared_src_index_ts_src_index",
+      "target": "src_index_scantiamessage",
       "confidence_score": 1.0
     },
     {
@@ -19402,9 +19764,9 @@
       "source_file": "shared/src/index.ts",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_src_index_ts_src_index",
-      "target": "src_index_tiaremovedmessage",
-      "confidence_score": 1.0
+      "target": "src_index_tiaremovedmessage"
     },
     {
       "relation": "contains",
@@ -19492,9 +19854,9 @@
       "source_file": "README.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme",
-      "target": "docs_networking_two_computers",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers"
     },
     {
       "relation": "contains",
@@ -19552,9 +19914,9 @@
       "source_file": "docs/connecting-tia-web-practice.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_connecting_tia_web_practice",
-      "target": "docs_networking_two_computers",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers"
     },
     {
       "relation": "contains",
@@ -19732,9 +20094,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers",
-      "target": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer"
     },
     {
       "relation": "contains",
@@ -19742,9 +20104,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L223",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_10_security_note",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_10_security_note"
     },
     {
       "relation": "contains",
@@ -19752,9 +20114,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_1_what_runs_where",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_1_what_runs_where"
     },
     {
       "relation": "contains",
@@ -19762,9 +20124,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_2_on_the_pi_start_the_runtime_reachable_from_the_network",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_2_on_the_pi_start_the_runtime_reachable_from_the_network"
     },
     {
       "relation": "contains",
@@ -19772,9 +20134,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L83",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_3_find_the_pi_s_address",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_3_find_the_pi_s_address"
     },
     {
       "relation": "contains",
@@ -19782,9 +20144,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_4_open_the_port_in_the_pi_s_firewall",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_4_open_the_port_in_the_pi_s_firewall"
     },
     {
       "relation": "contains",
@@ -19792,9 +20154,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L115",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_5_from_the_other_computer_check_you_can_reach_it",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_5_from_the_other_computer_check_you_can_reach_it"
     },
     {
       "relation": "contains",
@@ -19802,9 +20164,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_6_load_a_plc_program_onto_the_pi",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_6_load_a_plc_program_onto_the_pi"
     },
     {
       "relation": "contains",
@@ -19812,9 +20174,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_7_connect_the_gateway_to_the_pi",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_7_connect_the_gateway_to_the_pi"
     },
     {
       "relation": "contains",
@@ -19822,9 +20184,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L173",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_8_keep_the_runtime_running_on_boot_optional",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_8_keep_the_runtime_running_on_boot_optional"
     },
     {
       "relation": "contains",
@@ -19832,9 +20194,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L210",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_9_troubleshooting",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_9_troubleshooting"
     },
     {
       "relation": "contains",
@@ -19842,9 +20204,9 @@
       "source_file": "docs/networking-two-computers.md",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_networking_two_computers_running_tia_portal_on_a_raspberry_pi_and_automation_sim_on_another_computer",
-      "target": "docs_networking_two_computers_contents",
-      "confidence_score": 1.0
+      "target": "docs_networking_two_computers_contents"
     },
     {
       "relation": "references",
@@ -20196,5 +20558,5 @@
       "source_file": "CLAUDE.md"
     }
   ],
-  "built_at_commit": "00ed3cfb9e3d84316da3cd88aea42716e808f595"
+  "built_at_commit": "421410674e29d4563d0433313fd94693d772a65e"
 }

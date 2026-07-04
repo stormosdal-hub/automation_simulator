@@ -82,7 +82,13 @@ python3 plc_server.py --mock --modbus-port 5020
 
 ## 3. Find the Pi's address
 
-On the Pi:
+**Easiest — no terminal:** open the TIA Web app (served by the runtime) and
+click **Address** in the *Online (PLC)* toolbar group. The pop-up shows the
+runtime's hostname and its exact `http://<ip>:<port>`, with a Copy button —
+that's the address you'll give Automation Sim. (Even easier: skip this and use
+Automation Sim's **Search network** button in step 7 to find the Pi for you.)
+
+Or on the Pi's terminal:
 
 ```bash
 hostname -I        # prints its IP address(es), e.g. 192.168.1.50
@@ -152,12 +158,15 @@ npm install        # first time only
 npm run dev        # gateway :8082 + 3D scene :5173
 ```
 
-Open the scene at **`http://localhost:5173`**, then either:
+Open the scene at **`http://localhost:5173`**, then any of:
 
-- **Online ▾ menu (no config editing):** click **Online ▾**, enter a connection
+- **Search (don't even need the IP):** click **Online ▾** → **Search network**
+  (leave the port at 8000). The gateway sweeps your local subnet and lists the
+  runtimes it finds; click **Use** on the Pi, then **Connect**. This is the
+  no-typing path.
+- **Online ▾ menu (type the address):** click **Online ▾**, enter a connection
   name (e.g. `pi-plc`) and the Pi's address `192.168.1.50:8000`, click **Test**
-  (confirms it's a real runtime), then **Connect**. Done — the Pi's tags stream
-  in live, and you can add more PLCs the same way.
+  (confirms it's a real runtime), then **Connect**. Add more PLCs the same way.
 - **config.json (a fixed default):** edit
   `automation_sim/gateway/config.json`'s `tiaweb` entry to
   `"url": "http://192.168.1.50:8000"` and restart the gateway.

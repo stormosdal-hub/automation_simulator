@@ -128,6 +128,14 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   requester and broadcasts `tagsChanged` on connect / `adapterRemoved` on
   remove) and the frontend's **Online ▾** menu (`onlineMenu.ts`). Tags
   namespace by connection id, so `line1.Motor` and `press.Motor` coexist.
+- `gateway/src/netscan.ts` — `scanForRuntimes(port)` sweeps the gateway's
+  local subnet(s) for TIA runtimes: `primaryIp()` (dgram UDP-connect trick, no
+  packet sent) picks the main interface, `subnetsToScan()` derives up to 2
+  /24 bases from `os.networkInterfaces()`, then a capped-concurrency pool
+  probes `GET /api/info` on every host (short timeout) and keeps the ones that
+  match the runtime's response shape (with project + RUN state). Read-only and
+  bounded. Driven by the WS `scanTia {port}` → `scanResult {found,scanned,subnets}`
+  messages (`server.ts`) and the Online menu's **Search network** button.
 - `gateway/src/links.ts` — tag-link bridge (`config.links`): routes one
   adapter's published tag into another's write. Change-driven (adapters
   republish every poll — forwarding those would hammer targets), values are
@@ -204,10 +212,14 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   Remove (`conn.removeTia(id)`, confirm-guarded) drops a connection and its
   tags. `suggestId()` pre-fills an unused name (`tia`, `tia2`, …); the id field
   locks when redirecting an existing connection. `normalizeUrl()` prepends
-  `http://` if no scheme was typed. `data-role` attrs (`online-list`,
-  `online-id-input`/`online-url-input`, `online-test`/`online-connect`,
-  `online-conn-row[data-conn]`, `online-edit`/`online-remove`) for headless
-  testing. Same `.online-menu-dropdown[hidden]` CSS gotcha as the File menu.
+  `http://` if no scheme was typed. Also a **Search network** control (a port
+  field + button → `conn.scanTia(port)`) that lists found runtimes; clicking a
+  hit's **Use** drops its url (+ a suggested id) into the form. `data-role`
+  attrs (`online-list`, `online-id-input`/`online-url-input`,
+  `online-test`/`online-connect`, `online-conn-row[data-conn]`,
+  `online-edit`/`online-remove`, `online-search`/`online-scan-port`/
+  `online-scan-use`) for headless testing. Same `.online-menu-dropdown[hidden]`
+  CSS gotcha as the File menu.
 - `frontend/src/trendPanel.ts` — the **Trends** panel: pick numeric/boolean
   tags from a dropdown, each rendered as a compact `<canvas>` sparkline over a
   rolling window (30s–5m). Own ring buffers sampled from the tag store every

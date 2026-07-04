@@ -106,6 +106,24 @@ export interface AdapterRemovedMessage {
   adapterId: string;
 }
 
+/** One reachable TIA runtime found by a LAN scan. */
+export interface ScanHit {
+  ip: string;
+  port: number;
+  url: string;
+  project: string | null;
+  running: boolean;
+}
+
+/** Reply to 'scanTia' (to the requester): the runtimes found on the scanned subnet(s). */
+export interface ScanResultMessage {
+  type: 'scanResult';
+  requestId: string;
+  found: ScanHit[];
+  scanned: number;
+  subnets: string[];
+}
+
 export type GatewayMessage =
   | HelloMessage
   | TagUpdateMessage
@@ -116,7 +134,8 @@ export type GatewayMessage =
   | TiaConnectedMessage
   | TiaConnectErrorMessage
   | TiaRemovedMessage
-  | AdapterRemovedMessage;
+  | AdapterRemovedMessage
+  | ScanResultMessage;
 
 /** Client → gateway: write a value to a writable tag. */
 export interface WriteMessage {
@@ -158,12 +177,23 @@ export interface RemoveTiaMessage {
   id: string;
 }
 
+/**
+ * Client → gateway: scan the gateway's local subnet(s) for TIA Web Practice
+ * runtimes reachable on `port`, so you can pick one instead of typing an IP.
+ */
+export interface ScanTiaMessage {
+  type: 'scanTia';
+  requestId: string;
+  port: number;
+}
+
 export type ClientMessage =
   | WriteMessage
   | RefreshTagsMessage
   | TestTiaMessage
   | ConnectTiaMessage
-  | RemoveTiaMessage;
+  | RemoveTiaMessage
+  | ScanTiaMessage;
 
 /** 8081 is commonly taken; keep this in one place so gateway and frontend agree. */
 export const DEFAULT_GATEWAY_PORT = 8082;

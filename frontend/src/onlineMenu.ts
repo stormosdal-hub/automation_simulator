@@ -22,11 +22,15 @@ export class OnlineMenu {
   private formTitleEl: HTMLElement;
   private idInput: HTMLInputElement;
   private urlInput: HTMLInputElement;
+  private portInput: HTMLInputElement;
+  private searchBtn: HTMLButtonElement;
+  private scanResultsEl: HTMLElement;
   private connectBtn: HTMLButtonElement;
   private cancelBtn: HTMLButtonElement;
   private resultEl: HTMLElement;
   private isOpen = false;
   private busy = false;
+  private scanning = false;
   private editingId: string | null = null;
 
   constructor(
@@ -54,6 +58,20 @@ export class OnlineMenu {
     this.listEl.dataset.role = 'online-list';
 
     this.formTitleEl = div('online-section-title');
+
+    // find-on-network: a port + Search button that scans the LAN for runtimes
+    this.portInput = textInput('8000', 'port', () => {});
+    this.portInput.dataset.role = 'online-scan-port';
+    this.portInput.classList.add('online-port');
+    this.searchBtn = button('Search network', 'btn btn-small');
+    this.searchBtn.dataset.role = 'online-search';
+    this.searchBtn.title = 'Scan this computer\'s local network for TIA runtimes on the given port';
+    this.searchBtn.addEventListener('click', () => void this.search());
+    const searchRow = div('online-search-row');
+    searchRow.append(this.portInput, this.searchBtn);
+    this.scanResultsEl = div('online-scan-results');
+    this.scanResultsEl.dataset.role = 'online-scan-results';
+
     this.idInput = textInput('', 'connection name, e.g. line1', () => {});
     this.idInput.dataset.role = 'online-id-input';
     this.urlInput = textInput('', 'host:port, e.g. 192.168.1.50:8000', () => {});
@@ -78,6 +96,8 @@ export class OnlineMenu {
       listTitle,
       this.listEl,
       this.formTitleEl,
+      searchRow,
+      this.scanResultsEl,
       labeled('name', this.idInput),
       labeled('address', this.urlInput),
       actions,
@@ -102,6 +122,62 @@ export class OnlineMenu {
     return this.store.adapters
       .filter((a) => a.type === 'tiaweb')
       .map((a) => ({ id: a.id, url: a.url ?? '' }));
+  }
+
+  private async search(): Promise<void> {
+    if (this.scanning) return;
+    const port = Number(this.portInput.value) || 8000;
+    this.scanning = true;
+    this.searchBtn.disabled = true;
+    const label = this.searchBtn.textContent;
+    this.searchBtn.textContent = 'Scanning…';
+    this.scanResultsEl.textContent = 'Scanning your local network — this can take a few seconds…';
+    this.scanResultsEl.className = 'online-scan-results dim';
+    try {
+      const report = await this.conn.scanTia(port);
+      this.renderScanResults(report, port);
+    } catch (err) {
+      this.scanResultsEl.className = 'online-scan-results';
+      this.scanResultsEl.textContent = `✗ ${err instanceof Error ? err.message : String(err)}`;
+    } finally {
+      this.scanning = false;
+      this.searchBtn.disabled = false;
+      this.searchBtn.textContent = label ?? 'Search network';
+    }
+  }
+
+  private renderScanResults(report: { found: { ip: string; port: number; url: string; project: string | null; running: boolean }[]; subnets: string[] }, port: number): void {
+    this.scanResultsEl.className = 'online-scan-results';
+    this.scanResultsEl.innerHTML = '';
+    const where = report.subnets.join(', ') || 'the network';
+    if (report.found.length === 0) {
+      const e = div('dim');
+      e.textContent = `No runtimes found on ${where} (port ${port}). Check the port and that the runtime is running.`;
+      this.scanResultsEl.append(e);
+      return;
+    }
+    const known = new Set(this.connections().map((c) => c.url));
+    const head = div('dim');
+    head.textContent = `Found ${report.found.length} on ${where}:`;
+    this.scanResultsEl.append(head);
+    for (const hit of report.found) {
+      const row = div('online-scan-hit');
+      row.dataset.hit = hit.url;
+      const info = div('online-scan-label');
+      const state = hit.running ? ' · RUN' : '';
+      const added = known.has(hit.url) ? ' <span class="dim">(added)</span>' : '';
+      info.innerHTML = `<b>${hit.ip}:${hit.port}</b> <span class="dim">${hit.project ?? 'no program'}${state}</span>${added}`;
+      const use = button('Use', 'btn btn-small');
+      use.dataset.role = 'online-scan-use';
+      use.addEventListener('click', () => {
+        this.urlInput.value = hit.url;
+        if (!this.editingId) this.idInput.value = this.suggestId();
+        this.resultEl.textContent = `Selected ${hit.url} — Test or Connect below.`;
+        this.urlInput.focus();
+      });
+      row.append(info, use);
+      this.scanResultsEl.append(row);
+    }
   }
 
   private suggestId(): string {
@@ -152,6 +228,8 @@ export class OnlineMenu {
     this.connectBtn.textContent = 'Connect';
     this.cancelBtn.hidden = true;
     this.resultEl.textContent = '';
+    this.scanResultsEl.innerHTML = '';
+    this.scanResultsEl.className = 'online-scan-results';
   }
 
   private startEdit(id: string, url: string): void {

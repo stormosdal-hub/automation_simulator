@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "frontend/src/wsClient.ts": {
-    "mtime": 1783168672.510108,
-    "ast_hash": "b9b85a93f93d4a7b42f29132addd1f02",
+    "mtime": 1783173725.1599615,
+    "ast_hash": "bf903c075df5e8e47a32ae08bb68fe1f",
     "semantic_hash": ""
   },
   "frontend/tsconfig.json": {
@@ -75,18 +75,18 @@
     "semantic_hash": "842c681581de1e304fb3844de5b92a40"
   },
   "shared/src/index.ts": {
-    "mtime": 1783168537.5582826,
-    "ast_hash": "3b268721dac2462863d6f32c4a269f8a",
+    "mtime": 1783173518.9790175,
+    "ast_hash": "76a33da6775a66fa2c0fe474828e1476",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1783169203.2065566,
-    "ast_hash": "aa1ad504d87822de775ad2eb7e969260",
+    "mtime": 1783174039.9028513,
+    "ast_hash": "5b19ccb65d559a9892edc7a541be54cc",
     "semantic_hash": ""
   },
   "frontend/index.html": {
-    "mtime": 1783168775.8829863,
-    "ast_hash": "c072f76b6544916dad477dc41a71ac09",
+    "mtime": 1783173860.4889169,
+    "ast_hash": "ad5998ebddc0feefcd2b3f0e1b44a7b9",
     "semantic_hash": ""
   },
   "frontend/src/panel.ts": {
@@ -115,13 +115,13 @@
     "semantic_hash": ""
   },
   "gateway/src/server.ts": {
-    "mtime": 1783168604.6201932,
-    "ast_hash": "df2733b198ea527cda768940d5c156ea",
+    "mtime": 1783173575.4050038,
+    "ast_hash": "56d4e8582b08464b026de739c2d75202",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783169252.6315122,
-    "ast_hash": "ca9b8b4e91835d4af0a10a4cfbdbd198",
+    "mtime": 1783174080.6548355,
+    "ast_hash": "3f4ac8c445a1a9ff1661395cb31526dc",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -315,8 +315,8 @@
     "semantic_hash": ""
   },
   "frontend/src/onlineMenu.ts": {
-    "mtime": 1783168918.6188316,
-    "ast_hash": "8ee7b34e6388f0af17a5ef553d54db54",
+    "mtime": 1783173851.65492,
+    "ast_hash": "39ec351f0226d73d44a059b2c473d9f7",
     "semantic_hash": ""
   },
   "gateway/src/tiaConnection.ts": {
@@ -335,8 +335,13 @@
     "semantic_hash": ""
   },
   "docs/networking-two-computers.md": {
-    "mtime": 1783169095.770656,
-    "ast_hash": "b76d6caa64ff7eec420623b97f2d4488",
+    "mtime": 1783174138.4928126,
+    "ast_hash": "274150113173437bcbc3e5fc70ee4a38",
+    "semantic_hash": ""
+  },
+  "gateway/src/netscan.ts": {
+    "mtime": 1783173540.7810123,
+    "ast_hash": "fd616dd8b48fd86487ba5a4d3bfaf0c5",
     "semantic_hash": ""
   }
 }

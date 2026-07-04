@@ -1,6 +1,7 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import type { ClientMessage, GatewayMessage } from '@sim/shared';
 import type { TagBus } from './bus';
+import { scanForRuntimes } from './netscan';
 import { probeTia, type TiaConnectionManager } from './tiaConnection';
 
 /**
@@ -91,6 +92,29 @@ export function startWsServer(bus: TagBus, tia: TiaConnectionManager, port: numb
           console.log(`[server] '${id}' removed`);
           broadcast({ type: 'adapterRemoved', adapterId: id });
         }
+        return;
+      }
+      if (msg?.type === 'scanTia') {
+        const { requestId, port } = msg;
+        const p = Number.isInteger(port) && port > 0 && port < 65536 ? port : 8000;
+        console.log(`[server] scanning LAN for TIA runtimes on port ${p}…`);
+        scanForRuntimes(p)
+          .then((report) => {
+            console.log(`[server] scan done: ${report.found.length} found across ${report.subnets.join(', ')}`);
+            const out: GatewayMessage = {
+              type: 'scanResult',
+              requestId,
+              found: report.found,
+              scanned: report.scanned,
+              subnets: report.subnets,
+            };
+            if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(out));
+          })
+          .catch((err: Error) => {
+            console.warn(`[server] scan failed: ${err.message}`);
+            const out: GatewayMessage = { type: 'scanResult', requestId, found: [], scanned: 0, subnets: [] };
+            if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(out));
+          });
       }
     });
   });

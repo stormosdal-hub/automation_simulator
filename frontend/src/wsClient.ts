@@ -1,5 +1,11 @@
-import type { AdapterMeta, ClientMessage, GatewayMessage, TagMeta } from '@sim/shared';
+import type { AdapterMeta, ClientMessage, GatewayMessage, ScanHit, TagMeta } from '@sim/shared';
 import type { TagStore } from './tagStore';
+
+export interface ScanReport {
+  found: ScanHit[];
+  scanned: number;
+  subnets: string[];
+}
 
 export type WsStatus = 'connecting' | 'connected' | 'disconnected';
 
@@ -14,6 +20,8 @@ export interface GatewayConnection {
   connectTia(id: string, url: string): Promise<{ meta: AdapterMeta; tags: TagMeta[] }>;
   /** Drop the TIA connection named `id` and all its tags. */
   removeTia(id: string): Promise<void>;
+  /** Scan the gateway's local subnet(s) for TIA runtimes reachable on `port`. */
+  scanTia(port: number): Promise<ScanReport>;
 }
 
 const STRUCTURAL_TYPES = new Set([
@@ -25,6 +33,7 @@ const STRUCTURAL_TYPES = new Set([
   'tiaConnectError',
   'tiaRemoved',
   'adapterRemoved',
+  'scanResult',
 ]);
 
 export function connectGateway(
@@ -41,6 +50,7 @@ export function connectGateway(
     { resolve: (r: { meta: AdapterMeta; tags: TagMeta[] }) => void; reject: (e: Error) => void }
   >();
   const pendingRemove = new Map<string, { resolve: () => void; reject: (e: Error) => void }>();
+  const pendingScan = new Map<string, { resolve: (r: ScanReport) => void }>();
 
   const connect = () => {
     onStatus('connecting');
@@ -85,6 +95,9 @@ export function connectGateway(
         }
       } else if (msg.type === 'adapterRemoved') {
         store.applyAdapterRemoved(msg.adapterId);
+      } else if (msg.type === 'scanResult') {
+        pendingScan.get(msg.requestId)?.resolve({ found: msg.found, scanned: msg.scanned, subnets: msg.subnets });
+        pendingScan.delete(msg.requestId);
       }
     };
     ws.onclose = () => {
@@ -148,6 +161,18 @@ export function connectGateway(
         const requestId = String(nextRequestId++);
         pendingRemove.set(requestId, { resolve, reject });
         const msg: ClientMessage = { type: 'removeTia', requestId, id };
+        current.send(JSON.stringify(msg));
+      });
+    },
+    scanTia(port) {
+      return new Promise((resolve, reject) => {
+        if (current?.readyState !== WebSocket.OPEN) {
+          reject(new Error('not connected'));
+          return;
+        }
+        const requestId = String(nextRequestId++);
+        pendingScan.set(requestId, { resolve });
+        const msg: ClientMessage = { type: 'scanTia', requestId, port };
         current.send(JSON.stringify(msg));
       });
     },
