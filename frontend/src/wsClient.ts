@@ -10,8 +10,10 @@ export interface GatewayConnection {
   refreshTags(adapterId: string): Promise<TagMeta[]>;
   /** Checks a URL is a reachable TIA Web Practice runtime without connecting anything. */
   testTia(url: string): Promise<{ ok: boolean; reason?: string }>;
-  /** Hot-swaps the `tia` connection to this URL (works with no prior tia adapter too). */
-  connectTia(url: string): Promise<{ meta: AdapterMeta; tags: TagMeta[] }>;
+  /** Connect/redirect the TIA connection named `id` to this URL (creates it if new). */
+  connectTia(id: string, url: string): Promise<{ meta: AdapterMeta; tags: TagMeta[] }>;
+  /** Drop the TIA connection named `id` and all its tags. */
+  removeTia(id: string): Promise<void>;
 }
 
 const STRUCTURAL_TYPES = new Set([
@@ -21,6 +23,8 @@ const STRUCTURAL_TYPES = new Set([
   'tiaTestResult',
   'tiaConnected',
   'tiaConnectError',
+  'tiaRemoved',
+  'adapterRemoved',
 ]);
 
 export function connectGateway(
@@ -36,6 +40,7 @@ export function connectGateway(
     string,
     { resolve: (r: { meta: AdapterMeta; tags: TagMeta[] }) => void; reject: (e: Error) => void }
   >();
+  const pendingRemove = new Map<string, { resolve: () => void; reject: (e: Error) => void }>();
 
   const connect = () => {
     onStatus('connecting');
@@ -71,6 +76,15 @@ export function connectGateway(
         console.warn(`[gateway] TIA connect failed: ${msg.reason}`);
         pendingConnect.get(msg.requestId)?.reject(new Error(msg.reason));
         pendingConnect.delete(msg.requestId);
+      } else if (msg.type === 'tiaRemoved') {
+        const pend = pendingRemove.get(msg.requestId);
+        if (pend) {
+          if (msg.ok) pend.resolve();
+          else pend.reject(new Error(msg.reason ?? 'remove failed'));
+          pendingRemove.delete(msg.requestId);
+        }
+      } else if (msg.type === 'adapterRemoved') {
+        store.applyAdapterRemoved(msg.adapterId);
       }
     };
     ws.onclose = () => {
@@ -113,7 +127,7 @@ export function connectGateway(
         current.send(JSON.stringify(msg));
       });
     },
-    connectTia(url) {
+    connectTia(id, url) {
       return new Promise((resolve, reject) => {
         if (current?.readyState !== WebSocket.OPEN) {
           reject(new Error('not connected'));
@@ -121,7 +135,19 @@ export function connectGateway(
         }
         const requestId = String(nextRequestId++);
         pendingConnect.set(requestId, { resolve, reject });
-        const msg: ClientMessage = { type: 'connectTia', requestId, url };
+        const msg: ClientMessage = { type: 'connectTia', requestId, id, url };
+        current.send(JSON.stringify(msg));
+      });
+    },
+    removeTia(id) {
+      return new Promise((resolve, reject) => {
+        if (current?.readyState !== WebSocket.OPEN) {
+          reject(new Error('not connected'));
+          return;
+        }
+        const requestId = String(nextRequestId++);
+        pendingRemove.set(requestId, { resolve, reject });
+        const msg: ClientMessage = { type: 'removeTia', requestId, id };
         current.send(JSON.stringify(msg));
       });
     },

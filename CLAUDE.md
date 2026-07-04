@@ -111,20 +111,23 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   same S7-style `%I/%Q/%M` memory (see `TIA_Portal_Web-app/README.md` →
   "Modbus TCP server mode" for the coil/discrete/holding/input address
   mapping); no gateway code changes needed for that path.
-- `gateway/src/tiaConnection.ts` — `TiaConnectionManager` owns the
-  live-swappable `tia` connection: `reconnect(url)` calls `probeTia(url)`
+- `gateway/src/tiaConnection.ts` — `TiaConnectionManager` owns a **Map of
+  named TIA connections** (multi-PLC): `connect(id, url)` calls `probeTia(url)`
   (`GET /api/info`, checked for the exact shape the runtime returns) *before*
-  touching anything, so a bad address is rejected without disturbing a
-  working connection; only on success does it `TiaWebAdapter.create()` a
-  fresh adapter and `bus.unregisterAdapter()` + `bus.register()` swap it in.
-  Works with **no prior `tiaweb` config.json entry** — `index.ts` calls
-  `tia.adopt(entry)` if one exists at startup, but `reconnect()` defaults to
-  `id:'tia'` if `this.config` is still null (first-time connect). Always
-  forces fresh discovery on reconnect, even if the original config.json entry
-  had an explicit `tags` list — a different target may have entirely
-  different tag names. Driven by the WS `testTia`/`connectTia` client
-  messages (`server.ts`) and the frontend's **Online ▾** menu
-  (`onlineMenu.ts`).
+  touching anything, so a bad address is rejected without disturbing a working
+  connection; only on success does it `TiaWebAdapter.create()` a fresh adapter
+  and `bus.unregisterAdapter(id)` (no-op if new) + `bus.register()` swap it in,
+  recording the config under `id`. `remove(id)` unregisters + drops it.
+  `index.ts` calls `tia.adopt(entry)` for **each** `tiaweb` config.json entry
+  at startup (several PLCs can be declared), and `connect()` also works with no
+  prior entry at all (first-time connect via the UI). Always forces fresh
+  discovery on connect, even if a config entry had an explicit `tags` list — a
+  different target may have entirely different tag names. Driven by the WS
+  `testTia`/`connectTia {id,url}`/`removeTia {id}` client messages
+  (`server.ts` replies `tiaConnected`/`tiaConnectError`/`tiaRemoved` to the
+  requester and broadcasts `tagsChanged` on connect / `adapterRemoved` on
+  remove) and the frontend's **Online ▾** menu (`onlineMenu.ts`). Tags
+  namespace by connection id, so `line1.Motor` and `press.Motor` coexist.
 - `gateway/src/links.ts` — tag-link bridge (`config.links`): routes one
   adapter's published tag into another's write. Change-driven (adapters
   republish every poll — forwarding those would hammer targets), values are
@@ -192,14 +195,30 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   dropdown's `hidden` attribute only hides it if no author CSS sets `display`
   on the same selector without a `[hidden]` override — see the
   `.file-menu-dropdown[hidden]` rule in `index.html`.
-- `frontend/src/onlineMenu.ts` — the `#topbar` **Online ▾** dropdown: shows
-  the current `tia` connection (`store.adapters` entry's `url` + the
-  `tia.online`/`tia.running` tags, polled every 500 ms like
-  `connectionsPanel.ts`), a host:port input, and **Test connection**
-  (`conn.testTia()`, doesn't touch anything) / **Connect**
-  (`conn.connectTia()`, hot-swaps live) buttons. `normalizeUrl()` prepends
-  `http://` if no scheme was typed. Same `.online-menu-dropdown[hidden]` CSS
-  gotcha as the File menu — see its note above.
+- `frontend/src/onlineMenu.ts` — the `#topbar` **Online ▾** dropdown, a
+  multi-PLC connection manager: lists every `tiaweb` adapter
+  (`store.adapters.filter(type==='tiaweb')`, polled every 500 ms) as a row with
+  its id, url, online/RUN dot, and Edit/Remove; plus an add/edit form (a
+  connection **name** + host:port) with Test (`conn.testTia()`, changes
+  nothing) and Connect (`conn.connectTia(id, url)`, hot-swaps/creates live).
+  Remove (`conn.removeTia(id)`, confirm-guarded) drops a connection and its
+  tags. `suggestId()` pre-fills an unused name (`tia`, `tia2`, …); the id field
+  locks when redirecting an existing connection. `normalizeUrl()` prepends
+  `http://` if no scheme was typed. `data-role` attrs (`online-list`,
+  `online-id-input`/`online-url-input`, `online-test`/`online-connect`,
+  `online-conn-row[data-conn]`, `online-edit`/`online-remove`) for headless
+  testing. Same `.online-menu-dropdown[hidden]` CSS gotcha as the File menu.
+- `frontend/src/trendPanel.ts` — the **Trends** panel: pick numeric/boolean
+  tags from a dropdown, each rendered as a compact `<canvas>` sparkline over a
+  rolling window (30s–5m). Own ring buffers sampled from the tag store every
+  250 ms (decoupled from update rate); numeric → auto-scaled line + area fill +
+  endpoint dot, boolean → step line; a hover crosshair reads the value at a
+  point back into the row's label. `wanted` (a Set) is the persisted source of
+  truth (`trend:selected`); rows `materialize()` lazily once each tag's meta
+  arrives (the gateway `hello` may land after construct — this is why a
+  persisted selection survives reload). Single series per chart → no legend,
+  one accent hue. `data-role="trend-add"`, `.trend-win-btn[data-win]`,
+  `.trend-row[data-tag]` for testing.
 - Write path: browser sends `{type:'write', tagId, value}` → server →
   `bus.write` → owning adapter's `write()`; confirmed values return via the
   normal update stream, rejections via `writeError`. Tags opt in with

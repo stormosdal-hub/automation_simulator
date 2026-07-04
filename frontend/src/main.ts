@@ -17,6 +17,7 @@ import { SceneTree } from './sceneTree';
 import { Selection } from './selection';
 import { TagStore } from './tagStore';
 import { TagTable } from './tagTable';
+import { TrendPanel } from './trendPanel';
 import { attachViewportSelection } from './viewportSelection';
 import { connectGateway, type WsStatus } from './wsClient';
 
@@ -45,6 +46,9 @@ new ConnectionsPanel(connectionsPanel.body, store, () => wsStatus, conn);
 
 const tagsPanel = createPanel('Live tags');
 new TagTable(tagsPanel.body, store);
+
+const trendsPanel = createPanel('Trends');
+new TrendPanel(trendsPanel.body, store);
 
 const left = document.getElementById('panels-left')!;
 const right = document.getElementById('panels')!;

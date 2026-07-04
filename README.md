@@ -5,31 +5,31 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: tags sync themselves + a resizable UI** — two things.
-*(1) Automatic tag re-discovery.* Edit tags in the TIA app and hit **Download →
-PLC** (which you do anyway to run the new program) and the gateway notices on
-its own — the runtime stamps every download with a `programRev`, the `tiaweb`
-adapter watches it while polling, and re-discovers tags the instant it changes.
-New/edited/removed tags appear across every connected browser with **no ⟳
-click, no restart, no reconnect**. (The manual **⟳** button in the Connections
-panel is still there for a forced refresh.) The one thing to remember: adding a
-tag in the TIA app isn't enough on its own — you have to **Download → PLC** so
-the runtime actually has the new program; then it syncs automatically.
-*(2) Resizable, scrollable panels.* Both side columns now scroll when the panel
-stack is taller than the window (no more collapsing panels to reach the ones
-below); each panel body has a corner grip to drag it taller/shorter and scrolls
-inside; and a drag handle on each column's inner edge resizes the whole column's
-width. Column widths and panel heights persist in localStorage.
+**Current state: trend charts + a multi-PLC connection manager** — two things.
+*(1) Trends.* A **Trends** panel plots any numeric or boolean tag over a rolling
+time window as a compact sparkline — a line per numeric tag (own auto-scaled
+axis + current value + hover crosshair), a step line per boolean (see when a
+motor was on). Pick tags from a dropdown; selection and window (30s–5m) persist.
+*(2) Multiple PLCs.* The **Online ▾** menu is now a connection manager: run
+several TIA runtimes at once, each a named connection with its own host:port.
+Their tags namespace by connection (`line1.Motor`, `press-plc.Motor`), so one 3D
+scene can front several machines — add, redirect (Test then Connect), and remove
+connections live, no restart. Removing one drops its tags everywhere. Great for
+a Raspberry Pi PLC + your desktop: see
+[`docs/networking-two-computers.md`](docs/networking-two-computers.md).
 
-Previously: **an Online menu, no config.json required** — a new **Online ▾**
-topbar menu shows the current `tia` connection (URL, online/running) and lets
-you switch it live: type a `host:port` (same machine, another machine on your
-LAN/Wi-Fi, or a Raspberry Pi — anything reachable over the network), **Test
-connection** to confirm it's actually a TIA Web Practice runtime before
-committing, then **Connect** to hot-swap to it — no gateway restart, no page
-reload, and no `tiaweb` entry in `config.json` needed at all (Connect creates
-one on the fly if none exists). A bad address is rejected without disturbing
-whatever's currently connected.
+Previously: **tags sync themselves + a resizable UI.** Edit tags in the TIA app
+and hit **Download → PLC** and the gateway re-discovers them on its own (the
+runtime stamps each download with a `programRev` the adapter watches) — no ⟳
+click, no restart. Both side columns scroll when the panel stack is tall, each
+panel body drag-resizes + scrolls inside, and each column's width drags via a
+handle; widths and heights persist in localStorage.
+
+Previously: **an Online menu, no config.json required** — connect the gateway to
+a TIA runtime live by typing a `host:port` (same machine, another machine on
+your LAN/Wi-Fi, or a Raspberry Pi), **Test** it's really a runtime, then
+**Connect** — no gateway restart, no `tiaweb` entry in `config.json` needed. A
+bad address is rejected without disturbing whatever's connected.
 
 Previously: **live tag refresh, no restart** — the **⟳** button next to the
 `tia` adapter in the Connections panel re-imports the tag list on demand
@@ -140,9 +140,12 @@ Connections are declared in `gateway/config.json` — adapter types:
 - `s7` — host/port/rack/slot/pollMs + tag map (nodes7 address like
   `DB1,REAL0` / `DB1,X8.0`, dataType, writable)
 - `tiaweb` — url (+pollMs) of a TIA Web Practice runtime, and even that's
-  optional now — the **Online ▾** topbar menu can create/redirect this
-  connection live, so `config.json` doesn't need a `tiaweb` entry at all to
-  get started. `tags` is likewise optional — omit it and every declared
+  optional now — the **Online ▾** topbar menu can create/redirect/remove these
+  connections live, so `config.json` doesn't need a `tiaweb` entry at all to
+  get started. Declare **several** `tiaweb` entries (distinct `id`s) — or add
+  them from the Online menu — to front multiple PLCs at once; their tags
+  namespace by id (`line1.Motor`, `press-plc.Motor`). `tags` is likewise
+  optional — omit it and every declared
   project tag is discovered from `GET /api/tags` and published writable
   (forcing is unconditional on the runtime's side anyway), so panel widgets
   and machine models can feed sensors with no config.json tag list to
@@ -240,10 +243,19 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
 18. ~~Resizable/scrollable panel layout: both side columns scroll, panel
     bodies drag-resize (`resize: vertical`) + scroll inside, per-column width
     drag handles (`layout.ts`), widths + heights persisted to localStorage~~
-19. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
+19. ~~Trend charts: a Trends panel (`trendPanel.ts`) plotting numeric/boolean
+    tags over a rolling window as canvas sparklines (auto-scale, hover
+    crosshair, boolean step line), own ring buffers, selection + window
+    persisted~~
+20. ~~Multi-PLC connection manager: `TiaConnectionManager` holds several named
+    TIA connections (`connect(id,url)` / `remove(id)`), the Online menu lists +
+    adds + redirects + removes them live, tags namespace by connection
+    (`adapterRemoved` broadcast drops a removed one everywhere)~~
+21. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
     adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
-    browser-direct MQTT, alarm acknowledge/history, 32-bit Modbus registers
-    (client-side register-pair combining in the gateway's own `modbus`
-    adapter), OPC UA Sign&Encrypt, faster S7 offline detection, LAN
-    auto-discovery for the Online menu (currently manual host:port entry only),
-    draggable/dockable panels (currently fixed left/right columns)
+    browser-direct MQTT, alarm acknowledge/history + browser notifications,
+    tag history logging / CSV export, 32-bit Modbus registers (client-side
+    register-pair combining in the gateway's own `modbus` adapter), OPC UA
+    Sign&Encrypt, faster S7 offline detection, LAN auto-discovery for the
+    Online menu (currently manual host:port entry only), draggable/dockable
+    panels (currently fixed left/right columns)

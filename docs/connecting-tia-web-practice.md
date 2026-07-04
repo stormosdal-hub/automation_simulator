@@ -26,7 +26,15 @@ so the loop closes with zero external hardware. See [§7](#7-close-the-loop--no-
 every network interface and its API is plain HTTP with open CORS, so the
 gateway just needs a reachable `host:port` — same box, another computer on
 your LAN over WiFi/Ethernet, or a Raspberry Pi. Point the **Online ▾** menu
-(or `config.json`, §4) at that address either way.
+(or `config.json`, §4) at that address either way. For a full step-by-step of
+the Pi-on-one-machine / gateway-on-another setup (find the IP, firewall,
+run-on-boot service, troubleshooting), see
+[`networking-two-computers.md`](networking-two-computers.md).
+
+**More than one PLC?** The **Online ▾** menu manages several TIA connections at
+once — give each a name (`line1`, `press-plc`, …) and a host:port. Their tags
+namespace by connection (`line1.Motor`, `press-plc.Motor`), so one 3D scene can
+front several machines.
 
 ## Contents
 1. [Prerequisites & repo layout](#1-prerequisites--repo-layout)

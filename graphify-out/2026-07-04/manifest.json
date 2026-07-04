@@ -10,8 +10,8 @@
     "semantic_hash": "b7a7800c32bcdefd9290d08874275eca"
   },
   "frontend/src/main.ts": {
-    "mtime": 1783105294.6489587,
-    "ast_hash": "d76a8d0e0ac065512a362a3d7d7744cc",
+    "mtime": 1783164904.4766123,
+    "ast_hash": "203d096879b47e790687e170200d282e",
     "semantic_hash": ""
   },
   "frontend/src/scene.ts": {
@@ -80,19 +80,19 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1783105740.8536365,
-    "ast_hash": "cfc0482467614b9294d0db7d57fc6e6c",
+    "mtime": 1783165638.283271,
+    "ast_hash": "e0fbe763babe360e6e6b95037de24a7e",
     "semantic_hash": ""
   },
   "frontend/index.html": {
-    "mtime": 1783105277.985971,
-    "ast_hash": "ebbea1f783378e0a6e40b9c11a7448cc",
+    "mtime": 1783164832.9026346,
+    "ast_hash": "9ebf2a29652de8ced12e900be247dcd6",
     "semantic_hash": ""
   },
   "frontend/src/panel.ts": {
-    "mtime": 1782987446.0401437,
-    "ast_hash": "1bc040fb11c2687d251a12849f5ac189",
-    "semantic_hash": "1bc040fb11c2687d251a12849f5ac189"
+    "mtime": 1783164885.9366183,
+    "ast_hash": "c3ae65303fa4c0e3fc27dbf1dc4a3208",
+    "semantic_hash": ""
   },
   "frontend/src/tagTable.ts": {
     "mtime": 1782987480.4281132,
@@ -100,8 +100,8 @@
     "semantic_hash": "fdac24afd4b3940f54d61dfb67a5f217"
   },
   "gateway/src/adapter.ts": {
-    "mtime": 1783100642.1206794,
-    "ast_hash": "bb2b808b60fdaca1d59c12e58dc1fbd4",
+    "mtime": 1783164369.8656764,
+    "ast_hash": "32a6554444209326b825debf0991b60e",
     "semantic_hash": ""
   },
   "gateway/src/adapters/simulator.ts": {
@@ -110,18 +110,18 @@
     "semantic_hash": "efabff9c013282447536540e9e8d5a69"
   },
   "gateway/src/bus.ts": {
-    "mtime": 1783105094.9351082,
-    "ast_hash": "da773939bd616eb7572a249042e23e72",
+    "mtime": 1783164407.9106822,
+    "ast_hash": "3aa8608037a1d50e2acfed3d9c567cdb",
     "semantic_hash": ""
   },
   "gateway/src/server.ts": {
-    "mtime": 1783105125.2120852,
-    "ast_hash": "3cf2e3c0d8806ae0823ae870548cbead",
+    "mtime": 1783164557.4136863,
+    "ast_hash": "571446f9b7dd16df33ca12d014b3280e",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783105820.2035804,
-    "ast_hash": "d2a3fdea70976e792491ed6140727817",
+    "mtime": 1783165705.703234,
+    "ast_hash": "a2d482fe63aee407e42eeb77a0bffb4c",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -270,8 +270,8 @@
     "semantic_hash": ""
   },
   "gateway/src/adapters/tiaweb.ts": {
-    "mtime": 1783105057.5231369,
-    "ast_hash": "4c72bb9ec9b087074eb3266a53bb8886",
+    "mtime": 1783164528.3026876,
+    "ast_hash": "41c17993cef9ec05405b6d2beefbd963",
     "semantic_hash": ""
   },
   "gateway/scripts/conveyor-loop-probe.mjs": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "docs/connecting-tia-web-practice.md": {
-    "mtime": 1783105909.052518,
-    "ast_hash": "99f1f2dc0791d079c5170020355e71e2",
+    "mtime": 1783165743.116213,
+    "ast_hash": "f1012b5534d6711aaad92b65316a58e9",
     "semantic_hash": ""
   },
   "frontend/src/fileMenu.ts": {
@@ -322,6 +322,11 @@
   "gateway/src/tiaConnection.ts": {
     "mtime": 1783105070.9701266,
     "ast_hash": "de3836354014b4a1a07e35e4633d1853",
+    "semantic_hash": ""
+  },
+  "frontend/src/layout.ts": {
+    "mtime": 1783164982.6935847,
+    "ast_hash": "da9a46e6d8abe989986681fceb7f4666",
     "semantic_hash": ""
   }
 }

@@ -152,7 +152,7 @@ export class TiaWebAdapter implements Adapter {
     this.meta = {
       id: config.id,
       label: config.label ?? `TIA Web PLC (${this.url})`,
-      type: 'custom',
+      type: 'tiaweb',
       canRefreshTags: !explicitTags,
       url: this.url,
     };

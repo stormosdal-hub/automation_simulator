@@ -59,11 +59,11 @@ export function startWsServer(bus: TagBus, tia: TiaConnectionManager, port: numb
         return;
       }
       if (msg?.type === 'connectTia') {
-        const { requestId, url } = msg;
+        const { requestId, id, url } = msg;
         tia
-          .reconnect(url)
+          .connect(id, url)
           .then((adapter) => {
-            console.log(`[server] tia connected to ${url} (${adapter.tags.length} tag(s))`);
+            console.log(`[server] '${id}' connected to ${url} (${adapter.tags.length} tag(s))`);
             const out: GatewayMessage = {
               type: 'tiaConnected',
               requestId,
@@ -74,10 +74,23 @@ export function startWsServer(bus: TagBus, tia: TiaConnectionManager, port: numb
             broadcast({ type: 'tagsChanged', adapterId: adapter.meta.id, meta: adapter.meta, tags: adapter.tags });
           })
           .catch((err: Error) => {
-            console.warn(`[server] connect to '${url}' failed: ${err.message}`);
+            console.warn(`[server] connect '${id}' to '${url}' failed: ${err.message}`);
             const out: GatewayMessage = { type: 'tiaConnectError', requestId, reason: err.message };
             if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(out));
           });
+        return;
+      }
+      if (msg?.type === 'removeTia') {
+        const { requestId, id } = msg;
+        const removed = tia.remove(id);
+        const out: GatewayMessage = removed
+          ? { type: 'tiaRemoved', requestId, adapterId: id, ok: true }
+          : { type: 'tiaRemoved', requestId, adapterId: id, ok: false, reason: `no connection '${id}'` };
+        if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(out));
+        if (removed) {
+          console.log(`[server] '${id}' removed`);
+          broadcast({ type: 'adapterRemoved', adapterId: id });
+        }
       }
     });
   });

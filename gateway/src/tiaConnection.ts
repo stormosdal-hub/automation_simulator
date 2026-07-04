@@ -29,43 +29,55 @@ export async function probeTia(url: string): Promise<TiaProbeResult> {
 }
 
 /**
- * Owns the gateway's live-swappable `tia` connection: hot-swaps the
- * TiaWebAdapter to a new URL with no gateway restart, and works even when no
- * `tiaweb` adapter was declared in config.json at all (first-time connect via
- * the Online menu). Always probes the target first — a bad address never
- * tears down a working connection — and always re-discovers tags fresh from
- * the new target (an explicit config.json `tags` list only applies to the
- * adapter config.json declared at startup, not to a UI-driven reconnect).
+ * Owns the gateway's live-swappable TIA connections — one or many, each with a
+ * distinct `id` (so several PLCs can front one scene). `connect(id, url)`
+ * hot-swaps or creates the connection named `id` with no gateway restart;
+ * `remove(id)` drops it. Every connect probes the target first — a bad address
+ * never tears down a working connection — and always re-discovers tags fresh
+ * from the target (an explicit config.json `tags` list only applies to the
+ * adapter as declared at startup, not to a UI-driven connect). Works with no
+ * `tiaweb` entry in config.json at all (first connect via the Online menu).
  */
 export class TiaConnectionManager {
-  private config: TiaWebAdapterConfig | null = null;
+  private configs = new Map<string, TiaWebAdapterConfig>();
 
   constructor(private bus: TagBus) {}
 
-  /** Called once at startup if config.json declares a `tiaweb` adapter. */
+  /** Called at startup for each `tiaweb` adapter declared in config.json. */
   adopt(config: TiaWebAdapterConfig): void {
-    this.config = config;
+    this.configs.set(config.id, config);
   }
 
-  get currentUrl(): string | null {
-    return this.config?.url ?? null;
+  /** Ids of the currently-known TIA connections. */
+  list(): string[] {
+    return [...this.configs.keys()];
   }
 
-  async reconnect(url: string): Promise<TiaWebAdapter> {
+  /** Connect (or redirect) the connection named `id` to `url`. */
+  async connect(id: string, url: string): Promise<TiaWebAdapter> {
     const probe = await probeTia(url);
     if (!probe.ok) throw new Error(probe.reason ?? 'unreachable');
 
+    const prev = this.configs.get(id);
     const nextConfig: TiaWebAdapterConfig = {
-      id: this.config?.id ?? 'tia',
-      label: this.config?.label,
-      pollMs: this.config?.pollMs,
+      id,
+      label: prev?.label,
+      pollMs: prev?.pollMs,
       url: normalize(url),
       // always rediscover fresh against the (possibly different) target
     };
     const adapter = await TiaWebAdapter.create(nextConfig);
-    if (this.config) this.bus.unregisterAdapter(this.config.id);
+    this.bus.unregisterAdapter(id); // no-op if this id isn't registered yet
     this.bus.register(adapter);
-    this.config = nextConfig;
+    this.configs.set(id, nextConfig);
     return adapter;
+  }
+
+  /** Drop the connection named `id`. Returns false if there was no such connection. */
+  remove(id: string): boolean {
+    if (!this.configs.has(id)) return false;
+    this.bus.unregisterAdapter(id);
+    this.configs.delete(id);
+    return true;
   }
 }

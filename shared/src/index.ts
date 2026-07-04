@@ -1,7 +1,7 @@
 export interface AdapterMeta {
   id: string;
   label: string;
-  type: 'simulator' | 'modbus' | 'opcua' | 'mqtt' | 'custom';
+  type: 'simulator' | 'modbus' | 'opcua' | 'mqtt' | 's7' | 'tiaweb' | 'custom';
   /** Supports re-discovering its tag set live via a 'refreshTags' request (see TiaWebAdapter). */
   canRefreshTags?: boolean;
   /** Human-readable connection target (e.g. the TIA runtime's URL), where meaningful. */
@@ -88,6 +88,24 @@ export interface TiaConnectErrorMessage {
   reason: string;
 }
 
+/** Reply to 'removeTia', to the requester (ok:false carries a reason). */
+export interface TiaRemovedMessage {
+  type: 'tiaRemoved';
+  requestId: string;
+  adapterId: string;
+  ok: boolean;
+  reason?: string;
+}
+
+/**
+ * Broadcast when an adapter is removed from the bus (a TIA connection dropped
+ * via the Online menu). Clients drop that adapter and all its tags.
+ */
+export interface AdapterRemovedMessage {
+  type: 'adapterRemoved';
+  adapterId: string;
+}
+
 export type GatewayMessage =
   | HelloMessage
   | TagUpdateMessage
@@ -96,7 +114,9 @@ export type GatewayMessage =
   | TagsRefreshErrorMessage
   | TiaTestResultMessage
   | TiaConnectedMessage
-  | TiaConnectErrorMessage;
+  | TiaConnectErrorMessage
+  | TiaRemovedMessage
+  | AdapterRemovedMessage;
 
 /** Client → gateway: write a value to a writable tag. */
 export interface WriteMessage {
@@ -119,17 +139,31 @@ export interface TestTiaMessage {
 }
 
 /**
- * Client → gateway: hot-swap the `tia` connection to this URL — works even
- * if no `tiaweb` adapter exists yet (first connect). Probed server-side
- * before anything is torn down, so a bad address never kills a working one.
+ * Client → gateway: connect (or redirect) the TIA connection named `id` to
+ * this URL — creates a new connection if `id` is unknown, redirects it if it
+ * already exists. Probed server-side before anything is torn down, so a bad
+ * address never kills a working connection. Multiple ids = multiple PLCs.
  */
 export interface ConnectTiaMessage {
   type: 'connectTia';
   requestId: string;
+  id: string;
   url: string;
 }
 
-export type ClientMessage = WriteMessage | RefreshTagsMessage | TestTiaMessage | ConnectTiaMessage;
+/** Client → gateway: drop the TIA connection named `id` (and all its tags). */
+export interface RemoveTiaMessage {
+  type: 'removeTia';
+  requestId: string;
+  id: string;
+}
+
+export type ClientMessage =
+  | WriteMessage
+  | RefreshTagsMessage
+  | TestTiaMessage
+  | ConnectTiaMessage
+  | RemoveTiaMessage;
 
 /** 8081 is commonly taken; keep this in one place so gateway and frontend agree. */
 export const DEFAULT_GATEWAY_PORT = 8082;

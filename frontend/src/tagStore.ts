@@ -51,6 +51,18 @@ export class TagStore {
     }
   }
 
+  /** Drop an adapter and all its tags (a TIA connection was removed). */
+  applyAdapterRemoved(adapterId: string): void {
+    this.adapters = this.adapters.filter((a) => a.id !== adapterId);
+    for (const [id, m] of this.metaById) {
+      if (m.adapterId === adapterId) {
+        this.metaById.delete(id);
+        this.state.delete(id);
+      }
+    }
+    this.order = this.order.filter((id) => this.metaById.has(id));
+  }
+
   apply(updates: TagUpdate[]): void {
     const now = Date.now();
     for (const u of updates) {
