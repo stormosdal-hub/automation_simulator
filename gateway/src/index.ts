@@ -1,5 +1,6 @@
 import { DEFAULT_GATEWAY_PORT } from '@sim/shared';
 import { ConveyorAdapter } from './adapters/conveyor';
+import { MemoryAdapter } from './adapters/memory';
 import { MixerAdapter } from './adapters/mixer';
 import { ModbusAdapter } from './adapters/modbus';
 import { PressAdapter } from './adapters/press';
@@ -50,6 +51,9 @@ for (const entry of config.adapters) {
       break;
     case 'mixer':
       bus.register(new MixerAdapter(entry));
+      break;
+    case 'memory':
+      bus.register(new MemoryAdapter(entry));
       break;
     default:
       console.warn(`[gateway] unknown adapter type in config: ${JSON.stringify(entry)}`);

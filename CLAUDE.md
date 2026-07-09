@@ -159,6 +159,13 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   for a polled PLC), `batchProgress`, `overTemp`. Smoke test:
   `scripts/machines-probe.mjs` (gateway only; asserts stroke/pressure/cycle
   dynamics and slosh/batch/thermal dynamics through the WS).
+- `gateway/src/adapters/memory.ts` — virtual tags, no device: all writable, a
+  write publishes straight back; 2 s heartbeat so widgets bound to quiet tags
+  don't dim as stale. This is "soft wiring": bind machine A's sensor OUTPUT
+  and machine B's actuator INPUT to the same `virtual.*` tag and they couple
+  through the bus with no PLC and no `links` entry (the sorting-line sample
+  runs on `virtual.b1`). Config: `{ type:'memory', id, tags:[{name, dataType,
+  initial?}] }` — default entry `virtual` (b1…b4 bool, n1/n2 number).
 - `gateway/src/adapters/s7.ts` — Siemens S7comm via pure-JS nodes7 (typings
   in `src/types/nodes7.d.ts` — no @types package). Polled like Modbus;
   nodes7 converts REAL/INT/X-bit types. Fresh NodeS7 instance per connect
@@ -170,6 +177,99 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
 - `frontend/src/bindings/` — types.ts (Binding/TransformSpec/Project +
   applyTransform), engine.ts (per-frame applier; per-node euler state so
   multi-axis rotation bindings compose; problems surfaced via getProblem).
+- `frontend/src/machines/` — the physics machine library. `types.ts`:
+  `MachineInstance` {id,kind,name,x,z,rotY,params,tags} + `MACHINE_CATALOG`
+  (per-kind params schema + tag slots; `paramsOf()` merges saved params over
+  defaults so old saves survive new params). `physics.ts`: Havok WASM init
+  (`initScenePhysics`, graceful `physicsReady()=false` fallback — machines
+  still render, parts disabled) + body helpers; the ground gets an INVISIBLE
+  BOX SLAB collider (`ground-collider`) because a zero-thickness ground plane
+  makes a degenerate box shape. `boxes.ts`: BoxManager (spawn/cap-60/cull
+  y<−4/consume; parts get `setAngularDamping(0.6)` so corner landings don't
+  kick them off the belt). `rigs.ts`: one Rig per kind = meshes + physics +
+  per-frame behavior (`buildRig` factory; roots named `machine:<id>`, children
+  `machine:<id>:part` — the panel maps viewport picks back via that prefix).
+  `engine.ts`: MachineEngine — diffs `project.machines` by JSON so unrelated
+  project edits rebuild nothing, ticks rigs `onBeforeRender` (dt clamped
+  50 ms), owns gestures (Shift+click = drop part at pick; arrange mode = drag
+  machine on the y=0 plane, camera detached during drag, commit-on-release →
+  that machine alone rebuilds at the new spot), and `EngineIO` (reads from
+  TagStore; writes change-deduped so 60 fps sensors send one message per edge,
+  dedupe cache cleared every 2 s so state re-asserts after a runtime restart).
+  Testing hook: `__SIM__.machineEngine.debug()` → {physics, machines, parts}.
+  Round 4 — MANUAL OVERRIDES: `MachineEngine.manual` is a runtime-only
+  Map<machineId, Record<key, bool|number>> (the relay-test-button / PLC-force
+  analog; never persisted; survives rig rebuilds because it's id-keyed;
+  cleared on machine removal). Rigs get `deps.manual(id)` and check it BEFORE
+  tag bindings: conveyor/curve `motor`+`speed`(%), turntable `rotate`+`speed`,
+  pusher `extend`, gate `raise`, photo-eye `blocked` (forces the sensor — its
+  tag really writes), stacklight `test` (solid, bypasses blink). Bins expose
+  `Rig.action('reset')` via `engine.runAction`. Engine API: manualState /
+  setManual(id,key,val|undefined=Auto) / hasManual / runAction; debug() lists
+  overridden ids. machinePanel renders a per-kind "Manual override" section
+  (3-state seg buttons + speed checkbox/slider + reset), rows show a ✋ badge
+  while overridden; roles: `machine-manual[data-key]` (buttons carry
+  data-val true/false/undefined), `machine-manual-speed[-on]`,
+  `machine-reset-count`. Speed tag slots (conveyor/curve/turntable) read ANY
+  numeric tag as 0–100 % — TIA Int/Word/Real all arrive as dataType 'number'
+  via the tiaweb adapter, so ladder `MOVE n → %MW` drives belt speed (E2E
+  verified: MOVE 30/90 → ~3× physical speed ratio).
+  Round 3: `turntable` — ANIMATED cylinder disc (physics helpers take a
+  'box'|'cylinder' shape arg); unbound = carousel, `rotate` tag = 0°↔`angle`
+  indexing with atHome/atEnd writes; parts are carried by blending their
+  velocity toward ω·(dz, −dx) (the disc's yaw-rate field) + setAngularVelocity
+  so they turn with it — when the disc parks, NOTHING drives or brakes parts
+  (low friction ⇒ they coast/slide a bit on abrupt stops; that's intended so
+  belts can hand parts across a parked table). `stacklight` — R/A/G lamp
+  cylinders, emissive on tag true, optional 1 Hz blink, 'no lamp tags bound'
+  problem when fully unbound. SNAPPING: `machinePorts(m)` (types.ts) returns
+  entry/exit world points + flow yaw for conveyor/curve (incline-aware Y);
+  `MachineEngine.trySnap` runs during arrange moveDrag — nearest in↔out port
+  pair within 0.35 m and ≤0.12 m height difference solves rotY (yaw delta) +
+  position (ports coincide), previewed live on the root and committed
+  (incl. rotY) at endDrag. Yaw convention everywhere: node world +X =
+  (cos β, 0, −sin β), so a direction's world yaw = local yaw + rotY.
+  Round 2: conveyors take `rise` (belt/rails/rollers under a PITCHED `frame`
+  sub-node whose origin is the top-surface center — contact math + drive run
+  in frame space, legs stay vertical under root with per-end heights) and
+  `rails` (both|left|right|none; left = −z); `curve` kind = segmented arc
+  (entry at origin heading +X, center at (0,·,s·R), N≈|A|/15° box segments,
+  analytic contact by radius band + angle range, drive along the tangent at
+  the part's own arc angle). Photo-eye `detect:'color'` sees only
+  `BoxPart.colored` (accent palette indices ≥ 4 in boxes.ts). Mouse grab:
+  pointerdown on a `part:` mesh (precedence: shift-drop > part grab > arrange
+  drag) spring-steers the dynamic body toward cursor∩(horizontal plane at
+  grab height) via setLinearVelocity (gain 10, cap 8), release keeps capped
+  momentum → throw; camera detached during, reattached after.
+  PHYSICS GOTCHAS (cost us real debugging): (1) do NOT drive belt parts with
+  `applyImpulse` — the static belt collider's friction pins resting parts
+  (stick-slip: reported velocity ~0.3 with frozen position); blend the
+  along-axis component via `setLinearVelocity` instead (`blendAlong`), and
+  keep the belt collider friction LOW (0.15) — transport + braking come from
+  the velocity blend. (2) `setLinearVelocity` also moves a deactivated
+  (sleeping) part, so a restarted belt picks sleepers back up; this Babylon
+  version has no `PhysicsBody.setActivationControl`. (3) kinematic movers
+  (pusher head, gate blade) = aggregate mass 0 + `PhysicsMotionType.ANIMATED`
+  + `disablePreStep=false` so the body follows the mesh each step — BUT
+  kinematic contact barely transfers momentum: the pusher additionally hands
+  parts at its face the ram's velocity while extending (same setLinearVelocity
+  pattern), else parts topple off a belt edge instead of launching clear.
+  (4) `staticBody()` must run AFTER the root transform is final
+  (`computeWorldMatrix(true)` before creating the aggregate).
+- `frontend/src/machinePanel.ts` — Machines panel UI: catalog add row, arrange
+  toggle (`engine.arrangeMode`), Drop part / Clear parts, instance list with
+  1 s status/⚠-problem refresh (labels only), properties editor (placement,
+  params by ParamSpec, tag selects filtered by slot dataType + writability).
+  Commits DON'T re-render (a `muted` flag suppresses the store echo so inputs
+  keep focus) — therefore every input closure re-reads the live machine via
+  `cur()` before spreading, else editing X then Z would commit Z over a stale
+  X. Inputs commit on `change` (blur/Enter), not per keystroke — each commit
+  rebuilds that machine's rig. Viewport selection with a `machine:` prefix
+  selects the machine here too. `data-role`s: `machine-kind-select`/
+  `machine-add`/`machine-arrange`/`machine-drop`/`machine-clear`/
+  `machine-row[data-machine]`/`machine-remove`/`machine-name`/`machine-x`/
+  `machine-z`/`machine-rot`/`machine-turn`/`machine-prop[data-key]`/
+  `machine-tag[data-slot]`/`machine-dropnow`.
 - `frontend/src/` — scene.ts (setup + GLB load only), projectStore.ts
   (localStorage + defaults; `.export()`/`.replace()` back the File menu),
   bindingPanel.ts (editor UI), sceneTree.ts + viewportSelection.ts (picking;
@@ -192,7 +292,10 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   they're really there; hit-test with `elementFromPoint` to confirm.)
 - `frontend/src/fileMenu.ts` — the `#topbar` **File** dropdown: New / Open /
   Save project as JSON, in addition to (not instead of) the localStorage
-  autosave every `ProjectStore` mutation already does. Save downloads
+  autosave every `ProjectStore` mutation already does. Also **samples**: the
+  `SAMPLES` const lists bundled projects under `frontend/public/samples/`
+  (fetched over vite, validated, confirm() then replace+reload —
+  `data-role="file-sample-sorting"` for the sorting line). Save downloads
   `ProjectStore.export()` via a Blob URL; Open reads a picked file, validates
   its shape, then `ProjectStore.replace()`s it. Both New and Open confirm()
   first (destructive — they replace the whole project) and `location.reload()`
@@ -263,6 +366,15 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   with `--enable-unsafe-swiftshader` (software WebGL). `--dump-dom
   --virtual-time-budget=N` works for one-shot asserts; `--timeout=N` dumps at
   load event, NOT after N ms — for timed observation drive CDP via
-  `--remote-debugging-port`.
+  `--remote-debugging-port`. Havok WASM loads fine headless. For screenshots
+  use CDP `Page.captureScreenshot` (canvas content renders; DOM overlays may
+  composite away — see above) — `canvas.toDataURL()` comes back BLANK because
+  the engine doesn't use `preserveDrawingBuffer`. When driving viewport
+  gestures with `Input.dispatchMouseEvent`, pre-check
+  `document.elementFromPoint(x,y)?.id === 'renderCanvas'` — `scene.pick`
+  raycasts straight through the fixed panel overlays, so a pick-scan can find
+  a mesh at a pixel where the synthetic mousedown would actually land on a
+  panel div and never reach Babylon. Also freeze the demo arm
+  (`sim.cmdRun=false`) before pick-scans — it swings through sight lines.
 - HUD exposes `data-ws-status` / `data-scene`; table rows expose `data-tag`
   attributes — use these for headless assertions.

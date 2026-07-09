@@ -80,13 +80,13 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1783577504.560622,
-    "ast_hash": "c486e3b2327db5e8dcc49b6a85d8794a",
+    "mtime": 1783525120.512504,
+    "ast_hash": "237a55eee6834999105d5e7b875f68be",
     "semantic_hash": ""
   },
   "frontend/index.html": {
-    "mtime": 1783576799.2151704,
-    "ast_hash": "b5313fb6caf2165a27cbe5c57a0f6b6b",
+    "mtime": 1783496272.5639057,
+    "ast_hash": "029e87774e8d7dc45827efe831923366",
     "semantic_hash": ""
   },
   "frontend/src/panel.ts": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783577528.4636045,
-    "ast_hash": "d08dc7a0ca0c49f88c6f69bd4da5e489",
+    "mtime": 1783525150.7044716,
+    "ast_hash": "59164875d0efae9f81214947193220fd",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "frontend/src/machinePanel.ts": {
-    "mtime": 1783576779.0481877,
-    "ast_hash": "ed79d52ff2e80bae23c977c97b0cdb13",
+    "mtime": 1783496386.1558442,
+    "ast_hash": "6cc5799785e4b624ca92179d152d7951",
     "semantic_hash": ""
   },
   "frontend/src/machines/boxes.ts": {
@@ -355,28 +355,28 @@
     "semantic_hash": ""
   },
   "frontend/src/machines/engine.ts": {
-    "mtime": 1783576733.4782271,
-    "ast_hash": "ba4e4da141f563f74487b1d8f60f2e1d",
+    "mtime": 1783523358.4798324,
+    "ast_hash": "75b8080777dc919160bc30cffca79c37",
     "semantic_hash": ""
   },
   "frontend/src/machines/physics.ts": {
-    "mtime": 1783551540.5967834,
-    "ast_hash": "d2de5d0901b887f2ae3025b457d07be8",
+    "mtime": 1783496118.2829955,
+    "ast_hash": "eb4dd78eb1339e0f2a1354d0808e79d7",
     "semantic_hash": ""
   },
   "frontend/src/machines/rigs.ts": {
-    "mtime": 1783576701.4042554,
-    "ast_hash": "af3dc65dab67c2c8471bc1f5a5669dcd",
+    "mtime": 1783524732.1499078,
+    "ast_hash": "93b6c14494f00737980f334271952902",
     "semantic_hash": ""
   },
   "frontend/src/machines/types.ts": {
-    "mtime": 1783576750.6472123,
-    "ast_hash": "77b1c50b8ab2fa80fd400164fab62126",
+    "mtime": 1783523038.722057,
+    "ast_hash": "51a69f8e1cea3b894131b249b3edc859",
     "semantic_hash": ""
   },
   "frontend/public/samples/sorting-line.json": {
-    "mtime": 1783551632.5217943,
-    "ast_hash": "a7b796eb028b6b9137f49a4655bc7778",
+    "mtime": 1783524733.7099068,
+    "ast_hash": "97d8f691a37fd68b8f6bfe9dcf1f96e4",
     "semantic_hash": ""
   },
   "gateway/src/adapters/memory.ts": {

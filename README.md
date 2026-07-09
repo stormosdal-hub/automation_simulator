@@ -5,7 +5,68 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: find PLCs without a terminal** — the **Online ▾** menu has a
+**Current state: hand control and PLC speed setpoints** — every machine now
+has a **Manual override** section in its properties (the relay-test-button /
+PLC-force analog): 3-state **Auto | On | Off** segments jog the motor
+(conveyor/curve), cylinder (pusher), blade (gate), rotation (turntable), even
+**force a photo-eye** blocked/clear so your ladder inputs fire with no part
+anywhere; stack lights get a lamp test, bins a count reset, and conveyors/
+curves/turntables a **speed-override slider** (0–100 %). Overrides live only
+in the session (never saved), survive parameter edits, and machines under
+manual show a ✋ badge in the list. On the PLC side, **speed is a number you
+write from TIA Portal**: the Speed slots accept any numeric tag — an `Int`/
+`Word` at `%MW…` or a `Real` — interpreted as 0–100 %. Proven end-to-end: a
+ladder `MOVE 30` / `MOVE 90` into `Speed_SP` (Int, MW12) made the physical
+belt run ~3× faster at 90, and the PLC's Motor bit stopped it.
+
+Previously: **turntables, snap-together belts, and andon lights** — three
+more library pieces. The **turntable** is a rotating disc that carries parts
+around its axis: unbound it spins continuously (carousel); bound to a `rotate`
+tag it becomes a 0°↔angle **indexing table** with `atHome`/`atEnd` end-switch
+write-backs (loose parts slide a little on an abrupt stop — time your ladder,
+or gate them). The **stack light (andon)** is a red/amber/green signal tower —
+each lamp lights (optionally blinks at 1 Hz) while its bool tag is true; the
+sorting sample now flashes its amber lamp on every divert. And arrange mode
+got **conveyor snapping**: drag a belt or curve near another's end and it
+clicks into place — position *and rotation* solve so the flow ports align
+(entry↔exit, matching belt heights) — then parts ride straight across the
+seam; verified by dragging a 37°-rotated belt onto a straight one and watching
+a box cross.
+
+Previously: **curves, inclines, sorting, and hands-on parts** — the machine
+library grew: conveyors take a **rise** (inclined belts that carry parts uphill
+and hold them on a stop) and a **rails** choice (both/left/right/none — leave a
+side open for diverting), and there's a **curved conveyor** (segmented arc,
+15–180°, either direction) that carries parts around corners. The photo-eye
+gained a **color mode** (a vision sensor: sees accent-colored parts, ignores
+plain cardboard), and parts are now **grabbable** — click and drag any part
+with the mouse (camera pauses), flick to **throw** it. A new gateway `memory`
+adapter (`virtual.b1…`) provides writable **virtual tags for soft wiring**:
+bind a sensor's output and an actuator's input to the same tag and they couple
+directly, no PLC needed. All of it comes together in **File ▾ → Sample:
+Sorting line** — a dropper feeds mixed parts down a belt; a color eye fires
+`virtual.b1`; a pusher shoves colored parts into one bin while plain ones ride
+to the other. Verified headless end-to-end: colored → colored bin, plain →
+plain bin, zero PLC.
+
+Previously: **a physics machine library** — the scene has real physics
+(Babylon's **Havok** engine, WASM) and a placeable **machine library**: conveyor
+belts, photo-eye sensors, pusher cylinders, stop gates, collection bins, and
+part droppers, managed from the new **Machines** panel. Drop boxes/cylinders/
+balls onto a running belt (**Shift+click** anywhere, a spawner's *Drop now*
+button, a timer, or a PLC tag edge) and they tumble, ride, stack, and fall like
+real parts. Machines bind to live tags both ways: a conveyor's motor/speed
+**read** PLC outputs, while photo-eyes, pusher end-switches, and bin count
+pulses **write** PLC inputs through the normal gateway write path — so a ladder
+program in the TIA app can run a *physical* line: press Start, the seal-in
+latches `Motor`, the belt carries falling parts through the photo-eye, and the
+beam pulses clock the PLC's real CTU counter. Machines are placed/rotated in a
+properties editor or dragged on the ground in **Arrange** mode, and live in the
+project JSON like bindings/panels/alarms (File → Save/Open). A fresh project
+ships a working demo line (dropper → belt → photo-eye → bin); wire its motor
+and eye tags to a PLC to close the loop.
+
+Previously: **find PLCs without a terminal** — the **Online ▾** menu has a
 **Search network** button: enter a port (default 8000) and the gateway scans
 its local subnet(s) for TIA Web Practice runtimes, lists the ones it finds
 (IP:port + program + RUN state), and one click drops a result into the connect
@@ -170,6 +231,10 @@ Connections are declared in `gateway/config.json` — adapter types:
 - `mixer` — machine model: batchS/overTempC/defaultSpeed; writable
   `agitatorOn`/`agitatorSpeed`, read `tankLevel`, `motorTemp`, `batchCount`,
   `batchProgress`, `batchDone` (pulse), `overTemp`
+- `memory` — virtual tags with no device (soft wiring): every tag is writable
+  and a write just publishes the value back. Used to couple one scene
+  machine's sensor to another's actuator directly (see the sorting-line
+  sample); default entry `virtual` ships `b1…b4` (bool) + `n1`/`n2` (number)
 
 Top-level `links` route tags between adapters without any client connected
 (change-driven, coerced to the target's type, `scale`/`offset`/`invert`):
@@ -183,8 +248,66 @@ Top-level `links` route tags between adapters without any client connected
 
 What you should see: a two-link robot arm swinging (driven by `sim.armAngle` /
 `sim.forearmAngle`), a status lamp that glows green while `sim.running` is true
-and dark red while stopped (the arm freezes in place), and a HUD (top-left)
-with connection status and live tag values.
+and dark red while stopped (the arm freezes in place), a HUD (top-left)
+with connection status and live tag values — and behind the arm, the demo
+**machine line**: a part dropper feeding a conveyor that carries boxes through
+a photo-eye into a counting bin (every 6 s; Shift+click drops extras anywhere).
+
+### The machine library (Machines panel, left column)
+
+- **Add** a machine (conveyor / curved conveyor / turntable / photo-eye /
+  pusher / stop gate / bin / part dropper / stack light), select it in the
+  list **or click it in the viewport**, then edit its name, X/Z, rotation, and
+  per-kind parameters (belt speed, beam height, stroke, drop interval, part
+  shape/size, …). Conveyors take a **rise** (incline) and a **rails** choice
+  (both/left/right/none); curves take a radius and a signed turn angle
+  (+left/−right, entry along the machine's +X). Photo-eyes can **detect:
+  color** — only accent-colored parts break the beam (the beam shows purple
+  when idle in color mode). The **turntable** spins continuously when unbound
+  or indexes 0°↔angle on its `rotate` tag (with `atHome`/`atEnd` write-backs);
+  the **stack light** lights red/amber/green lamps from bool tags (optional
+  blink).
+- **Tag bindings** per machine: *read* slots drive it (conveyor `motor` +
+  `speed %`, pusher `extend`, gate `raise`, dropper `trigger` edge), *write*
+  slots feed sensors back (photo-eye `output`, pusher `atEnd`/`atHome`, bin
+  count `pulse`) — writes go through the same gateway path as panel widgets,
+  so any writable tag (e.g. a TIA `%I` input) works. **Speed slots take any
+  numeric tag** — a TIA `Int`/`Word` (`%MW…`) or `Real` — read as 0–100 %; a
+  ladder `MOVE`/`CALCULATE` writing that word sets the belt/turntable speed.
+- **Manual override** (in the properties editor): Auto | On | Off segments to
+  jog each machine by hand — run/stop a belt, extend a cylinder, raise a
+  gate, index a turntable, **force a photo-eye** blocked/clear (its tag
+  really writes, so you can exercise ladder inputs with no parts), lamp-test
+  a stack light, reset a bin count — plus a 0–100 % speed slider. Overrides
+  are session-only (never saved into the project), survive parameter edits,
+  and flag the machine with ✋ in the list. Auto hands control back to tags. Unbound conveyors/gates
+  simply run/block so the library is playable with no PLC at all; a ⚠ in the
+  list flags missing/wrong-type tags.
+- **Arrange mode** drags machines on the ground plane (camera pauses during a
+  drag), and chainable pieces **snap**: bring a conveyor/curve end near
+  another's counterpart end (entry↔exit, belt heights within ~10 cm) and the
+  dragged piece rotates + translates so the flow ports line up — release to
+  commit; parts then ride across the seam. **Drop part** / **Shift+click**
+  spawn parts; **Clear parts** removes them. Parts are capped (oldest culled) and anything that falls off the world
+  is cleaned up. **Click and drag a part** to grab it (spring-follows the
+  cursor at grab height); release mid-flick to **throw** it — grabbed parts
+  stay physical, so you can stack them, feed them through sensors, or yank
+  them out of bins.
+- **Soft wiring**: the gateway's `memory` adapter (`virtual` in config.json)
+  publishes writable do-nothing tags (`virtual.b1…b4`, `n1…n2`). Bind a
+  photo-eye's output AND a pusher's extend to `virtual.b1` and the eye fires
+  the pusher directly — machine-to-machine logic with no PLC and no `links`.
+- **File ▾ → Sample: Sorting line** loads a ready-made demo of all of it:
+  mixed parts drop onto a belt, a color eye + pusher divert colored parts into
+  one bin via `virtual.b1`, plain cardboard rides through to the other.
+- Machines persist in the project (localStorage + File → Save/Open). Physics
+  needs WASM; if Havok can't load, machines still render and arrange — only
+  parts are disabled (the panel says so).
+
+Wire the demo line to a TIA PLC (assuming an Online ▾ connection named `tia`):
+conveyor → *Motor (run)* = `tia.Motor`, photo-eye → *Output* =
+`tia.Part_Sensor`, and author `Motor`'s seal-in + a CTU on `Part_Sensor` in
+the TIA app — parts falling on the belt will clock the ladder counter.
 
 Gateway smoke test: `npm run probe -w @sim/gateway`
 
@@ -195,6 +318,8 @@ Regenerate the demo model: `npm run glb`
 ```
 frontend/   Vite + TypeScript + Babylon.js app
             bindings/ (types + transform eval + frame engine), projectStore,
+            machines/ (Havok physics world, machine catalog + rigs, part
+            manager, engine) + machinePanel (library UI),
             scene tree + viewport picking, binding editor panel,
             tag store, WS client, HUD, live tag table
 gateway/    Node.js gateway: TagBus (pub/sub core) + Adapter interface
@@ -261,7 +386,29 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     `/api/info`) lists reachable runtimes to pick from; the TIA app's
     **Address** pop-up (`/api/netinfo`) shows the runtime's own hostname/URL —
     so neither side needs `curl`/`hostname -I`~~
-22. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
+22. ~~Physics machine library: Havok (WASM) world in the scene, placeable
+    parametric machines (conveyor, photo-eye, pusher, stop gate, bin, part
+    dropper) with two-way tag bindings (motors read PLC outputs, sensors
+    write PLC inputs), droppable parts (Shift+click / spawner / tag edge),
+    Machines panel with properties + arrange-drag, machines persisted in the
+    project JSON, demo line in fresh projects~~
+23. ~~Library round 2: inclined belts (`rise`) + `rails` choice, curved
+    conveyor kind (segmented arc, signed turn), color-mode photo-eye,
+    mouse grab & throw for parts, gateway `memory` adapter (virtual tags for
+    machine→machine soft wiring), and the File-menu **Sorting line** sample
+    (color eye + pusher divert colored parts — verified E2E, no PLC)~~
+24. ~~Library round 3: turntable (carousel / tag-indexed 0°↔angle with
+    atHome/atEnd write-backs, parts carried from the disc's yaw rate),
+    conveyor end-snapping in arrange mode (`machinePorts` + rotation/position
+    solve, verified with a real drag + a part crossing the seam), and the
+    stack-light andon (R/A/G lamps from bool tags, blink; in the sorting
+    sample the amber lamp flashes per divert)~~
+25. ~~Manual override + numeric speed from the PLC: per-machine Auto/On/Off
+    jog segments, photo-eye forcing, lamp test, bin reset, 0–100 % speed
+    slider (session-only, ✋ badge, survives rebuilds); turntable speed tag
+    slot; proven Int-from-ladder speed control (MOVE 30/90 → `%MW` →
+    belt physically ~3× faster)~~
+26. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
     adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history + browser notifications,
     tag history logging / CSV export, 32-bit Modbus registers (client-side

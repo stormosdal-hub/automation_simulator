@@ -1,5 +1,7 @@
 /** Everything that describes how live tags drive the 3D scene. */
 
+import type { MachineInstance } from '../machines/types';
+
 export const BINDABLE_PROPERTIES = [
   'rotation.x',
   'rotation.y',
@@ -82,6 +84,8 @@ export interface Project {
   bindings: Binding[];
   panels: ControlPanelDef[];
   alarms: AlarmRule[];
+  /** Placed machine-library instances (conveyors, sensors, …). */
+  machines: MachineInstance[];
 }
 
 export function alarmActive(rule: AlarmRule, value: number | boolean | undefined): boolean {

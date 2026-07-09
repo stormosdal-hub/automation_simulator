@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type { ConveyorAdapterConfig } from './adapters/conveyor';
+import type { MemoryAdapterConfig } from './adapters/memory';
 import type { MixerAdapterConfig } from './adapters/mixer';
 import type { ModbusAdapterConfig } from './adapters/modbus';
 import type { MqttAdapterConfig } from './adapters/mqtt';
@@ -19,7 +20,8 @@ export type AdapterConfigEntry =
   | ({ type: 'tiaweb' } & TiaWebAdapterConfig)
   | ({ type: 'conveyor' } & ConveyorAdapterConfig)
   | ({ type: 'press' } & PressAdapterConfig)
-  | ({ type: 'mixer' } & MixerAdapterConfig);
+  | ({ type: 'mixer' } & MixerAdapterConfig)
+  | ({ type: 'memory' } & MemoryAdapterConfig);
 
 export interface GatewayConfig {
   adapters: AdapterConfigEntry[];

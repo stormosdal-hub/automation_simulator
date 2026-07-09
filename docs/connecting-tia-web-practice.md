@@ -294,6 +294,14 @@ for their `runCmd`/`atTop`/`batchDone` etc. to the `tia` adapter's tag list and
 link them, and you have a hydraulic press or a mixing skid your ladder logic
 can run, with zero hardware.
 
+**Prefer to *see* the plant instead of numbers?** The 3D scene now has a
+physics **machine library** (Machines panel): place a conveyor + photo-eye +
+bin, bind the conveyor's *Motor (run)* to `tia.Motor` and the photo-eye's
+*Output* to `tia.Part_Sensor`, and drop parts (Shift+click). Real falling
+boxes then ride the belt and clock the same ladder counter — no `links`
+needed, since the machines read/write the tags directly through the gateway.
+See the main README → "The machine library".
+
 ## 8. Bring it into the 3D scene
 
 Open **http://localhost:5173**. Use the scene tree + binding editor to bind a

@@ -53,6 +53,19 @@
       "pollMs": 100
     },
     {
+      "type": "memory",
+      "id": "virtual",
+      "label": "Virtual tags (soft wiring)",
+      "tags": [
+        { "name": "b1", "label": "Virtual bool 1", "dataType": "boolean" },
+        { "name": "b2", "label": "Virtual bool 2", "dataType": "boolean" },
+        { "name": "b3", "label": "Virtual bool 3", "dataType": "boolean" },
+        { "name": "b4", "label": "Virtual bool 4", "dataType": "boolean" },
+        { "name": "n1", "label": "Virtual number 1", "dataType": "number" },
+        { "name": "n2", "label": "Virtual number 2", "dataType": "number" }
+      ]
+    },
+    {
       "type": "conveyor",
       "id": "conv",
       "label": "Conveyor line (machine model)",

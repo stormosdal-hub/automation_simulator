@@ -8,6 +8,8 @@ import { ControlPanels } from './controlPanels';
 import { FileMenu } from './fileMenu';
 import { Hud } from './hud';
 import { initLayout } from './layout';
+import { MachineEngine } from './machines/engine';
+import { MachinePanel } from './machinePanel';
 import { OnlineMenu } from './onlineMenu';
 import { createPanel } from './panel';
 import { ProjectStore } from './projectStore';
@@ -63,6 +65,10 @@ const bindingPanel = new BindingPanel(bindingsPanel.body, {
   nodeNames: () => sceneTree.names(),
 });
 
+const machineEngine = new MachineEngine(store, conn, projectStore);
+const machinesPanel = createPanel('Machines', left);
+new MachinePanel(machinesPanel.body, { projectStore, tagStore: store, engine: machineEngine, selection });
+
 new ControlPanels(right, { projectStore, store, conn });
 
 const alarmsPanel = new AlarmsPanel(createPanel('Alarms'), projectStore, store);
@@ -84,9 +90,10 @@ try {
 if (engine) {
   const eng = engine;
   createScene(eng, canvas, projectStore.project.modelUrl)
-    .then((scene) => {
+    .then(async (scene) => {
       hud.setScene('loaded');
       bindingEngine.attach(scene);
+      await machineEngine.attach(scene); // physics world + machine rigs
       sceneTree.setScene(scene);
       attachViewportSelection(scene, selection);
       bindingPanel.refresh();
@@ -96,6 +103,7 @@ if (engine) {
         store,
         projectStore,
         bindingEngine,
+        machineEngine,
         conn,
         alarmsPanel,
         replayPanel,

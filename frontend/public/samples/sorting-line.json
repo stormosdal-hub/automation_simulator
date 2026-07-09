@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "name": "Sorting line demo",
+  "modelUrl": "/models/demo-arm.glb",
+  "bindings": [],
+  "panels": [],
+  "alarms": [],
+  "machines": [
+    {
+      "id": "sl-conv",
+      "kind": "conveyor",
+      "name": "Main belt",
+      "x": 0,
+      "z": 2.3,
+      "rotY": 0,
+      "params": { "length": 3.6, "width": 0.6, "height": 0.55, "rise": 0, "speed": 0.6, "rails": "left" },
+      "tags": {}
+    },
+    {
+      "id": "sl-drop",
+      "kind": "spawner",
+      "name": "Part dropper",
+      "x": -1.4,
+      "z": 2.3,
+      "rotY": 0,
+      "params": { "dropY": 1.4, "intervalS": 4, "shape": "mixed", "size": 0.24 },
+      "tags": {}
+    },
+    {
+      "id": "sl-eye",
+      "kind": "photoeye",
+      "name": "Color eye",
+      "x": 0.55,
+      "z": 2.3,
+      "rotY": 0,
+      "params": { "span": 0.9, "beamY": 0.66, "detect": "color", "invert": false },
+      "tags": { "output": "virtual.b1" }
+    },
+    {
+      "id": "sl-push",
+      "kind": "pusher",
+      "name": "Diverter",
+      "x": 0.72,
+      "z": 1.52,
+      "rotY": -90,
+      "params": { "stroke": 0.9, "speed": 1.6, "headY": 0.7 },
+      "tags": { "extend": "virtual.b1" }
+    },
+    {
+      "id": "sl-binB",
+      "kind": "bin",
+      "name": "Colored bin",
+      "x": 0.72,
+      "z": 3.08,
+      "rotY": 0,
+      "params": { "width": 0.85, "depth": 0.85, "consume": true },
+      "tags": {}
+    },
+    {
+      "id": "sl-binA",
+      "kind": "bin",
+      "name": "Plain bin",
+      "x": 2.29,
+      "z": 2.3,
+      "rotY": 0,
+      "params": { "width": 0.8, "depth": 0.8, "consume": true },
+      "tags": {}
+    },
+    {
+      "id": "sl-light",
+      "kind": "stacklight",
+      "name": "Andon",
+      "x": 1.7,
+      "z": 1.3,
+      "rotY": 0,
+      "params": { "poleY": 1.5, "blink": false },
+      "tags": { "amber": "virtual.b1" }
+    }
+  ]
+}

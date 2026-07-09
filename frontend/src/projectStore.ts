@@ -1,4 +1,5 @@
 import type { AlarmRule, Binding, ControlPanelDef, Project, Widget } from './bindings/types';
+import type { MachineInstance } from './machines/types';
 
 const STORAGE_KEY = 'automation-sim:project';
 
@@ -57,6 +58,49 @@ const DEFAULT_PROJECT: Project = {
       ],
     },
   ],
+  // a working physics line: dropper → conveyor (unbound = always running) → photo-eye → bin
+  machines: [
+    {
+      id: 'demo-conv',
+      kind: 'conveyor',
+      name: 'Conveyor belt 1',
+      x: 0,
+      z: 2.3,
+      rotY: 0,
+      params: { length: 2.4, width: 0.6, height: 0.55, speed: 0.6 },
+      tags: {},
+    },
+    {
+      id: 'demo-drop',
+      kind: 'spawner',
+      name: 'Part dropper 1',
+      x: -0.9,
+      z: 2.3,
+      rotY: 0,
+      params: { dropY: 1.5, intervalS: 6, shape: 'box', size: 0.24 },
+      tags: {},
+    },
+    {
+      id: 'demo-eye',
+      kind: 'photoeye',
+      name: 'Photo-eye sensor 1',
+      x: 0.35,
+      z: 2.3,
+      rotY: 0,
+      params: { span: 0.9, beamY: 0.66, invert: false },
+      tags: {},
+    },
+    {
+      id: 'demo-bin',
+      kind: 'bin',
+      name: 'Collection bin 1',
+      x: 1.68,
+      z: 2.3,
+      rotY: 0,
+      params: { width: 0.75, depth: 0.75, consume: true },
+      tags: {},
+    },
+  ],
   alarms: [
     {
       id: 'alarm-overheat',
@@ -105,6 +149,8 @@ export class ProjectStore {
           // projects saved before Phase 4 have no panels — seed the defaults
           if (!Array.isArray(parsed.panels)) parsed.panels = structuredClone(DEFAULT_PROJECT.panels);
           if (!Array.isArray(parsed.alarms)) parsed.alarms = structuredClone(DEFAULT_PROJECT.alarms);
+          // machines arrived later still — older saves just get none (not the demo line)
+          if (!Array.isArray(parsed.machines)) parsed.machines = [];
           return parsed;
         }
       }
@@ -139,7 +185,20 @@ export class ProjectStore {
   replace(project: Project): void {
     if (!Array.isArray(project.panels)) project.panels = [];
     if (!Array.isArray(project.alarms)) project.alarms = [];
+    if (!Array.isArray(project.machines)) project.machines = [];
     this.project = project;
+    this.save();
+  }
+
+  upsertMachine(machine: MachineInstance): void {
+    const idx = this.project.machines.findIndex((m) => m.id === machine.id);
+    if (idx >= 0) this.project.machines[idx] = machine;
+    else this.project.machines.push(machine);
+    this.save();
+  }
+
+  removeMachine(id: string): void {
+    this.project.machines = this.project.machines.filter((m) => m.id !== id);
     this.save();
   }
 

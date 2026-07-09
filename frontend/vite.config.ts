@@ -6,7 +6,8 @@ export default defineConfig({
     port: 5173,
   },
   optimizeDeps: {
-    // linked workspace TS source — let Vite transform it directly
-    exclude: ['@sim/shared'],
+    // linked workspace TS source — let Vite transform it directly.
+    // @babylonjs/havok: esbuild pre-bundling breaks its .wasm URL resolution.
+    exclude: ['@sim/shared', '@babylonjs/havok'],
   },
 });

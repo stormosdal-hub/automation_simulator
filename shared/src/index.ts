@@ -1,7 +1,7 @@
 export interface AdapterMeta {
   id: string;
   label: string;
-  type: 'simulator' | 'modbus' | 'opcua' | 'mqtt' | 's7' | 'tiaweb' | 'custom';
+  type: 'simulator' | 'modbus' | 'opcua' | 'mqtt' | 's7' | 'tiaweb' | 'memory' | 'custom';
   /** Supports re-discovering its tag set live via a 'refreshTags' request (see TiaWebAdapter). */
   canRefreshTags?: boolean;
   /** Human-readable connection target (e.g. the TIA runtime's URL), where meaningful. */

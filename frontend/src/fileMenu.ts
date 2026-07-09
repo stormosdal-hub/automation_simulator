@@ -29,6 +29,11 @@ function isProject(v: unknown): v is Project {
   return p.version === 1 && typeof p.name === 'string' && typeof p.modelUrl === 'string' && Array.isArray(p.bindings);
 }
 
+/** Bundled example projects served from frontend/public/samples/. */
+const SAMPLES = [
+  { label: 'Sample: Sorting line', role: 'file-sample-sorting', path: '/samples/sorting-line.json' },
+];
+
 /**
  * File menu: New / Open / Save project as JSON. New and Open fully replace
  * the current project and reload the page — bindings already react to
@@ -60,6 +65,7 @@ export class FileMenu {
       this.item('New project', 'file-new', () => this.newProject()),
       this.item('Open project…', 'file-open', () => this.fileInput.click()),
       this.item('Save project as…', 'file-save', () => this.saveProject()),
+      ...SAMPLES.map((s) => this.item(s.label, s.role, () => void this.openSample(s.label, s.path))),
     );
 
     this.fileInput = document.createElement('input');
@@ -92,7 +98,7 @@ export class FileMenu {
 
   private newProject(): void {
     if (
-      !confirm('Start a new project? This clears the current bindings, panels, and alarms (the 3D model stays loaded).')
+      !confirm('Start a new project? This clears the current bindings, panels, alarms, and machines (the 3D model stays loaded).')
     )
       return;
     this.projectStore.replace({
@@ -102,12 +108,30 @@ export class FileMenu {
       bindings: [],
       panels: [],
       alarms: [],
+      machines: [],
     });
     location.reload();
   }
 
   private saveProject(): void {
     download(`${slugify(this.projectStore.project.name)}.json`, this.projectStore.export());
+  }
+
+  private async openSample(label: string, path: string): Promise<void> {
+    let parsed: unknown;
+    try {
+      parsed = await (await fetch(path)).json();
+    } catch {
+      alert(`Could not load ${path}.`);
+      return;
+    }
+    if (!isProject(parsed)) {
+      alert(`${path} is not a valid project file.`);
+      return;
+    }
+    if (!confirm(`Open "${label}"? This replaces the current project.`)) return;
+    this.projectStore.replace(parsed);
+    location.reload();
   }
 
   private openProject(): void {
