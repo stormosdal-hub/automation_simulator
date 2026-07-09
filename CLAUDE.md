@@ -197,6 +197,27 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   TagStore; writes change-deduped so 60 fps sensors send one message per edge,
   dedupe cache cleared every 2 s so state re-asserts after a runtime restart).
   Testing hook: `__SIM__.machineEngine.debug()` → {physics, machines, parts}.
+  Round 5 — PROCESS SIM: `machines/fluids.ts` FluidNet = lumped tank volumes
+  in liters (no particles; dV/dt = ΣQin − ΣQout per tick gives clean PID
+  dynamics). Tanks `register()` (re-registering KEEPS the water — that's why
+  tankRig.dispose does NOT unregister; the ENGINE unregisters only on machine
+  removal, same split as `manual`), pseudo-endpoints `supply` (1.5 m constant
+  head) / `drain` (0 m). take/add clamp (empty source starves a pump;
+  deadheaded flow returns to the source). Pump Q = maxFlow·run·speed %;
+  valve Q = maxFlow·open·position %·√(ΔH/1 m), one-way (check valve).
+  `EngineIO.writeNum` (0.1-quantized dedupe + the 2 s flush) carries tank
+  `level %` and pump/valve `flow L/s` to writable number tags. ParamSpec type
+  'machine' (+`machineKinds`/`extras`) renders a connection dropdown in the
+  panel (From/To; stale ids shown "(missing)" and reported as problems).
+  Piping is AUTO-ROUTED (`flowPiping` + CreateTube runs, world-space,
+  unparented, disposed by the rig): suction from the tank base / supply
+  riser, discharge up-and-over the destination rim / drain stub; a per-tick
+  key over connected tanks' x/z/height redraws pipes when a tank moves or
+  registers late (build order). Manual overrides: pump run+speed, valve
+  open+position (speedRow is parametrized by key). E2E proof: TIA ladder
+  P-controller (unconditional MOVE/SUB/MUL rungs on Int %MW words) holds tank
+  level vs a √-head drain — settles ~54 % for SP 60 (P-droop) and rejects a
+  doubled load.
   Round 4 — MANUAL OVERRIDES: `MachineEngine.manual` is a runtime-only
   Map<machineId, Record<key, bool|number>> (the relay-test-button / PLC-force
   analog; never persisted; survives rig rebuilds because it's id-keyed;

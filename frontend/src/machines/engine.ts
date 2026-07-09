@@ -4,6 +4,7 @@ import type { GatewayConnection } from '../wsClient';
 import type { ProjectStore } from '../projectStore';
 import type { TagStore } from '../tagStore';
 import { BoxManager, type PartShape } from './boxes';
+import { FluidNet } from './fluids';
 import { initScenePhysics, physicsReady } from './physics';
 import { buildRig, type MachineIO, type Rig } from './rigs';
 import { machinePorts, type MachineInstance } from './types';
@@ -30,6 +31,8 @@ export class MachineEngine {
    * so a param-edit rebuild keeps the override; removal clears it. Never saved.
    */
   private manual = new Map<string, Record<string, boolean | number>>();
+  /** Shared tank-volume network for the process machines. */
+  readonly fluids = new FluidNet();
 
   constructor(
     private store: TagStore,
@@ -98,13 +101,16 @@ export class MachineEngine {
       if (!m || JSON.stringify(m) !== e.json) {
         e.rig.dispose();
         this.entries.delete(id);
-        if (!m) this.manual.delete(id); // machine removed → drop its overrides
+        if (!m) {
+          this.manual.delete(id); // machine removed → drop its overrides
+          this.fluids.unregister(id); // …and its water (rebuilds keep both)
+        }
       }
     }
     for (const [id, m] of want) {
       if (this.entries.has(id)) continue;
       try {
-        const rig = buildRig(m, { scene, io: this.io, boxes, manual: (mid) => this.manualState(mid) });
+        const rig = buildRig(m, { scene, io: this.io, boxes, fluids: this.fluids, manual: (mid) => this.manualState(mid) });
         this.entries.set(id, { json: JSON.stringify(m), rig });
       } catch (err) {
         console.error(`[machines] failed to build '${m.name}':`, err);
@@ -356,6 +362,7 @@ export class MachineEngine {
  */
 class EngineIO implements MachineIO {
   private lastSent = new Map<string, boolean>();
+  private lastSentNum = new Map<string, number>();
   private lastFlush = 0;
 
   constructor(
@@ -367,6 +374,7 @@ class EngineIO implements MachineIO {
     if (now - this.lastFlush > 2000) {
       this.lastFlush = now;
       this.lastSent.clear();
+      this.lastSentNum.clear();
     }
   }
 
@@ -389,6 +397,16 @@ class EngineIO implements MachineIO {
     if (this.lastSent.get(tagId) === value) return;
     this.lastSent.set(tagId, value);
     this.conn.write(tagId, value);
+  }
+
+  writeNum(tagId: string | undefined, value: number): void {
+    if (!tagId || !Number.isFinite(value)) return;
+    const meta = this.store.metaFor(tagId);
+    if (!meta || meta.dataType !== 'number' || meta.writable !== true) return;
+    const q = Math.round(value * 10) / 10; // quantize so a creeping level isn't 60 msgs/s
+    if (this.lastSentNum.get(tagId) === q) return;
+    this.lastSentNum.set(tagId, q);
+    this.conn.write(tagId, q);
   }
 
   tagProblem(tagId: string | undefined, dataType: 'number' | 'boolean', dir: 'read' | 'write'): string | null {

@@ -5,7 +5,24 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: hand control and PLC speed setpoints** — every machine now
+**Current state: process simulation — tanks, pumps, valves, PID-ready** —
+three **process machines** join the library. A **water tank** integrates its
+volume live (dV/dt = ΣQin − ΣQout), shows the water rising with a floating %
+readout, and publishes **level %** (the PID process value) plus high/low
+switches to tags. A **pump** moves water between endpoints at `speed %` —
+the natural home for your controller output — and starves realistically on an
+empty tank; a **valve** flows by gravity head (Q ∝ position·√ΔH — the
+textbook nonlinear tank dynamic), both with a `flow` L/s sensor tag.
+**Pipes route themselves**: pick each element's *From/To* (a tank, the
+`supply` mains, or the `drain`) and the piping is drawn — and redrawn when
+you move a tank (which keeps its water). Both get Manual-override jog +
+speed/position sliders. Proven end-to-end with a **closed level-control loop
+built in TIA ladder math** (SP=60; `SUB` Err = SP − Level; `MUL` Out = 8·Err
+→ pump speed): the level rose from 20 %, settled at ~54 % (honest P-droop),
+tracked in the PLC's own memory word, and re-settled after the drain load was
+doubled mid-run. Build PI/PID the same way — the plant is ready for it.
+
+Previously: **hand control and PLC speed setpoints** — every machine now
 has a **Manual override** section in its properties (the relay-test-button /
 PLC-force analog): 3-state **Auto | On | Off** segments jog the motor
 (conveyor/curve), cylinder (pusher), blade (gate), rotation (turntable), even
@@ -256,10 +273,18 @@ a photo-eye into a counting bin (every 6 s; Shift+click drops extras anywhere).
 ### The machine library (Machines panel, left column)
 
 - **Add** a machine (conveyor / curved conveyor / turntable / photo-eye /
-  pusher / stop gate / bin / part dropper / stack light), select it in the
-  list **or click it in the viewport**, then edit its name, X/Z, rotation, and
-  per-kind parameters (belt speed, beam height, stroke, drop interval, part
-  shape/size, …). Conveyors take a **rise** (incline) and a **rails** choice
+  pusher / stop gate / bin / part dropper / stack light / **water tank /
+  pump / valve**), select it in the list **or click it in the viewport**,
+  then edit its name, X/Z, rotation, and per-kind parameters (belt speed,
+  beam height, stroke, drop interval, part shape/size, tank size, max flow…).
+- **Process loops**: tank *Level %* / *High* / *Low* write to tags; pump
+  *Run*/*Speed %* and valve *Open*/*Position %* read tags; both publish
+  *Flow L/s*. Set each pump/valve's **From/To** (a tank, `supply`, `drain`)
+  and the pipes draw themselves. Classic level loop: pump `speed` ←
+  `tia.Out`, tank `level` → `tia.Level`, a gravity valve to `drain` as the
+  load — then write the controller in TIA ladder math (P: `SUB`+`MUL`; add an
+  integrator rung for PI). Valves flow by √head, so the dynamics are the real
+  nonlinear thing PID tuning is practiced on. Conveyors take a **rise** (incline) and a **rails** choice
   (both/left/right/none); curves take a radius and a signed turn angle
   (+left/−right, entry along the machine's +X). Photo-eyes can **detect:
   color** — only accent-colored parts break the beam (the beam shows purple
@@ -408,7 +433,13 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     slider (session-only, ✋ badge, survives rebuilds); turntable speed tag
     slot; proven Int-from-ladder speed control (MOVE 30/90 → `%MW` →
     belt physically ~3× faster)~~
-26. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
+26. ~~Process simulation: FluidNet (lumped tank volumes, dV/dt integration),
+    tank/pump/valve machines with level/flow/switch tags + From/To
+    connection dropdowns + auto-routed pipes (redrawn on move, water kept),
+    √-head valve dynamics, starved pumps, numeric tag writes (`writeNum`);
+    verified with a TIA-ladder P-controller holding tank level against a
+    doubled drain disturbance~~
+27. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
     adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history + browser notifications,
     tag history logging / CSV export, 32-bit Modbus registers (client-side

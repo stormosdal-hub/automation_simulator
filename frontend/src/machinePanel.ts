@@ -240,6 +240,31 @@ export class MachinePanel {
           this.commit({ ...c, params: { ...c.params, [spec.key]: sel.value } });
         });
         control = sel;
+      } else if (spec.type === 'machine') {
+        // connection dropdown: pseudo-endpoints + machines of the allowed kinds
+        const sel = document.createElement('select');
+        sel.dataset.role = 'machine-prop';
+        sel.dataset['key'] = spec.key;
+        const current = String(value);
+        const opts: { id: string; label: string }[] = (spec.extras ?? []).map((e) => ({ id: e, label: e }));
+        for (const other of this.machines()) {
+          if (other.id === m.id) continue;
+          if (spec.machineKinds && !spec.machineKinds.includes(other.kind)) continue;
+          opts.push({ id: other.id, label: other.name });
+        }
+        if (current && !opts.some((o) => o.id === current)) opts.unshift({ id: current, label: `${current} (missing)` });
+        for (const o of opts) {
+          const el = document.createElement('option');
+          el.value = o.id;
+          el.textContent = o.label;
+          sel.append(el);
+        }
+        sel.value = current;
+        sel.addEventListener('change', () => {
+          const c = cur();
+          this.commit({ ...c, params: { ...c.params, [spec.key]: sel.value } });
+        });
+        control = sel;
       } else {
         control = this.num(
           typeof value === 'number' ? value : 0,
@@ -316,14 +341,14 @@ export class MachinePanel {
       );
       return row;
     };
-    const speedRow = (): HTMLElement => {
-      const cur = eng.manualState(m.id)['speed'];
+    const speedRow = (key = 'speed', title = 'Speed override'): HTMLElement => {
+      const cur = eng.manualState(m.id)[key];
       const row = div('machine-speed-row');
       const cb = document.createElement('input');
       cb.type = 'checkbox';
       cb.checked = typeof cur === 'number';
       cb.dataset.role = 'machine-manual-speed-on';
-      cb.title = 'Override speed';
+      cb.title = `Override ${key}`;
       const range = document.createElement('input');
       range.type = 'range';
       range.min = '0';
@@ -336,15 +361,15 @@ export class MachinePanel {
       label.className = 'machine-speed-val';
       label.textContent = `${range.value}%`;
       cb.addEventListener('change', () => {
-        eng.setManual(m.id, 'speed', cb.checked ? parseFloat(range.value) : undefined);
+        eng.setManual(m.id, key, cb.checked ? parseFloat(range.value) : undefined);
         rerender();
       });
       range.addEventListener('input', () => {
         label.textContent = `${range.value}%`;
-        eng.setManual(m.id, 'speed', parseFloat(range.value)); // no rerender — keep the slider in hand
+        eng.setManual(m.id, key, parseFloat(range.value)); // no rerender — keep the slider in hand
       });
       row.append(cb, range, label);
-      return formRow('Speed override', row);
+      return formRow(title, row);
     };
     switch (m.kind) {
       case 'conveyor':
@@ -360,6 +385,10 @@ export class MachinePanel {
         return [formRow('Force sensor', seg('blocked', 'Blocked', 'Clear'))];
       case 'stacklight':
         return [formRow('Lamp test', seg('test', 'All on', 'All off'))];
+      case 'pump':
+        return [formRow('Pump', seg('run', 'Run', 'Stop')), speedRow()];
+      case 'valve':
+        return [formRow('Valve', seg('open', 'Open', 'Close')), speedRow('position', 'Position override')];
       case 'bin': {
         const reset = button('Reset count', 'btn btn-small');
         reset.dataset.role = 'machine-reset-count';

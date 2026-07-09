@@ -9,7 +9,10 @@ export type MachineKind =
   | 'gate'
   | 'bin'
   | 'spawner'
-  | 'stacklight';
+  | 'stacklight'
+  | 'tank'
+  | 'pump'
+  | 'valve';
 
 export type MachineParamValue = number | boolean | string;
 
@@ -31,12 +34,16 @@ export interface MachineInstance {
 export interface ParamSpec {
   key: string;
   label: string;
-  type: 'number' | 'boolean' | 'choice';
+  type: 'number' | 'boolean' | 'choice' | 'machine';
   default: MachineParamValue;
   min?: number;
   max?: number;
   step?: number;
   choices?: string[];
+  /** type 'machine': which kinds the dropdown offers. */
+  machineKinds?: MachineKind[];
+  /** type 'machine': fixed pseudo-endpoints offered too (e.g. 'supply'/'drain'). */
+  extras?: string[];
 }
 
 export interface TagSlotSpec {
@@ -174,6 +181,53 @@ export const MACHINE_CATALOG: MachineDef[] = [
       { key: 'red', label: 'Red lamp', dataType: 'boolean', dir: 'read', hint: 'fault / alarm' },
       { key: 'amber', label: 'Amber lamp', dataType: 'boolean', dir: 'read', hint: 'warning / attention' },
       { key: 'green', label: 'Green lamp', dataType: 'boolean', dir: 'read', hint: 'running / OK' },
+    ],
+  },
+  {
+    kind: 'tank',
+    label: 'Water tank',
+    description: 'Vessel with a live level. Level % + high/low switches publish to tags; pumps/valves connect to it.',
+    params: [
+      { key: 'diameter', label: 'Diameter (m)', type: 'number', default: 0.8, min: 0.3, max: 2, step: 0.05 },
+      { key: 'height', label: 'Height (m)', type: 'number', default: 1.2, min: 0.4, max: 2.5, step: 0.1 },
+      { key: 'init', label: 'Initial level (%)', type: 'number', default: 40, min: 0, max: 100, step: 5 },
+      { key: 'high', label: 'High switch (%)', type: 'number', default: 80, min: 5, max: 100, step: 5 },
+      { key: 'low', label: 'Low switch (%)', type: 'number', default: 20, min: 0, max: 95, step: 5 },
+    ],
+    tagSlots: [
+      { key: 'level', label: 'Level → tag (%)', dataType: 'number', dir: 'write', hint: 'the PID process value, e.g. tia.Level (%MW…)' },
+      { key: 'high', label: 'High switch → tag', dataType: 'boolean', dir: 'write', hint: 'true above the high % (optional)' },
+      { key: 'low', label: 'Low switch → tag', dataType: 'boolean', dir: 'write', hint: 'true below the low % (optional)' },
+    ],
+  },
+  {
+    kind: 'pump',
+    label: 'Pump',
+    description: 'Moves water from → to at speed %. Speed is the natural PID output.',
+    params: [
+      { key: 'maxFlow', label: 'Max flow (L/s)', type: 'number', default: 3, min: 0.5, max: 15, step: 0.5 },
+      { key: 'from', label: 'From', type: 'machine', default: 'supply', machineKinds: ['tank'], extras: ['supply'] },
+      { key: 'to', label: 'To', type: 'machine', default: 'drain', machineKinds: ['tank'], extras: ['drain'] },
+    ],
+    tagSlots: [
+      { key: 'run', label: 'Run (cmd)', dataType: 'boolean', dir: 'read', hint: 'pump runs while true; unbound = run' },
+      { key: 'speed', label: 'Speed (0–100%)', dataType: 'number', dir: 'read', hint: 'wire your PID/ladder output here; unbound = 100%' },
+      { key: 'flow', label: 'Flow → tag (L/s)', dataType: 'number', dir: 'write', hint: 'the flow sensor (optional)' },
+    ],
+  },
+  {
+    kind: 'valve',
+    label: 'Valve',
+    description: 'Gravity/head-driven flow from → to, scaled by position % (Q ∝ pos·√ΔH).',
+    params: [
+      { key: 'maxFlow', label: 'Max flow @1m head (L/s)', type: 'number', default: 3, min: 0.5, max: 15, step: 0.5 },
+      { key: 'from', label: 'From', type: 'machine', default: 'supply', machineKinds: ['tank'], extras: ['supply'] },
+      { key: 'to', label: 'To', type: 'machine', default: 'drain', machineKinds: ['tank'], extras: ['drain'] },
+    ],
+    tagSlots: [
+      { key: 'open', label: 'Open (cmd)', dataType: 'boolean', dir: 'read', hint: 'on/off valve; unbound = open' },
+      { key: 'position', label: 'Position (0–100%)', dataType: 'number', dir: 'read', hint: 'control valve — another PID output; unbound = 100%' },
+      { key: 'flow', label: 'Flow → tag (L/s)', dataType: 'number', dir: 'write', hint: 'the flow sensor (optional)' },
     ],
   },
   {

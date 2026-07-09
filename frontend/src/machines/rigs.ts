@@ -9,6 +9,7 @@ import {
 } from '@babylonjs/core';
 import type { Mesh, PhysicsAggregate, Scene } from '@babylonjs/core';
 import type { BoxManager, BoxPart, PartShape } from './boxes';
+import { DRAIN, SUPPLY, type FluidNet } from './fluids';
 import { animatedBody, physicsReady, staticBody } from './physics';
 import { numParam, paramsOf, type MachineInstance } from './types';
 
@@ -17,6 +18,8 @@ export interface MachineIO {
   readBool(tagId: string | undefined): boolean | null;
   readNum(tagId: string | undefined): number | null;
   writeBool(tagId: string | undefined, value: boolean): void;
+  /** Quantized + change-deduped numeric write (level %, flow L/s, …). */
+  writeNum(tagId: string | undefined, value: number): void;
   /** null when the binding is usable (or unbound); else a human-readable issue. */
   tagProblem(tagId: string | undefined, dataType: 'number' | 'boolean', dir: 'read' | 'write'): string | null;
 }
@@ -25,6 +28,8 @@ export interface RigDeps {
   scene: Scene;
   io: MachineIO;
   boxes: BoxManager;
+  /** Shared fluid network (tank volumes; pumps/valves move liters through it). */
+  fluids: FluidNet;
   /**
    * Runtime-only manual overrides for a machine (the relay-test-button /
    * PLC-force analog). Keys are checked BEFORE tag bindings; an absent key
@@ -865,6 +870,328 @@ function spawnerRig(m: MachineInstance, deps: RigDeps): Rig {
   };
 }
 
+// ---------------------------------------------------------------- process: tank / pump / valve
+
+const PIPE_R = 0.045;
+
+/** One piping run as a tube through the given world-space waypoints. */
+function pipeRun(scene: Scene, name: string, path: Vector3[], material: StandardMaterial): Mesh {
+  const tube = MeshBuilder.CreateTube(name, { path, radius: PIPE_R, tessellation: 10 }, scene);
+  tube.material = material;
+  tube.isPickable = false;
+  return tube;
+}
+
+/** World position of a machine-local point (rotY only, machines sit at y=0). */
+function machineWorld(m: MachineInstance, lx: number, ly: number, lz: number): Vector3 {
+  const b = m.rotY * DEG;
+  return new Vector3(m.x + lx * Math.cos(b) + lz * Math.sin(b), ly, m.z - lx * Math.sin(b) + lz * Math.cos(b));
+}
+
+function tankRig(m: MachineInstance, deps: RigDeps): Rig {
+  const { scene, io, fluids } = deps;
+  const diameter = numParam(m, 'diameter');
+  const height = numParam(m, 'height');
+  const highPct = numParam(m, 'high');
+  const lowPct = numParam(m, 'low');
+  fluids.register(m.id, Math.PI * (diameter / 2) ** 2, height, numParam(m, 'init'), m.x, m.z);
+
+  const root = newRoot(m, scene);
+  const shellMat = mat(scene, `${root.name}:shell`, '#7fa8c9', 0.22);
+  shellMat.backFaceCulling = false;
+  const baseMat = mat(scene, `${root.name}:base`, '#3a4654');
+  const waterMat = mat(scene, `${root.name}:water`, '#2f6fd0', 0.85);
+  waterMat.emissiveColor = Color3.FromHexString('#123a75');
+
+  const shell = MeshBuilder.CreateCylinder(`${root.name}:shell`, { diameter, height, tessellation: 28 }, scene);
+  shell.position.y = height / 2;
+  shell.parent = root;
+  shell.material = shellMat;
+  const base = MeshBuilder.CreateCylinder(`${root.name}:basem`, { diameter: diameter + 0.08, height: 0.05, tessellation: 28 }, scene);
+  base.position.y = 0.025;
+  base.parent = root;
+  base.material = baseMat;
+  const water = MeshBuilder.CreateCylinder(`${root.name}:water`, { diameter: diameter * 0.94, height, tessellation: 28 }, scene);
+  water.parent = root;
+  water.material = waterMat;
+  water.isPickable = false;
+  water.scaling.y = 0.002; // first tick sets the real level
+
+  // level % readout (same billboard pattern as the bin count)
+  const tex = new DynamicTexture(`${root.name}:lvl`, { width: 128, height: 64 }, scene, false);
+  const labelMat = new StandardMaterial(`${root.name}:lvlm`, scene);
+  labelMat.diffuseTexture = tex;
+  labelMat.emissiveColor = new Color3(0.9, 0.9, 0.9);
+  labelMat.backFaceCulling = false;
+  const label = MeshBuilder.CreatePlane(`${root.name}:label`, { width: 0.42, height: 0.21 }, scene);
+  label.position.set(0, height + 0.18, 0);
+  label.parent = root;
+  label.material = labelMat;
+  label.billboardMode = TransformNode.BILLBOARDMODE_ALL;
+  let shownPct = -1;
+  const drawPct = (pct: number) => {
+    tex.drawText(`${Math.round(pct)}%`, null, 46, 'bold 38px monospace', '#4da3ff', '#0d1319', true);
+  };
+
+  const aggs: PhysicsAggregate[] = [];
+  if (physicsReady()) aggs.push(staticBody(shell, 0.4, 'cylinder'));
+
+  return {
+    root,
+    tick() {
+      const pct = fluids.levelPct(m.id);
+      const f = Math.max(0.002, pct / 100);
+      water.scaling.y = f;
+      water.position.y = (height * f) / 2 + 0.008;
+      if (Math.abs(pct - shownPct) >= 1) {
+        shownPct = pct;
+        drawPct(pct);
+      }
+      io.writeNum(m.tags.level, pct);
+      io.writeBool(m.tags.high, pct >= highPct);
+      io.writeBool(m.tags.low, pct <= lowPct);
+    },
+    dispose() {
+      // NOTE: no fluids.unregister here — a rebuild (param edit / drag) must
+      // keep the water; the ENGINE unregisters when the machine is removed.
+      for (const a of aggs) a.dispose();
+      tex.dispose();
+      root.dispose(false, true);
+    },
+    problem() {
+      return (
+        io.tagProblem(m.tags.level, 'number', 'write') ??
+        io.tagProblem(m.tags.high, 'boolean', 'write') ??
+        io.tagProblem(m.tags.low, 'boolean', 'write')
+      );
+    },
+    status() {
+      return `${fluids.levelPct(m.id).toFixed(0)}%`;
+    },
+  };
+}
+
+/**
+ * Shared flow-element scaffolding: endpoint lookup + auto-piping that redraws
+ * whenever a connected tank moves (tanks register their x/z in the FluidNet).
+ */
+function flowPiping(
+  m: MachineInstance,
+  deps: RigDeps,
+  inletL: { x: number; y: number },
+  outletL: { x: number; y: number },
+  pipeMat: StandardMaterial,
+) {
+  const { scene, fluids } = deps;
+  const from = String(paramsOf(m)['from'] ?? SUPPLY);
+  const to = String(paramsOf(m)['to'] ?? DRAIN);
+  const inlet = machineWorld(m, inletL.x, inletL.y, 0);
+  const outlet = machineWorld(m, outletL.x, outletL.y, 0);
+  let tubes: Mesh[] = [];
+  let key = '';
+
+  const redraw = () => {
+    for (const t of tubes) t.dispose();
+    tubes = [];
+    const fT = fluids.get(from);
+    const tT = fluids.get(to);
+    // suction side
+    if (from === SUPPLY) {
+      tubes.push(pipeRun(scene, `${m.id}:pin`, [new Vector3(inlet.x, 0.02, inlet.z), inlet], pipeMat));
+    } else if (fT) {
+      tubes.push(pipeRun(scene, `${m.id}:pin`, [
+        new Vector3(fT.x, 0.12, fT.z),
+        new Vector3(inlet.x, 0.12, inlet.z),
+        inlet,
+      ], pipeMat));
+    }
+    // discharge side
+    if (to === DRAIN) {
+      tubes.push(pipeRun(scene, `${m.id}:pout`, [outlet, new Vector3(outlet.x, 0.02, outlet.z)], pipeMat));
+    } else if (tT) {
+      const rimY = tT.heightM + 0.12;
+      tubes.push(pipeRun(scene, `${m.id}:pout`, [
+        outlet,
+        new Vector3(outlet.x, rimY, outlet.z),
+        new Vector3(tT.x, rimY, tT.z),
+        new Vector3(tT.x, tT.heightM - 0.08, tT.z),
+      ], pipeMat));
+    }
+  };
+
+  return {
+    from,
+    to,
+    /** Call every tick: redraws piping when a connected tank appears/moves. */
+    maybeRedraw() {
+      const fT = fluids.get(from);
+      const tT = fluids.get(to);
+      const k = `${fT ? `${fT.x},${fT.z},${fT.heightM}` : from}|${tT ? `${tT.x},${tT.z},${tT.heightM}` : to}`;
+      if (k !== key) {
+        key = k;
+        redraw();
+      }
+    },
+    endpointProblem(): string | null {
+      if (!deps.fluids.has(from)) return `source '${from}' not found`;
+      if (!deps.fluids.has(to)) return `destination '${to}' not found`;
+      if (from === to) return 'source and destination are the same';
+      return null;
+    },
+    dispose() {
+      for (const t of tubes) t.dispose();
+    },
+  };
+}
+
+function pumpRig(m: MachineInstance, deps: RigDeps): Rig {
+  const { scene, io, fluids } = deps;
+  const maxFlow = numParam(m, 'maxFlow');
+
+  const root = newRoot(m, scene);
+  const bodyMat = mat(scene, `${root.name}:body`, '#3a4654');
+  const faceMat = mat(scene, `${root.name}:face`, '#2c3540');
+  const impMat = mat(scene, `${root.name}:imp`, '#17bda0');
+  const pipeMat = mat(scene, `${root.name}:pipe`, '#5e6b7a');
+
+  box(scene, root, 'base', 0.36, 0.1, 0.3, 0, 0.05, 0, bodyMat);
+  const housing = MeshBuilder.CreateCylinder(`${root.name}:housing`, { diameter: 0.34, height: 0.22, tessellation: 20 }, scene);
+  housing.rotation.x = Math.PI / 2;
+  housing.position.set(0, 0.3, 0);
+  housing.parent = root;
+  housing.material = faceMat;
+  const impeller = MeshBuilder.CreateCylinder(`${root.name}:impeller`, { diameter: 0.22, height: 0.03, tessellation: 6 }, scene);
+  impeller.rotation.x = Math.PI / 2;
+  impeller.position.set(0, 0.3, -0.13);
+  impeller.parent = root;
+  impeller.material = impMat;
+
+  const piping = flowPiping(m, deps, { x: -0.28, y: 0.3 }, { x: 0.28, y: 0.3 }, pipeMat);
+  let flow = 0; // L/s, smoothed for the tag/status
+
+  const runOn = () => {
+    const o = deps.manual(m.id)['run'];
+    if (typeof o === 'boolean') return o;
+    return m.tags.run ? (io.readBool(m.tags.run) ?? false) : true;
+  };
+  const speedPct = () => {
+    const o = deps.manual(m.id)['speed'];
+    if (typeof o === 'number') return o;
+    return m.tags.speed ? (io.readNum(m.tags.speed) ?? 0) : 100;
+  };
+
+  return {
+    root,
+    tick(dt) {
+      piping.maybeRedraw();
+      const frac = runOn() ? Math.max(0, Math.min(1, speedPct() / 100)) : 0;
+      let q = 0;
+      if (frac > 0 && !piping.endpointProblem()) {
+        const want = maxFlow * frac * dt; // liters this tick
+        const taken = fluids.take(piping.from, want);
+        const accepted = fluids.add(piping.to, taken);
+        if (accepted < taken) fluids.add(piping.from, taken - accepted); // deadheaded: return the rest
+        q = dt > 0 ? accepted / dt : 0;
+      }
+      flow += (q - flow) * Math.min(1, dt * 6);
+      impeller.rotation.y += (flow / maxFlow) * dt * 12;
+      io.writeNum(m.tags.flow, flow);
+    },
+    dispose() {
+      piping.dispose();
+      root.dispose(false, true);
+    },
+    problem() {
+      return (
+        piping.endpointProblem() ??
+        io.tagProblem(m.tags.run, 'boolean', 'read') ??
+        io.tagProblem(m.tags.speed, 'number', 'read') ??
+        io.tagProblem(m.tags.flow, 'number', 'write')
+      );
+    },
+    status() {
+      return flow > 0.02 ? `${flow.toFixed(1)} L/s` : runOn() ? 'idle' : 'off';
+    },
+  };
+}
+
+function valveRig(m: MachineInstance, deps: RigDeps): Rig {
+  const { scene, io, fluids } = deps;
+  const maxFlow = numParam(m, 'maxFlow');
+
+  const root = newRoot(m, scene);
+  const bodyMat = mat(scene, `${root.name}:body`, '#46525f');
+  const wheelMat = mat(scene, `${root.name}:wheel`, '#c94f3d');
+  const pipeMat = mat(scene, `${root.name}:pipe`, '#5e6b7a');
+
+  const body = MeshBuilder.CreateCylinder(`${root.name}:bodym`, { diameter: 0.16, height: 0.3, tessellation: 14 }, scene);
+  body.rotation.z = Math.PI / 2;
+  body.position.set(0, 0.3, 0);
+  body.parent = root;
+  body.material = bodyMat;
+  const stem = MeshBuilder.CreateCylinder(`${root.name}:stem`, { diameter: 0.04, height: 0.16, tessellation: 8 }, scene);
+  stem.position.set(0, 0.44, 0);
+  stem.parent = root;
+  stem.material = bodyMat;
+  const wheel = MeshBuilder.CreateCylinder(`${root.name}:wheel`, { diameter: 0.2, height: 0.035, tessellation: 16 }, scene);
+  wheel.position.set(0, 0.53, 0);
+  wheel.parent = root;
+  wheel.material = wheelMat;
+
+  const piping = flowPiping(m, deps, { x: -0.15, y: 0.3 }, { x: 0.15, y: 0.3 }, pipeMat);
+  let flow = 0;
+
+  const openOn = () => {
+    const o = deps.manual(m.id)['open'];
+    if (typeof o === 'boolean') return o;
+    return m.tags.open ? (io.readBool(m.tags.open) ?? false) : true;
+  };
+  const positionPct = () => {
+    const o = deps.manual(m.id)['position'];
+    if (typeof o === 'number') return o;
+    return m.tags.position ? (io.readNum(m.tags.position) ?? 0) : 100;
+  };
+
+  return {
+    root,
+    tick(dt) {
+      piping.maybeRedraw();
+      const frac = openOn() ? Math.max(0, Math.min(1, positionPct() / 100)) : 0;
+      let q = 0;
+      if (frac > 0 && !piping.endpointProblem()) {
+        // gravity/head-driven: Q = maxFlow · pos · √(ΔH / 1 m), one-way
+        const dH = fluids.surfaceM(piping.from) - fluids.surfaceM(piping.to);
+        if (dH > 0.001) {
+          const want = maxFlow * frac * Math.sqrt(dH) * dt;
+          const taken = fluids.take(piping.from, want);
+          const accepted = fluids.add(piping.to, taken);
+          if (accepted < taken) fluids.add(piping.from, taken - accepted);
+          q = dt > 0 ? accepted / dt : 0;
+        }
+      }
+      flow += (q - flow) * Math.min(1, dt * 6);
+      wheel.rotation.y += (flow / maxFlow) * dt * 4;
+      io.writeNum(m.tags.flow, flow);
+    },
+    dispose() {
+      piping.dispose();
+      root.dispose(false, true);
+    },
+    problem() {
+      return (
+        piping.endpointProblem() ??
+        io.tagProblem(m.tags.open, 'boolean', 'read') ??
+        io.tagProblem(m.tags.position, 'number', 'read') ??
+        io.tagProblem(m.tags.flow, 'number', 'write')
+      );
+    },
+    status() {
+      if (!openOn()) return 'closed';
+      return flow > 0.02 ? `${flow.toFixed(1)} L/s` : 'open';
+    },
+  };
+}
+
 // ---------------------------------------------------------------- factory
 
 export function buildRig(m: MachineInstance, deps: RigDeps): Rig {
@@ -877,6 +1204,12 @@ export function buildRig(m: MachineInstance, deps: RigDeps): Rig {
       return turntableRig(m, deps);
     case 'stacklight':
       return stacklightRig(m, deps);
+    case 'tank':
+      return tankRig(m, deps);
+    case 'pump':
+      return pumpRig(m, deps);
+    case 'valve':
+      return valveRig(m, deps);
     case 'photoeye':
       return photoeyeRig(m, deps);
     case 'pusher':

@@ -80,8 +80,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1783577504.560622,
-    "ast_hash": "c486e3b2327db5e8dcc49b6a85d8794a",
+    "mtime": 1783588161.2427003,
+    "ast_hash": "5f825b471167ead08c99ca5d944b992c",
     "semantic_hash": ""
   },
   "frontend/index.html": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783577528.4636045,
-    "ast_hash": "d08dc7a0ca0c49f88c6f69bd4da5e489",
+    "mtime": 1783588180.8396866,
+    "ast_hash": "a84165dcf378cf34d7455cb15be54511",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "frontend/src/machinePanel.ts": {
-    "mtime": 1783576779.0481877,
-    "ast_hash": "ed79d52ff2e80bae23c977c97b0cdb13",
+    "mtime": 1783587042.9654639,
+    "ast_hash": "efa11f2774a7105c8d493e863492e10a",
     "semantic_hash": ""
   },
   "frontend/src/machines/boxes.ts": {
@@ -355,8 +355,8 @@
     "semantic_hash": ""
   },
   "frontend/src/machines/engine.ts": {
-    "mtime": 1783576733.4782271,
-    "ast_hash": "ba4e4da141f563f74487b1d8f60f2e1d",
+    "mtime": 1783587532.125137,
+    "ast_hash": "dc236b7758469cd904598f1f6cdfb03b",
     "semantic_hash": ""
   },
   "frontend/src/machines/physics.ts": {
@@ -365,13 +365,13 @@
     "semantic_hash": ""
   },
   "frontend/src/machines/rigs.ts": {
-    "mtime": 1783576701.4042554,
-    "ast_hash": "af3dc65dab67c2c8471bc1f5a5669dcd",
+    "mtime": 1783587530.1231384,
+    "ast_hash": "cabd66239a1c318d6dc2624d8af2957b",
     "semantic_hash": ""
   },
   "frontend/src/machines/types.ts": {
-    "mtime": 1783576750.6472123,
-    "ast_hash": "77b1c50b8ab2fa80fd400164fab62126",
+    "mtime": 1783586877.3855689,
+    "ast_hash": "d261768bd0bd19a61bc4fea2b69ee12f",
     "semantic_hash": ""
   },
   "frontend/public/samples/sorting-line.json": {
@@ -382,6 +382,11 @@
   "gateway/src/adapters/memory.ts": {
     "mtime": 1783522867.4621813,
     "ast_hash": "26b81e695b28c830497e92d3bdaee3b6",
+    "semantic_hash": ""
+  },
+  "frontend/src/machines/fluids.ts": {
+    "mtime": 1783586843.7175896,
+    "ast_hash": "a9116f68f4b04a882ca7aa242857af28",
     "semantic_hash": ""
   }
 }
