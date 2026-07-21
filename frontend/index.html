@@ -345,6 +345,38 @@
         text-align: center;
         font-size: 13px;
       }
+      .machine-ctx-menu {
+        position: fixed;
+        z-index: 150;
+        background: #131a24;
+        border: 1px solid #33465c;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        min-width: 140px;
+      }
+      .machine-ctx-menu[hidden] {
+        display: none;
+      }
+      .machine-ctx-item {
+        background: none;
+        border: none;
+        color: #dfe6ee;
+        text-align: left;
+        padding: 7px 10px;
+        font: inherit;
+        font-size: 12.5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .machine-ctx-item:hover {
+        background: #1d2a3a;
+      }
+      .machine-ctx-item[data-role='machine-ctx-remove'] {
+        color: #ff8f8f;
+      }
       #hud {
         position: fixed;
         top: 52px;

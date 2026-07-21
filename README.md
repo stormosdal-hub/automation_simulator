@@ -5,7 +5,16 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: command palette — jump anywhere with Ctrl/Cmd-K** — press
+**Current state: move & rotate machines with an on-screen gizmo** —
+right-click any machine in the viewport for a small **Move / Rotate /
+Properties / Remove** menu. **Move** drops a ground-plane drag square under
+the machine (drag it anywhere, still snapping onto a neighboring conveyor's
+port); **Rotate** shows a yaw ring. Both commit on release — no more opening
+the Machines panel and typing X/Z/rotation just to nudge one machine.
+Arrange-mode's free-drag-anything and the panel's numeric fields still work
+exactly as before for bulk layout work.
+
+Previously: **command palette — jump anywhere with Ctrl/Cmd-K** — press
 **Ctrl+K** (or ⌘K) to open a fuzzy-searchable overlay and jump straight to any
 panel, machine, tag, workspace preset, or action — no hunting through the panel
 stack. Type "lt" for *Live tags*, a machine's name to select it in the 3D
@@ -330,6 +339,10 @@ model those two panels stay hidden.
   and flag the machine with ✋ in the list. Auto hands control back to tags. Unbound conveyors/gates
   simply run/block so the library is playable with no PLC at all; a ⚠ in the
   list flags missing/wrong-type tags.
+- **Right-click a machine** in the viewport for **Move / Rotate / Properties /
+  Remove** — Move drops a ground-plane drag square, Rotate a yaw ring, both
+  commit on release (same conveyor end-snap as Arrange mode below). The
+  quickest way to nudge one machine without opening the panel.
 - **Arrange mode** drags machines on the ground plane (camera pauses during a
   drag), and chainable pieces **snap**: bring a conveyor/curve end near
   another's counterpart end (entry↔exit, belt heights within ~10 cm) and the
@@ -483,7 +496,17 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     fuzzy match) — 60 tests, no network/browser — plus a GitHub Actions CI
     workflow running `npm ci` → typecheck → test on every push/PR. The
     existing `*-probe` scripts remain the integration layer above~~
-30. Backlog: Raspberry Pi GPIO
+30. ~~Right-click a machine → Move/Rotate with an on-screen 3D gizmo: a
+    ground-plane drag square for position and a yaw ring for rotation
+    (`machineGizmos.ts` + `viewportContextMenu.ts`), reusing the same
+    conveyor end-snap as Arrange-mode dragging. A small context menu (Move /
+    Rotate / Properties / Remove) opens on right-click; Escape cancels.
+    Complements — doesn't replace — the Machines panel's Arrange-mode
+    free-drag and numeric fields. Verified headless: context menu opens on a
+    machine mesh (not on empty ground), Move attaches the gizmo + selects the
+    machine, Escape detaches, and an external mid-drag rebuild (e.g. editing
+    the same machine in the panel) safely detaches instead of dangling~~
+31. Backlog: Raspberry Pi GPIO
     agent, in-app connection manager for *other* adapter types
     (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history + browser notifications,

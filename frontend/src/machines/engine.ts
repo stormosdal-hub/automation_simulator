@@ -5,6 +5,7 @@ import type { ProjectStore } from '../projectStore';
 import type { TagStore } from '../tagStore';
 import { BoxManager, type PartShape } from './boxes';
 import { FluidNet } from './fluids';
+import { MachineGizmos, type GizmoMode } from './machineGizmos';
 import { initScenePhysics, physicsReady } from './physics';
 import { buildRig, type MachineIO, type Rig } from './rigs';
 import { machinePorts, type MachineInstance } from './types';
@@ -33,6 +34,7 @@ export class MachineEngine {
   private manual = new Map<string, Record<string, boolean | number>>();
   /** Shared tank-volume network for the process machines. */
   readonly fluids = new FluidNet();
+  private gizmos: MachineGizmos | null = null;
 
   constructor(
     private store: TagStore,
@@ -46,6 +48,13 @@ export class MachineEngine {
     this.scene = scene;
     await initScenePhysics(scene);
     this.boxes = new BoxManager(scene);
+    this.gizmos = new MachineGizmos(scene, {
+      machines: () => this.machines(),
+      commit: (id, patch) => {
+        const m = this.machines().find((x) => x.id === id);
+        if (m) this.projectStore.upsertMachine({ ...m, ...patch });
+      },
+    });
     this.sync();
     this.projectStore.onChange(() => this.sync());
 
@@ -99,6 +108,10 @@ export class MachineEngine {
     for (const [id, e] of this.entries) {
       const m = want.get(id);
       if (!m || JSON.stringify(m) !== e.json) {
+        // the gizmo holds a direct TransformNode reference — don't let it
+        // outlive a rebuild triggered by something other than its own commit
+        // (e.g. editing this machine's params in the panel mid-drag)
+        if (this.gizmos?.activeMachineId === id) this.gizmos.detach();
         e.rig.dispose();
         this.entries.delete(id);
         if (!m) {
@@ -294,6 +307,29 @@ export class MachineEngine {
 
   clearParts(): void {
     this.boxes?.clear();
+  }
+
+  // ---- gizmo move/rotate (right-click context menu on a machine)
+
+  /** Attach the ground-plane move gizmo to a machine; call again to switch machines. */
+  startMove(machineId: string): void {
+    const root = this.scene?.getTransformNodeByName(`machine:${machineId}`);
+    if (root) this.gizmos?.startMove(machineId, root);
+  }
+
+  /** Attach the yaw-only rotate gizmo to a machine. */
+  startRotate(machineId: string): void {
+    const root = this.scene?.getTransformNodeByName(`machine:${machineId}`);
+    if (root) this.gizmos?.startRotate(machineId, root);
+  }
+
+  /** Detach whichever gizmo is active (Escape, deselect, or panel navigation). */
+  stopGizmo(): void {
+    this.gizmos?.detach();
+  }
+
+  gizmoModeFor(machineId: string): GizmoMode {
+    return this.gizmos?.activeMachineId === machineId ? this.gizmos.activeMode : null;
   }
 
   partCount(): number {

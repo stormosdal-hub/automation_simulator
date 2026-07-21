@@ -24,6 +24,7 @@ import { Selection } from './selection';
 import { TagStore } from './tagStore';
 import { TagTable } from './tagTable';
 import { TrendPanel } from './trendPanel';
+import { attachMachineContextMenu } from './viewportContextMenu';
 import { attachViewportSelection } from './viewportSelection';
 import { connectGateway, type WsStatus } from './wsClient';
 
@@ -109,6 +110,7 @@ if (engine) {
       await machineEngine.attach(scene); // physics world + machine rigs
       sceneTree.setScene(scene);
       attachViewportSelection(scene, selection);
+      attachMachineContextMenu(scene, machineEngine, projectStore, selection);
       bindingPanel.refresh();
       if (sceneTree.names().length > 0) {
         panelRegistry.setAvailable(treePanel.id, true);
@@ -121,6 +123,7 @@ if (engine) {
         projectStore,
         bindingEngine,
         machineEngine,
+        selection,
         conn,
         alarmsPanel,
         replayPanel,

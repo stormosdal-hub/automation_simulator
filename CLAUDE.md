@@ -278,6 +278,36 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   pattern), else parts topple off a belt edge instead of launching clear.
   (4) `staticBody()` must run AFTER the root transform is final
   (`computeWorldMatrix(true)` before creating the aggregate).
+- `frontend/src/machines/machineGizmos.ts` + `viewportContextMenu.ts` —
+  **right-click a machine → Move/Rotate with an on-screen 3D gizmo**, an
+  alternative to Arrange-mode's free-drag-anything and the panel's numeric
+  fields for adjusting ONE machine at a time. `viewportContextMenu.ts` hooks
+  `scene.onPointerObservable` for right mouse button (`event.button===2`,
+  native `contextmenu` suppressed on the canvas), walks the picked mesh's
+  parent chain to its `machine:<id>` root, and shows a small DOM menu (Move /
+  Rotate / Properties / Remove) positioned at the click. `MachineGizmos`
+  (`machineGizmos.ts`) owns a `PositionGizmo` + `RotationGizmo` on their own
+  `UtilityLayerRenderer`, each pared down to ONLY what a ground-placed machine
+  can validly do: the position gizmo disables all 3 axis arrows and 2 of its 3
+  drag-planes, keeping just `yPlaneGizmo` (Babylon names plane gizmos by their
+  normal — "y" here means the XZ/ground plane); the rotation gizmo disables x/z
+  and keeps only `yGizmo` (yaw ring). `startMove(id)`/`startRotate(id)` attach
+  to that machine's `TransformNode` (looked up by name each call, since a rig
+  rebuild replaces it); `onDragEndObservable` commits rounded x/z/rotY via
+  `projectStore.upsertMachine` — reusing the SAME conveyor end-snap heuristic
+  (`trySnap`, duplicated from `engine.ts`'s Arrange-drag) so a gizmo-dragged
+  belt still clicks onto a neighboring belt's port on release. Because a
+  commit triggers `sync()` which disposes and rebuilds that machine's rig
+  (fresh `TransformNode`), the gizmo detaches itself BEFORE calling `commit()`
+  — and `engine.ts`'s `sync()` has a matching safety check that force-detaches
+  if some OTHER edit (e.g. the panel) rebuilds the currently-gizmo'd machine
+  mid-drag, so the gizmo never holds a dangling node reference. `MachineEngine`
+  exposes `startMove`/`startRotate`/`stopGizmo`/`gizmoModeFor` as the public
+  surface; Escape (global keydown, wired in `viewportContextMenu.ts`) closes
+  the menu and calls `stopGizmo()`. Plain left-click keeps its existing
+  select-only behavior (`viewportSelection.ts`) — this is a strictly additive
+  second interaction on the same meshes, not a replacement for Arrange mode
+  (still useful for moving several machines in one drag pass).
 - `frontend/src/machinePanel.ts` — Machines panel UI: catalog add row, arrange
   toggle (`engine.arrangeMode`), Drop part / Clear parts, instance list with
   1 s status/⚠-problem refresh (labels only), properties editor (placement,
