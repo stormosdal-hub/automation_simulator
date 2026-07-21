@@ -17,7 +17,7 @@ import '@babylonjs/loaders/glTF';
 export async function createScene(
   engine: Engine,
   canvas: HTMLCanvasElement,
-  modelUrl: string,
+  modelUrl: string | null,
 ): Promise<Scene> {
   const scene = new Scene(engine);
   scene.clearColor = new Color4(0.055, 0.065, 0.085, 1);
@@ -46,6 +46,8 @@ export async function createScene(
   groundMat.specularColor = Color3.Black();
   ground.material = groundMat;
 
-  await AppendSceneAsync(modelUrl, scene);
+  // A model is optional: projects built purely from the machine library
+  // (the usual case) leave modelUrl null and get an empty stage.
+  if (modelUrl) await AppendSceneAsync(modelUrl, scene);
   return scene;
 }

@@ -80,7 +80,8 @@ export interface AlarmRule {
 export interface Project {
   version: 1;
   name: string;
-  modelUrl: string;
+  /** Optional GLB to load into the scene; null means machines-only. */
+  modelUrl: string | null;
   bindings: Binding[];
   panels: ControlPanelDef[];
   alarms: AlarmRule[];

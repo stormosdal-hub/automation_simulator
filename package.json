@@ -9,7 +9,6 @@
   ],
   "scripts": {
     "dev": "concurrently -k -n plc,opcua,mqtt,s7,gateway,web -c magenta,blue,green,red,yellow,cyan \"npm run plc-sim -w @sim/gateway\" \"npm run opcua-sim -w @sim/gateway\" \"npm run mqtt-sim -w @sim/gateway\" \"npm run s7-sim -w @sim/gateway\" \"npm run dev -w @sim/gateway\" \"npm run dev -w @sim/frontend\"",
-    "glb": "node scripts/make-demo-glb.mjs",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },
   "devDependencies": {

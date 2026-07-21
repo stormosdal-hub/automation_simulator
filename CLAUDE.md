@@ -9,7 +9,6 @@ current phase live in README.md — follow that order.
 ```bash
 npm run dev                      # fake PLC (5020) + gateway (ws://localhost:8082) + vite (http://localhost:5173)
 npm run typecheck                # all workspaces
-npm run glb                      # regenerate frontend/public/models/demo-arm.glb
 npm run probe -w @sim/gateway    # gateway smoke test (hello + updates)
 npm run plc-sim -w @sim/gateway    # fake conveyor PLC, Modbus TCP on 5020
 npm run opcua-sim -w @sim/gateway  # fake mixer skid, OPC UA on 4850 (first run generates certs, ~5s)
@@ -377,6 +376,14 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   controls carry `data-role` attrs; binding rows carry `data-binding-id`;
   widgets carry `data-widget-id` + `data-tag`; replay panel root carries
   `data-replay` state.
+- **The 3D model is optional.** `Project.modelUrl` is `string | null`; the
+  default project is machines-only (`null`) and `createScene` skips
+  `AppendSceneAsync` when it is null. The **Scene** and **Bindings** panels
+  exist only to serve an imported GLB, so `main.ts` creates them hidden and
+  reveals them after load only when `sceneTree.names().length > 0`. The old
+  demo robot arm (`/models/demo-arm.glb` + its generator + `sim.armAngle` /
+  `sim.forearmAngle`) is gone; `ProjectStore.load()` migrates saved projects
+  that still point at it (clears `modelUrl`, drops the dead arm bindings).
 
 ## Environment notes
 
@@ -395,7 +402,13 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   `document.elementFromPoint(x,y)?.id === 'renderCanvas'` — `scene.pick`
   raycasts straight through the fixed panel overlays, so a pick-scan can find
   a mesh at a pixel where the synthetic mousedown would actually land on a
-  panel div and never reach Babylon. Also freeze the demo arm
-  (`sim.cmdRun=false`) before pick-scans — it swings through sight lines.
+  panel div and never reach Babylon.
+- Headless renders at ~5 fps (swiftshader) and `MachineEngine`'s tick clamps
+  `dt` to 0.05 s/frame, so **sim-time advances ~4x slower than wall-clock**.
+  Anything on a timer (the 6 s part dropper, tank fills) needs generously
+  polled waits, not fixed sleeps sized for real time.
+- Chromium reuses its profile across CDP pages, so `localStorage` (the saved
+  project) leaks between test passes — `localStorage.clear()` + reload at the
+  start of any pass that expects the default project.
 - HUD exposes `data-ws-status` / `data-scene`; table rows expose `data-tag`
   attributes — use these for headless assertions.

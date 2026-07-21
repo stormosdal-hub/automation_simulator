@@ -263,12 +263,16 @@ Top-level `links` route tags between adapters without any client connected
 ]
 ```
 
-What you should see: a two-link robot arm swinging (driven by `sim.armAngle` /
-`sim.forearmAngle`), a status lamp that glows green while `sim.running` is true
-and dark red while stopped (the arm freezes in place), a HUD (top-left)
-with connection status and live tag values — and behind the arm, the demo
-**machine line**: a part dropper feeding a conveyor that carries boxes through
-a photo-eye into a counting bin (every 6 s; Shift+click drops extras anywhere).
+What you should see: a HUD (top-left) with connection status and live tag
+values, and the demo **machine line** — a part dropper feeding a conveyor that
+carries boxes through a photo-eye into a counting bin (every 6 s; Shift+click
+drops extras anywhere).
+
+Scenes are built from the machine library, so a project has no 3D model by
+default (`modelUrl: null`). Importing a project whose `modelUrl` points at a
+GLB still works: the model loads and the **Scene** (node tree) and **Bindings**
+panels appear in the left column to bind tags to its node properties. Without a
+model those two panels stay hidden.
 
 ### The machine library (Machines panel, left column)
 

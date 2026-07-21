@@ -3,48 +3,18 @@ import type { MachineInstance } from './machines/types';
 
 const STORAGE_KEY = 'automation-sim:project';
 
-/** Reproduces the original hardwired spike bindings through the engine, plus a threshold demo. */
+/** Retired demo GLB — saved projects still pointing at it are migrated away. */
+const RETIRED_MODEL = '/models/demo-arm.glb';
+
+/**
+ * Machines-only starter project: no GLB model, so the scene is built entirely
+ * from the machine library. Bindings stay supported for imported models.
+ */
 const DEFAULT_PROJECT: Project = {
   version: 1,
-  name: 'Demo arm',
-  modelUrl: '/models/demo-arm.glb',
-  bindings: [
-    {
-      id: 'default-arm',
-      nodeId: 'ArmPivot',
-      property: 'rotation.z',
-      tagId: 'sim.armAngle',
-      transform: { kind: 'passthrough' },
-    },
-    {
-      id: 'default-forearm',
-      nodeId: 'ForearmPivot',
-      property: 'rotation.x',
-      tagId: 'sim.forearmAngle',
-      transform: { kind: 'passthrough' },
-    },
-    {
-      id: 'default-lamp',
-      nodeId: 'StatusLamp',
-      property: 'material.emissive',
-      tagId: 'sim.running',
-      transform: { kind: 'boolean', whenTrue: '#26f259', whenFalse: '#730f0f' },
-    },
-    {
-      id: 'default-temp-tint',
-      nodeId: 'UpperArm',
-      property: 'material.emissive',
-      tagId: 'sim.temperature',
-      transform: {
-        kind: 'threshold',
-        stops: [
-          { upTo: 50, value: '#000000' },
-          { upTo: 65, value: '#33230a' },
-          { upTo: null, value: '#4d1111' },
-        ],
-      },
-    },
-  ],
+  name: 'Demo line',
+  modelUrl: null,
+  bindings: [],
   panels: [
     {
       id: 'default-panel',
@@ -151,6 +121,12 @@ export class ProjectStore {
           if (!Array.isArray(parsed.alarms)) parsed.alarms = structuredClone(DEFAULT_PROJECT.alarms);
           // machines arrived later still — older saves just get none (not the demo line)
           if (!Array.isArray(parsed.machines)) parsed.machines = [];
+          // the demo robot arm is gone: drop the model and the bindings that
+          // targeted its nodes, which would otherwise 404 / bind to nothing
+          if (parsed.modelUrl === RETIRED_MODEL) {
+            parsed.modelUrl = null;
+            parsed.bindings = [];
+          }
           return parsed;
         }
       }

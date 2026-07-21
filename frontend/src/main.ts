@@ -64,6 +64,10 @@ const bindingPanel = new BindingPanel(bindingsPanel.body, {
   engine: bindingEngine,
   nodeNames: () => sceneTree.names(),
 });
+// Both panels serve imported GLB models. Machine-library projects have no
+// model, so keep them out of the column until one actually loads.
+treePanel.root.style.display = 'none';
+bindingsPanel.root.style.display = 'none';
 
 const machineEngine = new MachineEngine(store, conn, projectStore);
 const machinesPanel = createPanel('Machines', left);
@@ -97,6 +101,10 @@ if (engine) {
       sceneTree.setScene(scene);
       attachViewportSelection(scene, selection);
       bindingPanel.refresh();
+      if (sceneTree.names().length > 0) {
+        treePanel.root.style.display = '';
+        bindingsPanel.root.style.display = '';
+      }
       // dev/testing hook
       (window as unknown as Record<string, unknown>).__SIM__ = {
         scene,

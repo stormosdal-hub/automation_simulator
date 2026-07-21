@@ -26,7 +26,8 @@ function slugify(name: string): string {
 function isProject(v: unknown): v is Project {
   if (!v || typeof v !== 'object') return false;
   const p = v as Record<string, unknown>;
-  return p.version === 1 && typeof p.name === 'string' && typeof p.modelUrl === 'string' && Array.isArray(p.bindings);
+  const modelOk = p.modelUrl == null || typeof p.modelUrl === 'string';
+  return p.version === 1 && typeof p.name === 'string' && modelOk && Array.isArray(p.bindings);
 }
 
 /** Bundled example projects served from frontend/public/samples/. */
@@ -98,7 +99,7 @@ export class FileMenu {
 
   private newProject(): void {
     if (
-      !confirm('Start a new project? This clears the current bindings, panels, alarms, and machines (the 3D model stays loaded).')
+      !confirm('Start a new project? This clears the current bindings, panels, alarms, and machines (any loaded 3D model stays).')
     )
       return;
     this.projectStore.replace({

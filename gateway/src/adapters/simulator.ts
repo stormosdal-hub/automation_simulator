@@ -5,10 +5,9 @@ const TICK_MS = 33; // ~30 Hz
 
 /**
  * Demo machine with a control surface: `cmdRun` (switch) starts/stops it,
- * `speed` (0-100 %) scales joint motion and heating, `reset` (momentary
- * button, write true) cools the machine back to ambient. Joint phases only
- * advance while running so the arm freezes in place on stop. Command tags are
- * streamed back too, so widgets always show the confirmed device state.
+ * `speed` (0-100 %) scales heating, `reset` (momentary button, write true)
+ * cools the machine back to ambient. Command tags are streamed back too, so
+ * widgets always show the confirmed device state.
  */
 export class SimulatorAdapter implements Adapter {
   readonly meta: AdapterMeta;
@@ -17,8 +16,6 @@ export class SimulatorAdapter implements Adapter {
   private timer: ReturnType<typeof setInterval> | null = null;
   private cmdRun = true;
   private speed = 60;
-  private armPhase = 0;
-  private forearmPhase = 0;
   private temperature = 42;
   private lastTick = Date.now();
 
@@ -29,8 +26,6 @@ export class SimulatorAdapter implements Adapter {
       { id: `${id}.speed`, label: 'Speed setpoint', dataType: 'number', unit: '%', adapterId: id, writable: true },
       { id: `${id}.reset`, label: 'Reset temperature', dataType: 'boolean', adapterId: id, writable: true },
       { id: `${id}.running`, label: 'Running', dataType: 'boolean', adapterId: id },
-      { id: `${id}.armAngle`, label: 'Arm angle', dataType: 'number', unit: 'deg', adapterId: id },
-      { id: `${id}.forearmAngle`, label: 'Forearm angle', dataType: 'number', unit: 'deg', adapterId: id },
       { id: `${id}.temperature`, label: 'Temperature', dataType: 'number', unit: 'degC', adapterId: id },
     ];
   }
@@ -74,10 +69,6 @@ export class SimulatorAdapter implements Adapter {
 
     const running = this.cmdRun;
     const rate = this.speed / 100;
-    if (running) {
-      this.armPhase += dt * rate;
-      this.forearmPhase += dt * rate;
-    }
     this.temperature += (running ? 0.1 + 0.8 * rate : -0.5) * dt + (Math.random() - 0.5) * 0.05;
     this.temperature = Math.min(80, Math.max(20, this.temperature));
 
@@ -86,8 +77,6 @@ export class SimulatorAdapter implements Adapter {
       { tagId: this.t('speed'), value: this.speed, ts: now },
       { tagId: this.t('reset'), value: false, ts: now },
       { tagId: this.t('running'), value: running, ts: now },
-      { tagId: this.t('armAngle'), value: Math.sin((this.armPhase * 2 * Math.PI) / 9) * 50, ts: now },
-      { tagId: this.t('forearmAngle'), value: Math.sin((this.forearmPhase * 2 * Math.PI) / 5.5 + 1) * 35, ts: now },
       { tagId: this.t('temperature'), value: Math.round(this.temperature * 10) / 10, ts: now },
     ];
   }
