@@ -9,6 +9,8 @@ current phase live in README.md — follow that order.
 ```bash
 npm run dev                      # fake PLC (5020) + gateway (ws://localhost:8082) + vite (http://localhost:5173)
 npm run typecheck                # all workspaces
+npm test                         # vitest run — unit tests (pure logic, no network/browser)
+npm run test:watch               # vitest in watch mode
 npm run probe -w @sim/gateway    # gateway smoke test (hello + updates)
 npm run plc-sim -w @sim/gateway    # fake conveyor PLC, Modbus TCP on 5020
 npm run opcua-sim -w @sim/gateway  # fake mixer skid, OPC UA on 4850 (first run generates certs, ~5s)
@@ -295,6 +297,46 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   bindingPanel.ts (editor UI), sceneTree.ts + viewportSelection.ts (picking;
   engine needs `{ stencil: true }` for the HighlightLayer), tagStore.ts,
   tagTable.ts, wsClient.ts.
+- `frontend/src/commandPalette.ts` + `commands.ts` — **command palette
+  (Ctrl/Cmd-K)**. `CommandPalette` is a generic fuzzy-search overlay driven by
+  an array of `CommandProvider` (each a `() => Command[]` called fresh on every
+  open, so tags/machines are always current). `fuzzyScore` is a subsequence
+  matcher with word-boundary / contiguity / earliness bonuses; it scores
+  against `cmd.matchText ?? cmd.title` — the decorated title ("Go to panel:",
+  "Select machine:") is NOT scored (its prefix polluted ranking, e.g. "lt"
+  matching the 'l' in "panel:"), so every provider sets `matchText` to the
+  clean entity name. `commands.ts`'s `buildCommandProviders({projectStore,
+  store, selection, engine})` assembles five provider groups: workspace presets
+  (→ `panelRegistry.applyPreset`), panels (→ `revealPanel`), machines (→
+  `selection.set('machine:'+id)` + reveal Machines), tags (→ reveal Live tags +
+  flash the `#tag-table tr[data-tag]` row), and actions (arrange toggle, clear
+  parts). `revealPanel(id)` (exported from commandPalette) makes a panel
+  visible via the registry, un-collapses it, scrolls it into view, and adds a
+  1.2 s `.panel-flash`. Keyboard: Ctrl/Cmd-K toggles, ↑/↓ move, Enter runs, Esc
+  closes; backdrop click closes. Wired in `main.ts` after `initLayout()`;
+  exposed on `window.__SIM__.commandPalette`. HUD shows a "press Ctrl+K" hint.
+  `data-role`s: `command-palette`, `command-input`, `command-item[data-cmd-id]`.
+- `frontend/src/panelRegistry.ts` + `panelsMenu.ts` — **panel visibility +
+  workspaces**. `createPanel` registers every overlay panel into the singleton
+  `panelRegistry` (stable id = slug of title for named panels, `cp:<projectId>`
+  for the dynamic control panels in `controlPanels.ts`), which owns each
+  panel's `display` (a panel shows only when `visible && available`).
+  `available:false` is how Scene/Bindings stay hidden until a GLB loads —
+  `main.ts` flips them with `panelRegistry.setAvailable(id,true)` on model
+  load (replacing the old direct `style.display` toggle), and the menu greys
+  out unavailable panels' checkboxes. Visibility persists per id
+  (`panel:visible:<id>` in localStorage; unset ⇒ visible). The topbar
+  **Panels ▾** dropdown (`PanelsMenu`, same open/close pattern as File/Online)
+  lists a checkbox per panel grouped by column plus workspace preset buttons
+  (`WORKSPACE_PRESETS`: Build / Operate / Diagnose, + a special `all`).
+  `applyPreset` shows exactly the preset's id set and hides the rest; control
+  panels (`cp:` prefix) are opted in as a group via the synthetic
+  `control-panels` id in a preset's list. A manual toggle clears the active
+  preset (`panel:workspace`). `controlPanels.ts`'s `rebuild()` unregisters
+  `cp:` entries whose project panel was deleted so the menu doesn't list ghosts.
+  `data-role`s for headless testing: `panels-menu`/`panels-menu-trigger`,
+  `panels-preset[data-preset]`, `panels-toggle[data-panel]` (its `input` is the
+  checkbox). Exposed on `window.__SIM__.panelRegistry`.
 - Panel layout: the two fixed side columns (`#panels` right, `#panels-left`
   left) scroll vertically (CSS `overflow-y:auto` + `max-height`), so a tall
   panel stack no longer runs off-screen. `panel.ts` bodies are
@@ -384,6 +426,33 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   demo robot arm (`/models/demo-arm.glb` + its generator + `sim.armAngle` /
   `sim.forearmAngle`) is gone; `ProjectStore.load()` migrates saved projects
   that still point at it (clears `modelUrl`, drops the dead arm bindings).
+
+## Testing
+
+- **Unit tests** (`npm test`, Vitest): pure logic only — no network, no
+  gateway, no browser. Config in root `vitest.config.ts`: default `node`
+  environment, `@sim/shared` aliased to its TS source, test files matched as
+  `{shared,gateway,frontend}/**/*.test.ts` and co-located next to their
+  subject. Frontend tests that touch the DOM / localStorage
+  (`panelRegistry`, `commandPalette` — the latter imports `panelRegistry`,
+  which reads `localStorage` at module load) opt into jsdom with a
+  `// @vitest-environment jsdom` docblock on line 1. Current coverage:
+  `bus.test.ts` (TagBus register/publish/write/refresh/unregister via a fake
+  Adapter), `links.test.ts` (link coercion/scale/invert/change-only/retry via
+  a fake TagBus), `fluids.test.ts` (FluidNet volume integration, supply/drain
+  endpoints, starve/overflow clamps), `bindings/types.test.ts` (applyTransform
+  linear-clamp / boolean / threshold), `panelRegistry.test.ts` (visibility,
+  availability gating, preset id-sets + `cp:` grouping, persistence),
+  `commandPalette.test.ts` (fuzzyScore ranking). `fuzzyScore` is exported from
+  `commandPalette.ts` solely so it can be unit-tested. Tests run in CI
+  (`.github/workflows/ci.yml`: `npm ci` → `typecheck` → `test` on push/PR).
+- **Integration probes** (the `*-probe` npm scripts under `gateway/scripts/`)
+  are the layer above: they spin up real sims + the gateway and drive tag flow
+  end-to-end. They need network/ports (and the TIA runtime / mosquitto for
+  some), so they are NOT part of `npm test` / CI — run them manually.
+- **Headless browser checks** (below) are the top layer for UI behavior.
+  New pure helpers should get a `.test.ts`; anything needing the gateway or a
+  live scene stays a probe / headless check.
 
 ## Environment notes
 

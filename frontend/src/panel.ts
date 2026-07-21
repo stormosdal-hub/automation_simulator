@@ -1,15 +1,28 @@
+import { panelRegistry, slugifyPanelTitle, type PanelColumn } from './panelRegistry';
+
 export interface Panel {
   root: HTMLElement;
   body: HTMLElement;
+  id: string;
   setCollapsed(collapsed: boolean): void;
 }
 
+export interface PanelOpts {
+  /** stable registry id; defaults to a slug of the title */
+  id?: string;
+  /** column the panel lives in; inferred from the host when omitted */
+  column?: PanelColumn;
+  /** false while the panel's data source is absent (Scene/Bindings pre-model) */
+  available?: boolean;
+}
+
 /**
- * Collapsible overlay panel, stacked in the #panels container. The same
- * component will host control panels (buttons/knobs/gauges) in Phase 4.
+ * Collapsible overlay panel, stacked in the #panels container. Also registers
+ * itself with the panelRegistry so the topbar **Panels ▾** menu can toggle its
+ * visibility and workspace presets can show/hide it in bulk.
  * Collapsed state persists per title in localStorage.
  */
-export function createPanel(title: string, host?: HTMLElement, actions?: HTMLElement[]): Panel {
+export function createPanel(title: string, host?: HTMLElement, actions?: HTMLElement[], opts?: PanelOpts): Panel {
   const container = host ?? document.getElementById('panels');
   if (!container) throw new Error('missing #panels container');
 
@@ -63,9 +76,21 @@ export function createPanel(title: string, host?: HTMLElement, actions?: HTMLEle
   });
   apply();
 
+  // infer the column from the host element when not given explicitly
+  const inferredColumn: PanelColumn = container.id === 'panels-left' ? 'left' : 'right';
+  const id = opts?.id ?? slugifyPanelTitle(title);
+  panelRegistry.register({
+    id,
+    title,
+    column: opts?.column ?? inferredColumn,
+    root,
+    available: opts?.available,
+  });
+
   return {
     root,
     body,
+    id,
     setCollapsed(c: boolean) {
       collapsed = c;
       localStorage.setItem(storageKey, c ? '1' : '0');

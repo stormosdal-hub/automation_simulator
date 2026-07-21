@@ -28,6 +28,7 @@ export class Hud {
     this.root.dataset.wsStatus = this.status;
     this.root.innerHTML =
       '<h1>Automation Sim</h1>' +
-      `<div>gateway <span class="${statusClass}">${this.status}</span> <span class="dim">${this.gatewayUrl}</span></div>`;
+      `<div>gateway <span class="${statusClass}">${this.status}</span> <span class="dim">${this.gatewayUrl}</span></div>` +
+      '<div class="dim">press <b>Ctrl</b>+<b>K</b> to jump anywhere</div>';
   }
 }

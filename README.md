@@ -5,7 +5,24 @@ models (GLB), bind scene nodes and materials to live tag streams from PLCs,
 microcontrollers, and simulators, and view or control the machine as a live
 replica.
 
-**Current state: process simulation — tanks, pumps, valves, PID-ready** —
+**Current state: command palette — jump anywhere with Ctrl/Cmd-K** — press
+**Ctrl+K** (or ⌘K) to open a fuzzy-searchable overlay and jump straight to any
+panel, machine, tag, workspace preset, or action — no hunting through the panel
+stack. Type "lt" for *Live tags*, a machine's name to select it in the 3D
+scene, a tag name to flash its row, or a preset to reshape the whole layout.
+Jumping to a hidden panel reveals and highlights it. ↑/↓ to move, Enter to run,
+Esc to close.
+
+Previously: **workspaces — tame the panel stack** — a topbar **Panels ▾**
+menu now shows or hides each overlay panel individually (a checkbox per panel,
+grouped by column) and applies one-click **workspace presets** — *Build*
+(machines, scene, bindings, tags), *Operate* (controls, trends, alarms),
+*Diagnose* (connections, alarms, record/replay), or *All* — so you switch the
+whole screen between authoring a line and running it instead of scrolling a
+nine-panel wall. Your choice (per-panel and the active preset) persists across
+reloads, and Scene/Bindings stay hidden until a 3D model is actually imported.
+
+Previously: **process simulation — tanks, pumps, valves, PID-ready** —
 three **process machines** join the library. A **water tank** integrates its
 volume live (dV/dt = ΣQin − ΣQout), shows the water rising with a floating %
 readout, and publishes **level %** (the PID process value) plus high/low
@@ -207,6 +224,7 @@ hardware — a PLC, an ESP32 running open62541, or any MQTT device — to go liv
 ```bash
 npm install
 npm run dev     # fake PLC (5020) + OPC UA mixer (4850) + MQTT fan node + gateway (8082) + app (5173)
+npm test        # unit tests (Vitest) — pure logic, no network or browser needed
 ```
 
 The MQTT device sim expects a broker on `mqtt://127.0.0.1:1883` (e.g. the
@@ -443,8 +461,31 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     √-head valve dynamics, starved pumps, numeric tag writes (`writeNum`);
     verified with a TIA-ladder P-controller holding tank level against a
     doubled drain disturbance~~
-27. Backlog: Raspberry Pi GPIO agent, in-app connection manager for *other*
-    adapter types (modbus/opcua/mqtt/s7 host/port editing from the browser),
+27. ~~Panel workspaces: a topbar **Panels ▾** menu shows/hides each overlay
+    panel individually (checkbox per panel, grouped by column) and applies
+    **workspace presets** (Build / Operate / Diagnose / All) that toggle a
+    whole set at once. A `panelRegistry` owns every panel's visibility
+    (`createPanel` auto-registers; control panels group under `cp:` ids;
+    Scene/Bindings register `available:false` until a GLB loads); intent
+    persists per panel + the active preset to localStorage. Verified headless:
+    presets show exactly their set, individual toggles hide/show, and the
+    choice survives reload~~
+28. ~~Command palette (Ctrl/Cmd-K): a fuzzy-searchable overlay to jump to any
+    panel, machine, tag, workspace preset, or action without hunting the panel
+    stack. `commandPalette.ts` (generic overlay + subsequence fuzzy matcher) +
+    `commands.ts` (providers from live state; scores clean `matchText` not the
+    decorated title). Jumping to a panel reveals + un-collapses + flashes it;
+    to a machine selects it; to a tag flashes its Live-tags row. Verified
+    headless: Ctrl-K opens, "lt"→Live tags / "conv"→Conveyor rank correctly,
+    Enter reveals a hidden panel, Esc closes~~
+29. ~~Test harness: Vitest unit tests for the pure logic (TagBus, tag links,
+    FluidNet, binding transforms, panel registry + presets, command-palette
+    fuzzy match) — 60 tests, no network/browser — plus a GitHub Actions CI
+    workflow running `npm ci` → typecheck → test on every push/PR. The
+    existing `*-probe` scripts remain the integration layer above~~
+30. Backlog: Raspberry Pi GPIO
+    agent, in-app connection manager for *other* adapter types
+    (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history + browser notifications,
     tag history logging / CSV export, 32-bit Modbus registers (client-side
     register-pair combining in the gateway's own `modbus` adapter), OPC UA

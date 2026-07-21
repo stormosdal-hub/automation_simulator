@@ -1,6 +1,7 @@
 import type { ControlPanelDef, Widget, WidgetType } from './bindings/types';
 import { widgetAcceptsTag } from './bindings/types';
 import { createPanel } from './panel';
+import { panelRegistry } from './panelRegistry';
 import { newBindingId, type ProjectStore } from './projectStore';
 import type { TagStore } from './tagStore';
 import type { WidgetInstance } from './widgets';
@@ -54,6 +55,11 @@ export class ControlPanels {
   private rebuild(): void {
     this.container.innerHTML = '';
     this.instances = [];
+    const liveIds = new Set(this.deps.projectStore.project.panels.map((p) => `cp:${p.id}`));
+    // drop registry entries for control panels that no longer exist
+    for (const entry of panelRegistry.list()) {
+      if (entry.id.startsWith('cp:') && !liveIds.has(entry.id)) panelRegistry.unregister(entry.id);
+    }
     for (const def of this.deps.projectStore.project.panels) {
       this.renderPanel(def);
     }
@@ -81,7 +87,7 @@ export class ControlPanels {
       this.rebuild();
     });
 
-    const panel = createPanel(def.title, this.container, [editBtn]);
+    const panel = createPanel(def.title, this.container, [editBtn], { id: `cp:${def.id}`, column: 'right' });
     panel.root.dataset.panelId = def.id;
 
     const grid = document.createElement('div');

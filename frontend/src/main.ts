@@ -3,6 +3,8 @@ import { DEFAULT_GATEWAY_PORT } from '@sim/shared';
 import { AlarmsPanel } from './alarmsPanel';
 import { BindingEngine } from './bindings/engine';
 import { BindingPanel } from './bindingPanel';
+import { CommandPalette } from './commandPalette';
+import { buildCommandProviders } from './commands';
 import { ConnectionsPanel } from './connectionsPanel';
 import { ControlPanels } from './controlPanels';
 import { FileMenu } from './fileMenu';
@@ -12,6 +14,8 @@ import { MachineEngine } from './machines/engine';
 import { MachinePanel } from './machinePanel';
 import { OnlineMenu } from './onlineMenu';
 import { createPanel } from './panel';
+import { panelRegistry } from './panelRegistry';
+import { PanelsMenu } from './panelsMenu';
 import { ProjectStore } from './projectStore';
 import { ReplayPanel } from './replayPanel';
 import { createScene } from './scene';
@@ -42,6 +46,7 @@ const conn = connectGateway(gatewayUrl, store, (status) => {
   hud.setStatus(status);
 });
 new OnlineMenu(document.getElementById('topbar')!, store, conn);
+new PanelsMenu(document.getElementById('topbar')!);
 
 const connectionsPanel = createPanel('Connections');
 new ConnectionsPanel(connectionsPanel.body, store, () => wsStatus, conn);
@@ -54,9 +59,9 @@ new TrendPanel(trendsPanel.body, store);
 
 const left = document.getElementById('panels-left')!;
 const right = document.getElementById('panels')!;
-const treePanel = createPanel('Scene', left);
+const treePanel = createPanel('Scene', left, undefined, { available: false });
 const sceneTree = new SceneTree(treePanel.body, selection);
-const bindingsPanel = createPanel('Bindings', left);
+const bindingsPanel = createPanel('Bindings', left, undefined, { available: false });
 const bindingPanel = new BindingPanel(bindingsPanel.body, {
   projectStore,
   tagStore: store,
@@ -65,9 +70,8 @@ const bindingPanel = new BindingPanel(bindingsPanel.body, {
   nodeNames: () => sceneTree.names(),
 });
 // Both panels serve imported GLB models. Machine-library projects have no
-// model, so keep them out of the column until one actually loads.
-treePanel.root.style.display = 'none';
-bindingsPanel.root.style.display = 'none';
+// model, so they register as unavailable and the registry keeps them hidden
+// (and untogglable in the Panels menu) until a model actually loads.
 
 const machineEngine = new MachineEngine(store, conn, projectStore);
 const machinesPanel = createPanel('Machines', left);
@@ -80,6 +84,11 @@ const replayPanel = new ReplayPanel(createPanel('Record / Replay'), store);
 
 // column width drag handles (+ restore persisted widths) — after all panels exist
 initLayout();
+
+// command palette (Ctrl/Cmd-K): jump to any panel, machine, tag, preset, action
+const commandPalette = new CommandPalette(
+  buildCommandProviders({ projectStore, store, selection, engine: machineEngine }),
+);
 
 // Engine creation throws where WebGL is unavailable; keep the HUD and tag
 // stream alive so the failure is visible instead of a silent blank page.
@@ -102,8 +111,8 @@ if (engine) {
       attachViewportSelection(scene, selection);
       bindingPanel.refresh();
       if (sceneTree.names().length > 0) {
-        treePanel.root.style.display = '';
-        bindingsPanel.root.style.display = '';
+        panelRegistry.setAvailable(treePanel.id, true);
+        panelRegistry.setAvailable(bindingsPanel.id, true);
       }
       // dev/testing hook
       (window as unknown as Record<string, unknown>).__SIM__ = {
@@ -115,6 +124,8 @@ if (engine) {
         conn,
         alarmsPanel,
         replayPanel,
+        panelRegistry,
+        commandPalette,
       };
       eng.runRenderLoop(() => scene.render());
     })

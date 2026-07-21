@@ -195,6 +195,156 @@
         color: #8fa3b8;
         min-height: 1.4em;
       }
+      .panels-menu {
+        position: relative;
+      }
+      .panels-menu-dropdown {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        width: 250px;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        background: #131a24;
+        border: 1px solid #2a3442;
+        border-radius: 6px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 101;
+      }
+      .panels-menu-dropdown[hidden] {
+        display: none;
+      }
+      .panels-section-title {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #5c6b7d;
+        border-bottom: 1px solid #2a3442;
+        padding-bottom: 3px;
+        margin-top: 6px;
+      }
+      .panels-section-title:first-child {
+        margin-top: 0;
+      }
+      .panels-preset-row {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+      .panels-preset-row .btn {
+        flex: 1;
+      }
+      .panels-preset-row .btn.preset-active {
+        background: #24344a;
+        border-color: #3d8bff;
+        color: #9cc4ff;
+      }
+      .panels-toggle-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 2px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .panels-toggle-row:hover {
+        background: #1d2a3a;
+      }
+      .panels-toggle-row input[type='checkbox'] {
+        width: auto;
+        margin: 0;
+        cursor: pointer;
+        accent-color: #3d8bff;
+      }
+      .panels-toggle-row input:disabled {
+        cursor: default;
+      }
+      /* brief highlight when the command palette jumps to a panel */
+      @keyframes panel-flash-kf {
+        0% { box-shadow: 0 0 0 2px #3d8bff, 0 0 18px rgba(61, 139, 255, 0.5); }
+        100% { box-shadow: 0 0 0 0 rgba(61, 139, 255, 0); }
+      }
+      .panel-flash {
+        animation: panel-flash-kf 1.2s ease-out;
+      }
+      tr.tag-flash td {
+        background: rgba(61, 139, 255, 0.18);
+        transition: background 1s ease-out;
+      }
+      .command-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(6, 9, 13, 0.55);
+        z-index: 200;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 12vh;
+      }
+      .command-overlay[hidden] {
+        display: none;
+      }
+      .command-box {
+        width: min(560px, 92vw);
+        background: #131a24;
+        border: 1px solid #33465c;
+        border-radius: 10px;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        max-height: 66vh;
+      }
+      .command-input {
+        border: none;
+        border-bottom: 1px solid #2a3442;
+        background: transparent;
+        color: #dfe6ee;
+        font: inherit;
+        font-size: 15px;
+        padding: 14px 16px;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 0;
+      }
+      .command-input:focus {
+        outline: none;
+      }
+      .command-list {
+        overflow-y: auto;
+        padding: 6px;
+        scrollbar-width: thin;
+      }
+      .command-cat {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #5c6b7d;
+        padding: 8px 8px 3px;
+      }
+      .command-item {
+        padding: 7px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .command-item.active {
+        background: #24344a;
+        color: #9cc4ff;
+      }
+      .command-empty {
+        padding: 16px;
+        text-align: center;
+        font-size: 13px;
+      }
       #hud {
         position: fixed;
         top: 52px;
