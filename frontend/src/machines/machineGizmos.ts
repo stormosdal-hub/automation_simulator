@@ -37,9 +37,11 @@ export class MachineGizmos {
   private rotGizmo: RotationGizmo;
   private mode: GizmoMode = null;
   private machineId: string | null = null;
+  /** Set by a commit so the gizmo can hop onto the rebuilt rig; see reattach(). */
+  private pendingReattach: { id: string; mode: Exclude<GizmoMode, null> } | null = null;
 
   constructor(
-    scene: Scene,
+    private scene: Scene,
     private deps: Deps,
   ) {
     this.utilLayer = new UtilityLayerRenderer(scene);
@@ -84,6 +86,9 @@ export class MachineGizmos {
   }
 
   detach(): void {
+    // an explicit detach (Escape, Remove, a rebuild from the Machines panel)
+    // also cancels any re-attach a commit was about to perform
+    this.pendingReattach = null;
     this.posGizmo.attachedNode = null;
     this.rotGizmo.attachedNode = null;
     this.mode = null;
@@ -110,9 +115,12 @@ export class MachineGizmos {
     if (snap) ({ x, z, rotY } = snap);
     // detach BEFORE the commit: upsertMachine triggers sync(), which disposes
     // this rig's TransformNode and builds a fresh one — the gizmo must not
-    // stay attached to a node that's about to be destroyed.
+    // stay attached to a node that's about to be destroyed. It hops onto the
+    // replacement afterwards so the machine can be nudged repeatedly.
     this.detach();
+    this.pendingReattach = { id, mode: 'move' };
     this.deps.commit(id, { x, z, rotY });
+    this.reattach();
   }
 
   private commitRotate(): void {
@@ -122,7 +130,31 @@ export class MachineGizmos {
     const rotYRad = ((root.rotation.y % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
     const rotY = Math.round(((rotYRad * 180) / Math.PI) * 10) / 10;
     this.detach();
+    this.pendingReattach = { id, mode: 'rotate' };
     this.deps.commit(id, { rotY });
+    this.reattach();
+  }
+
+  /**
+   * Re-attach to the rig the commit just rebuilt, so one right-click → Move
+   * supports repeated nudges instead of a single drag.
+   *
+   * Deferred to a microtask for two reasons: this runs inside the gizmo's own
+   * onDragEnd observable (reassigning attachedNode mid-notify is asking for
+   * trouble), and it lets projectStore's synchronous onChange → sync() finish
+   * building the replacement node first. A machine removed by the commit, or an
+   * Escape in between, clears `pendingReattach` and the hop is abandoned.
+   */
+  private reattach(): void {
+    queueMicrotask(() => {
+      const pending = this.pendingReattach;
+      if (!pending) return;
+      this.pendingReattach = null;
+      const root = this.scene.getTransformNodeByName(`machine:${pending.id}`);
+      if (!root) return; // machine gone, or the rig never came back
+      if (pending.mode === 'move') this.startMove(pending.id, root);
+      else this.startRotate(pending.id, root);
+    });
   }
 
   /** Same conveyor end-snap heuristic as Arrange-mode drag (engine.ts). */

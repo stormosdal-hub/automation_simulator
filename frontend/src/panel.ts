@@ -1,4 +1,4 @@
-import { panelRegistry, slugifyPanelTitle, type PanelColumn } from './panelRegistry';
+import { panelKey, panelRegistry, readPanelSetting, slugifyPanelTitle, type PanelColumn } from './panelRegistry';
 
 export interface Panel {
   root: HTMLElement;
@@ -25,6 +25,9 @@ export interface PanelOpts {
 export function createPanel(title: string, host?: HTMLElement, actions?: HTMLElement[], opts?: PanelOpts): Panel {
   const container = host ?? document.getElementById('panels');
   if (!container) throw new Error('missing #panels container');
+
+  // resolved up front: every persisted setting below is keyed by this id
+  const id = opts?.id ?? slugifyPanelTitle(title);
 
   const root = document.createElement('div');
   root.className = 'panel';
@@ -53,8 +56,8 @@ export function createPanel(title: string, host?: HTMLElement, actions?: HTMLEle
   // remember a height the user set by dragging the panel-body's resize grip.
   // The browser writes an inline `height` only on a manual resize, so a
   // non-empty body.style.height distinguishes user intent from content growth.
-  const heightKey = `panel:${title}:height`;
-  const savedHeight = localStorage.getItem(heightKey);
+  const heightKey = panelKey(id, 'height');
+  const savedHeight = readPanelSetting(id, 'height', `panel:${title}:height`);
   if (savedHeight) body.style.height = savedHeight;
   if ('ResizeObserver' in window) {
     new ResizeObserver(() => {
@@ -62,8 +65,8 @@ export function createPanel(title: string, host?: HTMLElement, actions?: HTMLEle
     }).observe(body);
   }
 
-  const storageKey = `panel:${title}:collapsed`;
-  let collapsed = localStorage.getItem(storageKey) === '1';
+  const storageKey = panelKey(id, 'collapsed');
+  let collapsed = readPanelSetting(id, 'collapsed', `panel:${title}:collapsed`) === '1';
 
   const apply = () => {
     root.classList.toggle('collapsed', collapsed);
@@ -78,7 +81,6 @@ export function createPanel(title: string, host?: HTMLElement, actions?: HTMLEle
 
   // infer the column from the host element when not given explicitly
   const inferredColumn: PanelColumn = container.id === 'panels-left' ? 'left' : 'right';
-  const id = opts?.id ?? slugifyPanelTitle(title);
   panelRegistry.register({
     id,
     title,

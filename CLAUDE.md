@@ -301,7 +301,16 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   (fresh `TransformNode`), the gizmo detaches itself BEFORE calling `commit()`
   — and `engine.ts`'s `sync()` has a matching safety check that force-detaches
   if some OTHER edit (e.g. the panel) rebuilds the currently-gizmo'd machine
-  mid-drag, so the gizmo never holds a dangling node reference. `MachineEngine`
+  mid-drag, so the gizmo never holds a dangling node reference. It then **hops
+  onto the rebuilt rig** (`reattach()`), so one right-click → Move supports
+  repeated nudges instead of a single drag. The hop is deferred to a
+  `queueMicrotask` for two reasons: it runs inside the gizmo's own
+  `onDragEnd` observable (reassigning `attachedNode` mid-notify is asking for
+  trouble), and the deferral lets `projectStore`'s synchronous
+  `onChange → sync()` finish building the replacement node first. Anything that
+  calls `detach()` in between — Escape, Remove, a panel edit — clears
+  `pendingReattach` and abandons the hop, so the cancel paths still win.
+  `MachineEngine`
   exposes `startMove`/`startRotate`/`stopGizmo`/`gizmoModeFor` as the public
   surface; Escape (global keydown, wired in `viewportContextMenu.ts`) closes
   the menu and calls `stopGizmo()`. Plain left-click keeps its existing
@@ -354,8 +363,9 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   `available:false` is how Scene/Bindings stay hidden until a GLB loads —
   `main.ts` flips them with `panelRegistry.setAvailable(id,true)` on model
   load (replacing the old direct `style.display` toggle), and the menu greys
-  out unavailable panels' checkboxes. Visibility persists per id
-  (`panel:visible:<id>` in localStorage; unset ⇒ visible). The topbar
+  out unavailable panels' checkboxes. Visibility persists per id (unset ⇒
+  visible) under the **unified key shape `panel:<id>:<prop>`** — see the
+  storage note below. The topbar
   **Panels ▾** dropdown (`PanelsMenu`, same open/close pattern as File/Online)
   lists a checkbox per panel grouped by column plus workspace preset buttons
   (`WORKSPACE_PRESETS`: Build / Operate / Diagnose, + a special `all`).
@@ -367,13 +377,25 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   `data-role`s for headless testing: `panels-menu`/`panels-menu-trigger`,
   `panels-preset[data-preset]`, `panels-toggle[data-panel]` (its `input` is the
   checkbox). Exposed on `window.__SIM__.panelRegistry`.
+- **Panel storage keys are all `panel:<id>:<prop>`** (`prop` = `visible` |
+  `collapsed` | `height`), built by `panelKey(id, prop)` in `panelRegistry.ts`.
+  This was previously split: visibility lived under `panel:visible:<id>` while
+  `panel.ts` keyed collapse/height by **title** (`panel:<title>:collapsed`), so
+  renaming a panel silently orphaned half its saved state. `panel.ts` therefore
+  resolves its registry `id` at the TOP of `createPanel` — every persisted read
+  below it depends on that id. Old values are migrated on first read by
+  `readPanelSetting(id, prop, legacyKey)`: it copies the legacy value to the new
+  key and deletes the old one, prefers an already-present new-key value, and
+  skips the delete when the two shapes coincide. It is idempotent, so a reload
+  mid-migration is safe. `panel:workspace` (the active preset) is global rather
+  than per-panel and deliberately keeps its 2-segment shape.
 - Panel layout: the two fixed side columns (`#panels` right, `#panels-left`
   left) scroll vertically (CSS `overflow-y:auto` + `max-height`), so a tall
   panel stack no longer runs off-screen. `panel.ts` bodies are
   `resize: vertical` (corner grip → taller/shorter, content scrolls inside)
-  and persist a user-set height per title (a ResizeObserver saves
-  `body.style.height` only when it's a non-empty inline value, i.e. set by a
-  manual drag, not content growth). `frontend/src/layout.ts` (`initLayout()`,
+  and persist a user-set height (a ResizeObserver saves `body.style.height`
+  only when it's a non-empty inline value, i.e. set by a manual drag, not
+  content growth). `frontend/src/layout.ts` (`initLayout()`,
   called last in main.ts) adds a `.col-resize-handle` per column that drags
   the whole column's width, clamped [220,640], persisted to
   `layout:panels:w` / `layout:panelsLeft:w`; handles are `position:fixed` and
@@ -472,7 +494,8 @@ npm run machines-probe -w @sim/gateway  # press + mixer machine-model test (~35 
   a fake TagBus), `fluids.test.ts` (FluidNet volume integration, supply/drain
   endpoints, starve/overflow clamps), `bindings/types.test.ts` (applyTransform
   linear-clamp / boolean / threshold), `panelRegistry.test.ts` (visibility,
-  availability gating, preset id-sets + `cp:` grouping, persistence),
+  availability gating, preset id-sets + `cp:` grouping, persistence,
+  `panelKey`/`readPanelSetting` legacy-key migration),
   `commandPalette.test.ts` (fuzzyScore ranking). `fuzzyScore` is exported from
   `commandPalette.ts` solely so it can be unit-tested. Tests run in CI
   (`.github/workflows/ci.yml`: `npm ci` → `typecheck` → `test` on push/PR).

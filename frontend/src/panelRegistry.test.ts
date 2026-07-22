@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { panelRegistry, slugifyPanelTitle } from './panelRegistry';
+import { panelKey, panelRegistry, readPanelSetting, slugifyPanelTitle } from './panelRegistry';
 
 function makePanel(id: string) {
   const root = document.createElement('div');
@@ -22,6 +22,48 @@ describe('slugifyPanelTitle', () => {
   });
   it('falls back to "panel" for empty slugs', () => {
     expect(slugifyPanelTitle('  !!! ')).toBe('panel');
+  });
+});
+
+describe('panelKey / readPanelSetting', () => {
+  beforeEach(clearRegistry);
+  afterEach(clearRegistry);
+
+  it('builds one key shape for every per-panel setting', () => {
+    expect(panelKey('live-tags', 'visible')).toBe('panel:live-tags:visible');
+    expect(panelKey('live-tags', 'collapsed')).toBe('panel:live-tags:collapsed');
+    expect(panelKey('cp:1', 'height')).toBe('panel:cp:1:height');
+  });
+
+  it('returns null when neither the new nor the legacy key exists', () => {
+    expect(readPanelSetting('nope', 'collapsed', 'panel:Nope:collapsed')).toBeNull();
+  });
+
+  it('migrates a title-keyed value onto the id-keyed one and drops the old key', () => {
+    localStorage.setItem('panel:Live tags:collapsed', '1');
+    expect(readPanelSetting('live-tags', 'collapsed', 'panel:Live tags:collapsed')).toBe('1');
+    expect(localStorage.getItem('panel:live-tags:collapsed')).toBe('1');
+    expect(localStorage.getItem('panel:Live tags:collapsed')).toBeNull();
+  });
+
+  it('prefers an existing new-key value and cleans up the stale legacy one', () => {
+    localStorage.setItem('panel:live-tags:height', '300px');
+    localStorage.setItem('panel:Live tags:height', '120px'); // stale
+    expect(readPanelSetting('live-tags', 'height', 'panel:Live tags:height')).toBe('300px');
+    expect(localStorage.getItem('panel:Live tags:height')).toBeNull();
+  });
+
+  it('is idempotent — a second read after migration still returns the value', () => {
+    localStorage.setItem('panel:Alarms:collapsed', '1');
+    readPanelSetting('alarms', 'collapsed', 'panel:Alarms:collapsed');
+    expect(readPanelSetting('alarms', 'collapsed', 'panel:Alarms:collapsed')).toBe('1');
+  });
+
+  it('does not delete the key when legacy and unified shapes coincide', () => {
+    // a panel whose title already slugs to itself, e.g. id 'alarms' / title 'alarms'
+    localStorage.setItem('panel:alarms:visible', '0');
+    expect(readPanelSetting('alarms', 'visible', 'panel:alarms:visible')).toBe('0');
+    expect(localStorage.getItem('panel:alarms:visible')).toBe('0');
   });
 });
 
@@ -58,10 +100,19 @@ describe('panelRegistry', () => {
   });
 
   it('reads persisted visibility from localStorage on first register', () => {
+    localStorage.setItem(panelKey('x', 'visible'), '0');
+    const root = makePanel('x');
+    panelRegistry.register({ id: 'x', title: 'X', column: 'right', root });
+    expect(panelRegistry.list().find((e) => e.id === 'x')?.visible).toBe(false);
+  });
+
+  it('migrates a legacy panel:visible:<id> value to the unified key', () => {
     localStorage.setItem('panel:visible:x', '0');
     const root = makePanel('x');
     panelRegistry.register({ id: 'x', title: 'X', column: 'right', root });
     expect(panelRegistry.list().find((e) => e.id === 'x')?.visible).toBe(false);
+    expect(localStorage.getItem(panelKey('x', 'visible'))).toBe('0');
+    expect(localStorage.getItem('panel:visible:x')).toBeNull(); // old key cleaned up
   });
 
   describe('applyPreset', () => {

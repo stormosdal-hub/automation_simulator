@@ -70,7 +70,42 @@ export function slugifyPanelTitle(title: string): string {
   );
 }
 
-const STORAGE_PREFIX = 'panel:visible:';
+/** Per-panel settings that persist to localStorage. */
+export type PanelProp = 'visible' | 'collapsed' | 'height';
+
+/**
+ * The one key shape for every persisted per-panel setting: `panel:<id>:<prop>`.
+ * Everything is keyed by the registry **id** — visibility used to live under
+ * `panel:visible:<id>` while `panel.ts` keyed collapse/height by *title*, so
+ * renaming a panel silently orphaned half its saved state.
+ * (`ACTIVE_PRESET_KEY` is global, not per-panel, and keeps its 2-segment shape.)
+ */
+export function panelKey(id: string, prop: PanelProp): string {
+  return `panel:${id}:${prop}`;
+}
+
+/**
+ * Read a setting, migrating it off its pre-unification key on first run: the
+ * legacy value is copied to `panelKey(id, prop)` and the old key deleted. A
+ * value already stored under the new key wins (the legacy one is just cleaned
+ * up). Returns the value now in effect, or null when neither key exists.
+ */
+export function readPanelSetting(id: string, prop: PanelProp, legacyKey: string): string | null {
+  const key = panelKey(id, prop);
+  const current = localStorage.getItem(key);
+  if (current !== null) {
+    if (key !== legacyKey) localStorage.removeItem(legacyKey);
+    return current;
+  }
+  const legacy = localStorage.getItem(legacyKey);
+  if (legacy === null) return null;
+  localStorage.setItem(key, legacy);
+  localStorage.removeItem(legacyKey);
+  return legacy;
+}
+
+/** Pre-unification visibility key, migrated away on first read. */
+const LEGACY_VISIBLE_PREFIX = 'panel:visible:';
 const ACTIVE_PRESET_KEY = 'panel:workspace';
 
 type Listener = () => void;
@@ -89,7 +124,7 @@ class PanelRegistry {
    */
   register(opts: { id: string; title: string; column: PanelColumn; root: HTMLElement; available?: boolean }): PanelEntry {
     const prior = this.entries.find((e) => e.id === opts.id);
-    const persisted = localStorage.getItem(STORAGE_PREFIX + opts.id);
+    const persisted = readPanelSetting(opts.id, 'visible', LEGACY_VISIBLE_PREFIX + opts.id);
     const visible = prior ? prior.visible : persisted === null ? true : persisted === '1';
     const entry: PanelEntry = {
       id: opts.id,
@@ -129,7 +164,7 @@ class PanelRegistry {
     const entry = this.entries.find((e) => e.id === id);
     if (!entry) return;
     entry.visible = visible;
-    if (persist) localStorage.setItem(STORAGE_PREFIX + id, visible ? '1' : '0');
+    if (persist) localStorage.setItem(panelKey(id, 'visible'), visible ? '1' : '0');
     this.applyDisplay(entry);
     // a manual toggle drops out of any named preset
     this.activePreset = null;
@@ -151,7 +186,7 @@ class PanelRegistry {
     if (presetId === 'all') {
       for (const e of this.entries) {
         e.visible = true;
-        localStorage.setItem(STORAGE_PREFIX + e.id, '1');
+        localStorage.setItem(panelKey(e.id, 'visible'), '1');
         this.applyDisplay(e);
       }
     } else {
@@ -164,7 +199,7 @@ class PanelRegistry {
       for (const e of this.entries) {
         const isControlPanel = e.id.startsWith('cp:');
         e.visible = isControlPanel ? wantControlPanels : wanted.has(e.id);
-        localStorage.setItem(STORAGE_PREFIX + e.id, e.visible ? '1' : '0');
+        localStorage.setItem(panelKey(e.id, 'visible'), e.visible ? '1' : '0');
         this.applyDisplay(e);
       }
     }

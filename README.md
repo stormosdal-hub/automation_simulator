@@ -341,8 +341,9 @@ model those two panels stay hidden.
   list flags missing/wrong-type tags.
 - **Right-click a machine** in the viewport for **Move / Rotate / Properties /
   Remove** — Move drops a ground-plane drag square, Rotate a yaw ring, both
-  commit on release (same conveyor end-snap as Arrange mode below). The
-  quickest way to nudge one machine without opening the panel.
+  commit on release (same conveyor end-snap as Arrange mode below). The gizmo
+  stays on after a release, so you can keep nudging; Escape puts it away. The
+  quickest way to adjust one machine without opening the panel.
 - **Arrange mode** drags machines on the ground plane (camera pauses during a
   drag), and chainable pieces **snap**: bring a conveyor/curve end near
   another's counterpart end (entry↔exit, belt heights within ~10 cm) and the
@@ -506,7 +507,24 @@ scripts/    make-demo-glb.mjs — dependency-free GLB generator for the demo arm
     machine mesh (not on empty ground), Move attaches the gizmo + selects the
     machine, Escape detaches, and an external mid-drag rebuild (e.g. editing
     the same machine in the panel) safely detaches instead of dangling~~
-31. Backlog: Raspberry Pi GPIO
+31. ~~Gizmo re-attach: a commit disposes and rebuilds the machine's rig, so the
+    gizmo used to vanish after a single drag — one right-click per nudge. It
+    now hops onto the rebuilt node (`MachineGizmos.reattach`, deferred to a
+    microtask so the drag-end observable and the synchronous `sync()` both
+    finish first), while Escape / Remove / a panel edit in between still cancel
+    the hop. Verified headless: after a drag-end the gizmo is re-attached to the
+    *live* replacement node (`isDisposed() === false`, node identity changed),
+    the move committed (x −0.9 → 0.6), and an Escape mid-commit leaves it
+    detached~~
+32. ~~Unified panel storage keys: every persisted per-panel setting now lives
+    under `panel:<id>:<prop>` (`visible` / `collapsed` / `height`) via
+    `panelKey()`. Visibility used to be keyed by id while collapse and height
+    were keyed by *title*, so renaming a panel orphaned half its saved state.
+    `readPanelSetting()` migrates old values on first read (copy to the new key,
+    delete the old, new key wins on conflict) and is idempotent. Verified with 7
+    new unit tests plus a headless pass that seeds the legacy keys, reloads
+    twice, and confirms visibility/collapse/height all survive~~
+33. Backlog: Raspberry Pi GPIO
     agent, in-app connection manager for *other* adapter types
     (modbus/opcua/mqtt/s7 host/port editing from the browser),
     browser-direct MQTT, alarm acknowledge/history + browser notifications,

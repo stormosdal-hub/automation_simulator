@@ -75,8 +75,8 @@
     "semantic_hash": "767572e0f98b3adf42b5397aada8e9d8"
   },
   "README.md": {
-    "mtime": 1784704916.0887985,
-    "ast_hash": "fedd70176888af5205f00fcbe9ebb738",
+    "mtime": 1784703631.9920244,
+    "ast_hash": "d231231e18bc3603122a6494c1ade93e",
     "semantic_hash": ""
   },
   "frontend/index.html": {
@@ -85,9 +85,9 @@
     "semantic_hash": "a1aecebffb2a10d03beba63b85a2f378"
   },
   "frontend/src/panel.ts": {
-    "mtime": 1784704636.5850384,
-    "ast_hash": "1336b24497f7fa2d6d1181c74d476860",
-    "semantic_hash": ""
+    "mtime": 1784668690.1120675,
+    "ast_hash": "847481f717f294012f801ce44d6c32ba",
+    "semantic_hash": "847481f717f294012f801ce44d6c32ba"
   },
   "frontend/src/tagTable.ts": {
     "mtime": 1782987480.4281132,
@@ -115,8 +115,8 @@
     "semantic_hash": "56d4e8582b08464b026de739c2d75202"
   },
   "CLAUDE.md": {
-    "mtime": 1784704907.7998056,
-    "ast_hash": "3a7cd0cf91a667c528b99256feeb69fa",
+    "mtime": 1784703610.5090501,
+    "ast_hash": "60998b731a0cc9cc7807b05cab0b6963",
     "semantic_hash": ""
   },
   "frontend/src/bindingPanel.ts": {
@@ -415,14 +415,14 @@
     "semantic_hash": ""
   },
   "frontend/src/panelRegistry.test.ts": {
-    "mtime": 1784704723.8839629,
-    "ast_hash": "038a536d175dcbab501d30ebb8364763",
-    "semantic_hash": ""
+    "mtime": 1784670814.5501764,
+    "ast_hash": "37b9e220eb0562275041613f8fb7c693",
+    "semantic_hash": "37b9e220eb0562275041613f8fb7c693"
   },
   "frontend/src/panelRegistry.ts": {
-    "mtime": 1784704603.7730672,
-    "ast_hash": "960dfa685f2e1ed366f6a19f19456deb",
-    "semantic_hash": ""
+    "mtime": 1784668735.8430083,
+    "ast_hash": "26e8353ebc0c648532cd84e13b4cd608",
+    "semantic_hash": "26e8353ebc0c648532cd84e13b4cd608"
   },
   "frontend/src/panelsMenu.ts": {
     "mtime": 1784668717.295032,
